@@ -24,8 +24,8 @@
         <assert test="$BR-DE-9" flag="fatal" id="BR-DE-9">[BR-DE-9] Das Element "Buyer post code" (BT-53) muss übermittelt werden.</assert>
     </rule>
     <rule context="$BG-15_DELIVER_TO_ADDRESS">
-        <assert test="$BR-DE-10" flag="fatal" id="BR-DE-10">[BR-DE-10] Das Element "Deliver to city" (BT-77) muss übermittelt werden.</assert>
-        <assert test="$BR-DE-11" flag="fatal" id="BR-DE-11">[BR-DE-11] Das Element "Deliver to post code" (BT-78) muss übermittelt werden.</assert>
+        <assert test="$BR-DE-10" flag="fatal" id="BR-DE-10">[BR-DE-10] Das Element "Deliver to city" (BT-77) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird.</assert>
+        <assert test="$BR-DE-11" flag="fatal" id="BR-DE-11">[BR-DE-11] Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird.</assert>
     </rule>
     <rule context="$BG-23_VAT_BREAKDOWN">
         <assert test="$BR-DE-14" flag="fatal" id="BR-DE-14">[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
