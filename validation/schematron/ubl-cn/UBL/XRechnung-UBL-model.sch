@@ -14,7 +14,7 @@
     <param name="BR-DE-14" value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]"/>
     <param name="BR-DE-15" value="cbc:BuyerReference[boolean(normalize-space(.))]"/>
     <param name="BR-DE-16" value="(cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])"/>
-    <param name="BR-DE-17" value="cbc:CreditNoteTypeCode = ('326', '380', '384', '381')"/>
+    <param name="BR-DE-17" value="cbc:CreditNoteTypeCode = ('326', '380', '384', '389', '381')"/>
     <param name="BR-DE-18" value="every $line in cac:PaymentTerms/cbc:Note/tokenize(.,'(\r\n|\r|\n)') satisfies if(count(tokenize($line,'#')) &gt; 1) then tokenize($line,'#')[1]='' and (tokenize($line,'#')[2]='SKONTO' or tokenize($line,'#')[2]='VERZUG') and string-length(replace(tokenize($line,'#')[3],'TAGE=[0-9]+',''))=0 and string-length(replace(tokenize($line,'#')[4],'PROZENT=[0-9]+\.[0-9]{2}',''))=0 and (tokenize($line,'#')[5]='' and empty(tokenize($line,'#')[6]) or string-length(replace(tokenize($line,'#')[5],'BASISBETRAG=[0-9]+\.[0-9]{2}',''))=0 and tokenize($line,'#')[6]='' and empty(tokenize($line,'#')[7])) else true()"/>
         
     <param name="CREDIT_NOTE" value="//cn:CreditNote"/>
