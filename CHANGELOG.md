@@ -12,6 +12,8 @@ This release is compatible to XRechnung 1.2.0.
 
 This version is only by chance the same version as XRechnung!
 
+Because of #19 it might break your validation and business workflow. Please evaluate impact!
+
 ### Added
 
 - Semantic Versioning (see [README](README.md)) #9
@@ -19,4 +21,6 @@ This version is only by chance the same version as XRechnung!
 
 ### Changed
 
-- Made descriptions of rules `BR-DE-10`, `BR-DE-11`, `BR-DE-13`, `BR-DE-16 `, and `BR-DE-18` more precise
+- Made descriptions of rules `BR-DE-10`, `BR-DE-11`, `BR-DE-13`, `BR-DE-16 `, and `BR-DE-18` more precise  #9 #16 #17 #18
+
+#19 #22
