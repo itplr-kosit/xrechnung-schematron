@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v1.2.0 on 2018-12-19
 
-This release is compatible to XRechnung 1.2.0
+This release is compatible to XRechnung 1.2.0.
+
+This version is only by chance the same version as XRechnung!
 
 ### Added
 
