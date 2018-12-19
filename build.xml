@@ -91,7 +91,7 @@
         <schematron-compile schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-inv" />
     </target>
     <target name="dist" depends="compile-schematron-rules" description="Generate the distribution">
-        <zip destfile="${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**" />
+        <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**" />
     </target>
     <target name="clean" description="clean up">
         <!-- Delete the ${build} and ${dist} directory trees -->
