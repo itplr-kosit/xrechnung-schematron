@@ -83,6 +83,10 @@
                 <exclude name="**/*.xsl" />
                 <exclude name="**/XRechnung-UBL-validation.sch" />
             </fileset>
+            <fileset dir="${basedir}">
+                <include name="README.md" />
+                <include name="CHANGELOG.md" />
+            </fileset>
         </copy>
     </target>
     <target name="compile-schematron-rules" depends="prepare-saxon, prepare-build-dir" description="Works for zip from master and release zips">
