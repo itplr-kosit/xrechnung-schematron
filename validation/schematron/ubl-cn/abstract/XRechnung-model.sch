@@ -1,6 +1,6 @@
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="model">
     <rule context="$CREDIT_NOTE">
-        <assert test="$BR-DE-1 " flag="fatal" id="BR-DE-1">[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
+        <assert diagnostics="BR-DE-1-EN" test="$BR-DE-1 " flag="fatal" id="BR-DE-1">[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
         <assert test="$BR-DE-13" flag="fatal" id="BR-DE-13">[BR-DE-13] In der Rechnung müssen Angaben zu genau einer der drei Gruppen "CREDIT TRANSFER" (BG-17), "PAYMENT CARD INFORMATION" (BG-18) oder "DIRECT DEBIT" (BG-19) übermittelt werden.</assert>
         <assert test="$BR-DE-15" flag="fatal" id="BR-DE-15">[BR-DE-15] Das Element "Buyer reference" (BT-10) muss übermittelt werden.</assert>
         <assert test="$BR-DE-16" flag="fatal" id="BR-DE-16">[BR-DE-16] In der Rechnung muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden.</assert>
@@ -31,3 +31,7 @@
         <assert test="$BR-DE-14" flag="fatal" id="BR-DE-14">[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
 </pattern>
+
+<diagnostics>
+  <diagnostic id="BR-DE-1-EN">[BR-DE-1] An invoice shall contain information on “PAYMENT INTSTRUCTIONS” (BG-16).</diagnostic>
+</diagnostics>
