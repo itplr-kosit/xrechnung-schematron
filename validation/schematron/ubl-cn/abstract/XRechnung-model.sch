@@ -31,7 +31,3 @@
         <assert test="$BR-DE-14" flag="fatal" id="BR-DE-14">[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
 </pattern>
-
-<diagnostics>
-  <diagnostic id="BR-DE-1-EN">[BR-DE-1] An invoice shall contain information on “PAYMENT INTSTRUCTIONS” (BG-16).</diagnostic>
-</diagnostics>

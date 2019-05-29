@@ -20,5 +20,8 @@
     <!-- ======================= -->
     <include href="UBL/XRechnung-UBL-model.sch"/>
     
+    <!-- Further languages -->
+    <!-- ======================= -->
+    <include href="languages/XRechnung-languages.sch"/>    
     
 </schema>
