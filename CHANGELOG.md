@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Apache 2.0 License to this work
 - OpenPeppol BIS 3.0 material incl.
    - [specific test instances](test/instances/bis)
    - [BIS Version of Schematron rules](src/bis)
