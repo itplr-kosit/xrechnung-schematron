@@ -19,7 +19,7 @@ Given a version number MAJOR.MINOR.PATCH, we increment the:
     * **CAUTION**: This might break YOUR validation scenario and ability to accept XML content
 1. PATCH version when we make backwards-compatible bug fixes.
 
-## Overview: Technical Coverage of the National Business Rules in the Validation Artefacts
+## Technical Coverage of the National Business Rules in the Validation Artefacts
 
 ID | German Description | Coverage
 --- | --- | ---
