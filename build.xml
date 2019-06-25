@@ -87,6 +87,7 @@
             <fileset dir="${basedir}">
                 <include name="README.md" />
                 <include name="CHANGELOG.md" />
+                <include name="LICENSE" />
             </fileset>
         </copy>
     </target>
@@ -108,7 +109,7 @@
         <copy file="src/bis/DE-PeppolBis3.0-UBL.sch" todir="${bis.build.dir}/UBL" />
         <copy file="src/bis/DE-PeppolBis3.0-CII.sch" todir="${bis.build.dir}/CII" />
     </target>
-    <target name="dist" depends="compile-schematron-rules" description="Generate the distribution">
+    <target name="dist" depends="compile-schematron-rules,compile-schematron-rules-bis" description="Generate the distribution">
         
         <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**,bis/**" />
         
