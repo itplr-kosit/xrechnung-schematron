@@ -1,5 +1,5 @@
 <project name="xrechnung-schematron" default="compile-schematron-rules" basedir=".">
-    <description>Build the XRechnung Schematron for ITPLR-KoSIT</description>
+    <description>Build XRechnung Schematron Rules</description>
     <!-- set global properties for this build -->
     <!-- main build directories -->
     <property name="src.dir" location="${basedir}/validation" />
