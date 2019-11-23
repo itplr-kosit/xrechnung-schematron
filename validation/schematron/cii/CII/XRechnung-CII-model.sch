@@ -1,6 +1,6 @@
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" is-a="model" id="CII-model">
     <param name="BR-DE-1 " value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"/>
-    <param name="BR-DE-2" value="ram:DefinedTradeContact"/>
+    <param name="BR-DE-2 " value="ram:DefinedTradeContact"/>
     <param name="BR-DE-3" value="ram:CityName[boolean(normalize-space(.))]"/>
     <param name="BR-DE-4" value="ram:PostcodeCode[boolean(normalize-space(.))]"/>
     <param name="BR-DE-5" value="(ram:PersonName,ram:DepartmentName)[boolean(normalize-space(.))]"/>
@@ -18,6 +18,25 @@
     <param name="BR-DE-16" value="(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:SpecifiedTaxRegistration/ram:ID[@schemeID='VA' or @schemeID='VAT' or @schemeID='FC'][boolean(normalize-space(.))], rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty)"/>
     <param name="BR-DE-17" value="rsm:ExchangedDocument/ram:TypeCode = ('326', '380', '384', '389', '381')"/>
     <param name="BR-DE-18" value="every $line in rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:Description/tokenize(.,'(\r\n|\r|\n)') satisfies if(count(tokenize($line,'#')) &gt; 1) then tokenize($line,'#')[1]='' and (tokenize($line,'#')[2]='SKONTO' or tokenize($line,'#')[2]='VERZUG') and string-length(replace(tokenize($line,'#')[3],'TAGE=[0-9]+',''))=0 and string-length(replace(tokenize($line,'#')[4],'PROZENT=[0-9]+\.[0-9]{2}',''))=0 and (tokenize($line,'#')[5]='' and empty(tokenize($line,'#')[6]) or string-length(replace(tokenize($line,'#')[5],'BASISBETRAG=[0-9]+\.[0-9]{2}',''))=0 and tokenize($line,'#')[6]='' and empty(tokenize($line,'#')[7])) else true()"/>
+    <param name="BR-DE-19" value="
+        not(ram:TypeCode = '58') or 
+        matches(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and 
+        xs:integer(
+        replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(
+        upper-case(concat(substring(ram:PayeePartyCreditorFinancialAccount/ram:IBANID,5),substring(ram:PayeePartyCreditorFinancialAccount/ram:IBANID,1,4)))
+        ,'A','10'),'B','11'),'C','12'),'D','13'),'E','14'),'F','15'),'G','16'),'H','17'),'I','18'),'J','19'),'K','20'),'L','21'),'M','22')
+        ,'N','23'),'O','24'),'P','25'),'Q','26'),'R','27'),'S','28'),'T','29'),'U','30'),'V','31'),'W','32'),'X','33'),'Y','34'),'Z','35')
+        ) mod 97 = 1
+        "/>
+    <param name="BR-DE-20" value="
+        not(ram:TypeCode = '59') or 
+        matches(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and 
+        xs:integer(
+        replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(
+        upper-case(concat(substring(ram:PayerPartyDebtorFinancialAccount/ram:IBANID,5),substring(ram:PayerPartyDebtorFinancialAccount/ram:IBANID,1,4)))
+        ,'A','10'),'B','11'),'C','12'),'D','13'),'E','14'),'F','15'),'G','16'),'H','17'),'I','18'),'J','19'),'K','20'),'L','21'),'M','22')
+        ,'N','23'),'O','24'),'P','25'),'Q','26'),'R','27'),'S','28'),'T','29'),'U','30'),'V','31'),'W','32'),'X','33'),'Y','34'),'Z','35')
+        ) mod 97 = 1"/>
 
     <param name="INVOICE" value="//rsm:CrossIndustryInvoice"/>
     <param name="BG-4_SELLER" value="//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty"/>
@@ -27,6 +46,8 @@
     <param name="BG-8_BUYER_POSTAL_ADDRESS" value="//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress"/>
 
     <param name="BG-15_DELIVER_TO_ADDRESS" value="//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress"/>
+    
+    <param name="BG-16_PAYMENT_INSTRUCTIONS" value="//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"/>
 
     <param name="BG-23_VAT_BREAKDOWN" value="//rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax"/>
 
