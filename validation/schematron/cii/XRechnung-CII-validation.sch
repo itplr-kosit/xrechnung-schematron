@@ -5,7 +5,7 @@
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
     xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
     xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" schemaVersion="2.0.0" queryBinding="xslt2">
-    <title>XRechnung 1.1 - Schematron - CII</title>
+    <title>XRechnung 1.2.2 - Schematron - CII</title>
     <ns prefix="rsm" uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"/>
     <ns prefix="ccts"
         uri="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"/>
@@ -13,7 +13,7 @@
     <ns prefix="qdt" uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"/>
     <ns prefix="ram"
         uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"/>
-    <phase id="XRechnung_1.1_model">
+    <phase id="XRechnung_1.2.2_model">
         <active pattern="CII-model"/>
     </phase>
     
