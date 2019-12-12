@@ -1,6 +1,6 @@
 <project name="xrechnung-schematron" default="compile-schematron-rules" basedir=".">
     <description>Build XRechnung Schematron Rules</description>
-    <!-- set global properties for this build -->
+    <!-- set global default properties for this build -->
     <!-- main build directories -->
     <property name="src.dir" location="${basedir}/validation" />
     <property name="lib.dir" location="${basedir}/lib" />
@@ -11,8 +11,8 @@
     <property name="test.build.dir" location="${build.dir}/test" />
     <property name="bis.build.dir" location="${basedir}/build/bis" />
     <!-- Naming -->
-    <property name="xr-schematron.version.full" value="1.2.1" />
-    <property name="xrechnung.version" value="1.2.1" />
+    <property name="xr-schematron.version.full" value="1.2.2" />
+    <property name="xrechnung.version" value="1.2.2" />
     <property name="dist.name" value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
     <property name="saxon.jar" value="saxon9he.jar" />
     <property name="xr-schematron.zip" value="${dist.name}.zip" />
@@ -96,7 +96,7 @@
         <schematron-compile schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-cn" />
         <schematron-compile schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-inv" deleteonexit="false" />
     </target>
-    
+
     <target name="compile-schematron-rules-bis" depends="compile-schematron-rules" description="Compiles schematron rules for OpenPeppol
         BIS">
         <mkdir dir="${bis.build.dir}" />
@@ -109,12 +109,10 @@
         <copy file="src/bis/DE-PeppolBis3.0-UBL.sch" todir="${bis.build.dir}/UBL" />
         <copy file="src/bis/DE-PeppolBis3.0-CII.sch" todir="${bis.build.dir}/CII" />
     </target>
-    <target name="dist" depends="compile-schematron-rules,compile-schematron-rules-bis" description="Generate the distribution">
-        
+    <target name="dist" depends="compile-schematron-rules" description="Generate the distribution">
+
         <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**,bis/**" />
-        
-        <zip destfile="${dist.dir}/German_Rules_BISBilling.zip" basedir="${build.dir}/bis" excludes="download/**,schematron/QS*2017/**" />
-        
+
     </target>
     <target name="clean" description="clean up">
         <!-- Delete the ${build} and ${dist} directory trees -->
