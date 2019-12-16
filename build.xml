@@ -15,7 +15,16 @@
     <property name="xrechnung.version" value="1.2.2" />
     <property name="dist.name" value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
     <property name="saxon.jar" value="saxon9he.jar" />
+    
+    <property name="xmute.version.full" value="0.5" />
+    <property name="xmute.jar" value="xml-mutate.jar" />
+
+
+
     <property name="xr-schematron.zip" value="${dist.name}.zip" />
+    
+    
+    
     <macrodef name="schematron-compile" description="Compiles Schematron to XSLT using Saxon">
         <attribute name="schematron" description="Schematron file to compile." />
         <attribute name="workdir" description="Base directory in which to download Schematron Skeleton and keep intermediaries." />
@@ -68,6 +77,15 @@
         <mkdir dir="${lib.dir}" />
         <mkdir dir="${dist.dir}" />
     </target>
+    
+    <target name="retrieve-xmute" depends="init">
+        <fail unless="xmute.download.url.prefix" message="Property
+            xmute.download.url.prefix must exist for this target to work"></fail>
+        <get
+            src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
+            dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="true" usetimestamp="true" />
+    </target>
+    
     <target name="prepare-saxon" depends="init" description="Download Saxon-HE and add jar to library directory">
         <get src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download" dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true" skipexisting="true" usetimestamp="true" />
         <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
@@ -109,7 +127,16 @@
         <copy file="src/bis/DE-PeppolBis3.0-UBL.sch" todir="${bis.build.dir}/UBL" />
         <copy file="src/bis/DE-PeppolBis3.0-CII.sch" todir="${bis.build.dir}/CII" />
     </target>
-    <target name="dist" depends="compile-schematron-rules" description="Generate the distribution">
+    
+    <target name="test" depends="retrieve-xmute" description="Unit Test
+        Schematron Rules wit XML-Mutate">
+        <echo>Creating validation reports ...</echo>
+        <java jar="${lib.dir}/${xmute.jar}}" failonerror="yes" fork="yes" dir="${basedir}">
+            <arg value="-s" />
+        </java>
+    </target>
+    
+    <target name="dist" depends="compile-schematron-rules,test" description="Generate the distribution">
 
         <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**,bis/**" />
 
