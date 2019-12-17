@@ -128,19 +128,6 @@
             outdir="${build.dir}/schematron/ubl-inv" deleteonexit="false"
             overwrite="true"/>
     </target>
-
-    <target name="compile-schematron-rules-bis" depends="compile-schematron-rules" description="Compiles schematron rules for OpenPeppol
-        BIS">
-        <mkdir dir="${bis.build.dir}" />
-        <copy todir="${bis.build.dir}">
-            <fileset dir="${test.src.dir}">
-                <include name="instances/bis/**/*.xml" />
-            </fileset>
-            <cutdirsmapper dirs="2" />
-        </copy>
-        <copy file="src/bis/DE-PeppolBis3.0-UBL.sch" todir="${bis.build.dir}/UBL" />
-        <copy file="src/bis/DE-PeppolBis3.0-CII.sch" todir="${bis.build.dir}/CII" />
-    </target>
     
     <target name="test" depends="retrieve-xmute" description="Unit Test
         Schematron Rules wit XML-Mutate" if="xmute.download.url.prefix">
