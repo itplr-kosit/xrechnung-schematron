@@ -3,7 +3,7 @@
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
     queryBinding="xslt2">
-    <title>XRechnung 1.2.2 - Schematron - UBL - Invoice</title>
+    <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - UBL - Invoice</title>
     <ns prefix="cbc"
         uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
     <ns prefix="cac"
@@ -13,7 +13,7 @@
     <ns prefix="ubl"
         uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
     <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
-    <phase id="XRechnung_1.2.2_model">
+    <phase id="XRechnung_model">
         <active pattern="UBL-model" />
     </phase>
 

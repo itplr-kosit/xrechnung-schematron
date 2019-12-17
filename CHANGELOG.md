@@ -5,6 +5,22 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.3.0 on 2019-06-24
+
+### Added
+
+* Schematron Rules
+  * BR-DE-19 und BR-DE-20 on IBAN test
+  * BR-DE-21 on correct CustomizationID independent of validation scenarios
+* Unit tests on Contact rules and on IBAN using xmute instructions  
+
+### Changed
+
+* Removed superflous files 
+* Build.xml
+  * Made Version string in Schematron files conifurable by build
+  * Overwrite of Schematron compilation files is configurable
+
 ## v1.2.1 on 2019-06-24
 
 ### Added

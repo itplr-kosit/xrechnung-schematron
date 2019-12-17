@@ -11,7 +11,7 @@
     <property name="test.build.dir" location="${build.dir}/test" />
     <property name="bis.build.dir" location="${basedir}/build/bis" />
     <!-- Naming -->
-    <property name="xr-schematron.version.full" value="1.2.2" />
+    <property name="xr-schematron.version.full" value="1.3.0" />
     <property name="xrechnung.version" value="1.2.2" />
     <property name="dist.name" value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
     <property name="saxon.jar" value="saxon9he.jar" />
@@ -29,6 +29,7 @@
         <attribute name="schematron" description="Schematron file to compile." />
         <attribute name="workdir" description="Base directory in which to download Schematron Skeleton and keep intermediaries." />
         <attribute name="outdir" />
+        <attribute name="overwrite" default="false"/>
         <attribute name="insuffix" default="sch" />
         <attribute name="saxon.jar" default="${lib.dir}/${saxon.jar}" description="Location of Saxon jar." />
         <attribute name="deleteonexit" default="true" description="Whether to delete intermediate XSLT files on exit. Note if not deleting, then subsequent runs of macro produce wrong results!" />
@@ -49,20 +50,25 @@
             <get src="${schematron.skeleton.url}/iso_svrl_for_@{schematronbinding}.xsl" dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true" httpusecaches="true" />
             <get src="${schematron.skeleton.url}/iso_schematron_skeleton_for_saxon.xsl" dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true" httpusecaches="true" />
             <!-- expand inclusions -->
-            <xslt style="@{workdir}/iso_dsdl_include.xsl" in="@{schematron}" out="@{workdir}/${schematron.basename}-expanded.sch" classpath="@{saxon.jar}">
+            <xslt style="@{workdir}/iso_dsdl_include.xsl" in="@{schematron}"
+                out="@{workdir}/${schematron.basename}-expanded.sch" classpath="@{saxon.jar}" force="@{overwrite}">
                 <factory name="net.sf.saxon.TransformerFactoryImpl" />
             </xslt>
             <!-- expand abstract patterns -->
-            <xslt style="@{workdir}/iso_abstract_expand.xsl" in="@{workdir}/${schematron.basename}-expanded.sch" out="@{workdir}/${schematron.basename}-unabstract.sch" classpath="@{saxon.jar}">
+            <xslt style="@{workdir}/iso_abstract_expand.xsl"
+                in="@{workdir}/${schematron.basename}-expanded.sch" out="@{workdir}/${schematron.basename}-unabstract.sch" classpath="@{saxon.jar}" force="@{overwrite}">
                 <factory name="net.sf.saxon.TransformerFactoryImpl" />
             </xslt>
             <!-- svrl it -->
-            <xslt style="@{workdir}/iso_svrl_for_@{schematronbinding}.xsl" in="@{workdir}/${schematron.basename}-unabstract.sch" out="@{outdir}/${schematron.basename}.xsl" classpath="@{saxon.jar}">
+            <xslt style="@{workdir}/iso_svrl_for_@{schematronbinding}.xsl"
+                in="@{workdir}/${schematron.basename}-unabstract.sch"
+                out="@{outdir}/${schematron.basename}.xsl"
+                classpath="@{saxon.jar}" force="@{overwrite}">
                 <factory name="net.sf.saxon.TransformerFactoryImpl" />
                 <param name="generate-fired-rule" expression="false" />
                 <param name="full-path-notation" expression="3" />
             </xslt>
-            <echo message="finished schematron compile output to @{outdir}/${schematron.basename}.xslt" />
+            <echo message="finished schematron compile output to @{outdir}/${schematron.basename}.xsl" />
         </sequential>
     </macrodef>
     <target name="init" description="Initializes build directory structure and ISO timestamp">
@@ -78,12 +84,12 @@
         <mkdir dir="${dist.dir}" />
     </target>
     
-    <target name="retrieve-xmute" depends="init">
+    <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
         <fail unless="xmute.download.url.prefix" message="Property
             xmute.download.url.prefix must exist for this target to work"></fail>
         <get
             src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
-            dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="true" usetimestamp="true" />
+            dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false" usetimestamp="true" />
     </target>
     
     <target name="prepare-saxon" depends="init" description="Download Saxon-HE and add jar to library directory">
@@ -96,7 +102,11 @@
         </unzip>
     </target>
     <target name="prepare-build-dir" depends="init" description="Works for zip from master and release zips">
-        <copy todir="${build.dir}">
+        
+        <filter token="xr-schematron.version.full" value="${xr-schematron.version.full}" />
+        
+        <filter token="xrechnung.version" value="${xrechnung.version}" />
+        <copy todir="${build.dir}" filtering="true">
             <fileset dir="${src.dir}">
                 <include name="**/*.sch" />
                 <exclude name="**/*.xsl" />
@@ -112,7 +122,11 @@
     <target name="compile-schematron-rules" depends="prepare-saxon, prepare-build-dir" description="Works for zip from master and release zips">
         <schematron-compile schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/cii" deleteonexit="false" />
         <schematron-compile schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-cn" />
-        <schematron-compile schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-inv" deleteonexit="false" />
+        <schematron-compile
+            schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch"
+            insuffix="sch" workdir="${download.dir}"
+            outdir="${build.dir}/schematron/ubl-inv" deleteonexit="false"
+            overwrite="true"/>
     </target>
 
     <target name="compile-schematron-rules-bis" depends="compile-schematron-rules" description="Compiles schematron rules for OpenPeppol
@@ -129,7 +143,7 @@
     </target>
     
     <target name="test" depends="retrieve-xmute" description="Unit Test
-        Schematron Rules wit XML-Mutate">
+        Schematron Rules wit XML-Mutate" if="xmute.download.url.prefix">
         <echo>Creating validation reports ...</echo>
         <java jar="${lib.dir}/${xmute.jar}}" failonerror="yes" fork="yes" dir="${basedir}">
             <arg value="-s" />

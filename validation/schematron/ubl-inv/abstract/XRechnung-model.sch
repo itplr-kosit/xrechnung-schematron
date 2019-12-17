@@ -1,6 +1,6 @@
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="model">
     <rule context="$INVOICE">
-        <assert test="$BR-DE-1" flag="fatal" id="BR-DE-1"
+        <assert test="$BR-DE-01" flag="fatal" id="BR-DE-1"
             >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
         <assert test="$BR-DE-13" flag="fatal" id="BR-DE-13"
             >[BR-DE-13] In der Rechnung müssen Angaben zu genau einer der drei Gruppen "CREDIT TRANSFER" (BG-17), "PAYMENT CARD INFORMATION" (BG-18) oder "DIRECT DEBIT" (BG-19) übermittelt werden.</assert>
@@ -16,27 +16,27 @@
             >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
     </rule>
     <rule context="$BG-4_SELLER">
-        <assert test="$BR-DE-2" flag="fatal" id="BR-DE-2"
+        <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
             >[BR-DE-2] Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden.</assert>
     </rule>
     <rule context="$BG-5_SELLER_POSTAL_ADDRESS">
-        <assert test="$BR-DE-3" flag="fatal" id="BR-DE-3"
+        <assert test="$BR-DE-03" flag="fatal" id="BR-DE-3"
             >[BR-DE-3] Das Element "Seller city" (BT-37) muss übermittelt werden.</assert>
-        <assert test="$BR-DE-4" flag="fatal" id="BR-DE-4"
+        <assert test="$BR-DE-04" flag="fatal" id="BR-DE-4"
             >[BR-DE-4] Das Element "Seller post code" (BT-38) muss übermittelt werden.</assert>
     </rule>
     <rule context="$BG-6_SELLER_CONTACT">
-        <assert test="$BR-DE-5" flag="fatal" id="BR-DE-5"
+        <assert test="$BR-DE-05" flag="fatal" id="BR-DE-5"
             >[BR-DE-5] Das Element "Seller contact point" (BT-41) muss übermittelt werden.</assert>
-        <assert test="$BR-DE-6" flag="fatal" id="BR-DE-6"
+        <assert test="$BR-DE-06" flag="fatal" id="BR-DE-6"
             >[BR-DE-6] Das Element "Seller contact telephone number" (BT-42) muss übermittelt werden.</assert>
-        <assert test="$BR-DE-7" flag="fatal" id="BR-DE-7"
+        <assert test="$BR-DE-07" flag="fatal" id="BR-DE-7"
             >[BR-DE-7] Das Element "Seller contact email address" (BT-43) muss übermittelt werden.</assert>
     </rule>
     <rule context="$BG-8_BUYER_POSTAL_ADDRESS">
-        <assert test="$BR-DE-8" flag="fatal" id="BR-DE-8"
+        <assert test="$BR-DE-08" flag="fatal" id="BR-DE-8"
             >[BR-DE-8] Das Element "Buyer city" (BT-52) muss übermittelt werden.</assert>
-        <assert test="$BR-DE-9" flag="fatal" id="BR-DE-9"
+        <assert test="$BR-DE-09" flag="fatal" id="BR-DE-9"
             >[BR-DE-9] Das Element "Buyer post code" (BT-53) muss übermittelt werden.</assert>
     </rule>
     <rule context="$BG-15_DELIVER_TO_ADDRESS">
