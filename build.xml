@@ -11,7 +11,7 @@
     <property name="test.build.dir" location="${build.dir}/test" />
     <property name="bis.build.dir" location="${basedir}/build/bis" />
     <!-- Naming -->
-    <property name="xr-schematron.version.full" value="1.3.0" />
+    <property name="xr-schematron.version.full" value="1.3.0-beta.2" />
     <property name="xrechnung.version" value="1.2.2" />
     <property name="dist.name" value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
     <property name="saxon.jar" value="saxon9he.jar" />
@@ -120,8 +120,8 @@
         </copy>
     </target>
     <target name="compile-schematron-rules" depends="prepare-saxon, prepare-build-dir" description="Works for zip from master and release zips">
-        <schematron-compile schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/cii" deleteonexit="false" />
-        <schematron-compile schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-cn" />
+        <schematron-compile schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/cii" deleteonexit="false" overwrite="true"/>
+        <schematron-compile schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch" insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-cn" overwrite="true"/>
         <schematron-compile
             schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch"
             insuffix="sch" workdir="${download.dir}"
@@ -129,11 +129,14 @@
             overwrite="true"/>
     </target>
     
-    <target name="test" depends="retrieve-xmute" description="Unit Test
+    <target name="test" depends="retrieve-xmute, compile-schematron-rules" description="Unit Test
         Schematron Rules wit XML-Mutate" if="xmute.download.url.prefix">
-        <echo>Creating validation reports ...</echo>
-        <java jar="${lib.dir}/${xmute.jar}}" failonerror="yes" fork="yes" dir="${basedir}">
-            <arg value="-s" />
+        <echo>Unit testing Schematron rules ...</echo>
+        <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes" dir="${basedir}">
+             
+            <arg value="--schematron" />
+            <arg value="s=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
+            <arg value="test/instances/"/>
         </java>
     </target>
     
