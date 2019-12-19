@@ -13,11 +13,11 @@
     <ns prefix="ubl"
         uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
     <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
-    <phase id="XRechnung_model">
-        <active pattern="UBL-model" />
-    </phase>
 
-    <!-- Abstract CEN BII patterns -->
+    <phase id="xrechnung-model">
+        <active pattern="model-pattern" />
+    </phase>
+    <!-- Abstract patterns -->
     <!-- ========================= -->
     <include href="abstract/XRechnung-model.sch" />
 

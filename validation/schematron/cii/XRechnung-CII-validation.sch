@@ -19,6 +19,7 @@
         uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
     <ns prefix="ram"
         uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
+    
     <phase id="XRechnung_model">
         <active pattern="CII-model" />
     </phase>

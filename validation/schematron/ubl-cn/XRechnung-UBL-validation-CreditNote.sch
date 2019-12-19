@@ -14,6 +14,7 @@
     <ns prefix="ubl"
         uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
     <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
+    
     <phase id="XRechnung_model">
         <active pattern="UBL-model" />
     </phase>
