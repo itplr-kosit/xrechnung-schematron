@@ -79,13 +79,13 @@
   </cac:AccountingCustomerParty>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
-   <?xmute mutator="identity" 
+    <?xmute mutator="identity" 
                 schematron-valid="BR-DE-20" id="wrong-iban-59"
                 description="Test to fix github issue #31" ?>
-  <?xmute mutator="remove" 
+    <?xmute mutator="remove" schema-valid
                 schematron-valid="BR-DE-20" id="wrong-iban-remove"
                 description="Test to fix github issue #31 by removing wrong payeefinancialaccount" ?>
-   <cac:PayeeFinancialAccount>
+    <cac:PayeeFinancialAccount>
       <!-- This has wrong check digit but matches the regex  -->
       <cbc:ID>DE65512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
