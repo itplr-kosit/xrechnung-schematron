@@ -16,6 +16,12 @@
     <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
       >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
   </rule>
+
+
+
+
+
+
   <rule context="$BG-4_SELLER">
     <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
       >[BR-DE-2] Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden.</assert>
