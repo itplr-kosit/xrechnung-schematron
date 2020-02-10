@@ -19,6 +19,10 @@ Given a version number MAJOR.MINOR.PATCH, we increment the:
     * **CAUTION**: This might break YOUR validation scenario and ability to accept XML content
 1. PATCH version when we make backwards-compatible bug fixes.
 
+## Contact
+
+The development takes place in an internal repository. Please contact xrechnung@finanzen.bremen.de.
+
 ## Technical Coverage of the National Business Rules in the Validation Artefacts
 
 ID | German Description | Coverage
