@@ -11,7 +11,7 @@
   <ns prefix="ext"
     uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
   <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
- <ns prefix="ubl-cn"
+  <ns prefix="ubl-cn"
     uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
 

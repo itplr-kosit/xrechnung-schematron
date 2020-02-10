@@ -1,5 +1,10 @@
-<pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true"
-  id="ubl-model">
+<pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="ubl-model">
+
+  <let name="INVOICE" value="(//ubl:Invoice | //ubl-cn:CreditNote)" />
+  <let name="TypeCode" value="(cbc:InvoiceTypeCode | cbc:CreditNoteTypeCode)" />
+
+
+
   <rule context="$INVOICE">
     <assert test="$BR-DE-01" flag="fatal" id="BR-DE-1"
       >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>

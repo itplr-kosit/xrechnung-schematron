@@ -1,10 +1,5 @@
+<pattern xmlns="http://purl.oclc.org/dsdl/schematron" is-a="ubl-model" id="model-pattern">
 
-
-<pattern xmlns="http://purl.oclc.org/dsdl/schematron" is-a="ubl-model"
-  id="model-pattern">
-
-  <param name="INVOICE" value="(//ubl:Invoice | //ubl-cn:CreditNote)" />
-  <param name="TypeCode" value="(cbc:InvoiceTypeCode | cbc:CreditNoteTypeCode)" />
 
 
   <param name="BR-DE-01" value="cac:PaymentMeans" />
@@ -51,8 +46,7 @@
   <param name="BG-15_DELIVER_TO_ADDRESS"
     value="$INVOICE/cac:Delivery/cac:DeliveryLocation/cac:Address" />
 
-  <param name="BG-16_PAYMENT_INSTRUCTIONS"
-    value="$INVOICE/cac:PaymentMeans" />
+  <param name="BG-16_PAYMENT_INSTRUCTIONS" value="$INVOICE/cac:PaymentMeans" />
 
   <param name="BG-23_VAT_BREAKDOWN"
     value="$INVOICE/cac:TaxTotal/cac:TaxSubtotal" />
