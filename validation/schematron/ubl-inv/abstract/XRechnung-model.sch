@@ -1,10 +1,13 @@
 <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="ubl-model">
 
   <let name="INVOICE" value="(//ubl:Invoice | //ubl-cn:CreditNote)" />
-  <let name="TypeCode" value="(cbc:InvoiceTypeCode | cbc:CreditNoteTypeCode)" />
-
-
-
+  <let name="TypeCode" value="(cbc:InvoiceTypeCode | cbc:CreditNoteTypeCode)" /> 
+  <rule context="//ubl:Invoice">
+    <report test="cbc:CreditNoteTypeCode">CreditNoteTypeCode darf nicht in Invoice enthalten sein.</report>
+  </rule>
+  <rule context="//ubl-cn:CreditNote">
+    <report test="cbc:InvoiceTypeCode">InvoiceTypeCode darf nicht in CreditNote enthalten sein.</report>
+  </rule>
   <rule context="$INVOICE">
     <assert test="$BR-DE-01" flag="fatal" id="BR-DE-1"
       >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
@@ -21,11 +24,6 @@
     <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
       >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
   </rule>
-
-
-
-
-
 
   <rule context="$BG-4_SELLER">
     <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
