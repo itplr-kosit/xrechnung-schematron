@@ -2,12 +2,6 @@
 
   <let name="INVOICE" value="(//ubl:Invoice | //ubl-cn:CreditNote)" />
   <let name="TypeCode" value="(cbc:InvoiceTypeCode | cbc:CreditNoteTypeCode)" /> 
-  <rule context="//ubl:Invoice">
-    <report test="cbc:CreditNoteTypeCode">CreditNoteTypeCode darf nicht in Invoice enthalten sein.</report>
-  </rule>
-  <rule context="//ubl-cn:CreditNote">
-    <report test="cbc:InvoiceTypeCode">InvoiceTypeCode darf nicht in CreditNote enthalten sein.</report>
-  </rule>
   <rule context="$INVOICE">
     <assert test="$BR-DE-01" flag="fatal" id="BR-DE-1"
       >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
