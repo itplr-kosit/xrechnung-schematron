@@ -75,6 +75,7 @@
         <mkdir dir="${download.dir}" />
         <mkdir dir="${lib.dir}" />
         <mkdir dir="${dist.dir}" />
+        <mkdir dir="${build.dir}/generated" />
     </target>
 
     <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
@@ -120,9 +121,11 @@
         Schematron Rules wit XML-Mutate" if="xmute.download.url.prefix">
         <echo>Unit testing Schematron rules ...</echo>
         <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes" dir="${basedir}">
-
+            <arg value="-fae" />
+            <arg value="--target" />
+            <arg value="${build.dir}/generated"/>
             <arg value="--schematron" />
-            <arg value="s=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
+            <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
             <arg value="test/instances/" />
         </java>
     </target>

@@ -8,7 +8,7 @@
   <cbc:ID>1234/78/901</cbc:ID>
   <cbc:IssueDate>2016-06-16+01:00</cbc:IssueDate>
 
-  <?xmute mutator="code" values="326, 380, 384, 389, 381, 875, 876, 877" schematron-valid="BR-DE-17" 
+  <?xmute mutator="code" values="326, 380, 384, 389, 381, 875, 876, 877" schematron-valid="xrinv:BR-DE-17" 
                 id="inv-type-code" description="Invoice type code should be allowed" ?>
   <cbc:InvoiceTypeCode>38888</cbc:InvoiceTypeCode>
   <cbc:Note>#ADU#Diese Leistung ist umsatzsteuerbefreit nach § 4 Nr. 22a UStG.</cbc:Note>
