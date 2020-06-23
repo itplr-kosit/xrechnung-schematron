@@ -26,9 +26,12 @@
     value="   not(cbc:PaymentMeansCode = '58') or          matches(cac:PayeeFinancialAccount/cbc:ID, '[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}') and          xs:integer(         replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(         upper-case(concat(substring(cac:PayeeFinancialAccount/cbc:ID,5),substring(cac:PayeeFinancialAccount/cbc:ID,1,4)))         ,'A','10'),'B','11'),'C','12'),'D','13'),'E','14'),'F','15'),'G','16'),'H','17'),'I','18'),'J','19'),'K','20'),'L','21'),'M','22')         ,'N','23'),'O','24'),'P','25'),'Q','26'),'R','27'),'S','28'),'T','29'),'U','30'),'V','31'),'W','32'),'X','33'),'Y','34'),'Z','35')         ) mod 97 = 1     " />
   <param name="BR-DE-20"
     value="not(cbc:PaymentMeansCode = '59') or matches(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}') and          xs:integer(         replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(         upper-case(concat(substring(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID,5),substring(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID,1,4)))         ,'A','10'),'B','11'),'C','12'),'D','13'),'E','14'),'F','15'),'G','16'),'H','17'),'I','18'),'J','19'),'K','20'),'L','21'),'M','22')         ,'N','23'),'O','24'),'P','25'),'Q','26'),'R','27'),'S','28'),'T','29'),'U','30'),'V','31'),'W','32'),'X','33'),'Y','34'),'Z','35') ) mod 97 = 1" />
-  <param name="BR-DE-21"
-    value="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2'" />
 
+  <param name="BR-DE-21"
+    value="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0' or cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0'" />
+  <param name="BR-DE-99"
+    value="cbc:CustomizationID = 'urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0' or cbc:CustomizationID = 'urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0#conformant#urn_xoev-de_kosit_extension_xrechnung_2.0'" />
+  
   <param name="INVOICE" value="//ubl:Invoice" />
   <param name="BG-4_SELLER" value="//ubl:Invoice/cac:AccountingSupplierParty" />
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
@@ -49,3 +52,4 @@
     value="//ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal" />
 
 </pattern>
+

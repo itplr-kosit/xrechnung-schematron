@@ -16,6 +16,7 @@
 
     <phase id="xrechnung-model">
         <active pattern="model-pattern" />
+        <active pattern="ubl-extension-pattern" />
     </phase>
     <!-- Abstract patterns -->
     <!-- ========================= -->
@@ -24,5 +25,12 @@
     <!-- Data Binding parameters -->
     <!-- ======================= -->
     <include href="UBL/XRechnung-UBL-model.sch" />
-
-</schema>
+    <pattern xmlns="http://purl.oclc.org/dsdl/schematron" id="ubl-extension-pattern">
+        <rule context="/ubl:Invoice[cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0']">
+            <assert
+                test="//cbc:EmbeddedDocumentBinaryObject[@mimeCode = 'application/pdf' or @mimeCode = 'image/png' or @mimeCode = 'image/jpeg' or @mimeCode = 'text/csv' or @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or @mimeCode = 'application/xml']"
+                id="BR-DEX-01"
+                flag="fatal">[BR-DEX-01] Das Element "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code.</assert>
+        </rule>
+    </pattern>
+</schema> 
