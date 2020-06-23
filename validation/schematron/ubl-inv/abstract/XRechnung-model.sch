@@ -16,7 +16,19 @@
     <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
       >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>    
     <assert test="$BR-DE-99" flag="warning" id="BR-DE-99"
-      >[BR-DE-99] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
+      >[BR-DE-99] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>  
+    <assert test="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference [
+      
+      not(
+      
+      ./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename =
+      
+      preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)
+      
+      ])" flag="fatal" id="BR-DE-22">
+      Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
+    </assert>
+    
   </rule>
 
   
