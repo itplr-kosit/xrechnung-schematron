@@ -28,10 +28,10 @@
       ])" flag="fatal" id="BR-DE-22">
       Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
     </assert>
-    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount)
+    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = round(sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount) * 100) div 100
       " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
-    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount)
-      " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
+    <assert test="count(//cac:SubInvoiceLine[cbc:LineExtensionAmount = round(sum(cac:SubInvoiceLine/cbc:LineExtensionAmount) * 100) div 100]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
+      " flag="fatal" id="BR-DEX-03">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
   </rule>
 
   
