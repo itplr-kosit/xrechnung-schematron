@@ -28,12 +28,12 @@
       ])" flag="fatal" id="BR-DE-22">
       Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
     </assert>
-    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = round(sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount) * 100) div 100
+    <!-- every amount has to be cast to decimal cause of floating point problems -->
+    <assert test="./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount) = sum( child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount) ) AND count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
       " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
-    <assert test="count(//cac:SubInvoiceLine[cbc:LineExtensionAmount = round(sum(cac:SubInvoiceLine/cbc:LineExtensionAmount) * 100) div 100]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
-      " flag="fatal" id="BR-DEX-03">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
+    <!--<assert test="count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
+      " flag="fatal" id="BR-DEX-03">The value of the LineExtensionAmount of SubInvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>-->
   </rule>
-
   
   <rule context="$BG-4_SELLER">
     <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
