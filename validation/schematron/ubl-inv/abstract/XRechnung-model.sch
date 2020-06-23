@@ -16,23 +16,18 @@
     <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
       >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>    
     <assert test="$BR-DE-99" flag="warning" id="BR-DE-99"
-      >[BR-DE-99] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>  
+      >[BR-DE-99] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
     <assert test="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference [
-      
       not(
-      
-      ./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename =
-      
-      preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)
-      
+        ./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename =
+        preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)
       ])" flag="fatal" id="BR-DE-22">
       Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
     </assert>
+    <!-- -->
     <!-- every amount has to be cast to decimal cause of floating point problems -->
-    <assert test="./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount) = sum( child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount) ) AND count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
+    <assert test="(sum(./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount)) = sum( child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount) )) and (count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0]))
       " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
-    <!--<assert test="count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0])
-      " flag="fatal" id="BR-DEX-03">The value of the LineExtensionAmount of SubInvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>-->
   </rule>
   
   <rule context="$BG-4_SELLER">

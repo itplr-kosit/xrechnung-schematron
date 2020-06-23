@@ -98,10 +98,10 @@
         <cac:Item>
             <cbc:Name>Sanitär und Zubehör</cbc:Name>
         </cac:Item>
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="correct_sum" description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
+        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-02" id="correct_sum" description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
         <cac:SubInvoiceLine>
             <cbc:ID>1 1</cbc:ID>
-            <?xmute mutator="code" values="333.79" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+            <?xmute mutator="code" values="333.79" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
             <cbc:LineExtensionAmount currencyID="EUR">335.79</cbc:LineExtensionAmount>
             <cac:Item>
                 <cbc:Name>Demontage Sanitär</cbc:Name>
@@ -109,7 +109,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 1 1</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">149</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="190.20" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="190.20" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
@@ -122,7 +122,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 1 2</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">32.50</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="51.25" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="51.25" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">48.75</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Demontage SML DN 100</cbc:Name>
@@ -135,7 +135,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 1 3</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">71.80</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="95.22" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="95.22" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">93.34</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Demontage AW-Rohrleitungen Kunststoff PP bis DN100</cbc:Name>
@@ -148,7 +148,7 @@
         </cac:SubInvoiceLine>
         <cac:SubInvoiceLine>
             <cbc:ID>1 2</cbc:ID>
-            <?xmute mutator="code" values="382.25" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+            <?xmute mutator="code" values="382.25" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
             <cbc:LineExtensionAmount currencyID="EUR">482.25</cbc:LineExtensionAmount>
             <cac:Item>
                 <cbc:Name>Abwasserleitungen und Zubehör</cbc:Name>
@@ -156,7 +156,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 2 1</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">9.5</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="99.74" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="99.74" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">99.75</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Abwasserleitung HT-PP DN 100</cbc:Name>
@@ -169,7 +169,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 2 2</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">45.0</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="333.50" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="333.50" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">382.50</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Abwasserleitung HT-PP DN 50</cbc:Name>
@@ -187,10 +187,10 @@
         <cac:Item>
             <cbc:Name>Heizung und Zubehör</cbc:Name>
         </cac:Item>
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="correct_sum" description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
+        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-02" id="correct_sum" description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
         <cac:SubInvoiceLine>
             <cbc:ID>2 1</cbc:ID>
-            <?xmute mutator="code" values="4321" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+            <?xmute mutator="code" values="4321" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
             <cbc:LineExtensionAmount currencyID="EUR">1324</cbc:LineExtensionAmount>
             <cac:Item>
                 <cbc:Name>Demontage Heizung</cbc:Name>
@@ -198,7 +198,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>2 1 1</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="C62">20</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="600" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="600" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">700</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Entleeren der Heizungsanlage, teilnetz</cbc:Name>
@@ -211,7 +211,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>2 1 2</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="C62">52</cbc:InvoicedQuantity>
-                <?xmute mutator="code" values="333.79" schematron-invalid="xrinv:BR-DEX-03" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
+                <?xmute mutator="code" values="333.79" schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount" description="Expect to fail as wrong LineExtensionAmount" ?>
                 <cbc:LineExtensionAmount currencyID="EUR">624</cbc:LineExtensionAmount>
                 <cac:Item>            
                     <cbc:Name>Demontage Flachheizkörpers</cbc:Name>
