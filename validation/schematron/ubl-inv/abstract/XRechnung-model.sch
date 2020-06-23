@@ -28,7 +28,10 @@
       ])" flag="fatal" id="BR-DE-22">
       Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
     </assert>
-    
+    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount)
+      " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
+    <assert test="./cac:InvoiceLine/cbc:LineExtensionAmount = sum(./cac:InvoiceLine/cac:SubInvoiceLine/cbc:LineExtensionAmount)
+      " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
   </rule>
 
   
