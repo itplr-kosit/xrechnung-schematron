@@ -28,20 +28,22 @@
   <cac:ContractDocumentReference>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
+  <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-22" id="unique-file-names" description="Check all file names are unique" ?>
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
+      <?xmute mutator="code" values="01_15_Anhang_02.pdf" attribute="filename" schematron-invalid="xrinv:BR-DE-22" id="duplicate-file-name" description="Expect to fail as duplicate file name" ?>
       <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
         filename="01_15_Anhang_01.pdf" />
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
+    <cbc:ID>01_15_Anhang_02.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
       <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
+        filename="01_15_Anhang_02.pdf" />
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
