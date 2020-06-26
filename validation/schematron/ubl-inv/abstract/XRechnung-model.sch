@@ -13,26 +13,24 @@
       >[BR-DE-17] Mit dem Element Invoice type code (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice).</assert>
     <assert test="$BR-DE-18" flag="fatal" id="BR-DE-18"
       >[BR-DE-18] Die Informationen zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen wie folgt im Element "Payment terms" (BT-20) übermittelt werden: Anzugeben ist im ersten Segment "SKONTO" oder "VERZUG", im zweiten "TAGE=n", im dritten "PROZENT=n". Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommastellen anzugeben. Liegt dem zu berechnenden Betrag nicht BT-115, "fälliger Betrag" zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto oder Verzugszins als viertes Segment "BASISBETRAG=n" gemäß dem semantischen Datentypen Amount anzugeben. Jeder Eintrag beginnt mit einer #, die Segmente sind mit einer # getrennt und eine Zeile schließt mit einer # ab. Am Ende einer vollständigen Skonto oder Verzugsangabe muss ein XML-konformer Zeilenumbruch folgen. Alle Angaben zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen in Großbuchstaben gemacht werden. Zusätzliches Whitespace (Leerzeichen, Tabulatoren oder Zeilenumbrüche) ist nicht zulässig. Andere Zeichen oder Texte als in den oberen Vorgaben genannt sind nicht zulässig.</assert>
-    <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
-      >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>    
-    <assert test="$BR-DE-99" flag="warning" id="BR-DE-99"
-      >[BR-DE-99] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
-    <assert test="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference [
-      not(
-        ./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename =
-        preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)
-      ])" flag="fatal" id="BR-DE-22">
-      Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
+    <assert test="$BR-DE-21" flag="fatal" id="BR-DE-21"
+      >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
+    <assert
+      test="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])"
+      flag="fatal" id="BR-DE-22"
+      >[BR-DE-22] Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
     </assert>
     <!-- BR-DEX-02
          this rule consists of two parts:
          part one proofs in every invoiceline whether the lineextensionamount of it is equal to the sum of lineExtensionAmount of the ancillary subinvoicelines
          part two proofs whether the count of invoice lines with correct lineextensionamounts according to part one is equal to the count of subinvoicelines with including subinvoicelines
          every amount has to be cast to decimal cause of floating point problems -->
-    <assert test="(sum(./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount)) = sum( child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount) )) and (count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0]))
-      " flag="fatal" id="BR-DEX-02">The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
+    <assert
+      test="(sum(./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount)) = sum(child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and (count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0]))"
+      flag="fatal" id="BR-DEX-02"
+      >The value of the LineExtensionAmount of InvoiceLine should be the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines</assert>
   </rule>
-  
+
   <rule context="$BG-4_SELLER">
     <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
       >[BR-DE-2] Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden.</assert>

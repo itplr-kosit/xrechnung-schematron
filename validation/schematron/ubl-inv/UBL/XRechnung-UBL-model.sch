@@ -29,9 +29,8 @@
 
   <param name="BR-DE-21"
     value="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0' or cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0'" />
-  <param name="BR-DE-99"
-    value="cbc:CustomizationID = 'urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0' or cbc:CustomizationID = 'urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0#conformant#urn_xoev-de_kosit_extension_xrechnung_2.0'" />
   
+
   <param name="INVOICE" value="//ubl:Invoice" />
   <param name="BG-4_SELLER" value="//ubl:Invoice/cac:AccountingSupplierParty" />
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
@@ -52,4 +51,3 @@
     value="//ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal" />
 
 </pattern>
-
