@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
   xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <?xmute mutator="code" values="invalid_customizationid"
-        schematron-valid="xrinv:BR-DEX-01" description="Expect to fail with mimecode xml at addition reference" 
+  
+  <?xmute mutator="identity" id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" description="Correct customization ids" 
   ?>
-  <!-- Workaround for not working : in codemutator -->
-  <?xmute mutator="code" values="urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0, urn_cen.eu_en16931_2017#compliant#urn_xoev-de_kosit_standard_xrechnung_2.0#conformant#urn_xoev-de_kosit_extension_xrechnung_2.0"
-        schematron-valid="xrinv:BR-DE-99" description="Workaround test for correct customization ids" 
+  <?xmute mutator="code" id="invalid-customization-id" values="invalid_customizationid"
+        schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on wrong customization id" 
   ?>
-  <?xmute mutator="code" values="invalid_customizationid"
-        schematron-invalid="xrinv:BR-DE-99" description="Workaround test for correct customization ids" 
+  <?xmute mutator="empty" id="empty-customization-id"
+        schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on empty customization id" 
   ?>
-  <?xmute mutator="empty" 
-        schematron-invalid="xrinv:BR-DE-99" description="Workaround test for correct customization ids" 
-  ?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0</cbc:CustomizationID>
+<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -336,4 +332,4 @@
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
-</Invoice>
+</ubl:Invoice>
