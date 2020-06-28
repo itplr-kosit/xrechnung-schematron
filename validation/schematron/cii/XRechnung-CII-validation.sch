@@ -22,6 +22,7 @@
     
     <phase id="XRechnung_model">
         <active pattern="CII-model" />
+        <active pattern="cii-extension-pattern" />
     </phase>
 
     <!-- Abstract CEN BII patterns -->
@@ -31,6 +32,18 @@
     <!-- Data Binding parameters -->
     <!-- ======================= -->
     <include href="CII/XRechnung-CII-model.sch" />
-
+    <pattern xmlns="http://purl.oclc.org/dsdl/schematron"
+        id="cii-extension-pattern">
+        <rule
+            context="/rsm:CrossIndustryInvoice[rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0']">
+            <!-- BR-DEX-01
+        checks whether an EmbeddedCocumentBinaryObject has a valid mimeCode (incl. XML)
+        -->
+            <assert
+                test="//ram:AttachmentBinaryObject[@mimeCode = 'application/pdf' or @mimeCode = 'image/png' or @mimeCode = 'image/jpeg' or @mimeCode = 'text/csv' or @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or @mimeCode = 'application/xml']"
+                id="BR-DEX-01" flag="fatal"
+                >[BR-DEX-01] Das Element "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code.</assert>            
+        </rule>
+    </pattern>
 
 </schema>

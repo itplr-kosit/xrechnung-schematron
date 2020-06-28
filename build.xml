@@ -130,6 +130,19 @@
         </java>
     </target>
 
+    <target name="test-cii" depends="retrieve-xmute, compile-schematron-rules" description="Unit Test
+        Schematron Rules wit XML-Mutate" if="xmute.download.url.prefix">
+        <echo>Unit testing Schematron rules ...</echo>
+        <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes" dir="${basedir}">
+            <arg value="-ff" />
+            <arg value="--target" />
+            <arg value="${build.dir}/generated"/>
+            <arg value="--schematron" />
+            <arg value="xrinv=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+            <arg value="test/cii/" />
+        </java>
+    </target>
+
     <target name="dist" depends="compile-schematron-rules,test" description="Generate the distribution">
 
         <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**,bis/**" />
