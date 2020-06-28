@@ -138,7 +138,7 @@
             <arg value="--target" />
             <arg value="${build.dir}/generated"/>
             <arg value="--schematron" />
-            <arg value="xrinv=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+            <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
             <arg value="test/cii/" />
         </java>
     </target>
