@@ -143,7 +143,7 @@
         </java>
     </target>
 
-    <target name="dist" depends="compile-schematron-rules,test" description="Generate the distribution">
+    <target name="dist" depends="compile-schematron-rules,test, test-cii" description="Generate the distribution">
 
         <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}" excludes="download/**,schematron/QS*2017/**,bis/**" />
 

@@ -39,6 +39,9 @@
   <cac:ContractDocumentReference>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
+  <?xmute mutator="remove" 
+          schematron-valid="xrinv:BR-DEX-01"
+          description="Expect rule not to fire if it is an extension, but does not have attachments " ?>
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_01.xml</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
@@ -52,7 +55,7 @@
       <?xmute mutator="empty" 
         schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize mime-type not empty" 
         attribute="mimeCode" ?>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml"
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml" 
         filename="01_15_Anhang_01.xml" />
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
