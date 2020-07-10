@@ -5,6 +5,19 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## v1.4.0 on 2010-07
+
+### Added
+
+* Rule BR-DEX-02 for UBL Sub Invoice Lines in XRechnung Extension
+* Rule BR-DEX-01 to allow mime type 'application/xml' in XRechnung Extension 
+* Rule BR-DE-22 to check for unique file names 
+
+### Changed
+
+* 
+
 ## v1.3.0 on 2019-12-30
 
 ### Added
