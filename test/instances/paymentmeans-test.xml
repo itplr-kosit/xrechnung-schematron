@@ -79,10 +79,6 @@
       <?xmute mutator="code" values="sdsfsadgfa"
                 schematron-valid="BR-DE-19" id="wrong-iban"
                 description="Wrong iban should not get evaluated  at all cause code 30" ?>
-      <?xmute mutator="whitespace" schematron-valid="BR-DE-19" id="iban-with-whitespace"
-                description="Iban with whitespace, should still be validated" ?>
-      <?xmute mutator="code" values="DE 75512108001245126199, DE75    51  2108 00124512 6199" separator="," schematron-valid="BR-DE-19" id="iban-with-whitespace"
-                description="Iban with whitespace, should still be validated" ?>
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
