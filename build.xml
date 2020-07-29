@@ -178,7 +178,7 @@
     <echo>Unit testing Schematron rules ...</echo>
     <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
       dir="${basedir}">
-      <arg value="-ff" />
+      <arg value="-fae" />
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <arg value="--schematron" />

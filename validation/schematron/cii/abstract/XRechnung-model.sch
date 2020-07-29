@@ -52,7 +52,7 @@
             >[BR-DE-11] Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird.</assert>
     </rule>
     <rule context="$BG-16_PAYMENT_INSTRUCTIONS">
-        <assert test="$BR-DE-19" flag="warning" id="BR-DE-19"
+        <assert test="$BR-DE-19" flag="fatal" id="BR-DE-19"
             >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
         <assert test="$BR-DE-20" flag="warning" id="BR-DE-20"
             >[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
