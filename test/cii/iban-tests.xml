@@ -135,15 +135,16 @@
         <ram:ApplicableHeaderTradeSettlement>            
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>30</ram:TypeCode>
+                <ram:TypeCode>58</ram:TypeCode>
                 <ram:PayeePartyCreditorFinancialAccount>
                     <?xmute mutator="code" values="DE 75512108001245126199, DE75 51 2108 00124512 6199" separator="," schematron-valid="BR-DE-19" id="iban-with-whitespace-inside" description="Iban whitespace inside, should still be validated"?>
                     <!--<?xmute mutator="whitespace" schematron-valid="BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>-->
-                    <?xmute mutator="code" id="invalid-iban" values="AS28192373298"
-        schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on wrong IBAN" ?>
+                    <?xmute mutator="code" id="invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912"
+        schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on wrong IBAN" ?>
+                    <?xmute mutator="code" values="dE75512108001245126199,De75512108001245126199,de75512108001245126199" separator="," schematron-valid="BR-DE-19" id="iban-with-whitespace-inside" description="Iban lower case should still be validated"?>
                     <?xmute mutator="empty" id="empty-iban"
         schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on empty IBAN" ?>
-                    <ram:IBANID>DE12345678912345678912</ram:IBANID>
+                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
