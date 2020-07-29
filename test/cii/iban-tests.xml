@@ -142,6 +142,7 @@
                     <?xmute mutator="code" id="invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912"
         schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on wrong IBAN" ?>
                     <?xmute mutator="code" values="dE75512108001245126199,De75512108001245126199,de75512108001245126199" separator="," schematron-valid="BR-DE-19" id="iban-with-whitespace-inside" description="Iban lower case should still be validated"?>
+                    <?xmute mutator="code" values="GB29NWBK60161331926819" separator="," schematron-valid="BR-DE-19" id="iban-from-gb" description="british iban, should still be validated"?>
                     <?xmute mutator="empty" id="empty-iban"
         schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on empty IBAN" ?>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
