@@ -9,16 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 * Schematron Rules 
-  * BR-DE-21 on checking specification identifier
-  * BR-DE-22 on unique filename attributes
-  * BR-DEX-01 added application/xml for extension
-  * BR-DEX-02 on checking the sum of prices of all sub invoice lines
+  * BR-DE-21 to check specification identifier
+  * BR-DE-22 to check for unique file names 
+  * BR-DEX-01 to allow mime type 'application/xml' in XRechnung Extension
+  * BR-DEX-02 on checking the sum of prices for UBL sub invoice lines in XRechnung extension
 ### Changed
 * Schematron Rules
   * BR-DE-19 and BR-DE-20 refactoring IBAN rules
 ### Fixed
-
-
+* Schematron Rules
+  * BR-DE-19 and BR-DE-20 fixed CII IBAN rules
 
 ## v1.3.0 on 2019-12-30
 
