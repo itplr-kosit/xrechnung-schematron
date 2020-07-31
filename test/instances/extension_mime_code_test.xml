@@ -48,7 +48,7 @@
     <cac:Attachment>
       <?xmute mutator="code" values="application/xml, application/pdf, image/png, image/jpeg, text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         schematron-valid="xrinv:BR-DEX-01" description="Expect all valid mime-codes to be correct" 
-        attribute="mimeCode"?>
+        attribute="mimeCode"?>      
       <?xmute mutator="code" values="application/nonsense"
         schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize wrong mime-type" 
         attribute="mimeCode" ?>
