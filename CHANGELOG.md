@@ -5,17 +5,17 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v2.0.0 on 2020-07-31
+## v1.4.0 on 2020-07-31
 
 ### Added
-* Schematron Rules 
-  * BR-DE-21 to check specification identifier
+* Schematron Rules
   * BR-DE-22 to check for unique file names 
   * BR-DEX-01 to allow mime type 'application/xml' in XRechnung Extension
   * BR-DEX-02 on checking the sum of prices for UBL sub invoice lines in XRechnung extension
 ### Changed
 * Schematron Rules
   * BR-DE-19 and BR-DE-20 refactoring IBAN rules
+  * BR-DE-21 to check specification identifier for extension
 ### Fixed
 * Schematron Rules
   * BR-DE-19 and BR-DE-20 fixed CII IBAN rules
