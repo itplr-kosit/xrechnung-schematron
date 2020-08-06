@@ -198,7 +198,7 @@
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/QS*2017/**,bis/**" />
+      excludes="download/**,schematron/QS*2017/**,bis/**,generated" />
 
   </target>
   <target name="clean" description="clean up">
