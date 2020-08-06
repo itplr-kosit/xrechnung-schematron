@@ -23,7 +23,7 @@ Given a version number MAJOR.MINOR.PATCH, we increment the:
 
 The development takes place in an internal repository. Please contact xrechnung@finanzen.bremen.de.
 
-## Technical Coverage of the National Business Rules in the Validation Artefacts
+## Technical Coverage of the XRechnung CIUS Rules implemented in Schematron
 
 ID | German Description | Coverage
 --- | --- | ---
@@ -59,3 +59,11 @@ BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von V
 | BR-DE-19 | Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
 | BR-DE-20 | Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
 | BR-DE-21 | Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. | complete (Schematron) | 
+| BR-DE-22 | Die in einer eingereichten Rechnung angehängten Dokumente in BG-24 ADDITIONAL SUPPORTING DOCUMENTS müssen im Element "Attached document/Attached document Filename" BT-125 einen eindeutigen Dateinamen haben (nicht case-sensitiv). | complete (Schematron) |
+
+## Technical Coverage of the XRechnung Extension Rules implemented in Schematron
+
+ID | German Description | Coverage
+--- | --- | ---
+BR-DEX-01 | Wenn die Möglichkeit einer Extension genutzt wird, darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der mime code application/xml genutzt werden. | complete (Schematron)
+BR-DEX-02 | Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE" (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe der "Invoice line net amount" (BT-131) der direkt darunterliegenden "SUB INVOICE LINE" (BG-DEX-01) entsprechen. | complete (Schematron)
