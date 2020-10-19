@@ -102,15 +102,23 @@
     </cac:PaymentMeans>
     <cac:PaymentTerms>
         <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-18" id="correct_skonto" description="Correct skonto has to be accepted" ?>
-        <?xmute mutator="code" values="#SKONTO#TAGE=7#PROZENT=2.00#
-            #SKONTO#TAGE=14#PROZENT=1.00#
-            #SKONTO#TAGE=30#PROZENT=0.00#"
-                schematron-valid="xrinv:BR-DE-18" id="skonto_missing_newline"
+        <?xmute mutator="code" values="#SKONTO#TAGE=7#PROZENT=2.00#\n#SKONTO#TAGE=14#PROZENT=1.00#\n#SKONTO#TAGE=30#PROZENT=0.00#"
+                schematron-invalid="xrinv:BR-DE-18" id="skonto_missing_newline"
                 description="Every skonto entry should end with a newline" ?>
+        <?xmute mutator="code" values="#SKONTO#TAGE=7#PROZENT=2.00#\n#SKONTO#TAGE=#PROZENT=1.00#\n
+#SKONTO#TAGE=30#PROZENT=0.00#\n"
+                schematron-invalid="xrinv:BR-DE-18" id="skonto_missing_tage_entry"
+                description="Every skonto entry have an entry TAGE" ?>
+        <?xmute mutator="code" values="testentry\n#SKONTO#TAGE=7#PROZENT=2.00#\n#SKONTO#TAGE=14#PROZENT=1.00#\ntestentry\n#SKONTO#TAGE=30#PROZENT=0.00#\ntestentry\n"
+                schematron-valid="xrinv:BR-DE-18" id="skonto_other_entries"
+                description="Other entries are allowed between and after skonto entries" ?>
+        <?xmute mutator="code" values="#SKONTO#TAGE=7#PROZENT=2.00#\n#VERZUG#TAGE=14#PROZENT=1.00#\n#SKONTO#TAGE=30#PROZENT=0.00#\n"
+                schematron-valid="xrinv:BR-DE-18" id="verzug_and_skonto"
+                description="VERZUG is also allowed" ?>
         <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
-            #SKONTO#TAGE=14#PROZENT=1.00#
-            #SKONTO#TAGE=30#PROZENT=0.00#
-        </cbc:Note>
+#SKONTO#TAGE=14#PROZENT=1.00#
+#SKONTO#TAGE=30#PROZENT=0.00#
+</cbc:Note>
     </cac:PaymentTerms>
     <cac:TaxTotal>
         <cbc:TaxAmount currencyID="EUR">414.2</cbc:TaxAmount>
