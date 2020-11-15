@@ -21,7 +21,8 @@
   <param name="BR-DE-17"
     value="cbc:InvoiceTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877')" />
   <param name="BR-DE-18"
-    value="every $line in cac:PaymentTerms/cbc:Note/tokenize(.,'(\r\n|\r|\n)') satisfies if(count(tokenize($line,'#')) &gt; 1) then tokenize($line,'#')[1]='' and (tokenize($line,'#')[2]='SKONTO' or tokenize($line,'#')[2]='VERZUG') and string-length(replace(tokenize($line,'#')[3],'TAGE=[0-9]+',''))=0 and string-length(replace(tokenize($line,'#')[4],'PROZENT=[0-9]+\.[0-9]{2}',''))=0 and (tokenize($line,'#')[5]='' and empty(tokenize($line,'#')[6]) or string-length(replace(tokenize($line,'#')[5],'BASISBETRAG=[0-9]+\.[0-9]{2}',''))=0 and tokenize($line,'#')[6]='' and empty(tokenize($line,'#')[7])) else true()" />
+    value="count(tokenize(cac:PaymentTerms/cbc:Note, '#(SKONTO|VERZUG)#')) =
+    count(tokenize(cac:PaymentTerms/cbc:Note, '#(SKONTO|VERZUG)#TAGE=([0-9]+#PROZENT=[0-9]+.[0-9]+)(#BASISBETRAG=[0-9]+(.[0-9]{2}){0,1})?#(\r\n|\r|\n)'))" />
   <param name="BR-DE-19"
     value="not(cbc:PaymentMeansCode = '58') or  matches(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then $cp - 55 else  $cp - 48),'')) mod 97 = 1" />
   <param name="BR-DE-20"
