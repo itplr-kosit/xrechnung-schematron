@@ -17,7 +17,8 @@
     value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]" />
   <param name="BR-DE-15" value="cbc:BuyerReference[boolean(normalize-space(.))]" />
   <param name="BR-DE-16"
-    value="(cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])" />
+    value="not(cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
+    (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])" />
   <param name="BR-DE-17"
     value="cbc:CreditNoteTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877')" />
   <param name="BR-DE-18"
