@@ -15,7 +15,7 @@
   <param name="BR-DE-14" value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]"/>
   <param name="BR-DE-15" value="cbc:BuyerReference[boolean(normalize-space(.))]"/>
   <param name="BR-DE-16"
-    value="not(cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
+    value="not(cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M') or cac:AllowanceCharge[cbc:ChargeIndicator = 'false']/cac:TaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M') or   cac:AllowanceCharge[cbc:ChargeIndicator = 'true']/cac:TaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M') ) or
     (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])"/>
   <param name="BR-DE-17"
     value="cbc:InvoiceTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877')"/>
