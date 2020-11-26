@@ -96,10 +96,10 @@
                 </ram:PostalTradeAddress>
                 <ram:SpecifiedTaxRegistration>
                     <?xmute mutator="identity" 
-                    schematron-valid="xrinv:BR-DE-16" id="cii-mandatory-companyID"
+                    schematron-valid="xrcii:BR-DE-16" id="cii-mandatory-companyID"
                     description="mandatory companyID with some tax code" ?>
                     <?xmute mutator="remove" 
-                    schematron-invalid="xrinv:BR-DE-16" id="cii-no-companyID"
+                    schematron-invalid="xrcii:BR-DE-16" id="cii-no-companyID"
                     description="removing companyID with some tax code is not allowed" ?>
                     <ram:ID schemeID="VA">DE 123456789</ram:ID>
                 </ram:SpecifiedTaxRegistration>
