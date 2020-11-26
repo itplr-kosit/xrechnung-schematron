@@ -35,8 +35,8 @@
                     <cbc:IdentificationCode>DE</cbc:IdentificationCode>
                 </cac:Country>
             </cac:PostalAddress>
-            <cac:PartyTaxScheme>                
-                <cbc:CompanyID>DE199861724</cbc:CompanyID>
+            <cac:PartyTaxScheme>
+                <!--<cbc:CompanyID>DE199861724</cbc:CompanyID>-->
                 <cac:TaxScheme>
                     <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
                 </cac:TaxScheme>
@@ -127,7 +127,7 @@
             </cac:SellersItemIdentification>
             <cac:ClassifiedTaxCategory>
                 <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-valid="xrinv:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151"
+                    schematron-invalid="xrinv:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151-invalid"
                     description="mandatory companyID with some tax category" ?>
                 <cbc:ID schemeID="UNCL5305">S</cbc:ID>
                 <cac:TaxScheme>

@@ -51,7 +51,7 @@
                 <ram:ApplicableTradeTax>
                     <ram:TypeCode>VAT</ram:TypeCode>
                     <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-valid="xrinv:BR-DE-16" id="cii-mandatory-companyID-with-some-tax-category"
+                    schematron-valid="xrcii:BR-DE-16" id="cii-mandatory-companyID-with-some-tax-category"
                     description="mandatory companyID with some tax category" ?>
                     <ram:CategoryCode>S</ram:CategoryCode>
                     <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
@@ -94,13 +94,7 @@
                     <ram:CityName>[Seller city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
-                <ram:SpecifiedTaxRegistration>
-                    <?xmute mutator="identity" 
-                    schematron-valid="xrcii:BR-DE-16" id="cii-mandatory-companyID"
-                    description="mandatory companyID with some tax code" ?>
-                    <?xmute mutator="remove" 
-                    schematron-invalid="xrcii:BR-DE-16" id="cii-no-companyID"
-                    description="removing companyID with some tax code is not allowed" ?>
+                <ram:SpecifiedTaxRegistration>                   
                     <ram:ID schemeID="VA">DE 123456789</ram:ID>
                 </ram:SpecifiedTaxRegistration>
             </ram:SellerTradeParty>
