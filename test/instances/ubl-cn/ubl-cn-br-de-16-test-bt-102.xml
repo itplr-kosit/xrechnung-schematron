@@ -124,7 +124,7 @@
       <cbc:Name>[Payee name]</cbc:Name>
     </cac:PartyName>
   </cac:PayeeParty>
-  <!--<cac:TaxRepresentativeParty>
+  <cac:TaxRepresentativeParty>
     <cac:PartyName>
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
@@ -142,7 +142,7 @@
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
     </cac:PartyTaxScheme>
-  </cac:TaxRepresentativeParty>-->
+  </cac:TaxRepresentativeParty>
   <cac:Delivery>
     <cbc:ActualDeliveryDate>2018-04-13</cbc:ActualDeliveryDate>
     <cac:DeliveryLocation>
@@ -179,7 +179,7 @@
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
-    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
     <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
@@ -187,7 +187,7 @@
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
       <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-invalid="xrcn:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-95-invalid"
+                    schematron-valid="xrcn:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-102-valid"
                     description="mandatory companyID with some tax category" ?>
       <cbc:ID>S</cbc:ID>
       <cbc:Percent>19</cbc:Percent>
