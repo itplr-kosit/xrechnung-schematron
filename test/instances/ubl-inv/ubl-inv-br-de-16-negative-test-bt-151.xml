@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <cbc:CustomizationID
+        xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        >urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+    <cbc:ID xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        >0150085959</cbc:ID>
+    <cbc:IssueDate xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        >2020-09-10</cbc:IssueDate>
+    <cbc:DueDate xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+        >2020-09-30</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>Steuerkennzeichen</cbc:Note>
+    <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+    <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
+    <cbc:BuyerReference>Leitweg 4711</cbc:BuyerReference>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="9930">DE123</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID>DE123</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Muster AG Absender</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Bahnhofstraße 45</cbc:StreetName>
+                <cbc:CityName>Zughausen</cbc:CityName>
+                <cbc:PostalZone>12345</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <!--<cbc:CompanyID>DE199861724</cbc:CompanyID>-->
+                <cac:TaxScheme>
+                    <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Muster AG Absender</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Alfred E. Neumann</cbc:Name>
+                <cbc:Telephone>+49 (69) 123-456</cbc:Telephone>
+                <cbc:ElectronicMail>alfred.e.neumann@mad.de</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0204">Leitweg 4711</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>Muster AG X-Rechnung</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Netzstraße 15</cbc:StreetName>
+                <cbc:CityName>Haltemada</cbc:CityName>
+                <cbc:PostalZone>12345</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cac:TaxScheme>
+                    <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Muster AG X-Rechnung</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>nicht vorhanden</cbc:Name>
+                <cbc:Telephone>0</cbc:Telephone>
+                <cbc:ElectronicMail>no_email</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>DE75512108001245126199</cbc:ID>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="EUR">5000.00</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+            <cac:TaxCategory>                
+                <cbc:ID schemeID="UNCL5305">O</cbc:ID>
+                <cbc:Percent>0.00</cbc:Percent>
+                <cbc:TaxExemptionReason>Nicht steuerbar</cbc:TaxExemptionReason>
+                <cac:TaxScheme>
+                    <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">5000.00</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">5000.00</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">5000.00</cbc:TaxInclusiveAmount>
+        <cbc:PayableRoundingAmount currencyID="EUR">0.00</cbc:PayableRoundingAmount>
+        <cbc:PayableAmount currencyID="EUR">5000.00</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+        <cbc:ID>000010</cbc:ID>
+        <cbc:Note>Dummymaterial</cbc:Note>
+        <cbc:InvoicedQuantity unitCode="C62">1.00</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">5000.00</cbc:LineExtensionAmount>
+        <cac:OrderLineReference>
+            <cbc:LineID>undef</cbc:LineID>
+            <cac:OrderReference>
+                <cbc:ID>undefined</cbc:ID>
+            </cac:OrderReference>
+        </cac:OrderLineReference>
+        <cac:Item>
+            <cbc:Description>Dummymaterial</cbc:Description>
+            <cbc:Name>Dummymaterial</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>L0014</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
+                    schematron-invalid="xrinv:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151-invalid"
+                    description="mandatory companyID with some tax category" ?>
+                <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                <cac:TaxScheme>
+                    <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="EUR">5000.00</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="C62">1.00</cbc:BaseQuantity>
+        </cac:Price>
+    </cac:InvoiceLine>
+</ubl:Invoice>

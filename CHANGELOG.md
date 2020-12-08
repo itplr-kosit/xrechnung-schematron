@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## next on ...
 
+### Changed
+* Schematron Rules
+  * BR-DE-16 is now only relevant, if bt-95, bt-102 or bt-151 exits.
+
 ### Fixed
 * Schematron Rules
   * BR-DE-18 now checks last newline and allows negative Basisbetrag 
