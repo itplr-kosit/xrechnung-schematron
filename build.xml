@@ -187,8 +187,11 @@
       <arg value="--schematron" />
       <arg
         value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
-
+      <arg value="--schematron" />
+      <arg
+        value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
       <arg value="test/instances/ubl-inv/" />
+      <arg value="test/instances/ubl-cn/" />
       <arg value="test/instances/cii/" />
     </java>
   </target>
