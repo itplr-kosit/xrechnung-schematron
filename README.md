@@ -67,3 +67,8 @@ ID | German Description | Coverage
 --- | --- | ---
 BR-DEX-01 | Wenn die Möglichkeit einer Extension genutzt wird, darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der mime code application/xml genutzt werden. | complete (Schematron)
 BR-DEX-02 | Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE" (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe der "Invoice line net amount" (BT-131) der direkt darunterliegenden "SUB INVOICE LINE" (BG-DEX-01) entsprechen. | complete (Schematron)
+
+
+## Entwicklung / Development
+
+Further information on development may be found in our [Developer Documentation](./docs/development.md)

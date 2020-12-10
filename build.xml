@@ -115,7 +115,7 @@
 
   <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
     <fail unless="xmute.download.url.prefix"
-      message="Property             xmute.download.url.prefix must exist for this target to work" />
+      message="Property xmute.download.url.prefix must exist for this target to work" />
     <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
       dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false"
       usetimestamp="true" />
