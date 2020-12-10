@@ -101,11 +101,16 @@
         </cac:PayeeFinancialAccount>
     </cac:PaymentMeans>
     <cac:PaymentTerms>
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-18" id="correct_skonto" description="Correct skonto/verzug has to be accepted" ?>
-        <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
-            #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
-#VERZUG#TAGE=30#PROZENT=0.00#
-</cbc:Note>
+        <?xmute mutator="identity" 
+                schematron-valid="xrinv:BR-DE-18" id="ubl-inv-br-de-18-freespace-is-allowed"
+                description="BR-DE-18 Freespace is allowed" ?>
+        <cbc:Note>   testentry
+            #SKONTO#TAGE=7#PROZENT=2.00#
+            testentry
+           #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=23#
+                     #SKONTO#TAGE=30#PROZENT=0.00#     
+                     testentry
+        </cbc:Note>
     </cac:PaymentTerms>
     <cac:TaxTotal>
         <cbc:TaxAmount currencyID="EUR">414.2</cbc:TaxAmount>
