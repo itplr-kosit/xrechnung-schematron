@@ -130,7 +130,7 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
                 <?xmute mutator="identity" 
-                schematron-invalid="xrinv:BR-DE-18" id="cii-br-de-18-skonto_wrong_basisbetrag"
+                schematron-invalid="xrcii:BR-DE-18" id="cii-br-de-18-skonto_wrong_basisbetrag"
                 description="Every basisbetrag has to be formed as an amount type" ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00#
                         #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=23#

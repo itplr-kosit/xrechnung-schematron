@@ -130,7 +130,7 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
                 <?xmute mutator="identity" 
-                schematron-valid="xrinv:BR-DE-18" id="cii-br-de-18-freespace-is-allowed"
+                schematron-valid="xrcii:BR-DE-18" id="cii-br-de-18-freespace-is-allowed"
                 description="CII BR-DE-18 Freespace is allowed" ?>
                 <ram:Description>   testentry
                     #SKONTO#TAGE=7#PROZENT=2.00#
