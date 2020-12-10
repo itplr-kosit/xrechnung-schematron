@@ -156,7 +156,7 @@
   </target>
   <target name="compile-schematron-rules"
     depends="prepare-saxon, prepare-build-dir"
-    description="Works for zip from master and release zips">
+    description="Compiling schematron rules">
     <schematron-compile
       schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
       insuffix="sch" workdir="${download.dir}"
@@ -172,8 +172,12 @@
       overwrite="true" />
   </target>
 
-  <target name="test" depends="retrieve-xmute, compile-schematron-rules"
-    description="Unit Test         Schematron Rules wit XML-Mutate"
+  <target name="compile" depends="compile-schematron-rules" description="Compiling...">
+
+  </target>
+
+  <target name="test" depends="retrieve-xmute, compile"
+    description="Unit Test Schematron Rules wit XML-Mutate"
     if="xmute.download.url.prefix">
     <echo>Unit testing Schematron rules ...</echo>
     <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
@@ -197,7 +201,7 @@
   </target>
 
 
-  <target name="dist" depends="compile-schematron-rules,test"
+  <target name="dist" depends="compile,test"
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
