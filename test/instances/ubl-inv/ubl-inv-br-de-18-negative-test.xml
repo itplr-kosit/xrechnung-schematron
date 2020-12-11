@@ -49,7 +49,7 @@
                 <cbc:Telephone>+49(0)1234-0</cbc:Telephone>
                 <cbc:ElectronicMail>info@seller.de</cbc:ElectronicMail>
             </cac:Contact>
-        </cac:Party>
+        </cac:Party> 
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
@@ -90,7 +90,7 @@
         <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
         <cac:PayeeFinancialAccount>
             <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
-            <cbc:ID>DE75512108001245126199</cbc:ID>
+            <cbc:ID>DE75512108001245126199</cbc:ID> 
         </cac:PayeeFinancialAccount>
     </cac:PaymentMeans>
     <cac:PaymentMeans>
@@ -106,7 +106,8 @@
                 description="Every skonto entry should end with a newline" ?>
         <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
 #SKONTO#TAGE=14#PROZENT=1.00#
-#SKONTO#TAGE=30#PROZENT=0.00#</cbc:Note>
+#SKONTO#TAGE=30#PROZENT=0.00#
+        </cbc:Note>
     </cac:PaymentTerms>
     <cac:TaxTotal>
         <cbc:TaxAmount currencyID="EUR">414.2</cbc:TaxAmount>

@@ -13,10 +13,17 @@
   <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
 
+  <let name="testvar"  value="'hi'" />
+
   <phase id="xrechnung-model">
+    <active pattern="variable-pattern" />
     <active pattern="model-pattern" />
     <active pattern="ubl-extension-pattern" />
   </phase>
+  
+   
+  <include href="../common.sch" />
+  
   <!-- Abstract patterns -->
   <!-- ========================= -->
   <include href="abstract/XRechnung-model.sch" />
