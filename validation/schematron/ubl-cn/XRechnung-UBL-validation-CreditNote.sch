@@ -16,9 +16,11 @@
     <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
     
     <phase id="XRechnung_model">
-        <active pattern="UBL-model" />        
+        <active pattern="variable-pattern" />
+        <active pattern="UBL-model" />
     </phase>
-
+    <include href="../common.sch" />
+    
     <!-- Abstract CEN BII patterns -->
     <!-- ========================= -->
     <include href="abstract/XRechnung-model.sch" />
