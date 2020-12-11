@@ -12,8 +12,8 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="1.4.0" />
-  <property name="xrechnung.version" value="2.0.0" />
+  <property name="xr-schematron.version.full" value="1.4.1" />
+  <property name="xrechnung.version" value="2.0.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
   <property name="saxon.jar" value="saxon9he.jar" />
@@ -115,7 +115,7 @@
 
   <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
     <fail unless="xmute.download.url.prefix"
-      message="Property             xmute.download.url.prefix must exist for this target to work" />
+      message="Property xmute.download.url.prefix must exist for this target to work" />
     <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
       dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false"
       usetimestamp="true" />
@@ -156,7 +156,7 @@
   </target>
   <target name="compile-schematron-rules"
     depends="prepare-saxon, prepare-build-dir"
-    description="Works for zip from master and release zips">
+    description="Compiling schematron rules">
     <schematron-compile
       schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
       insuffix="sch" workdir="${download.dir}"

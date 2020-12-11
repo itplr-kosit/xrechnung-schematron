@@ -5,9 +5,12 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## next on ...
+## next ()
+
 
 ### Changed
+* This version is compatible with XRechnung 2.0.1
+* Bump version to 1.4.1 for next release
 * Schematron Rules
   * BR-DE-16 is now only relevant, if bt-95, bt-102 or bt-151 exits.
 
@@ -17,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   * BR-DE-19 for CII flag is set to warning
 
 ## v1.4.0 on 2020-07-31
+
 
 ### Added
 * Schematron Rules
