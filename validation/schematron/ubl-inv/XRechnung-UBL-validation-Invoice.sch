@@ -57,7 +57,12 @@
         (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe
         der "Invoice line net amount" (BT-131) der direkt darunterliegenden "SUB
         INVOICE LINE" (BG-DEX-01) entsprechen.</assert>
-
+      
+      <!-- BR-DEX-03
+         this rule checks the existence of cac:Item/cac:ClassifiedTaxCategory in every sub invoice line -->
+      <assert test="count(//cac:SubInvoiceLine/cac:Item/cac:ClassifiedTaxCategory) = count(//cac:SubInvoiceLine)"
+        flag="fatal" id="BR-DEX-03"
+        >[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
     </rule>
   </pattern>
 </schema>
