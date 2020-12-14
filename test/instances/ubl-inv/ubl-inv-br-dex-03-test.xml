@@ -145,6 +145,28 @@
                     <cbc:PriceAmount currencyID="EUR">1.30</cbc:PriceAmount>
                     <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
                 </cac:Price>
+                <cac:SubInvoiceLine>
+                    <cbc:ID>1 1 1 1</cbc:ID>
+                    <cbc:InvoicedQuantity unitCode="MTR">149</cbc:InvoicedQuantity>       
+                    <cbc:LineExtensionAmount currencyID="EUR"
+                        >193.70</cbc:LineExtensionAmount>
+                    <cac:Item>
+                        <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
+                        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-3" description="Sub invoice lines shall have one and only one classified tax category." ?>
+                        <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-4" description="Sub invoice lines shall have one and only one classified tax category." ?>                    
+                        <cac:ClassifiedTaxCategory>
+                            <cbc:ID>S</cbc:ID>
+                            <cbc:Percent>7</cbc:Percent>
+                            <cac:TaxScheme>
+                                <cbc:ID>VAT</cbc:ID>
+                            </cac:TaxScheme>
+                        </cac:ClassifiedTaxCategory>
+                    </cac:Item>
+                    <cac:Price>
+                        <cbc:PriceAmount currencyID="EUR">1.30</cbc:PriceAmount>
+                        <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
+                    </cac:Price>
+                </cac:SubInvoiceLine>
             </cac:SubInvoiceLine>
         </cac:SubInvoiceLine>        
     </cac:InvoiceLine>
