@@ -60,7 +60,7 @@
       
       <!-- BR-DEX-03
          this rule checks the existence of cac:Item/cac:ClassifiedTaxCategory in every sub invoice line -->
-      <assert test="count(//cac:SubInvoiceLine/cac:Item/cac:ClassifiedTaxCategory) = count(//cac:SubInvoiceLine)"
+      <assert test="not(exists(//cac:SubInvoiceLine/cac:Item[ count ( cac:ClassifiedTaxCategory) &lt; 1])) and not(exists(//cac:SubInvoiceLine/cac:Item[ count ( cac:ClassifiedTaxCategory) > 1]))"
         flag="fatal" id="BR-DEX-03"
         >[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
     </rule>
