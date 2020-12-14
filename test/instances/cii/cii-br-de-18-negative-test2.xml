@@ -130,7 +130,7 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
                 <?xmute mutator="identity" 
-                schematron-invalid="xrinv:BR-DE-18" id="skonto_missing_newline"
+                schematron-invalid="xrcii:BR-DE-18" id="skonto_missing_newline"
                 description="Every skonto entry should end with a newline" ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00#
                     #SKONTO#TAGE=14#PROZENT=1.00#

@@ -21,8 +21,11 @@
     uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
 
   <phase id="XRechnung_model">
+    <active pattern="variable-pattern" />
     <active pattern="CII-model" />
   </phase>
+
+  <include href="../common.sch" />
 
   <!-- Abstract CEN BII patterns -->
   <!-- ========================= -->
