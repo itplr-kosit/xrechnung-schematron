@@ -14,7 +14,7 @@
         <?xmute mutator="code" values="326,380,384,389,381,875,876,877" 
                     schematron-valid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
                     description="br-de-17 test valid type codes" ?>
-        <?xmute mutator="code" values="1,2,123" 
+        <?xmute mutator="code" values="383,527" 
                     schematron-invalid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
                     description="br-de-17 test invalid type codes" ?>
         <ram:TypeCode>380</ram:TypeCode>
