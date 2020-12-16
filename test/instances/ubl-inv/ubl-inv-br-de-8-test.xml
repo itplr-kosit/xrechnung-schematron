@@ -174,13 +174,7 @@
         <cbc:Name>[Deliver to party name]</cbc:Name>
       </cac:PartyName>
     </cac:DeliveryParty>
-  </cac:Delivery>
-  <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-1" id="ubl-inv-mandatory-BG-16"
-                    description="mandatory BG-16" ?>
-  <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-1" id="ubl-inv-mandatory-BG-16-2"
-                    description="mandatory BG-16" ?>
+  </cac:Delivery>  
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>

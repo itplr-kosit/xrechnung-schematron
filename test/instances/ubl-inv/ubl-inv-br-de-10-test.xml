@@ -52,8 +52,8 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
-        <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>
-        <cbc:CityName>[Seller city]</cbc:CityName>
+        <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>        
+        <cbc:CityName>[Seller city]</cbc:CityName>        
         <cbc:PostalZone>12345</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
@@ -76,15 +76,9 @@
         <cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
         <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […], Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
-      <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-2" id="ubl-inv-mandatory-BG-6"
-                    description="mandatory BG-6" ?>
-      <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-2" id="ubl-inv-mandatory-BG-6-2"
-                    description="mandatory BG-6" ?>
-      <cac:Contact>
-        <cbc:Name>Tim Tester</cbc:Name>
-        <cbc:Telephone>012 3456789</cbc:Telephone>
+      <cac:Contact>        
+        <cbc:Name>Tim Tester</cbc:Name>        
+        <cbc:Telephone>012 3456789</cbc:Telephone>        
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
@@ -100,8 +94,8 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
-        <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>
-        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>       
+        <cbc:CityName>[Buyer city]</cbc:CityName>       
         <cbc:PostalZone>98765</cbc:PostalZone>
         <cac:AddressLine>
           <cbc:Line>[Buyer address line 3]</cbc:Line>
@@ -161,6 +155,12 @@
       <cac:Address>
         <cbc:StreetName>[Deliver to street]</cbc:StreetName>
         <cbc:AdditionalStreetName>4. OG</cbc:AdditionalStreetName>
+        <?xmute mutator="identity"
+                    schematron-valid="xrinv:BR-DE-10" id="ubl-inv-mandatory-BT-77"
+                    description="mandatory BT-77 if BG-15 exists" ?>
+        <?xmute mutator="remove"
+                    schematron-invalid="xrinv:BR-DE-10" id="ubl-inv-mandatory-BT-77-2"
+                    description="mandatory BT-77 if BG-15 exists" ?>
         <cbc:CityName>[Deliver to city]</cbc:CityName>
         <cbc:PostalZone>98765</cbc:PostalZone>
         <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>
