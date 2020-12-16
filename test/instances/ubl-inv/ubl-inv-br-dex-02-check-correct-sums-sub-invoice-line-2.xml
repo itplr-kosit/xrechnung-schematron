@@ -264,4 +264,22 @@
       </cac:SubInvoiceLine>
     </cac:SubInvoiceLine>
   </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>3</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="XPP">1.00</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">300.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Honorar pauschal</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19.00</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">300.00</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
 </ubl:Invoice>

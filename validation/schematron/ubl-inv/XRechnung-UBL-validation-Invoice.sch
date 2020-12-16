@@ -56,8 +56,7 @@
          part two proofs whether the count of invoice lines with correct lineextensionamounts according to part one is equal to the count of subinvoicelines with including subinvoicelines
          every amount has to be cast to decimal cause of floating point problems -->
       <assert
-        test="count(//cac:SubInvoiceLine) = 0 or (sum(./cac:InvoiceLine/xs:decimal(cbc:LineExtensionAmount)) = sum(child::cac:InvoiceLine/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and (count(//cac:SubInvoiceLine[xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine[count(cac:SubInvoiceLine) > 0]))"
-
+        test="(every $invoiceline in /ubl:Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ] satisfies $invoiceline/xs:decimal(cbc:LineExtensionAmount) =  sum($invoiceline/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and (count(  //cac:SubInvoiceLine [xs:decimal(cbc:LineExtensionAmount) =   sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0]))"
         flag="warning" id="BR-DEX-02"
         >[BR-DEX-02] Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE"
         (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe
