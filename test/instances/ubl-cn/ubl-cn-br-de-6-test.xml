@@ -70,15 +70,15 @@
         <cbc:RegistrationName>[Seller trading name]</cbc:RegistrationName>
         <cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
         <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […], Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
-      </cac:PartyLegalEntity>
+      </cac:PartyLegalEntity>      
       <cac:Contact>
-        <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-5" id="ubl-cn-mandatory-BT-41"
-                    description="mandatory BT-41" ?>
-        <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-5" id="ubl-cn-mandatory-BT-41-2"
-                    description="mandatory BT-41" ?>
         <cbc:Name>Tim Tester</cbc:Name>
+        <?xmute mutator="identity"
+                    schematron-valid="xrcn:BR-DE-6" id="ubl-cn-mandatory-BT-42"
+                    description="mandatory BT-42" ?>
+        <?xmute mutator="remove"
+                    schematron-invalid="xrcn:BR-DE-6" id="ubl-cn-mandatory-BT-42-2"
+                    description="mandatory BT-42" ?>
         <cbc:Telephone>012 3456789</cbc:Telephone>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
