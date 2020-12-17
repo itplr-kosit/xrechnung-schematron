@@ -175,9 +175,9 @@
   <target name="test-only" description="Unit testing Schematron Rules wit XML-Mutate"
     if="xmute.download.url.prefix">
     <echo>Unit testing Schematron rules ...</echo>
-    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
+    <java jar="${lib.dir}/${xmute.jar}" failonerror="no" fork="yes"
       dir="${basedir}">
-      <arg value="-ff" />
+      
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <arg value="--schematron" />
