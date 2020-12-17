@@ -5,20 +5,23 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## next ()
+## v1.5.0 on 2020-12-31
+
 ### Added
 * Schematron Rules
   * BR-DEX-03 to check existence of BG-DEX-06 in a BG-DEX-01
+
 ### Changed
 * This version is compatible with XRechnung 2.0.1
-* Bump version to 1.4.1 for next release
+* Bump version to 1.5.0 for next release
 * Schematron Rules
-  * BR-DE-16 is now only relevant, if bt-95, bt-102 or bt-151 exits.
+  * BR-DE-16 is now only relevant, if bt-95, bt-102 or bt-151 exist
 
 ### Fixed
 * Schematron Rules
+  * BR-DEX-02 rewrote rule to not give false negative
   * BR-DE-18 now checks last newline and allows negative Basisbetrag 
-  * BR-DE-19 for CII flag is set to warning
+  * BR-DE-19 flag is set to warning for CII
 
 ## v1.4.0 on 2020-07-31
 
