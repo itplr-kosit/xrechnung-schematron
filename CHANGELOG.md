@@ -6,8 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## next ()
-
-
+### Added
+* Schematron Rules
+  * BR-DEX-03 to check existence of BG-DEX-06 in a BG-DEX-01
 ### Changed
 * This version is compatible with XRechnung 2.0.1
 * Bump version to 1.4.1 for next release
