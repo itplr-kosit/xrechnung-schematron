@@ -7,17 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v1.5.0 on 2020-12-31
 
+This version is compatible with XRechnung 2.0.1
+
 ### Added
+
 * Schematron Rules
   * BR-DEX-03 to check existence of BG-DEX-06 in a BG-DEX-01
 
 ### Changed
+
 * This version is compatible with XRechnung 2.0.1
 * Bump version to 1.5.0 for next release
 * Schematron Rules
   * BR-DE-16 is now only relevant, if bt-95, bt-102 or bt-151 exist
 
 ### Fixed
+
 * Schematron Rules
   * BR-DEX-02 rewrote rule to not give false negative
   * BR-DE-18 now checks last newline and allows negative Basisbetrag 
@@ -25,17 +30,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## v1.4.0 on 2020-07-31
 
-
 ### Added
+
 * Schematron Rules
   * BR-DE-22 to check for unique file names 
   * BR-DEX-01 to allow mime type 'application/xml' in XRechnung Extension
   * BR-DEX-02 on checking the sum of prices for UBL sub invoice lines in XRechnung extension
+
 ### Changed
+
 * Schematron Rules
   * BR-DE-19 and BR-DE-20 refactoring IBAN rules
   * BR-DE-21 to check specification identifier for extension
+
 ### Fixed
+
 * Schematron Rules
   * BR-DE-19 and BR-DE-20 fixed CII IBAN rules
 
@@ -91,4 +100,4 @@ Because of #19 and #12 it might break your validation and business workflow. Ple
 ### Fixed
 
 - Workaround to inconsistency in CEN Norm and Rules concerning syntax binding as described in [CEN issue #57](https://github.com/CenPC434/validation/issues/57)
-  - For now we allow for both 'VA' and 'VAT' (see #12)
+- For now we allow for both 'VA' and 'VAT' (see #12)
