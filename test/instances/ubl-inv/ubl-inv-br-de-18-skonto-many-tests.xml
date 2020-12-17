@@ -100,21 +100,17 @@
             <cbc:ID>DE12500105170648489890</cbc:ID>
         </cac:PayeeFinancialAccount>
     </cac:PaymentMeans>
+
     <cac:PaymentTerms>
+        <!-- This test is a placeholder for future tests using the alternative mutator, once it is fixed -->
         <?xmute mutator="identity" 
-                schematron-valid="xrinv:BR-DE-18" id="ubl-inv-br-de-18-freespace-is-allowed"
-                description="BR-DE-18 Freespace is allowed" ?>
-        <cbc:Note>   testentry
-            #SKONTO#TAGE=7#PROZENT=2.00#
-            testentry
-
-           #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=23.00#
-
-           #SKONTO#TAGE=14#PROZENT=1.00#
-
-                     #SKONTO#TAGE=30#PROZENT=0.00#     
-                     testentry
-                    </cbc:Note>
+        schematron-valid="xrinv:BR-DE-18" id="skonto-korrekt"
+        description="Every skonto has to be compliant has to be formed as an amount type" ?> 
+        <cbc:Note>#SKONTO#TAGE=1#PROZENT=2.00#
+#SKONTO#TAGE=2#PROZENT=1.00#BASISBETRAG=23.88#
+#SKONTO#TAGE=3#PROZENT=0.00#
+        </cbc:Note>
+        
     </cac:PaymentTerms>
     <cac:TaxTotal>
         <cbc:TaxAmount currencyID="EUR">414.2</cbc:TaxAmount>
