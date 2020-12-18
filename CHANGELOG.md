@@ -25,7 +25,7 @@ This version is compatible with XRechnung 2.0.1
 
 * Schematron Rules
   * BR-DEX-02 rewrote rule to not give false negative
-  * BR-DE-18 now checks last newline and allows negative Basisbetrag 
+  * BR-DE-18 now checks last newline and allows negative Basisbetrag
   * BR-DE-19 flag is set to warning for CII
 
 ## v1.4.0 on 2020-07-31
@@ -33,7 +33,7 @@ This version is compatible with XRechnung 2.0.1
 ### Added
 
 * Schematron Rules
-  * BR-DE-22 to check for unique file names 
+  * BR-DE-22 to check for unique file names
   * BR-DEX-01 to allow mime type 'application/xml' in XRechnung Extension
   * BR-DEX-02 on checking the sum of prices for UBL sub invoice lines in XRechnung extension
 
