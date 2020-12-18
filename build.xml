@@ -12,7 +12,7 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="1.4.1" />
+  <property name="xr-schematron.version.full" value="1.5.0" />
   <property name="xrechnung.version" value="2.0.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
@@ -90,7 +90,7 @@
         out="@{outdir}/${schematron.basename}.xsl" classpath="@{saxon.jar}"
         force="@{overwrite}">
         <factory name="net.sf.saxon.TransformerFactoryImpl" />
-        <param name="generate-fired-rule" expression="false" />
+        <param name="generate-fired-rule" expression="true" />
         <param name="full-path-notation" expression="3" />
       </xslt>
       <echo
