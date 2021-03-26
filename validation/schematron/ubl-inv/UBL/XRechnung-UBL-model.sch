@@ -25,7 +25,7 @@
            satisfies matches (
                        normalize-space ($line),
                        $XR-SKONTO-REGEX
-                   ) and matches( cac:PaymentTerms/cbc:Note[1]/text(), '\n\s*$' )
+                   ) and matches( cac:PaymentTerms/cbc:Note[1]/text(), '[\n\s]*$' )
           " />
    
   <param name="BR-DE-19"
