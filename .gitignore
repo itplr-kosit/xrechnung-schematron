@@ -5,6 +5,7 @@ reports
 .vscode
 *.xpr
 .ant-targets-build.xml
+.project
 
 validation/schematron/QS 2017/
 validation/schematron/ubl-cn/XRechnung-UBL-validation.sch
