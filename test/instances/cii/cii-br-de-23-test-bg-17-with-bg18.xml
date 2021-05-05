@@ -135,16 +135,17 @@
         <ram:ApplicableHeaderTradeSettlement>            
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>58</ram:TypeCode>
-                <?xmute mutator="identity"
-                    schematron-valid="xrcii:BR-DE-13" id="cii-mandatory-BG-17"
-                    description="mandatory BG-17" ?>
-                <?xmute mutator="remove"
-                    schematron-invalid="xrcii:BR-DE-13" id="cii-mandatory-BG-17-2"
-                    description="mandatory BG-17" ?>
+                <ram:TypeCode>58</ram:TypeCode>                
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
+                <?xmute mutator="identity"
+                    schematron-invalid="xrcii:BR-DE-23" id="cii-BG-18-not-allowed-with-BG-17"
+                    description="CII BG-18 not allowed with BG-17" ?>
+                <ram:ApplicableTradeSettlementFinancialCard>
+                    <ram:ID>41234</ram:ID>
+                    <ram:CardholderName>[Payment card holder name]</ram:CardholderName>
+                </ram:ApplicableTradeSettlementFinancialCard>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>

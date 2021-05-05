@@ -35,8 +35,29 @@
     
   <param name="BR-DE-21"
     value="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0' or cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0'"/>
-
-
+  <param name="BR-DE-22"
+    value="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])"/>
+  <!-- In BR-DE-23 'if a then b else true' has been reshaped to 'not a or b' -->
+  <param name="BR-DE-23"
+    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 30)
+      or (cac:PaymentMeans/cbc:PaymentMeansCode = 49)
+      or (cac:PaymentMeans/cbc:PaymentMeansCode = 58)
+      or (cac:PaymentMeans/cbc:PaymentMeansCode = 59)) 
+    or (cac:PaymentMeans/cac:PayeeFinancialAccount
+      and not(cac:PaymentMeans/cac:CardAccount)
+      and not(cac:PaymentMeans/cac:PaymentMandate))"/>
+  
+  <!--<param name="BR-DE-23"
+    value="not((/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 30)
+    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 49)
+    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 58)
+    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 59))
+    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount 
+    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:ApplicableTradeSettlementFinancialCard)
+    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID)
+    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID)
+    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID))" />
+  -->
   <param name="INVOICE" value="//ubl:Invoice"/>
   <param name="BG-4_SELLER" value="//ubl:Invoice/cac:AccountingSupplierParty"/>
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
