@@ -46,18 +46,18 @@
     or (cac:PaymentMeans/cac:PayeeFinancialAccount
       and not(cac:PaymentMeans/cac:CardAccount)
       and not(cac:PaymentMeans/cac:PaymentMandate))"/>
-  
-  <!--<param name="BR-DE-23"
-    value="not((/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 30)
-    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 49)
-    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 58)
-    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:TypeCode = 59))
-    or (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount 
-    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:ApplicableTradeSettlementFinancialCard)
-    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID)
-    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID)
-    and not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID))" />
-  -->
+  <param name="BR-DE-24" 
+    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 48)
+    or (cac:PaymentMeans/cbc:PaymentMeansCode = 54)
+    or (cac:PaymentMeans/cbc:PaymentMeansCode = 55)) 
+    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
+    and cac:PaymentMeans/cac:CardAccount
+    and not(cac:PaymentMeans/cac:PaymentMandate))"/>
+  <param name="BR-DE-25" 
+    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 31))    
+    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
+    and not(cac:PaymentMeans/cac:CardAccount)
+    and cac:PaymentMeans/cac:PaymentMandate)"/>
   <param name="INVOICE" value="//ubl:Invoice"/>
   <param name="BG-4_SELLER" value="//ubl:Invoice/cac:AccountingSupplierParty"/>
   <param name="BG-5_SELLER_POSTAL_ADDRESS"

@@ -44,6 +44,18 @@
     or (cac:PaymentMeans/cac:PayeeFinancialAccount
       and not(cac:PaymentMeans/cac:CardAccount)
       and not(cac:PaymentMeans/cac:PaymentMandate))"/>
+  <param name="BR-DE-24" 
+    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 48)
+    or (cac:PaymentMeans/cbc:PaymentMeansCode = 54)
+    or (cac:PaymentMeans/cbc:PaymentMeansCode = 55)) 
+    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
+    and cac:PaymentMeans/cac:CardAccount
+    and not(cac:PaymentMeans/cac:PaymentMandate))"/>
+  <param name="BR-DE-25" 
+    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 31))    
+    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
+    and not(cac:PaymentMeans/cac:CardAccount)
+    and cac:PaymentMeans/cac:PaymentMandate)"/>
   <param name="CREDIT_NOTE" value="//ubl:CreditNote" />
   <param name="BG-4_SELLER" value="//ubl:CreditNote/cac:AccountingSupplierParty" />
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
