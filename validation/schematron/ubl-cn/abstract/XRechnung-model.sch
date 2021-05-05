@@ -15,7 +15,9 @@
         <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
             >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
         <assert test="$BR-DE-22" flag="fatal" id="BR-DE-22"
-            >[BR-DE-22] Not all filename attributes of the embeddedDocumentBinaryObject elements are unique</assert>        
+            >[BR-DE-22] Not all filename attributes of the embeddedDocumentBinaryObject elements are unique</assert>
+        <assert test="$BR-DE-23" flag="fatal" id="BR-DE-23"
+            >[BR-DE-23] Wenn BT-81 payment means type code einen Schlüssel für Überweisungen enthält (30, 49, 58, 59), muss BG-17 credittransferübermittelt werden. BG-18 und BG-19 dürfen in diesem Fall nicht übermittelt werden.</assert>        
     </rule>
     <rule context="$BG-4_SELLER">
         <assert test="$BR-DE-02" flag="fatal" id="BR-DE-2"
