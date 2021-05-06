@@ -148,14 +148,14 @@
   </cac:Delivery>
   <cac:PaymentMeans>
     <?xmute mutator="code" values="30,49,58,59" 
-                    schematron-valid="xrinv:BR-DE-23" id="ubl-br-de-23-possible-typecodes"
+                    schematron-valid="xrcn:BR-DE-23" id="ubl-br-de-23-possible-typecodes"
                     description="possible typecodes" ?> 
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-23" id="ubl-mandatory-BG-17"
+                    schematron-valid="xrcn:BR-DE-23" id="ubl-mandatory-BG-17"
                     description="mandatory BG-17" ?>
     <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-23" id="ubl-mandatory-BG-17-2"
+                    schematron-invalid="xrcn:BR-DE-23" id="ubl-mandatory-BG-17-2"
                     description="mandatory BG-17" ?>
     <cac:PayeeFinancialAccount>
       <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->

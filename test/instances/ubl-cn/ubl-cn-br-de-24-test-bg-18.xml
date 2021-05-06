@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<ubl:CreditNote xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+  xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
@@ -148,14 +149,14 @@
   </cac:Delivery>
   <cac:PaymentMeans>
     <?xmute mutator="code" values="48,54,55" 
-                    schematron-valid="xrinv:BR-DE-24" id="ubl-br-de-24-possible-typecodes"
+                    schematron-valid="xrcn:BR-DE-24" id="ubl-br-de-24-possible-typecodes"
                     description="possible typecodes" ?> 
     <cbc:PaymentMeansCode>48</cbc:PaymentMeansCode>                       
     <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-24" id="ubl-mandatory-BG-18"
+                    schematron-valid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18"
                     description="mandatory BG-18" ?>
     <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-24" id="ubl-mandatory-BG-18-2"
+                    schematron-invalid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18-2"
                     description="mandatory BG-18" ?>
     <cac:CardAccount>
       <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
@@ -254,4 +255,4 @@
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
   </cac:CreditNoteLine>
-</CreditNote>
+</ubl:CreditNote>

@@ -149,8 +149,8 @@
   <cac:PaymentMeans>         
     <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>
     <?xmute mutator="identity"
-                    schematron-invalid="xrinv:BR-DE-25" id="ubl-inv-BG-19-not-allowed-with-BG-18"
-                    description="UBL-Inv BG-19 not allowed with BG-18" ?>
+                    schematron-invalid="xrcn:BR-DE-25" id="ubl-cn-BG-19-not-allowed-with-BG-18"
+                    description="UBL-CN BG-19 not allowed with BG-18" ?>
     <cac:CardAccount>
       <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
       <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>

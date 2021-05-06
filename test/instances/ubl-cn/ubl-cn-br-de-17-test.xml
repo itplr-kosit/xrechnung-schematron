@@ -6,10 +6,10 @@
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
   <!--<cbc:DueDate>2018-04-13</cbc:DueDate>-->
   <?xmute mutator="code" values="326,380,384,389,381,875,876,877" 
-                    schematron-valid="xrcn:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
+                    schematron-valid="xrcn:BR-DE-17" id="ubl-cn-br-de-17-test-type-codes"
                     description="br-de-17 test valid type codes" ?>
   <?xmute mutator="code" values="383,527" 
-                    schematron-invalid="xrcn:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
+                    schematron-invalid="xrcn:BR-DE-17" id="ubl-cn-br-de-17-test-invalid-type-codes"
                     description="br-de-17 test invalid type codes" ?>
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>

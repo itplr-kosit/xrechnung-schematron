@@ -149,8 +149,8 @@
   <cac:PaymentMeans>        
     <cbc:PaymentMeansCode>48</cbc:PaymentMeansCode>               
     <?xmute mutator="identity"
-                    schematron-invalid="xrinv:BR-DE-24" id="ubl-inv-BG-17-not-allowed-with-BG-18"
-                    description="UBL-Inv BG-17 not allowed with BG-18" ?>
+                    schematron-invalid="xrcn:BR-DE-24" id="ubl-cn-BG-17-not-allowed-with-BG-18"
+                    description="UBL-CN BG-17 not allowed with BG-18" ?>
     <cac:PayeeFinancialAccount>
       <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
       <cbc:ID>DE75512108001245126199</cbc:ID>
