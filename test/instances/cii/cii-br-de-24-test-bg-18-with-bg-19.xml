@@ -142,7 +142,7 @@
                 </ram:ApplicableTradeSettlementFinancialCard>
                 <ram:PayerPartyDebtorFinancialAccount>                    
                     <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-23" id="cii-BG-19-not-allowed-with-BG-17-2"
+                    schematron-invalid="xrcii:BR-DE-24" id="cii-BG-19-not-allowed-with-BG-17-2"
                     description="CII BG 19 not allowed with BG-17" ?>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
