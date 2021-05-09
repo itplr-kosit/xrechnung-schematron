@@ -5,6 +5,18 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v1.6.0 on 2020-06-30
+
+This version is compatible with XRechnung 2.0.x
+### Added
+* Schematron Rules
+  * BR-DE-23
+  * BR-DE-24
+  * BR-DE-25 
+
+### Changed
+  * BR-DE-13 is removed
+
 ## v1.5.0 on 2020-12-31
 
 This version is compatible with XRechnung 2.0.1
