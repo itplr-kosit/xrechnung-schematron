@@ -37,22 +37,17 @@
   <param name="BR-DE-22"
     value="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])" />
   <param name="BR-DE-23"
-    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 30)
-      or (cac:PaymentMeans/cbc:PaymentMeansCode = 49)
-      or (cac:PaymentMeans/cbc:PaymentMeansCode = 58)
-      or (cac:PaymentMeans/cbc:PaymentMeansCode = 59)) 
+    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = (30,49,58,59)])      
     or (cac:PaymentMeans/cac:PayeeFinancialAccount
       and not(cac:PaymentMeans/cac:CardAccount)
       and not(cac:PaymentMeans/cac:PaymentMandate))"/>
   <param name="BR-DE-24" 
-    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 48)
-    or (cac:PaymentMeans/cbc:PaymentMeansCode = 54)
-    or (cac:PaymentMeans/cbc:PaymentMeansCode = 55)) 
+    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)])    
     or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
     and cac:PaymentMeans/cac:CardAccount
     and not(cac:PaymentMeans/cac:PaymentMandate))"/>
   <param name="BR-DE-25" 
-    value="not((cac:PaymentMeans/cbc:PaymentMeansCode = 31))    
+    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = 31])   
     or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
     and not(cac:PaymentMeans/cac:CardAccount)
     and cac:PaymentMeans/cac:PaymentMandate)"/>
