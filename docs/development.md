@@ -21,7 +21,8 @@ Otherwise the build skips this target silently.
 
 
 
-The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification.
+The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification. 
+There are three directoriesfor the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
 
 
 ### Conventions
