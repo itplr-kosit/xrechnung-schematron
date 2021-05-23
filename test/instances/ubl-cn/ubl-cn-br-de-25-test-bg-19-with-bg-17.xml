@@ -4,10 +4,8 @@
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <!--<cbc:DueDate>2018-04-13</cbc:DueDate>-->
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
@@ -21,21 +19,7 @@
   </cac:OrderReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
-  </cac:OriginatorDocumentReference>
-  <!--<cac:ContractDocumentReference>
-    <cbc:ID>0000000752</cbc:ID>
-  </cac:ContractDocumentReference>-->
-  <!--<cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>-->
-  <!--<cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>-->
+  </cac:OriginatorDocumentReference>  
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -54,14 +38,12 @@
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
-      <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>ATU123456789</cbc:CompanyID>-->
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
-      <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>123/456/789</cbc:CompanyID>-->
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -164,19 +146,15 @@
       </cac:PartyName>
     </cac:DeliveryParty>
   </cac:Delivery>
-  <cac:PaymentMeans>
-    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
-    <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
+  <cac:PaymentMeans> 
     <?xmute mutator="identity"
-                    schematron-invalid="xrcn:BR-DE-13" id="ubl-cn-invalid-bg-17-bg-19"
-                    description="BG-17 are not allowed together with BG-19" ?>
+                    schematron-invalid="xrcn:BR-DE-25" id="ubl-cn-BG-17-not-allowed-with-BG-19"
+                    description="UBL-CN BG-17 not allowed with BG-19" ?>
     <cac:PayeeFinancialAccount>
+      <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
       <cbc:ID>DE75512108001245126199</cbc:ID>
-      <cbc:Name>[Payment account name]</cbc:Name>
-      <cac:FinancialInstitutionBranch>
-        <cbc:ID>[BIC]</cbc:ID>
-      </cac:FinancialInstitutionBranch>
-    </cac:PayeeFinancialAccount>
+    </cac:PayeeFinancialAccount>        
+    <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>        
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<CreditNote
+  xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <!--<cbc:DueDate>2018-04-13</cbc:DueDate>-->
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
@@ -21,21 +20,7 @@
   </cac:OrderReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
-  </cac:OriginatorDocumentReference>
-  <!--<cac:ContractDocumentReference>
-    <cbc:ID>0000000752</cbc:ID>
-  </cac:ContractDocumentReference>-->
-  <!--<cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>-->
-  <!--<cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>-->
+  </cac:OriginatorDocumentReference>  
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -54,14 +39,12 @@
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
-      <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>ATU123456789</cbc:CompanyID>-->
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
-      <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>123/456/789</cbc:CompanyID>-->
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -165,22 +148,22 @@
     </cac:DeliveryParty>
   </cac:Delivery>
   <cac:PaymentMeans>
-    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
-    <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
+    <?xmute mutator="code" values="48,54,55" 
+                    schematron-valid="xrcn:BR-DE-24" id="ubl-br-de-24-possible-typecodes"
+                    description="possible typecodes" ?> 
+    <cbc:PaymentMeansCode>48</cbc:PaymentMeansCode>                       
     <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-13" id="ubl-cn-mandatory-BG-17"
-                    description="mandatory BG-17" ?>
+                    schematron-valid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18"
+                    description="mandatory BG-18" ?>
     <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-13" id="ubl-cn-mandatory-BG-17-2"
-                    description="mandatory BG-17" ?>
-    <cac:PayeeFinancialAccount>
-      <cbc:ID>DE75512108001245126199</cbc:ID>
-      <cbc:Name>[Payment account name]</cbc:Name>
-      <cac:FinancialInstitutionBranch>
-        <cbc:ID>[BIC]</cbc:ID>
-      </cac:FinancialInstitutionBranch>
-    </cac:PayeeFinancialAccount>
-  </cac:PaymentMeans>
+                    schematron-invalid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18-2"
+                    description="mandatory BG-18" ?>
+    <cac:CardAccount>
+      <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
+      <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>
+      <cbc:HolderName>[Payment card holder name]</cbc:HolderName>
+    </cac:CardAccount>
+  </cac:PaymentMeans>  
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>

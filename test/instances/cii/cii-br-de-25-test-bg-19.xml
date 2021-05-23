@@ -132,20 +132,23 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>            
+        <ram:ApplicableHeaderTradeSettlement>     
+            <?xmute mutator="identity"
+                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-89"
+                    description="mandatory BG-19 BT-89" ?>
+            <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>58</ram:TypeCode>
-                <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-13" id="cii-br-de-13-BG-17-BG-18"
-                    description="BG-17 and BG-18 are not allowed together" ?>
-                <ram:PayeePartyCreditorFinancialAccount>                    
+                <?xmute mutator="identity" 
+                    schematron-valid="xrcii:BR-DE-25" id="cii-br-de-25-possible-typecodes"
+                    description="possible typecodes" ?> 
+                <ram:TypeCode>31</ram:TypeCode>                
+                <ram:PayerPartyDebtorFinancialAccount>                    
+                    <?xmute mutator="identity"
+                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-91"
+                    description="mandatory BG-19 BT-91" ?>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>
-                <ram:ApplicableTradeSettlementFinancialCard>
-                    <ram:ID>41234</ram:ID>
-                    <ram:CardholderName>[Payment card holder name]</ram:CardholderName>
-                </ram:ApplicableTradeSettlementFinancialCard>
+                </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
@@ -156,6 +159,10 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
                 <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
+                <?xmute mutator="identity"
+                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-90"
+                    description="mandatory BG-19 BT-90" ?>
+                <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>314.86</ram:LineTotalAmount>

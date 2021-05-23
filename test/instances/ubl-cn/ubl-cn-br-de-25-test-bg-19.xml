@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-  xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <cbc:DueDate>2018-04-13</cbc:DueDate>
-  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
-
-
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
     <cbc:EndDate>2018-04-13</cbc:EndDate>
@@ -26,21 +19,7 @@
   </cac:OrderReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
-  </cac:OriginatorDocumentReference>
-  <cac:ContractDocumentReference>
-    <cbc:ID>0000000752</cbc:ID>
-  </cac:ContractDocumentReference>
-  <cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>
-  <cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>
+  </cac:OriginatorDocumentReference>  
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -59,14 +38,12 @@
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
         </cac:Country>
       </cac:PostalAddress>
-      <cac:PartyTaxScheme>
-        <cbc:CompanyID>ATU123456789</cbc:CompanyID>
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
-      <cac:PartyTaxScheme>
-        <cbc:CompanyID>123/456/789</cbc:CompanyID>
+      <cac:PartyTaxScheme>        
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -169,24 +146,17 @@
       </cac:PartyName>
     </cac:DeliveryParty>
   </cac:Delivery>
-  <cac:PaymentMeans>
-    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
-    <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
+  <cac:PaymentMeans> 
     <?xmute mutator="identity"
-                    schematron-invalid="xrinv:BR-DE-13" id="ubl-inv-mandatory-bg-17-bg-18-bg-19"
-                    description="BG-17 are not allowed together with BG-18 and BG-19" ?>
-    <cac:PayeeFinancialAccount>
-      <cbc:ID>DE75512108001245126199</cbc:ID>
-      <cbc:Name>[Payment account name]</cbc:Name>
-      <cac:FinancialInstitutionBranch>
-        <cbc:ID>[BIC]</cbc:ID>
-      </cac:FinancialInstitutionBranch>
-    </cac:PayeeFinancialAccount>
-    <cac:CardAccount>
-      <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
-      <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>
-      <cbc:HolderName>[Payment card holder name]</cbc:HolderName>
-    </cac:CardAccount>
+                    schematron-valid="xrinv:BR-DE-25" id="ubl-br-de-25-possible-typecodes"
+                    description="possible typecodes" ?> 
+    <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>                
+    <?xmute mutator="identity"
+                    schematron-valid="xrcn:BR-DE-25" id="ubl-mandatory-BG-19"
+                    description="mandatory BG-19" ?>
+    <?xmute mutator="remove"
+                    schematron-invalid="xrcn:BR-DE-25" id="ubl-mandatory-BG-19-2"
+                    description="mandatory BG-19" ?>
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>
@@ -204,16 +174,16 @@
     <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
-    <cac:TaxCategory>
+    <cac:TaxCategory>     
       <cbc:ID>S</cbc:ID>
-      <cbc:Percent>0</cbc:Percent>
+      <cbc:Percent>19</cbc:Percent>
       <cac:TaxScheme>
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
     </cac:TaxCategory>
   </cac:AllowanceCharge>
-
-
+  
+  
   <cac:TaxTotal>
     <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
     <cac:TaxSubtotal>
@@ -222,32 +192,19 @@
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
-
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:TaxCategory>
-    </cac:TaxSubtotal>
-    <cac:TaxSubtotal>
-      <cbc:TaxableAmount currencyID="EUR">0</cbc:TaxableAmount>
-      <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
-      <cac:TaxCategory>
-        <cbc:ID>E</cbc:ID>
-        <cbc:Percent>0</cbc:Percent>
-        <cbc:TaxExemptionReason>a reason</cbc:TaxExemptionReason>
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:TaxCategory>
-    </cac:TaxSubtotal>
+    </cac:TaxSubtotal>    
   </cac:TaxTotal>
-
-
+  
+  
   <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
+    <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
   </cac:TaxTotal>
-
-
+  
+  
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -258,12 +215,12 @@
     <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
     <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
-
-
-  <cac:InvoiceLine>
+  
+  
+  <cac:CreditNoteLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
+    <!--<cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>-->
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2016-01-01</cbc:StartDate>
@@ -282,21 +239,14 @@
         <cbc:ItemClassificationCode listID="IB"
           >0721-880X</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
-      <cac:ClassifiedTaxCategory>
-        <cbc:ID>S</cbc:ID>
-        <cbc:Percent>19</cbc:Percent>
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
-  </cac:InvoiceLine>
-  <cac:InvoiceLine>
+  </cac:CreditNoteLine>
+  <cac:CreditNoteLine>
     <cbc:ID>2</cbc:ID>
-    <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
+    <!--<cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>-->
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
@@ -304,5 +254,5 @@
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
-  </cac:InvoiceLine>
-</Invoice>
+  </cac:CreditNoteLine>
+</CreditNote>

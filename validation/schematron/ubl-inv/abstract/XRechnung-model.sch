@@ -16,11 +16,15 @@
       >[BR-DE-18] Skonto/Verzug Zeilen in <name/> muessen diesem regulaerem Ausdruck entsprechen: <value-of select="$XR-SKONTO-REGEX"/>. Die Informationen zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen wie folgt im Element "Payment terms" (BT-20) übermittelt werden: Anzugeben ist im ersten Segment "SKONTO" oder "VERZUG", im zweiten "TAGE=n", im dritten "PROZENT=n". Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommastellen anzugeben. Liegt dem zu berechnenden Betrag nicht BT-115, "fälliger Betrag" zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto oder Verzugszins als viertes Segment "BASISBETRAG=n" gemäß dem semantischen Datentypen Amount anzugeben. Jeder Eintrag beginnt mit einer #, die Segmente sind mit einer # getrennt und eine Zeile schließt mit einer # ab. Am Ende einer vollständigen Skonto oder Verzugsangabe muss ein XML-konformer Zeilenumbruch folgen. Alle Angaben zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen in Großbuchstaben gemacht werden. Zusätzliches Whitespace (Leerzeichen, Tabulatoren oder Zeilenumbrüche) ist nicht zulässig. Andere Zeichen oder Texte als in den oberen Vorgaben genannt sind nicht zulässig.</assert>
     <assert test="$BR-DE-21" flag="fatal" id="BR-DE-21"
       >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
-    <assert
-      test="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])"
-      flag="fatal" id="BR-DE-22"
-      >[BR-DE-22] Not all filename attributes of the embeddedDocumentBinaryObject elements are unique
-    </assert>   
+    <assert test="$BR-DE-22" flag="fatal" id="BR-DE-22"
+      >[BR-DE-22] Not all filename attributes of the embeddedDocumentBinaryObject elements are unique</assert>   
+    <assert test="$BR-DE-23" flag="fatal" id="BR-DE-23"
+      >[BR-DE-23] Wenn BT-81 payment means type code einen Schlüssel für Überweisungen enthält (30, 49, 58, 59), muss BG-17 credittransferübermittelt werden. BG-18 und BG-19 dürfen in diesem Fall nicht übermittelt werden.</assert>
+    <assert test="$BR-DE-24" flag="fatal" id="BR-DE-24"
+      >[BR-DE-24] Wenn BT-81 payment means type code einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 paymentcardinformationübermittelt werden. BG-17 und BG-19 dürfen in diesem Fall nicht übermittelt werden.</assert>
+    <assert test="$BR-DE-25" flag="fatal" id="BR-DE-25"
+      >[BR-DE-25] Wenn BT-81 payment means type code einen Schlüssel für Lastschriften enthält (31), muss genau BG-19 directdebitübermittelt werden. BG-17 und BG-18 dürfen in diesem Fall nicht übermittelt werden.</assert>        
+    
   </rule>
 
   <rule context="$BG-4_SELLER">
