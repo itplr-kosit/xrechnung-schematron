@@ -10,9 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This version is compatible with XRechnung 2.0.x
 ### Added
 * Schematron Rules
-  * BR-DE-23 added
-  * BR-DE-24 added
-  * BR-DE-25 added
+  * BR-DE-23 replaces BR-DE-13
+  * BR-DE-24 replaces BR-DE-13
+  * BR-DE-25 replaces BR-DE-13
 
 ### Changed
   * BR-DE-13 removed
