@@ -17,7 +17,8 @@
             >[BR-DE-24] Wenn BT-81 payment means type code einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 paymentcardinformationübermittelt werden. BG-17 und BG-19 dürfen in diesem Fall nicht übermittelt werden.</assert>
         <assert test="$BR-DE-25" flag="fatal" id="BR-DE-25"
             >[BR-DE-25] Wenn BT-81 payment means type code einen Schlüssel für Lastschriften enthält (31), muss genau BG-19 directdebitübermittelt werden. BG-17 und BG-18 dürfen in diesem Fall nicht übermittelt werden.</assert>        
-        
+        <assert test="$BR-DE-26" flag="warning" id="BR-DE-26"
+            >[BR-DE-26] Wenn im Element Invoice type code (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
     </rule>
     <rule context="$BG-2_PROCESS_CONTROL">
         <assert test="$BR-DE-21" flag="warning" id="BR-DE-21"
