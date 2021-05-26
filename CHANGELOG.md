@@ -13,6 +13,7 @@ This version is compatible with XRechnung 2.0.x
   * BR-DE-23 replaces BR-DE-13
   * BR-DE-24 replaces BR-DE-13
   * BR-DE-25 replaces BR-DE-13
+  * BR-DE-26
 
 ### Changed
   * BR-DE-13 removed

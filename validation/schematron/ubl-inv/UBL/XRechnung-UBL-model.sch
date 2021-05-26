@@ -53,6 +53,9 @@
     or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
     and not(cac:PaymentMeans/cac:CardAccount)
     and cac:PaymentMeans/cac:PaymentMandate)"/>
+  <param name="BR-DE-26"
+    value="not(cbc:InvoiceTypeCode = 384) 
+    or (cac:BillingReference/cac:InvoiceDocumentReference)"/>
   <param name="INVOICE" value="//ubl:Invoice"/>
   <param name="BG-4_SELLER" value="//ubl:Invoice/cac:AccountingSupplierParty"/>
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
