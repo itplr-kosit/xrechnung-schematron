@@ -68,6 +68,9 @@
     and (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID
     or rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID
     or rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID))"/>
+  <param name="BR-DE-26"
+    value="not(rsm:ExchangedDocument/ram:TypeCode = 384) 
+    or (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument)"/>
   <param name="INVOICE" value="//rsm:CrossIndustryInvoice" />
   <param name="BG-2_PROCESS_CONTROL"
     value="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext" />
