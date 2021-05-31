@@ -39,7 +39,6 @@ BR-DE-9 | Das Element „Buyer post code“ (BT-53) muss übermittelt werden. | 
 BR-DE-10 | Das Element „Deliver to city“ (BT-77) muss übermittelt werden, wenn die Gruppe „DELIVER TO ADDRESS“ (BG-15) übermittelt wird. | complete (Schematron)
 BR-DE-11 | Das Element „Deliver to post code“ (BT-78) muss übermittelt werden, wenn die Gruppe „DELIVER TO ADDRESS“ (BG-15) übermittelt wird. | complete (Schematron)
 BR-DE-12 | Mit dem Element „Deliver to post code“ (BT-78) muss eine Postleitzahl übermittelt werden. | none
-BR-DE-13 | In der Rechnung müssen Angaben zu genau einer der drei Gruppen „CREDIT TRANSFER“ (BG-17), „PAYMENT CARD INFORMATION“ (BG-18) oder „DIRECT DEBIT“ (BG-19) übermittelt werden. | complete (Schematron)
 BR-DE-14 | Das Element „VAT category rate“ (BT-119) muss übermittelt werden. | complete (Schematron)
 BR-DE-15 | Das Element „Buyer reference“ (BT-10) muss übermittelt werden. | complete (Schematron)
 BR-DE-16 | In der Rechnung muss mindestens eines der Elemente „Seller VAT identifier“ (BT-31), „Seller tax registration identifier“ (BT-32) oder „SELLER TAX REPRESENTATIVE PARTY“ (BG-11) übermittelt werden. | complete (Schematron) |
@@ -60,6 +59,10 @@ BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von V
 | BR-DE-20 | Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
 | BR-DE-21 | Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. | complete (Schematron) | 
 | BR-DE-22 | Die in einer eingereichten Rechnung angehängten Dokumente in BG-24 ADDITIONAL SUPPORTING DOCUMENTS müssen im Element "Attached document/Attached document Filename" BT-125 einen eindeutigen Dateinamen haben (nicht case-sensitiv). | complete (Schematron) |
+| BR-DE-23 | Wenn BT-81 „paymentmeanstypecode“ einen Schlüssel für Überweisungen enthält (30, 49, 58, 59), muss BG-17 „credittransfer“ übermittelt werden. BG-18 und BG-19 dürfen in diesem Fall nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-24 | Wenn BT-81 „paymentmeanstypecode“ einen Schlüssel für Kartenzahlungen enthält(48,54,55), muss genau BG-18 „paymentcardinformation“ übermittelt werden. BG-17 und BG-19 dürfen in diesem Fall nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-25 | Wenn BT-81 „paymentmeanstypecode“ einen Schlüssel für Lastschriften enthält (31), muss genau BG-19 „directdebitübermittelt“ werden. BG-17 und BG-18 dürfen in diesem Fall nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-26 | Wenn im Element „Invoice type code“ (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll „Preceding Invoice Reference“ (BG-3) mind. einmal vorhanden sein. | complete (Schematron) |
 
 ## Technical Coverage of the XRechnung Extension Rules implemented in Schematron
 
