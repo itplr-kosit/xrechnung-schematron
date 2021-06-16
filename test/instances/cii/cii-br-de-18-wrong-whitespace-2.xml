@@ -130,11 +130,13 @@
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
                 <?xmute mutator="identity" 
-                schematron-invalid="xrcii:BR-DE-18" id="skonto_missing_newline"
-                description="Every skonto entry should end with a newline" ?>
+                schematron-invalid="xrcii:BR-DE-18" id="cii-br-de-18-wrong-whitespace-2"
+                description="There must not be whitespace" ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00#
-                    #SKONTO#TAGE=14#PROZENT=1.00#
-                    #SKONTO#TAGE=30#PROZENT=0.00#</ram:Description>
+                    #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
+                    #VERZUG#TAGE=30#PROZENT=0.00#
+                    #SKONTO#TAGE = 14#PROZENT=1.00#BASISBETRAG=-5.53#
+                </ram:Description>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>2180</ram:LineTotalAmount>
