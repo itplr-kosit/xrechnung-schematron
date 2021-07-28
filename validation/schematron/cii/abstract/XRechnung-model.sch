@@ -73,9 +73,9 @@
     </rule>
   
     <rule context="$BG-19_DIRECT_DEBIT" id="BR-DE-25">
-      <assert test="$BR-DE-25a" flag="fatal" id="BR-DE-25a"
+      <assert test="$BR-DE-25a" flag="fatal" id="BR-DE-25-a"
         >[BR-DE-25a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>        
-      <assert test="$BR-DE-25b" flag="fatal" id="BR-DE-25b"
+      <assert test="$BR-DE-25b" flag="fatal" id="BR-DE-25-b"
         >[BR-DE-25b] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden.</assert>        
     </rule>
     
