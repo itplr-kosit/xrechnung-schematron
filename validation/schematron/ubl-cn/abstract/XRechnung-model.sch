@@ -78,12 +78,6 @@
       >[BR-DE-25a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>        
     <assert test="$BR-DE-25b" flag="fatal" id="BR-DE-25b"
       >[BR-DE-25b] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden.</assert>        
-    <assert test="$BR-DE-25c" flag="fatal" id="BR-DE-25c"
-      >[BR-DE-25c] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Mandate reference identifier" (BT-89) angegeben werden.</assert>        
-    <assert test="$BR-DE-25d" flag="fatal" id="BR-DE-25d"
-      >[BR-DE-25d] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Bank assigned creditor identifier" (BT-90) angegeben werden.</assert>        
-    <assert test="$BR-DE-25e" flag="fatal" id="BR-DE-25e"
-      >[BR-DE-25e] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Debited account identifier" (BT-91) angegeben werden.</assert>        
   </rule>
 
     <rule context="$BG-23_VAT_BREAKDOWN">

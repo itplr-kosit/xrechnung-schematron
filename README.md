@@ -65,9 +65,6 @@ BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von V
 | BR-DE-24b | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden. | complete (Schematron) |
 | BR-DE-25a | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. | complete (Schematron) |
 | BR-DE-25b | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-25c | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Mandate reference identifier" (BT-89) angegeben werden. | complete (Schematron) |
-| BR-DE-25d | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Bank assigned creditor identifier" (BT-90) angegeben werden. | complete (Schematron) |
-| BR-DE-25e | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss das Element "Debited account identifier" (BT-91) angegeben werden. | complete (Schematron) |
 | BR-DE-26 | Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll "Preceding Invoice Reference" (BG-3) mind. einmal vorhanden sein. | complete (Schematron) |
 
 ## Technical Coverage of the XRechnung Extension Rules implemented in Schematron

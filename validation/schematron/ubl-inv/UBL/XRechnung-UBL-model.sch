@@ -48,10 +48,6 @@
   
   <param name="BR-DE-25a" value="cac:PaymentMandate"/>
   <param name="BR-DE-25b" value="not(cac:PayeeFinancialAccount) and not(cac:CardAccount)"/>
-  <param name="BR-DE-25c" value="cac:PaymentMandate/cbc:ID"/>
-  <param name="BR-DE-25d" value="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA'] or 
-                                 /ubl:Invoice/cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID = 'SEPA']"/>
-  <param name="BR-DE-25e" value="cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID"/>
 
   <param name="BR-DE-26"
     value="not(cbc:InvoiceTypeCode = 384)
