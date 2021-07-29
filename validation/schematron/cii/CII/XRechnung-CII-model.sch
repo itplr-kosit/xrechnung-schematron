@@ -15,10 +15,6 @@
   <param name="BR-DE-09" value="ram:PostcodeCode[boolean(normalize-space(.))]" />
   <param name="BR-DE-10" value="ram:CityName[boolean(normalize-space(.))]" />
   <param name="BR-DE-11" value="ram:PostcodeCode[boolean(normalize-space(.))]" />
-  <!-- Für BG-19 wird jedes Informationselement der Gruppe einzeln aufgeführt, der Pfad zu BG-19 (DIRECT DEBIT) zu unspezifisch ist und
-        sich mit den Pfaden zu BG-17 und BG-18 überschneidet.  -->
-  <!--<param name="BR-DE-13"
-    value="count((rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayeePartyCreditorFinancialAccount)[1]) + count(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:ApplicableTradeSettlementFinancialCard) + count((rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID, rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID, rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID)[1]) = 1" />-->
   <param name="BR-DE-14"
     value="ram:RateApplicablePercent[boolean(normalize-space(.))]" />
   <param name="BR-DE-15"

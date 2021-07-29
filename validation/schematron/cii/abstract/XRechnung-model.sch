@@ -2,8 +2,6 @@
     <rule context="$INVOICE">
         <assert test="$BR-DE-01" flag="fatal" id="BR-DE-1"
             >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
-        <!--<assert test="$BR-DE-13" flag="fatal" id="BR-DE-13"
-            >[BR-DE-13] In der Rechnung müssen Angaben zu genau einer der drei Gruppen "CREDIT TRANSFER" (BG-17), "PAYMENT CARD INFORMATION" (BG-18) oder "DIRECT DEBIT" (BG-19) übermittelt werden.</assert>-->
         <assert test="$BR-DE-15" flag="fatal" id="BR-DE-15"
             >[BR-DE-15] Das Element "Buyer reference" (BT-10) muss übermittelt werden.</assert>
         <assert test="$BR-DE-16" flag="fatal" id="BR-DE-16"

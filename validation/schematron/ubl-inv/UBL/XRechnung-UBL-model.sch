@@ -10,8 +10,6 @@
   <param name="BR-DE-09" value="cbc:PostalZone[boolean(normalize-space(.))]"/>
   <param name="BR-DE-10" value="cbc:CityName[boolean(normalize-space(.))]"/>
   <param name="BR-DE-11" value="cbc:PostalZone[boolean(normalize-space(.))]"/>
-  <param name="BR-DE-13"
-    value="count((cac:PaymentMeans/cac:PayeeFinancialAccount)[1]) + count(cac:PaymentMeans/cac:CardAccount) + count(cac:PaymentMeans/cac:PaymentMandate) = 1"/>
   <param name="BR-DE-14" value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]"/>
   <param name="BR-DE-15" value="cbc:BuyerReference[boolean(normalize-space(.))]"/>
   <!-- In BR-DE-16 'if a then b else true' has been reshaped to 'not a or b' -->

@@ -5,17 +5,18 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## v1.6.0 on 2020-06-30
+## v1.6.0 on 2020-07-31
 
-This version is compatible with XRechnung 2.0.x
+This version is compatible with XRechnung 2.1.1
 ### Added
 * Schematron Rules
   * BR-DE-23 replaces BR-DE-13
   * BR-DE-24 replaces BR-DE-13
   * BR-DE-25 replaces BR-DE-13
-  * BR-DE-26
+  * BR-DE-26 (for UBL Invoice and CII only)
 
 ### Changed
+* Schematron Rules
   * BR-DE-13 removed
 
 ## v1.5.0 on 2020-12-31
