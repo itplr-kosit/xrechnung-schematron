@@ -64,7 +64,7 @@
     value="not(rsm:ExchangedDocument/ram:TypeCode = 384) 
     or (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:InvoiceReferencedDocument)"/>
     
-  <param name="INVOICE" value="//rsm:CrossIndustryInvoice" />
+  <param name="INVOICE" value="/rsm:CrossIndustryInvoice" />
   <param name="BG-2_PROCESS_CONTROL"
     value="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext" />
   <param name="BG-4_SELLER"
@@ -83,11 +83,14 @@
   <param name="BG-16_PAYMENT_INSTRUCTIONS"
     value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans" />
 
-  <param name="BG-17_CREDIT_TRANSFER" value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]"/>
+  <param name="BG-17_CREDIT_TRANSFER"
+    value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]"/>
 
-  <param name="BG-18_PAYMENT_CARD_INFO" value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]"/>
+  <param name="BG-18_PAYMENT_CARD_INFO"
+    value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]"/>
 
-  <param name="BG-19_DIRECT_DEBIT" value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = 59]"/>
+  <param name="BG-19_DIRECT_DEBIT"
+    value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = 59]"/>
 
   <param name="BG-23_VAT_BREAKDOWN"
     value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax" />

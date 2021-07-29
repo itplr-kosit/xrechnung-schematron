@@ -56,21 +56,21 @@
             >[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
     </rule>
     
-    <rule context="$BG-17_CREDIT_TRANSFER" id="BR-DE-23">
+    <rule context="$BG-17_CREDIT_TRANSFER">
       <assert test="$BR-DE-23a" flag="fatal" id="BR-DE-23-a"
         >[BR-DE-23-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden.</assert>
       <assert test="$BR-DE-23b" flag="fatal" id="BR-DE-23-b"
         >[BR-DE-23-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden.</assert>
     </rule>
   
-    <rule context="$BG-18_PAYMENT_CARD_INFO" id="BR-DE-24">
+    <rule context="$BG-18_PAYMENT_CARD_INFO">
       <assert test="$BR-DE-24a" flag="fatal" id="BR-DE-24-a"
         >[BR-DE-24-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden.</assert>
       <assert test="$BR-DE-24b" flag="fatal" id="BR-DE-24-b"
         >[BR-DE-24-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden.</assert>
     </rule>
   
-    <rule context="$BG-19_DIRECT_DEBIT" id="BR-DE-25">
+    <rule context="$BG-19_DIRECT_DEBIT">
       <assert test="$BR-DE-25a" flag="fatal" id="BR-DE-25-a"
         >[BR-DE-25-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>        
       <assert test="$BR-DE-25b" flag="fatal" id="BR-DE-25-b"

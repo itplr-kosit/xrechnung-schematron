@@ -136,10 +136,10 @@
             <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>                
-                <ram:TypeCode>31</ram:TypeCode>         
+                <ram:TypeCode>59</ram:TypeCode>         
                 <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-25" id="cii-BG-17-not-allowed-with-BG-19"
-                    description="CII BG-17 not allowed with BG-19" ?>                
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19"
+                        description="CII BG-17 not allowed with BG-19" ?>                
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>                                
