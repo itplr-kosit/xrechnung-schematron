@@ -64,8 +64,6 @@
   <param name="BG-15_DELIVER_TO_ADDRESS"
     value="/ubl:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address" />
 
-  <param name="BG-16_PAYMENT_INSTRUCTIONS" value="/ubl:Invoice/cac:PaymentMeans" />
-
   <param name="BG-17_CREDIT_TRANSFER" value="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]"/>
 
   <param name="BG-18_PAYMENT_CARD_INFO" value="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]"/>
