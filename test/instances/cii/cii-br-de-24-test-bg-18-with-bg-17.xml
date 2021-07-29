@@ -136,8 +136,8 @@
             <ram:SpecifiedTradeSettlementPaymentMeans>                 
                 <ram:TypeCode>48</ram:TypeCode>
                 <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-24" id="cii-BG-17-not-allowed-with-BG-18"
-                    description="CII BG-17 not allowed with BG-18" ?>
+                        schematron-invalid="xrcii:BR-DE-24-b" id="cii-BG-17-not-allowed-with-BG-18"
+                        description="CII BG-17 not allowed with BG-18" ?>
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>                
