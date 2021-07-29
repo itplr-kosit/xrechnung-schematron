@@ -59,12 +59,12 @@ BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von V
 | BR-DE-20 | "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
 | BR-DE-21 | Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. | complete (Schematron) | 
 | BR-DE-22 | Die in einer eingereichten Rechnung angehängten Dokumente in BG-24 ADDITIONAL SUPPORTING DOCUMENTS müssen im Element "Attached document/Attached document Filename" BT-125 einen eindeutigen Dateinamen haben (nicht case-sensitiv). | complete (Schematron) |
-| BR-DE-23a | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden. | complete (Schematron) |
-| BR-DE-23b | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-24a | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden. | complete (Schematron) |
-| BR-DE-24b | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-25a | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. | complete (Schematron) |
-| BR-DE-25b | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-23-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden. | complete (Schematron) |
+| BR-DE-23-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-24-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden. | complete (Schematron) |
+| BR-DE-24-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden. | complete (Schematron) |
+| BR-DE-25-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. | complete (Schematron) |
+| BR-DE-25-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden. | complete (Schematron) |
 | BR-DE-26 | Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll "Preceding Invoice Reference" (BG-3) mind. einmal vorhanden sein. | complete (Schematron) |
 
 ## Technical Coverage of the XRechnung Extension Rules implemented in Schematron
