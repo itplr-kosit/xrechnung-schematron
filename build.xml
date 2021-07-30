@@ -121,10 +121,10 @@
   <target name="prepare-saxon" depends="init"
     description="Download Saxon-HE and add jar to library directory">
     <get
-      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.8/SaxonHE9-8-0-8J.zip/download"
-      dest="${download.dir}/SaxonHE9-8-0-8J.zip" verbose="true"
+      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-1-8J.zip/download"
+      dest="${download.dir}/SaxonHE9-9-1-8J.zip" verbose="true"
       skipexisting="true" usetimestamp="true" />
-    <unzip src="${download.dir}/SaxonHE9-8-0-8J.zip" dest="${lib.dir}">
+    <unzip src="${download.dir}/SaxonHE9-9-1-8J.zip" dest="${lib.dir}">
       <patternset>
         <include name="**/${saxon.jar}" />
       </patternset>
