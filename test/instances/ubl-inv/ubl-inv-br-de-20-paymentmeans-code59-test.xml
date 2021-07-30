@@ -3,9 +3,14 @@
   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
   xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <?xmute mutator="identity" id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" description="Correct customization ids" ?>
-  <?xmute mutator="code" values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0" id="check-BR-DEX-02-without-sub-invoic-line" schematron-valid="xrinv:BR-DEX-02" description="Expect BR-DEX-02 to be valid without sub invoice lines"?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
+  <?xmute mutator="identity" 
+          id="correct-customization-id"
+          schematron-valid="xrinv:BR-DE-21" description="Correct customization ids" ?>
+  <?xmute mutator="code" 
+          values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0" 
+          id="check-BR-DEX-02-without-sub-invoic-line" 
+          schematron-valid="xrinv:BR-DEX-02" description="Expect BR-DEX-02 to be valid without sub invoice lines"?>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</cbc:CustomizationID>
 
   <cbc:ID>123456789</cbc:ID>
   <cbc:IssueDate>2019-02-28</cbc:IssueDate>
@@ -82,11 +87,11 @@
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
     <?xmute mutator="identity" 
-                schematron-valid="xrinv:BR-DE-20" id="wrong-iban-59"
-                description="Test to fix github issue #31" ?>
+            schematron-valid="xrinv:BR-DE-20" id="wrong-iban-59"
+            description="Test to fix github issue #31" ?>
     <?xmute mutator="remove"
-                schematron-valid="xrinv:BR-DE-20" id="wrong-iban-remove"
-                description="Test to fix github issue #31 by removing wrong payeefinancialaccount" ?>
+            schematron-valid="xrinv:BR-DE-20" id="wrong-iban-remove"
+            description="Test to fix github issue #31 by removing wrong payeefinancialaccount" ?>
     <cac:PayeeFinancialAccount>
       <!-- This has wrong check digit but matches the regex  -->
       <cbc:ID>DE65512108001245126199</cbc:ID>
