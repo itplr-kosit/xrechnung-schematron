@@ -68,14 +68,20 @@
     
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
-      <?xmute mutator="identity" id="correct-iban" schematron-valid="xrinv:BR-DE-21" description="Correct IBAN" ?>
+      <?xmute mutator="identity" id="correct-iban"
+              schematron-valid="xrinv:BR-DE-21" description="Correct IBAN" ?>
       <?xmute mutator="code" id="valid-iban" values="DE90200400000625899000"
-        schematron-valid="xrinv:BR-DE-19" description="Correct IBAN" ?>
+              schematron-valid="xrinv:BR-DE-19" description="Correct IBAN alternatives" ?>
       <?xmute mutator="code" id="invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912, DE90200400000625894000"
-        schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on wrong IBAN" ?>
-      <?xmute mutator="code" values="DE 75512108001245126199, DE75 51 2108 00124512 6199" separator="," schematron-valid="xrinv:BR-DE-19" id="iban-with-whitespace-inside" description="Iban whitespace inside, should still be validated"?>
-      <?xmute mutator="code" values="GB29NWBK60161331926819" separator="," schematron-valid="xrinv:BR-DE-19" id="iban-from-gb" description="british iban, should still be validated"?>      
-      <!--<?xmute mutator="whitespace" schematron-valid="xrinv:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>-->
+              schematron-invalid="xrinv:BR-DE-19" description="Expect to fail on wrong IBAN" ?>
+      <?xmute mutator="code" values="DE 75512108001245126199, DE75 51 2108 00124512 6199" separator=","
+              schematron-valid="xrinv:BR-DE-19" id="iban-with-whitespace-inside" description="IBAN whitespace inside, should still be validated"?>
+      <?xmute mutator="code" values="GB29NWBK60161331926819" separator="," 
+              schematron-valid="xrinv:BR-DE-19" id="iban-from-gb" description="British IBAN, should still be validated"?>      
+      <!--
+      <?xmute mutator="whitespace" 
+              schematron-valid="xrinv:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>
+      -->
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>

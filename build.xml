@@ -21,9 +21,7 @@
   <property name="xmute.version.full" value="0.5" />
   <property name="xmute.jar" value="xml-mutate.jar" />
 
-
   <property name="xr-schematron.zip" value="${dist.name}.zip" />
-
 
   <macrodef name="schematron-compile"
     description="Compiles Schematron to XSLT using Saxon">
@@ -93,11 +91,10 @@
         <param name="generate-fired-rule" expression="true" />
         <param name="full-path-notation" expression="3" />
       </xslt>
-      <echo
-        message="finished schematron compile output to @{outdir}/${schematron.basename}.xsl"
-       />
+      <echo message="finished schematron compile output to @{outdir}/${schematron.basename}.xsl" />
     </sequential>
   </macrodef>
+  
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
     <!-- Create timestamps -->
@@ -134,6 +131,7 @@
       <flattenmapper />
     </unzip>
   </target>
+  
   <target name="prepare-build-dir" depends="init"
     description="Works for zip from master and release zips">
 
@@ -181,20 +179,16 @@
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <arg value="--schematron" />
-      <arg
-        value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
+      <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
       <arg value="--schematron" />
-      <arg
-        value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+      <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
       <arg value="--schematron" />
-      <arg
-        value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
+      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
       <arg value="test/instances/ubl-inv/" />
       <arg value="test/instances/ubl-cn/" />
       <arg value="test/instances/cii/" />
     </java>
   </target>
-
 
   <target name="test-skonto-rules"  
     description="Unit testing Schematron Rules wit XML-Mutate"
@@ -206,21 +200,17 @@
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <arg value="--schematron" />
-      <arg
-        value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
+      <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
       <arg value="--schematron" />
-      <arg
-        value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
       <arg value="--schematron" />
-      <arg
-        value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
+      <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
 
       <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-freespace-test.xml" />
       <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-negative-test.xml" />
       <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml" />
       <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-test.xml" />
       <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test-2.xml" />
-      
       
     </java>
   </target>
@@ -233,8 +223,8 @@
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
       excludes="download/**,schematron/QS*2017/**,bis/**,generated" />
-
   </target>
+
   <target name="clean" description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
     <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
