@@ -65,8 +65,8 @@
             <cbc:ID>DE75512108001245126199</cbc:ID>
         </cac:PayeeFinancialAccount>
         <?xmute mutator="identity"
-                    schematron-invalid="xrinv:BR-DE-23" id="ubl-inv-BG-18-not-allowed-with-BG-17"
-                    description="UBL-Inv BG-18 not allowed with BG-17" ?>
+                schematron-invalid="xrinv:BR-DE-23-b" id="ubl-inv-BG-18-not-allowed-with-BG-17"
+                description="UBL-Inv BG-18 not allowed with BG-17" ?>
         <cac:CardAccount>
             <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
             <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>

@@ -154,8 +154,8 @@
       <cbc:HolderName>[Payment card holder name]</cbc:HolderName>
     </cac:CardAccount>
     <?xmute mutator="identity"
-                    schematron-invalid="xrcn:BR-DE-24" id="ubl-cn-BG-19-not-allowed-with-BG-17"
-                    description="UBL-CN BG-19 not allowed with BG-17" ?>
+            schematron-invalid="xrcn:BR-DE-24-b" id="ubl-cn-BG-19-not-allowed-with-BG-17"
+            description="UBL-CN BG-19 not allowed with BG-17" ?>
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>

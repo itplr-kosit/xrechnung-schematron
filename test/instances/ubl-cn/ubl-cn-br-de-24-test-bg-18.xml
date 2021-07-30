@@ -149,15 +149,15 @@
   </cac:Delivery>
   <cac:PaymentMeans>
     <?xmute mutator="code" values="48,54,55" 
-                    schematron-valid="xrcn:BR-DE-24" id="ubl-br-de-24-possible-typecodes"
-                    description="possible typecodes" ?> 
+            schematron-valid="xrcn:BR-DE-24-a" id="ubl-br-de-24-possible-typecodes"
+            description="possible typecodes" ?> 
     <cbc:PaymentMeansCode>48</cbc:PaymentMeansCode>                       
     <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18"
-                    description="mandatory BG-18" ?>
+            schematron-valid="xrcn:BR-DE-24-a" id="ubl-mandatory-BG-18"
+            description="mandatory BG-18" ?>
     <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-24" id="ubl-mandatory-BG-18-2"
-                    description="mandatory BG-18" ?>
+            schematron-invalid="xrcn:BR-DE-24-a" id="ubl-mandatory-BG-18-remove"
+            description="mandatory BG-18" ?>
     <cac:CardAccount>
       <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
       <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>

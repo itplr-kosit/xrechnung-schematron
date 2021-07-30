@@ -142,7 +142,7 @@
                         schematron-valid="xrcii:BR-DE-23-a" id="cii-mandatory-BG-17"
                         description="mandatory BG-17" ?>
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:BR-DE-23-b" id="cii-mandatory-BG-17-removed"
+                        schematron-invalid="xrcii:BR-DE-23-a" id="cii-mandatory-BG-17-removed"
                         description="mandatory BG-17" ?>
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
