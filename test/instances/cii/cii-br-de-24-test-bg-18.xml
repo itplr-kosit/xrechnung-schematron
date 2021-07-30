@@ -2,8 +2,7 @@
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
     xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 ../../../schemas/UN_CEFACT/CrossIndustryInvoice_100pD16B.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
             <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
@@ -136,15 +135,15 @@
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <?xmute mutator="code" values="48,54,55" 
-                    schematron-valid="xrcii:BR-DE-24" id="cii-br-de-24-possible-typecodes"
-                    description="possible typecodes" ?> 
+                        schematron-valid="xrcii:BR-DE-24-a" id="cii-br-de-24-possible-typecodes"
+                        description="possible typecodes" ?> 
                 <ram:TypeCode>48</ram:TypeCode>                
                 <?xmute mutator="identity"
-                    schematron-valid="xrcii:BR-DE-24" id="cii-mandatory-BG-18"
-                    description="mandatory BG-18" ?>
+                        schematron-valid="xrcii:BR-DE-24-a" id="cii-mandatory-BG-18"
+                        description="mandatory BG-18" ?>
                 <?xmute mutator="remove"
-                    schematron-invalid="xrcii:BR-DE-24" id="cii-mandatory-BG-18-2"
-                    description="mandatory BG-18" ?>
+                        schematron-invalid="xrcii:BR-DE-24-a" id="cii-mandatory-BG-18-2"
+                        description="mandatory BG-18" ?>
                 <ram:ApplicableTradeSettlementFinancialCard>
                     <ram:ID>41234</ram:ID>
                     <ram:CardholderName>[Payment card holder name]</ram:CardholderName>

@@ -131,19 +131,14 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>                 
-            <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
+        <ram:ApplicableHeaderTradeSettlement>     
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
-            <ram:SpecifiedTradeSettlementPaymentMeans>                
-                <ram:TypeCode>59</ram:TypeCode>         
-                <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19"
-                        description="CII BG-17 not allowed with BG-19" ?>                
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>58</ram:TypeCode>                
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>                                
-                <ram:PayerPartyDebtorFinancialAccount>                                      
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                <ram:PayerPartyDebtorFinancialAccount>                    
                 </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
@@ -154,7 +149,10 @@
                 <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>                
+                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
+                <?xmute mutator="identity"
+                        schematron-invalid="xrcii:BR-DE-23-b" id="cii-BG-19-BT-90-not-allowed-with-BG-17"
+                        description="CII BG-19 BT-90 not allowed with BG-17" ?>
                 <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>

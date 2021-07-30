@@ -11,13 +11,13 @@
   <param name="BR-DE-09" value="cbc:PostalZone[boolean(normalize-space(.))]" />
   <param name="BR-DE-10" value="cbc:CityName[boolean(normalize-space(.))]" />
   <param name="BR-DE-11" value="cbc:PostalZone[boolean(normalize-space(.))]" />
-  <param name="BR-DE-13"
-    value="count((cac:PaymentMeans/cac:PayeeFinancialAccount)[1]) + count(cac:PaymentMeans/cac:CardAccount) + count(cac:PaymentMeans/cac:PaymentMandate) = 1" />
-  <param name="BR-DE-14"
-    value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]" />
+  <param name="BR-DE-14" value="cac:TaxCategory/cbc:Percent[boolean(normalize-space(.))]" />
   <param name="BR-DE-15" value="cbc:BuyerReference[boolean(normalize-space(.))]" />
   <!-- In BR-DE-16 'if a then b else true' has been reshaped to 'not a or b' -->
-  <param name="BR-DE-16" value="not((cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or (cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or (cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M'))) or (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])" />
+  <param name="BR-DE-16" value="not((cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
+                                    (cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
+                                    (cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M'))) or 
+                                (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))])" />
   <param name="BR-DE-17"
     value="cbc:CreditNoteTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877')" />
   <param name="BR-DE-18"
@@ -36,38 +36,35 @@
     value="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0' or cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0'" />
   <param name="BR-DE-22"
     value="count(cac:AdditionalDocumentReference) = count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])" />
-  <param name="BR-DE-23"
-    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = (30,49,58,59)])      
-    or (cac:PaymentMeans/cac:PayeeFinancialAccount
-      and not(cac:PaymentMeans/cac:CardAccount)
-      and not(cac:PaymentMeans/cac:PaymentMandate))"/>
-  <param name="BR-DE-24" 
-    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)])    
-    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
-    and cac:PaymentMeans/cac:CardAccount
-    and not(cac:PaymentMeans/cac:PaymentMandate))"/>
-  <param name="BR-DE-25" 
-    value="not(cac:PaymentMeans[cbc:PaymentMeansCode = 31])   
-    or (not(cac:PaymentMeans/cac:PayeeFinancialAccount)
-    and not(cac:PaymentMeans/cac:CardAccount)
-    and cac:PaymentMeans/cac:PaymentMandate)"/>
-  <param name="CREDIT_NOTE" value="//ubl:CreditNote" />
-  <param name="BG-4_SELLER" value="//ubl:CreditNote/cac:AccountingSupplierParty" />
+    
+  <param name="BR-DE-23a" value="cac:PayeeFinancialAccount"/>
+  <param name="BR-DE-23b" value="not(cac:CardAccount) and not(cac:PaymentMandate)"/>
+  
+  <param name="BR-DE-24a" value="cac:CardAccount"/>
+  <param name="BR-DE-24b" value="not(cac:PayeeFinancialAccount) and not(cac:PaymentMandate)"/>
+  
+  <param name="BR-DE-25a" value="cac:PaymentMandate"/>
+  <param name="BR-DE-25b" value="not(cac:PayeeFinancialAccount) and not(cac:CardAccount)"/>
+
+  <param name="CREDIT_NOTE" value="/ubl:CreditNote" />
+  <param name="BG-4_SELLER" value="/ubl:CreditNote/cac:AccountingSupplierParty" />
   <param name="BG-5_SELLER_POSTAL_ADDRESS"
-    value="//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress" />
+    value="/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress" />
   <param name="BG-6_SELLER_CONTACT"
-    value="//ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact" />
+    value="/ubl:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact" />
 
   <param name="BG-8_BUYER_POSTAL_ADDRESS"
-    value="//ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress" />
+    value="/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress" />
 
   <param name="BG-15_DELIVER_TO_ADDRESS"
-    value="//ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address" />
+    value="/ubl:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address" />
 
-  <param name="BG-16_PAYMENT_INSTRUCTIONS"
-    value="//ubl:CreditNote/cac:PaymentMeans" />
+  <param name="BG-17_CREDIT_TRANSFER" value="/ubl:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]"/>
 
-  <param name="BG-23_VAT_BREAKDOWN"
-    value="//ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal" />
+  <param name="BG-18_PAYMENT_CARD_INFO" value="/ubl:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]"/>
+
+  <param name="BG-19_DIRECT_DEBIT" value="/ubl:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = 59]"/>
+
+  <param name="BG-23_VAT_BREAKDOWN" value="/ubl:CreditNote/cac:TaxTotal/cac:TaxSubtotal" />
 
 </pattern>

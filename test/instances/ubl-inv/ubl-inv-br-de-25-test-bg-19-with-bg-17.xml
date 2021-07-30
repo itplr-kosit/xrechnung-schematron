@@ -60,13 +60,13 @@
     </cac:AccountingCustomerParty>
     <cac:PaymentMeans> 
         <?xmute mutator="identity"
-                    schematron-invalid="xrinv:BR-DE-25" id="ubl-inv-BG-17-not-allowed-with-BG-19"
-                    description="UBL-Inv BG-17 not allowed with BG-19" ?>
+                schematron-invalid="xrinv:BR-DE-25-b" id="ubl-inv-BG-17-not-allowed-with-BG-19"
+                description="UBL-Inv BG-17 not allowed with BG-19" ?>
         <cac:PayeeFinancialAccount>
             <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
             <cbc:ID>DE75512108001245126199</cbc:ID>
         </cac:PayeeFinancialAccount>        
-        <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>        
+        <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>        
         <cac:PaymentMandate>
             <cbc:ID>[Mandate reference identifier]</cbc:ID>
             <cac:PayerFinancialAccount>

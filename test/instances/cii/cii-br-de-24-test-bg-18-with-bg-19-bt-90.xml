@@ -2,8 +2,7 @@
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
     xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 ../../../schemas/UN_CEFACT/CrossIndustryInvoice_100pD16B.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
             <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
@@ -132,22 +131,15 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>     
-            <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-23" id="cii-BG-19-not-allowed-with-BG-17"
-                    description="CII BG 19 not allowed with BG-17" ?>
-            <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
+        <ram:ApplicableHeaderTradeSettlement>            
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>58</ram:TypeCode>                
-                <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>                                
+                <ram:TypeCode>48</ram:TypeCode>                                
+                <ram:ApplicableTradeSettlementFinancialCard>
+                    <ram:ID>41234</ram:ID>
+                    <ram:CardholderName>[Payment card holder name]</ram:CardholderName>
+                </ram:ApplicableTradeSettlementFinancialCard>
                 <ram:PayerPartyDebtorFinancialAccount>                    
-                    <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-23" id="cii-BG-19-not-allowed-with-BG-17-2"
-                    description="CII BG 19 not allowed with BG-17" ?>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
@@ -160,8 +152,8 @@
             <ram:SpecifiedTradePaymentTerms>
                 <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
                 <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-DE-23" id="cii-BG-19-not-allowed-with-BG-17-3"
-                    description="CII BG 19 not allowed with BG-17" ?>
+                        schematron-invalid="xrcii:BR-DE-24-b" id="cii-BG-19-BT-90-not-allowed-with-BG-18"
+                        description="CII BG-19 BT-90 not allowed with BG-18" ?>
                 <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>

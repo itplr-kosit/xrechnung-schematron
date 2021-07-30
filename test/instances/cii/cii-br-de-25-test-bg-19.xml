@@ -2,8 +2,7 @@
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
     xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100 ../../../schemas/UN_CEFACT/CrossIndustryInvoice_100pD16B.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
             <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</ram:ID>
@@ -134,19 +133,19 @@
         <ram:ApplicableHeaderTradeDelivery/>
         <ram:ApplicableHeaderTradeSettlement>     
             <?xmute mutator="identity"
-                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-89"
+                    schematron-valid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-BT-89"
                     description="mandatory BG-19 BT-89" ?>
             <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <?xmute mutator="identity" 
-                    schematron-valid="xrcii:BR-DE-25" id="cii-br-de-25-possible-typecodes"
-                    description="possible typecodes" ?> 
-                <ram:TypeCode>31</ram:TypeCode>                
+                        schematron-valid="xrcii:BR-DE-25-a xrcii:BR-DE-25-b" id="cii-br-de-25-possible-typecodes"
+                        description="possible typecodes" ?> 
+                <ram:TypeCode>59</ram:TypeCode>                
                 <ram:PayerPartyDebtorFinancialAccount>                    
                     <?xmute mutator="identity"
-                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-91"
-                    description="mandatory BG-19 BT-91" ?>
+                            schematron-valid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-BT-91"
+                            description="mandatory BG-19 BT-91" ?>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
@@ -160,8 +159,8 @@
             <ram:SpecifiedTradePaymentTerms>
                 <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
                 <?xmute mutator="identity"
-                    schematron-valid="xrcii:BR-DE-25" id="cii-mandatory-BG-19-BT-90"
-                    description="mandatory BG-19 BT-90" ?>
+                        schematron-valid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-BT-90"
+                        description="mandatory BG-19 BT-90" ?>
                 <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>

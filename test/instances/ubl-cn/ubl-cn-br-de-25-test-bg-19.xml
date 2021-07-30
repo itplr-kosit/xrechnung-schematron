@@ -148,15 +148,15 @@
   </cac:Delivery>
   <cac:PaymentMeans> 
     <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-25" id="ubl-br-de-25-possible-typecodes"
-                    description="possible typecodes" ?> 
-    <cbc:PaymentMeansCode>31</cbc:PaymentMeansCode>                
+            schematron-valid="xrinv:BR-DE-25-a" id="ubl-br-de-25-possible-typecodes"
+            description="possible typecodes" ?> 
+    <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>                
     <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-25" id="ubl-mandatory-BG-19"
-                    description="mandatory BG-19" ?>
+            schematron-valid="xrcn:BR-DE-25-a" id="ubl-mandatory-BG-19"
+            description="mandatory BG-19" ?>
     <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-25" id="ubl-mandatory-BG-19-2"
-                    description="mandatory BG-19" ?>
+            schematron-invalid="xrcn:BR-DE-25-a" id="ubl-mandatory-BG-19-remove"
+            description="mandatory BG-19" ?>
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>

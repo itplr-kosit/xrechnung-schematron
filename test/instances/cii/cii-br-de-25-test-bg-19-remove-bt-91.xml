@@ -131,18 +131,14 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>                 
-            <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
+        <ram:ApplicableHeaderTradeSettlement>     
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
-            <ram:SpecifiedTradeSettlementPaymentMeans>                
-                <ram:TypeCode>59</ram:TypeCode>         
-                <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19"
-                        description="CII BG-17 not allowed with BG-19" ?>                
-                <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>                                
-                <ram:PayerPartyDebtorFinancialAccount>                                      
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>59</ram:TypeCode>                
+                <ram:PayerPartyDebtorFinancialAccount>                    
+                    <?xmute mutator="remove"
+                            schematron-invalid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-remove-BT-91"
+                            description="mandatory for BG-19 is (1 of 3) BT-91" ?>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
@@ -154,8 +150,7 @@
                 <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>                
-                <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
+                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>314.86</ram:LineTotalAmount>

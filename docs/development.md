@@ -13,7 +13,13 @@ Currently, you need to manually download the newest version from https://projekt
 If you set the ant property to the URL of directory (full path) like e.g. `xmute.download.url.prefix=file:/mnt/c/data/git-repos/xml-mutator/target` (Linux), you can als execute the `test` target e.g. 
 
 ```shell
-ant -D xmute.download.url.prefix=file:/home/renzo/projects/xml-mutate/target test
+ant -Dxmute.download.url.prefix=file:/home/renzo/projects/xml-mutate/target test
+```
+
+For Windows users:
+
+```shell
+ant "-Dxmute.download.url.prefix=file:/c:/dev/git/xml-mutate/target" test
 ```
 
 
