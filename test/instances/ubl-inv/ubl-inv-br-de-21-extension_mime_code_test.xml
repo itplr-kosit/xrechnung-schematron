@@ -10,7 +10,7 @@
           schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on wrong customization id"?>
   <?xmute mutator="empty" id="empty-customization-id"
           schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on empty customization id"?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1#conformant#urn:xoev-de:kosit:extension:xrechnung_2.1</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -46,7 +46,7 @@
     <cac:Attachment>
       <?xmute mutator="code" values="application/xml, application/pdf, image/png, image/jpeg, text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               schematron-valid="xrinv:BR-DEX-01" description="Expect all valid mime-codes to be correct" 
-              attribute="mimeCode"?>      
+              attribute="mimeCode" ?>      
       <?xmute mutator="code" values="application/nonsense"
               schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize wrong mime-type" 
               attribute="mimeCode" ?>
