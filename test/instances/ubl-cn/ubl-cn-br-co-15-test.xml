@@ -47,8 +47,8 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
-        <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>
-        <cbc:CityName>[Seller city]</cbc:CityName>
+        <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>        
+        <cbc:CityName>[Seller city]</cbc:CityName>        
         <cbc:PostalZone>12345</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
@@ -70,10 +70,10 @@
         <cbc:RegistrationName>[Seller trading name]</cbc:RegistrationName>
         <cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
         <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […], Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
-      </cac:PartyLegalEntity>
+      </cac:PartyLegalEntity>      
       <cac:Contact>
-        <cbc:Name>Tim Tester</cbc:Name>
-        <cbc:Telephone>012 3456789</cbc:Telephone>
+        <cbc:Name>Tim Tester</cbc:Name>        
+        <cbc:Telephone>012 3456789</cbc:Telephone>        
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
@@ -89,8 +89,8 @@
       </cac:PartyName>
       <cac:PostalAddress>
         <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
-        <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>
-        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>       
+        <cbc:CityName>[Buyer city]</cbc:CityName>        
         <cbc:PostalZone>98765</cbc:PostalZone>
         <cac:AddressLine>
           <cbc:Line>[Buyer address line 3]</cbc:Line>
@@ -178,24 +178,21 @@
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
-  <!--<cac:AllowanceCharge>
-    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
     <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
-    <cac:TaxCategory>
-      <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-valid="xrcn:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-151-valid"
-                    description="mandatory companyID with some tax category" ?>
+    <cac:TaxCategory>     
       <cbc:ID>S</cbc:ID>
       <cbc:Percent>19</cbc:Percent>
       <cac:TaxScheme>
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
     </cac:TaxCategory>
-  </cac:AllowanceCharge>-->
+  </cac:AllowanceCharge>
   
   
   <cac:TaxTotal>
@@ -212,6 +209,22 @@
       </cac:TaxCategory>
     </cac:TaxSubtotal>    
   </cac:TaxTotal>
+  
+  
+  <cac:TaxTotal>
+    <?xmute mutator="identity"
+            schematron-valid="xrcn:BR-CO-15" id="ubl-cn-BR-CO-15-okay"
+            description="Using a different currency for second TaxTotal is fine" ?>
+    <?xmute mutator="remove"
+            schematron-valid="xrcn:BR-CO-15" id="ubl-cn-BR-CO-15-removed"
+            description="Removing the second TaxTotal is also cool" ?>
+    <?xmute mutator="code" values="EUR"
+            schematron-invalid="xrinv:BR-CO-15" id="ubl-cn-BR-CO-15-codes"
+            description="Using the same currency again should fire the rule" 
+            attribute="currencyID" ?>      
+    <cbc:TaxAmount currencyID="GBP">123.45</cbc:TaxAmount>
+  </cac:TaxTotal>
+  
   
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
@@ -248,9 +261,6 @@
           >0721-880X</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
-        <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-valid="xrcn:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-151-valid"
-                    description="mandatory companyID with some tax category" ?>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
         <cac:TaxScheme>
