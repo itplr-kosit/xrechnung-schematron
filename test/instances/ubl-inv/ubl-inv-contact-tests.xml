@@ -25,18 +25,18 @@
       <cac:PostalAddress>
         <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-3"
-                    id="seller-city-rm-r3"
-            description="Seller City name must exist" ?>
+                id="seller-city-rm-r3"
+                description="Seller City name must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-3"
-                    id="seller-city-emtpty-r3"
-            description="Seller City name must have text content" ?>
+                id="seller-city-emtpty-r3"
+                description="Seller City name must have text content" ?>
         <cbc:CityName>[Seller city]</cbc:CityName>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-4"
-                    id="seller-postcode-rm-r4"
-                    description="Seller City Post Code must exist" ?>
+                id="seller-postcode-rm-r4"
+                description="Seller City Post Code must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-4"
-                    id="seller-psotcode-emtpty-r4"
-            description="Seller City Post Code must have text content" ?>
+                id="seller-psotcode-emtpty-r4"
+                description="Seller City Post Code must have text content" ?>
         <cbc:PostalZone>12345</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
@@ -53,29 +53,30 @@
         <cbc:CompanyID>[HRA-Eintrag]</cbc:CompanyID>
         <cbc:CompanyLegalForm>123/456/7890, HRA-Eintrag in […]</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
-      <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-2" id="contact-rm-r2"
-            description="A party element with conatct must exist" ?>
+      <?xmute mutator="remove"
+              schematron-invalid="xrinv:BR-DE-2" id="contact-rm-r2"
+              description="A party element with conatct must exist" ?>
       <cac:Contact>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-5"
-                    id="seller-contact-name-rm-r5"
-            description="Seller Contact/Name must exist" ?>
+                id="seller-contact-name-rm-r5"
+                description="Seller Contact/Name must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-5"
-                    id="seller-contact-name-emtpty-r5"
-            description="Seller Contact/Name must have text content" ?>
+                id="seller-contact-name-emtpty-r5"
+                description="Seller Contact/Name must have text content" ?>
         <cbc:Name>Max Mustermann</cbc:Name>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-6"
-                    id="seller-telephone-rm-r6"
-            description="Seller Telephone must exist" ?>
+                id="seller-telephone-rm-r6"
+                description="Seller Telephone must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-6"
-                    id="seller-telephone-emtpty-r6"
-            description="Seller Telephone must have text content" ?>
+                id="seller-telephone-emtpty-r6"
+                description="Seller Telephone must have text content" ?>
         <cbc:Telephone>+49 1234-5678</cbc:Telephone>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-7"
-                    id="seller-email-rm-r7"
-            description="Seller Email must exist" ?>
+                id="seller-email-rm-r7"
+                description="Seller Email must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-7"
-                    id="seller-email-emtpty-r7"
-            description="Seller Email must have text content" ?>
+                id="seller-email-emtpty-r7"
+                description="Seller Email must have text content" ?>
         <cbc:ElectronicMail>seller@email.de</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
@@ -88,18 +89,18 @@
       <cac:PostalAddress>
         <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-8"
-                    id="buyer-city-rm-r8"
-            description="Buyer City must exist" ?>
+                id="buyer-city-rm-r8"
+                description="Buyer City must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-8"
-                    id="buyer-city-emtpty-r8"
-            description="Buyer City must have text content" ?>
+                id="buyer-city-emtpty-r8"
+                description="Buyer City must have text content" ?>
         <cbc:CityName>[Buyer city]</cbc:CityName>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-9"
-                    id="buyer-postcode-rm-r8"
-            description="Buyer PostalZone must exist" ?>
+                id="buyer-postcode-rm-r8"
+                description="Buyer PostalZone must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-9"
-                    id="buyer-postcode-emtpty-r8"
-            description="Buyer PostalZone must have text content" ?>
+                id="buyer-postcode-emtpty-r8"
+                description="Buyer PostalZone must have text content" ?>
         <cbc:PostalZone>12345</cbc:PostalZone>
         <cac:Country>
           <cbc:IdentificationCode>DE</cbc:IdentificationCode>
@@ -111,25 +112,28 @@
     </cac:Party>
   </cac:AccountingCustomerParty>
   <?xmute mutator="remove" schematron-valid="xrinv:BR-DE-10,xrinv:BR-DE-11"
-                    id="delivery-rm-r10"
-            description="BG-15 Deliver To Address is Optional" ?>
+          id="delivery-rm-r10"
+          description="BG-15 Deliver To Address is Optional" ?>
   <cac:Delivery>
     <cac:DeliveryLocation>
       <cac:Address>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-10"
-                    id="deliver-address-city-rm-r10"
-            description="Deliver City must exist" ?>
+                id="deliver-address-city-rm-r10"
+                description="Deliver City must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-10"
-                    id="deliver-address-city-r10"
-            description="Deliver City must have text content" ?>
+                id="deliver-address-city-r10"
+                description="Deliver City must have text content" ?>
         <cbc:CityName>Deliver City</cbc:CityName>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DE-11"
-                    id="deliver-postcode-city-rm-r10"
-            description="Deliver PostalZone must exist" ?>
+                id="deliver-postcode-city-rm-r10"
+                description="Deliver PostalZone must exist" ?>
         <?xmute mutator="empty" schematron-invalid="xrinv:BR-DE-11"
-                    id="deliver-psotcode-city-r10"
-            description="Deliver PostalZone must have text content" ?>
+                id="deliver-psotcode-city-r10"
+                description="Deliver PostalZone must have text content" ?>
         <cbc:PostalZone>postal zone here</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
       </cac:Address>
     </cac:DeliveryLocation>
   </cac:Delivery>
@@ -137,7 +141,7 @@
 
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cac:CardAccount>
-      <cbc:PrimaryAccountNumberID>123</cbc:PrimaryAccountNumberID>
+      <cbc:PrimaryAccountNumberID>123456</cbc:PrimaryAccountNumberID>
       <cbc:NetworkID>1222</cbc:NetworkID>
     </cac:CardAccount>
     <cac:PayeeFinancialAccount>

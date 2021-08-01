@@ -12,7 +12,7 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
+  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
 
 
@@ -198,7 +198,7 @@
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
       <cbc:ID>S</cbc:ID>
-      <cbc:Percent>0</cbc:Percent>
+      <cbc:Percent>19</cbc:Percent>
       <cac:TaxScheme>
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
@@ -225,7 +225,7 @@
       <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
       <cac:TaxCategory>
         <cbc:ID>E</cbc:ID>
-        <cbc:Percent>0</cbc:Percent>
+        <cbc:Percent>19</cbc:Percent>
         <cbc:TaxExemptionReason>a reason</cbc:TaxExemptionReason>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
@@ -292,6 +292,13 @@
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>

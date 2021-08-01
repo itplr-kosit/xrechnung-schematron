@@ -35,8 +35,10 @@
                     <cbc:IdentificationCode>DE</cbc:IdentificationCode>
                 </cac:Country>
             </cac:PostalAddress>
-            <cac:PartyTaxScheme>                
+            <cac:PartyTaxScheme>
+            <!--                 
                 <cbc:CompanyID>DE199861724</cbc:CompanyID>
+                 -->
                 <cac:TaxScheme>
                     <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
                 </cac:TaxScheme>
@@ -92,7 +94,7 @@
             <cbc:TaxableAmount currencyID="EUR">5000.00</cbc:TaxableAmount>
             <cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
             <cac:TaxCategory>                
-                <cbc:ID schemeID="UNCL5305">O</cbc:ID>
+                <cbc:ID>O</cbc:ID>
                 <cbc:Percent>0.00</cbc:Percent>
                 <cbc:TaxExemptionReason>Nicht steuerbar</cbc:TaxExemptionReason>
                 <cac:TaxScheme>
@@ -113,12 +115,6 @@
         <cbc:Note>Dummymaterial</cbc:Note>
         <cbc:InvoicedQuantity unitCode="C62">1.00</cbc:InvoicedQuantity>
         <cbc:LineExtensionAmount currencyID="EUR">5000.00</cbc:LineExtensionAmount>
-        <cac:OrderLineReference>
-            <cbc:LineID>undef</cbc:LineID>
-            <cac:OrderReference>
-                <cbc:ID>undefined</cbc:ID>
-            </cac:OrderReference>
-        </cac:OrderLineReference>
         <cac:Item>
             <cbc:Description>Dummymaterial</cbc:Description>
             <cbc:Name>Dummymaterial</cbc:Name>
@@ -129,7 +125,7 @@
                 <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
                     schematron-valid="xrinv:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151"
                     description="mandatory companyID with some tax category" ?>
-                <cbc:ID schemeID="UNCL5305">S</cbc:ID>
+                <cbc:ID>O</cbc:ID>
                 <cac:TaxScheme>
                     <cbc:ID schemeID="UNCL5305">VAT</cbc:ID>
                 </cac:TaxScheme>
