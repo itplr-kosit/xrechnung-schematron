@@ -2,12 +2,14 @@ dist/
 build/
 lib/
 reports/
+
 .vscode
 *.xpr
 .ant-targets-build.xml
 .project
 .DS_Store
 zz
+build.properties
 
 validation/schematron/QS 2017/
 validation/schematron/ubl-cn/XRechnung-UBL-validation.sch

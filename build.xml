@@ -1,6 +1,9 @@
 <project name="xrechnung-schematron" default="compile-schematron-rules"
   basedir=".">
   <description>Build XRechnung Schematron Rules</description>
+  
+  <property file="build.properties" />
+  
   <!-- set global default properties for this build -->
   <!-- main build directories -->
   <property name="src.dir" location="${basedir}/validation" />
