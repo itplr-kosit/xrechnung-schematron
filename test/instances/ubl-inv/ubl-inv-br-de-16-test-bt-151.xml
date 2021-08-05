@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <cbc:CustomizationID
         xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
-        >urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
+        >urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</cbc:CustomizationID>
     <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID xmlns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
         >0150085959</cbc:ID>
