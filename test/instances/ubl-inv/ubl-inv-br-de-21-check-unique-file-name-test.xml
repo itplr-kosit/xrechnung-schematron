@@ -14,7 +14,7 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
+  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -201,8 +201,8 @@
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
-      <cbc:ID>E</cbc:ID>
-      <cbc:Percent>0</cbc:Percent>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
       <cac:TaxScheme>
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
@@ -217,8 +217,8 @@
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
-      <cbc:ID>E</cbc:ID>
-      <cbc:Percent>0</cbc:Percent>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
       <cac:TaxScheme>
         <cbc:ID>VAT</cbc:ID>
       </cac:TaxScheme>
@@ -235,18 +235,6 @@
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
 
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:TaxCategory>
-    </cac:TaxSubtotal>
-    <cac:TaxSubtotal>
-      <cbc:TaxableAmount currencyID="EUR">0</cbc:TaxableAmount>
-      <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
-      <cac:TaxCategory>
-        <cbc:ID>E</cbc:ID>
-        <cbc:Percent>0</cbc:Percent>
-        <cbc:TaxExemptionReason>a reason</cbc:TaxExemptionReason>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>

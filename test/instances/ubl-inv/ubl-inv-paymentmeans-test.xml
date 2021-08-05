@@ -69,18 +69,21 @@
       </cac:Contact>
     </cac:Party>
   </cac:AccountingCustomerParty>
-  <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-1" id="paymentmeans-exists-p" description="PaymentMeans has to exist" ?>
+  <?xmute mutator="identity" 
+          schematron-valid="xrinv:BR-DE-1" id="paymentmeans-exists-p"
+          description="PaymentMeans has to exist" ?>
   <?xmute mutator="remove" 
-            schematron-invalid="xrinv:BR-DE-1" 
-            id="paymentmeans-exists-n" description="PaymentMeans can not be removed" ?>
+          schematron-invalid="xrinv:BR-DE-1" 
+          id="paymentmeans-exists-n" description="PaymentMeans can not be removed" ?>
   <cac:PaymentMeans>
-    <?xmute mutator="code" values="58" schematron-valid="xrinv:BR-DE-19" 
-                id="sepa-code" description="If 58 then PayeeFinancialAccount has to be valid iban" ?>
+    <?xmute mutator="code" values="58"
+            schematron-valid="xrinv:BR-DE-19" 
+            id="sepa-code" description="If 58 then PayeeFinancialAccount has to be valid iban" ?>
     <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
       <?xmute mutator="code" values="sdsfsadgfa"
-                schematron-valid="xrinv:BR-DE-19" id="wrong-iban"
-                description="Wrong iban should not get evaluated  at all cause code 30" ?>
+              schematron-valid="xrinv:BR-DE-19" id="wrong-iban"
+              description="Wrong iban should not get evaluated  at all cause code 30" ?>
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
@@ -94,7 +97,6 @@
       <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
       <cac:TaxCategory>
         <cbc:ID>O</cbc:ID>
-        <cbc:Percent>0</cbc:Percent>
         <cbc:TaxExemptionReason>als gemeinnützig anerkannt</cbc:TaxExemptionReason>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>

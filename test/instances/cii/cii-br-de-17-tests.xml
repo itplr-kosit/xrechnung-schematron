@@ -12,11 +12,11 @@
     <rsm:ExchangedDocument>
         <ram:ID>123456XX</ram:ID>
         <?xmute mutator="code" values="326,380,384,389,381,875,876,877" 
-                    schematron-valid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
-                    description="br-de-17 test valid type codes" ?>
+                schematron-valid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
+                description="br-de-17 test valid type codes" ?>
         <?xmute mutator="code" values="383,527" 
-                    schematron-invalid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
-                    description="br-de-17 test invalid type codes" ?>
+                schematron-invalid="xrcii:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
+                description="br-de-17 test invalid type codes" ?>
         <ram:TypeCode>380</ram:TypeCode>
         <ram:IssueDateTime>
             <udt:DateTimeString format="102">20160404</udt:DateTimeString>
@@ -72,7 +72,32 @@
                 </ram:SpecifiedTradeSettlementLineMonetarySummation>
             </ram:SpecifiedLineTradeSettlement>
         </ram:IncludedSupplyChainTradeLineItem>
-        
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>Porto + Versandkosten</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedTradeProduct>
+                <ram:Name>Porto + Versandkosten</ram:Name>
+            </ram:SpecifiedTradeProduct>
+            <ram:SpecifiedLineTradeAgreement>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount>26.07</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedLineTradeAgreement>
+            <ram:SpecifiedLineTradeDelivery>
+                <ram:BilledQuantity unitCode="XPP">1</ram:BilledQuantity>
+            </ram:SpecifiedLineTradeDelivery>
+            <ram:SpecifiedLineTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeSettlementLineMonetarySummation>
+                    <ram:LineTotalAmount>26.07</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementLineMonetarySummation>
+            </ram:SpecifiedLineTradeSettlement>
+        </ram:IncludedSupplyChainTradeLineItem>
         <ram:ApplicableHeaderTradeAgreement>
             <ram:BuyerReference>04011000-12345-34</ram:BuyerReference>
             <ram:SellerTradeParty>

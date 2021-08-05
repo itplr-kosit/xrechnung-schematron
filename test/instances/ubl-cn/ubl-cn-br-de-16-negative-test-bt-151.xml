@@ -9,7 +9,7 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
+  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -193,12 +193,6 @@
     </cac:TaxSubtotal>    
   </cac:TaxTotal>
   
-  
-  <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-  
-  
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -214,7 +208,7 @@
   <cac:CreditNoteLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <!--<cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>-->
+    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2016-01-01</cbc:StartDate>
@@ -250,10 +244,17 @@
   </cac:CreditNoteLine>
   <cac:CreditNoteLine>
     <cbc:ID>2</cbc:ID>
-    <!--<cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>-->
+    <cbc:CreditedQuantity unitCode="XPP">42</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
