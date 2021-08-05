@@ -53,7 +53,7 @@
       <?xmute mutator="empty" 
               schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize mime-type not empty" 
               attribute="mimeCode" ?>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" 
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml" 
         filename="01_15_Anhang_01.xml" />
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
