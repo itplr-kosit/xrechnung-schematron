@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -11,11 +11,11 @@
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
   <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10"
-                    description="mandatory BT-10" ?>
+          schematron-valid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10"
+          description="mandatory BT-10" ?>
   <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10"
-                    description="mandatory BT-10" ?>
+          schematron-invalid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10-removed"
+          description="mandatory BT-10" ?>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
