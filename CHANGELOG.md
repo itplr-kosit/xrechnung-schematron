@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## v1.6.0 on 2021-07-31
 
 This version is compatible with XRechnung 2.1.1
+
 ### Added
+
 * Schematron Rules
   * BR-DE-23 replaces BR-DE-13
   * BR-DE-24 replaces BR-DE-13
@@ -16,8 +18,11 @@ This version is compatible with XRechnung 2.1.1
   * BR-DE-26 (for UBL Invoice and CII only)
 
 ### Changed
+
 * Schematron Rules
   * BR-DE-13 removed
+* Now only one Schematron file per Syntax
+* All test source instances valid to EN16931 and XRechnung 2.1 
 
 ## v1.5.0 on 2020-12-31
 
