@@ -3,7 +3,6 @@
 Schematron sources are in `validation/schematron/{cii, ubl-cn, ubl-inv}` directories. 
 
 
-
 ## Test case development with XML Mutate
 
 We also create test cases using XML Mutate https://projekte.kosit.org/kosit/xml-mutate .
@@ -58,3 +57,46 @@ The main `ant` targets for developing are:
 * and `dist` (creating the distribution artefact)
 
 However, because of the complex dependencies, you may only expect `compile` target to work without any customizations.
+
+## Distribution
+
+The `ant` target `dist` creates the distribution zip archive.
+
+## Release
+
+### Checklist
+
+* Are all issues scheduled for the release solved?
+* Is everything merged to master branch?
+* Do Schmetron files include correct version of XRechnung Specification? 
+* Make sure that CHANGELOG.md is up to date
+
+
+### Prepare
+
+* Make sure you committed and pushed everything 
+* Create the distribution by **not** using your development properties file. 
+This requires to set some at command line:
+
+```
+ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' clean dist
+```
+
+* Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}`e.g.
+  `git tag release-1.6.0 && git push origin release-1.6.0` 
+
+### Publish
+
+* Draft a new release at https://github.com/itplr-kosit/xrechnung-schematron/releases/new
+  * Choose the git tag
+* Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version} in version ${testsuire.release.version}`
+* Copy & paste the high quality changelog entries for this release from CHANGELOG.md
+* Upload distribution zip and tick mark this release as a `pre-release`.
+* Check everything is ok, then uncheck pre-release
+
+### Post-Release
+
+* Change the version of XRechnung Schematron in `build.xml` to the next release and commit
+
+You are done :smile:
+
