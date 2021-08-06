@@ -89,10 +89,10 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 
 * Draft a new release at https://github.com/itplr-kosit/xrechnung-schematron/releases/new
   * Choose the git tag you just created
-* Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version} in version ${testsuire.release.version}`
-* Copy & paste the high quality changelog entries for this release from CHANGELOG.md
+* Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version} in version ${schematron.release.version}`
+* Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
 * Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released componentes are checked to be okay, then uncheck pre-release
+* If **all** released componentes are checked to be okay, then uncheck pre-release.
 
 ### Post-Release
 
