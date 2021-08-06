@@ -2,6 +2,7 @@ dist/
 build/
 lib/
 reports/
+
 .vscode
 *.xpr
 .ant-targets-build.xml
@@ -14,3 +15,6 @@ validation/schematron/ubl-cn/XRechnung-UBL-validation.sch
 validation/schematron/ubl-inv/XRechnung-UBL-validation.sch
 bis-material/
 temp/
+
+# developer files
+development.build.properties
