@@ -68,7 +68,7 @@ The `ant` target `dist` creates the distribution zip archive.
 
 * Are all issues scheduled for the release solved?
 * Is everything merged to master branch?
-* Do Schmetron files include correct version of XRechnung Specification? 
+* Do Schematron files include correct version of XRechnung Specification? 
 * Make sure that CHANGELOG.md is up to date
 
 
@@ -82,21 +82,20 @@ This requires to set some at command line:
 ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' clean dist
 ```
 
-* Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}`e.g.
+* Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
   `git tag release-1.6.0 && git push origin release-1.6.0` 
 
 ### Publish
 
 * Draft a new release at https://github.com/itplr-kosit/xrechnung-schematron/releases/new
-  * Choose the git tag
+  * Choose the git tag you just created
 * Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version} in version ${testsuire.release.version}`
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md
 * Upload distribution zip and tick mark this release as a `pre-release`.
-* Check everything is ok, then uncheck pre-release
+* If **all** released componentes are checked to be okay, then uncheck pre-release
 
 ### Post-Release
 
 * Change the version of XRechnung Schematron in `build.xml` to the next release and commit
 
 You are done :smile:
-
