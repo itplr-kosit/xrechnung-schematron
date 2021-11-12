@@ -10,8 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This version is compatible with XRechnung 2.1.1
 
 ### Fixed
+
+* Schematron Rules
+  * BR-DE-18 fixed bug, that no newline was not allowed at last not skonto note
 * Tests
-  * fixed wrong cii syntax in cii-br-de-23-test-bg-17-with-bg-18.xml
+  * fixed wrong CII syntax in cii-br-de-23-test-bg-17-with-bg-18.xml
 
 ## v1.6.0 on 2021-07-31
 
