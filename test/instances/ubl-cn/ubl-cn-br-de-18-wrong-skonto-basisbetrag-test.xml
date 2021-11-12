@@ -177,7 +177,7 @@
   </cac:PaymentMeans>
   <cac:PaymentTerms>
       <?xmute mutator="identity" 
-              schematron-invalid="xrcn:BR-DE-18" id="xrcn BR-DE-18 skonto_wrong_basisbetrag"
+              schematron-invalid="xrcn:BR-DE-18" id="xr-cn-br-de-18-skonto_wrong_basisbetrag"
               description="Every basisbetrag has to be formed as an amount type" ?>
       <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
 #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=23#
