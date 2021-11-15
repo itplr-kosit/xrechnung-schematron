@@ -12,7 +12,7 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="1.6.0" />
+  <property name="xr-schematron.version.full" value="1.6.1" />
   <property name="xrechnung.version" value="2.1.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
@@ -173,11 +173,12 @@
   <target name="test-only" description="Unit testing Schematron Rules wit XML-Mutate"
     if="xmute.download.url.prefix">
     <echo>Unit testing Schematron rules ...</echo>
-    <java jar="${lib.dir}/${xmute.jar}" failonerror="no" fork="yes"
+    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
       dir="${basedir}">
       
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
+      <arg value="--fail-fast"/>
       <arg value="--schematron" />
       <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
       <arg value="--schematron" />
@@ -218,7 +219,16 @@
 
   <target name="test" depends="retrieve-xmute, compile-schematron-rules, test-only" description="Unit testing Schematron Rules wit XML-Mutate" />
 
-  <target name="dist" depends="compile-schematron-rules,test"
+  <target name="dist-only" depends="compile-schematron-rules"
+    description="Generate the distribution">
+    
+    <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
+      excludes="download/**,schematron/QS*2017/**,bis/**,generated" />
+  </target>
+  
+
+
+  <target name="dist" depends="dist-only,test"
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
