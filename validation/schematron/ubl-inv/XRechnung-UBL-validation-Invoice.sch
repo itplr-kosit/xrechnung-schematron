@@ -96,6 +96,14 @@
               flag="fatal"
               id="BR-DE-7"
         >[BR-DE-7] Das Element "Seller contact email address" (BT-43) muss übermittelt werden.</assert>
+      <assert test="matches(normalize-space(cbc:Telephone, $XR-TELEPHONE-REGEX))"
+        flag="warning"
+        id="BR-DE-X1"
+        >[BR-DE-X1] In BT-42 sollen mindestens drei Ziffern enthalten sein.</assert>
+      <assert test="matches(normalize-space(cbc:ElectronicMail, $XR-EMAIL-REGEX))"
+        flag="warning"
+        id="BR-DE-X2"
+        >[BR-DE-X2] In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen.</assert>
     </rule>
   
     <rule context="/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
@@ -137,6 +145,14 @@
               flag="fatal"
               id="BR-DE-23-b"
         >[BR-DE-23-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden.</assert>
+      <assert test="cac:Party/cac:Contact/cbc:Telephone"
+        flag="warning"
+        id="BR-DE-X1"
+        >[BR-DE-X1] In BT-42 sollen mindestens drei Ziffern enthalten sein.</assert>
+      <assert test="matches(cac:Party/cac:Contact/cbc:ElectronicMail, '[0-9a-dA-D.]{0,}[0-9a-dA-D]{1,}@[0-9a-dA-D]{1,}[0-9a-dA-D.r]{1,}')"
+        flag="warning"
+        id="BR-DE-X2"
+        >[BR-DE-X2] In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen.</assert>
     </rule>
   
     <rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]">

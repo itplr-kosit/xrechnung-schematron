@@ -78,7 +78,7 @@
       </cac:PartyLegalEntity>
       <cac:Contact>        
         <cbc:Name>Tim Tester</cbc:Name>        
-        <cbc:Telephone>012 3456789</cbc:Telephone>
+        <cbc:Telephone>0123456789</cbc:Telephone>        
         <?xmute mutator="identity"
                     schematron-valid="xrinv:BR-DE-7" id="ubl-inv-mandatory-BT-43"
                     description="mandatory BT-43" ?>
