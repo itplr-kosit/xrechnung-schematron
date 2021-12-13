@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+### Added
+* Schematron Rules
+  * BR-DEX-04 replaces BR-CL-10 and added XR01, XR02 and XR03 to schemeID
+  * BR-DEX-05 replaces BR-CL-11 and added XR01, XR02 and XR03 to schemeID
+  * BR-DEX-06 replaces BR-CL-21 and added XR01, XR02 and XR03 to schemeID
+  * BR-DEX-07 replaces BR-CL-25 and added XR01, XR02 and XR03 to schemeID
+  * BR-DEX-08 replaces BR-CL-26 and added XR01, XR02 and XR03 to schemeID
+  
 ## v1.6.1 on 2021-11-15
 
 This version is compatible with XRechnung 2.1.1
