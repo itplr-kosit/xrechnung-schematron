@@ -29,7 +29,7 @@
                 </ram:IncludedNote>
             </ram:AssociatedDocumentLineDocument>
             <ram:SpecifiedTradeProduct>                
-                <ram:GlobalID schemeID="0013">12345678</ram:GlobalID>
+                <ram:GlobalID schemeID="XR01">12345678</ram:GlobalID>
                 <ram:SellerAssignedID>246</ram:SellerAssignedID>
                 <ram:Name>Zeitschrift [...]</ram:Name>
                 <ram:Description>Zeitschrift Inland</ram:Description>
@@ -96,8 +96,8 @@
         <ram:ApplicableHeaderTradeAgreement>
             <ram:BuyerReference>04011000-12345-34</ram:BuyerReference>
             <ram:SellerTradeParty>
-                <?xmute mutator="identity" schematron-valid="xrcii:BR-DEX-04" id="cii-br-dex-04-test-scheme-id-1" description="BR-DEX-04 schemeID must be valid" ?>
-                <ram:GlobalID schemeID="0013">12345678</ram:GlobalID>
+                <?xmute mutator="identity" schematron-valid="xrcii:BR-DEX-04" id="cii-br-dex-04-test-scheme-id-2" description="BR-DE-04 schemeID must be valid" ?>
+                <ram:GlobalID schemeID="XR01">12345678</ram:GlobalID>
                 <ram:Name>[Seller name]</ram:Name>
                 <ram:Description>123/456/7890, HRA-Eintrag in […]</ram:Description>
                 <ram:SpecifiedLegalOrganization>

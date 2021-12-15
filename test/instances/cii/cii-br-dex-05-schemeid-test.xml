@@ -96,8 +96,6 @@
         <ram:ApplicableHeaderTradeAgreement>
             <ram:BuyerReference>04011000-12345-34</ram:BuyerReference>
             <ram:SellerTradeParty>
-                <?xmute mutator="identity" schematron-valid="xrcii:BR-DEX-04" id="cii-br-dex-04-test-scheme-id-1" description="BR-DEX-04 schemeID must be valid" ?>
-                <ram:GlobalID schemeID="0013">12345678</ram:GlobalID>
                 <ram:Name>[Seller name]</ram:Name>
                 <ram:Description>123/456/7890, HRA-Eintrag in […]</ram:Description>
                 <ram:SpecifiedLegalOrganization>
@@ -124,7 +122,8 @@
                 </ram:SpecifiedTaxRegistration>
             </ram:SellerTradeParty>
             <ram:BuyerTradeParty>
-                <ram:ID>[Buyer identifier]</ram:ID>
+                <?xmute mutator="identity" schematron-valid="xrcii:BR-DEX-05" id="cii-br-dex-05-test-scheme-id-1" description="BR-DEX-05 schemeID must be valid" ?>
+                <ram:ID schemeID="0011">[Buyer identifier]</ram:ID>
                 <ram:Name>[Buyer name]</ram:Name>
                 <ram:PostalTradeAddress>
                     <ram:PostcodeCode>12345</ram:PostcodeCode>
