@@ -5,15 +5,19 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## v1.7.0 on 2022-01-31
+
+This version is compatible with XRechnung 2.2.0
 
 ### Added
-* Schematron Rules
-  * BR-DEX-04 replaces BR-CL-10 and added XR01, XR02 and XR03 to schemeID
-  * BR-DEX-05 replaces BR-CL-11 and added XR01, XR02 and XR03 to schemeID
-  * BR-DEX-06 replaces BR-CL-21 and added XR01, XR02 and XR03 to schemeID
-  * BR-DEX-07 replaces BR-CL-25 and added XR01, XR02 and XR03 to schemeID
-  * BR-DEX-08 replaces BR-CL-26 and added XR01, XR02 and XR03 to schemeID
+* Schematron Rules for XRechnung Extension to include DIGA Codes (XR01, XR02, XR03)
+  * BR-DEX-04 replaces CEN rule BR-CL-10 (ISO 6523 ICD Codelist)
+  * BR-DEX-05 replaces CEN rule BR-CL-11 (ISO 6523 ICD Codelist)
+  * BR-DEX-06 replaces CEN rule BR-CL-21 (ISO 6523 ICD Codelist)
+  * BR-DEX-07 replaces CEN rule BR-CL-25 (EAS Codelist)
+  * BR-DEX-08 replaces CEN rule BR-CL-26 (ISO 6523 ICD Codelist)
+
+* numerous tests for BR-DEX-04 to BR-DEX-08 rules 
   
 ## v1.6.1 on 2021-11-15
 
