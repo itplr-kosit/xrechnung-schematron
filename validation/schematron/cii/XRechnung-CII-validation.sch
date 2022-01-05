@@ -17,6 +17,7 @@
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
     <active pattern="cii-pattern" />
+    <active pattern="cii-extension-pattern" />
   </phase>
 
   <include href="../common.sch" />
@@ -186,6 +187,57 @@
               flag="fatal"
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
+    </rule>
+  </pattern>
+  <pattern id="cii-extension-pattern">
+    <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
+    <let name="isExtension"
+        value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xoev-de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
+    
+      <rule context="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct)]">
+        <!-- BR-DEX-04
+    Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
+      -->
+          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+            flag="fatal"
+            id="BR-DEX-04"
+            >[BR-DEX-04] </assert>
+      </rule>
+      <rule context="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]">
+        <!-- BR-DEX-05
+    Überschreibt BR-CL-11 und ergänzt um XR01, XR02, XR03
+      -->
+          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+            flag="fatal"
+            id="BR-DEX-05"
+            >[BR-DEX-05] </assert>
+      </rule>
+      <rule context="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]">
+        <!-- BR-DEX-06
+    Überschreibt BR-CL-21 und ergänzt um XR01, XR02, XR03
+      -->
+          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+            flag="fatal"
+            id="BR-DEX-06"
+            >[BR-DEX-06] </assert>
+      </rule>    
+      <rule context="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]">
+        <!-- BR-DEX-07
+    Überschreibt BR-CL-25 und ergänzt um XR01, XR02, XR03
+      -->
+          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+            flag="fatal"
+            id="BR-DEX-07"
+            >[BR-DEX-07] </assert>
+      </rule>
+      <rule context="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]">
+        <!-- BR-DEX-08
+    Überschreibt BR-CL-26 und ergänzt um XR01, XR02, XR03
+      -->
+          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+            flag="fatal"
+            id="BR-DEX-08"
+            >[BR-DEX-08] </assert>
     </rule>
   </pattern>
 </schema>

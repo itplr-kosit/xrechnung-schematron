@@ -178,7 +178,6 @@
   </pattern>
 
   <pattern id="ubl-extension-pattern">
-
     <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
     <let name="isExtension"
          value="exists(/ubl:Invoice/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xoev-de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
@@ -223,6 +222,51 @@
               flag="fatal"
               id="BR-DEX-03"
         >[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
+    </rule>
+    <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-04
+        Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))  or ((not(contains(normalize-space(@schemeID), ' ')) and contains(' SEPA ', concat(' ', normalize-space(@schemeID), ' '))) and ((ancestor::cac:AccountingSupplierParty) or (ancestor::cac:PayeeParty)))"
+        flag="fatal"
+        id="BR-DEX-04"
+        >[BR-DEX-04] </assert>
+    </rule>
+    <rule context="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]">
+      <!-- BR-DEX-05
+        Überschreibt BR-CL-11 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-05"
+        >[BR-DEX-05] </assert>
+    </rule>
+    <rule context="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-06
+        Überschreibt BR-CL-21 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-06"
+        >[BR-DEX-06] </assert>
+    </rule>    
+    <rule context="cbc:EndpointID[@schemeID and $isExtension]">
+      <!-- BR-DEX-07
+        Überschreibt BR-CL-25 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-07"
+        >[BR-DEX-07] </assert>
+    </rule>
+    <rule context="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-08
+        Überschreibt BR-CL-26 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-08"
+        >[BR-DEX-08] </assert>
     </rule>
   </pattern>
 </schema>

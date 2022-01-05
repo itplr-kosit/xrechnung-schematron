@@ -1,4 +1,4 @@
-## Project Structure
+# Project Structure
 
 Schematron sources are in `validation/schematron/{cii, ubl-cn, ubl-inv}` directories. 
 
