@@ -118,7 +118,7 @@
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
                 <ram:URIUniversalCommunication>
-                    <?xmute mutator="identity" schematron-invalid="xrcii:BR-DEX-07" id="cii-br-dex-07-test-scheme-id-4" description="BR-DEX-06 invalid schemeID must not be valid" ?>
+                    <?xmute mutator="identity" schematron-invalid="xrcii:BR-DEX-07" id="cii-br-dex-07-test-scheme-id-4" description="BR-DEX-07 invalid schemeID must not be valid" ?>
                     <ram:URIID schemeID="XR11">rechnungsausgang@test.com</ram:URIID>
                 </ram:URIUniversalCommunication>
                 <ram:SpecifiedTaxRegistration>
