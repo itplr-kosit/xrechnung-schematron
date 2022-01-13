@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 * Schematron Rules
   * Added BR-DE-27, that a telephone number must have at least three digits
-  * Added BR-DE-28, that an email address must have exactly one @ sign, does not start or end with a dot, the @ sign does not be flanked by a whitespace or a dot and at least one digit have to be before and after the @ sign.
+  * Added BR-DE-28, that an email address must have exactly one @ sign, does not start or end with a dot, the @ sign must not be flanked by a whitespace or a dot and must be preceded and followed by at least two characters.
 
 ## v1.6.1 on 2021-11-15
 
