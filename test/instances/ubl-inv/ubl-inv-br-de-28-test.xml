@@ -80,11 +80,11 @@
         <cbc:Name>Tim Tester</cbc:Name>                
         <cbc:Telephone>012 3456789</cbc:Telephone>
         <?xmute mutator="code" values="tim.tester@test.com, a@b, a.b@c.d, abc@bcd.def, ab.cd@ef" 
-              schematron-valid="xrinv:BR-DE-X2" id="ubl-inv-BR-DE-X2-valid-test"
-              description="UBL Invoice BR-DE-X2 valid test" ?>
+              schematron-valid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-28-valid-test"
+              description="UBL Invoice BR-DE-28 valid test" ?>
         <?xmute mutator="code" values="@, name, name@, .test@test.com, @name, test.@test.com, tim.tester@.com, tim@test.com., tim@test." 
-              schematron-invalid="xrinv:BR-DE-X2" id="ubl-inv-BR-DE-X2-invalid-test"
-              description="UBL Invoice BR-DE-X2 invalid test" ?>
+              schematron-invalid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-X2-invalid-test"
+              description="UBL Invoice BR-DE-28 invalid test" ?>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
