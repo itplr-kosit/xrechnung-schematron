@@ -83,7 +83,7 @@
               schematron-valid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-28-valid-test"
               description="UBL Invoice BR-DE-28 valid test" ?>
         <?xmute mutator="code" values="@,name,ame@,.test@test.com,@name,test.@test.com,tim.tester@.com,tim@test.com.,tim@test." 
-              schematron-invalid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-X2-invalid-test"
+              schematron-invalid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-28-invalid-test"
               description="UBL Invoice BR-DE-28 invalid test" ?>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
