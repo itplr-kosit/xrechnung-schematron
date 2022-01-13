@@ -98,12 +98,12 @@
         >[BR-DE-7] Das Element "Seller contact email address" (BT-43) muss übermittelt werden.</assert>
       <assert test="matches(normalize-space(cbc:Telephone), $XR-TELEPHONE-REGEX)"
         flag="warning"
-        id="BR-DE-X1"
-        >[BR-DE-X1] In BT-42 sollen mindestens drei Ziffern enthalten sein.</assert>
+        id="BR-DE-27"
+        >[BR-DE-27] In BT-42 sollen mindestens drei Ziffern enthalten sein.</assert>
       <assert test="matches(normalize-space(cbc:ElectronicMail), $XR-EMAIL-REGEX)"
         flag="warning"
-        id="BR-DE-X2"
-        >[BR-DE-X2] In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen.</assert>
+        id="BR-DE-28"
+        >[BR-DE-28] In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen.</assert>
     </rule>
   
     <rule context="/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">

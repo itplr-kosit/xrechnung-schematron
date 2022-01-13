@@ -66,8 +66,8 @@ BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von V
 | BR-DE-25-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. | complete (Schematron) |
 | BR-DE-25-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden. | complete (Schematron) |
 | BR-DE-26 | Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll "Preceding Invoice Reference" (BG-3) mind. einmal vorhanden sein. | complete (Schematron) |
-| BR-DE-X1 | In BT-42 sollen mindestens drei Ziffern enthalten sein. | complete (Schematron) |
-| BR-DE-X1 | In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen. | complete (Schematron) |
+| BR-DE-27 | Mit dem Element "Seller contact telephone number" (BT-42) soll eine gültige Telefonnummer übermittelt werden. Eine gültige Telefonnummer soll mindestens drei Ziffern enthalten. | complete (Schematron) |
+| BR-DE-28 | Mit dem Element "Seller contact email address" (BT-43) soll eine gültige E-Mail-Adresse übermittelt werden. Eine gültige E-Mail-Adresse soll genau ein @-Zeichen enthalten, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Eine gültige E-Mail-Adresse soll nicht mit einem Punkt beginnen oder enden. | complete (Schematron) |
 
 ## Technical Coverage of the XRechnung Extension Rules implemented in Schematron
 
