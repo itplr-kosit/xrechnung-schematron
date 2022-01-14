@@ -23,60 +23,6 @@ Given a version number MAJOR.MINOR.PATCH, we increment the:
 
 The development takes place in an internal repository. Please contact xrechnung@finanzen.bremen.de.
 
-## Technical Coverage of the XRechnung CIUS Rules implemented in Schematron
-
-ID | German Description | Coverage
---- | --- | ---
-BR-DE-1 | Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten. | complete (Schematron)
-BR-DE-2 | Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden. | complete (Schematron)
-BR-DE-3 | Das Element "Seller city" (BT-37) muss übermittelt werden. | complete (Schematron)
-BR-DE-4 | Das Element "Seller post code" (BT-38) muss übermittelt werden. | complete (Schematron)
-BR-DE-5 | Das Element "Seller contact point" (BT-41) muss übermittelt werden. | complete (Schematron)
-BR-DE-6 | Das Element "Seller contact telephone number" (BT-42) muss übermittelt werden. | complete (Schematron)
-BR-DE-7 | Das Element "Seller contact email address" (BT-43) muss übermittelt werden. | complete (Schematron)
-BR-DE-8 | Das Element "Buyer city" (BT-52) muss übermittelt werden. | complete (Schematron)
-BR-DE-9 | Das Element "Buyer post code" (BT-53) muss übermittelt werden. | complete (Schematron)
-BR-DE-10 | Das Element "Deliver to city" (BT-77) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. | complete (Schematron)
-BR-DE-11 | Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird. | complete (Schematron)
-BR-DE-12 | Mit dem Element "Deliver to post code" (BT-78) muss eine Postleitzahl übermittelt werden. | none
-BR-DE-14 | Das Element "VAT category rate" (BT-119) muss übermittelt werden. | complete (Schematron)
-BR-DE-15 | Das Element "Buyer reference" (BT-10) muss übermittelt werden. | complete (Schematron)
-BR-DE-16 | In der Rechnung muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden. | complete (Schematron) |
-BR-DE-17 | Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 (United Nations Trade Data Interchange Directory (UNTDID), http://www.unece.org/fileadmin/DAM/trade/untdid/d16b/tred/tredi2.htm) übermittelt werden: | complete (Schematron)
-| | - 326 (Partial invoice) | |
-| | - 380 (Commercial invoice) | |
-| | - 384 (Corrected invoice) | |
-| | - 389 (Self-billed invoice) | |
-| | - 381 (Credit note) | |
-| | - 875 (Partial construction invoice) | |
-| | - 876 (Partial final construction invoice)| |
-| | - 877 (Final construction invoice) | |
-BR-DE-18 | Die Informationen zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen wie folgt im Element "Payment terms" (BT-20) übermittelt werden: | complete (Schematron)
-| | Anzugeben ist im ersten Segment "SKONTO" oder "VERZUG", im zweiten "TAGE=n", im dritten "PROZENT=n". Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommastellen anzugeben. Liegt dem zu berechnenden Betrag nicht BT-115, "fälliger Betrag" zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto oder Verzugszins als viertes Segment "BASISBETRAG=n" gemäß dem semantischen Datentypen Amount anzugeben. | 
-| | Jeder Eintrag beginnt mit einer #, die Segmente sind mit einer # getrennt und eine Zeile schließt mit einer # ab. Am Ende einer vollständigen Skontooder Verzugsangabe muss ein XML-konformer Zeilenumbruch folgen. |
-| | Alle Angaben zur Gewährung von Skonto oder zur Berechnung von Verzugszinsen müssen in Großbuchstaben gemacht werden. Zusätzliches Whitespace (Leerzeichen, Tabulatoren oder Zeilenumbrüche) ist nicht zulässig. Andere Zeichen oder Texte als in den oberen Vorgaben genannt sind nicht zulässig. |
-| BR-DE-19 | "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
-| BR-DE-20 | "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird. | complete (Schematron) |
-| BR-DE-21 | Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen. | complete (Schematron) | 
-| BR-DE-22 | Die in einer eingereichten Rechnung angehängten Dokumente in BG-24 ADDITIONAL SUPPORTING DOCUMENTS müssen im Element "Attached document/Attached document Filename" BT-125 einen eindeutigen Dateinamen haben (nicht case-sensitiv). | complete (Schematron) |
-| BR-DE-23-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden. | complete (Schematron) |
-| BR-DE-23-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-24-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), muss genau BG-18 "PAYMENT CARD INFORMATION" übermittelt werden. | complete (Schematron) |
-| BR-DE-24-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-25-a | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden. | complete (Schematron) |
-| BR-DE-25-b | Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden. | complete (Schematron) |
-| BR-DE-26 | Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll "Preceding Invoice Reference" (BG-3) mind. einmal vorhanden sein. | complete (Schematron) |
-| BR-DE-27 | Mit dem Element "Seller contact telephone number" (BT-42) soll eine gültige Telefonnummer übermittelt werden. Eine gültige Telefonnummer soll mindestens drei Ziffern enthalten. | complete (Schematron) |
-| BR-DE-28 | Mit dem Element "Seller contact email address" (BT-43) soll eine gültige E-Mail-Adresse übermittelt werden. Eine gültige E-Mail-Adresse soll genau ein @-Zeichen enthalten, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens einem Zeichen auf beiden Seiten flankiert werden soll. Eine gültige E-Mail-Adresse soll nicht mit einem Punkt beginnen oder enden. | complete (Schematron) |
-
-## Technical Coverage of the XRechnung Extension Rules implemented in Schematron
-
-ID | German Description | Coverage
---- | --- | ---
-BR-DEX-01 | Wenn die Möglichkeit einer Extension genutzt wird, darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der mime code application/xml genutzt werden. | complete (Schematron)
-BR-DEX-02 | Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE" (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe der "Invoice line net amount" (BT-131) der direkt darunterliegenden "SUB INVOICE LINE" (BG-DEX-01) entsprechen. | complete (Schematron)
-
-
 ## Entwicklung / Development
 
 Further information on development may be found in our [Developer Documentation](./docs/development.md)
