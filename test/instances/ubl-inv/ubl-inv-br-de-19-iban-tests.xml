@@ -69,7 +69,7 @@
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
       <?xmute mutator="identity" id="correct-iban"
-              schematron-valid="xrinv:BR-DE-21" description="Correct IBAN" ?>
+              schematron-valid="xrinv:BR-DE-19" description="Correct IBAN" ?>
       <?xmute mutator="code" id="valid-iban" values="DE90200400000625899000"
               schematron-valid="xrinv:BR-DE-19" description="Correct IBAN alternatives" ?>
       <?xmute mutator="code" id="invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912, DE90200400000625894000"
