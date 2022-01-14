@@ -178,6 +178,7 @@
       
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
+      <!-- Has no impact -->
       <arg value="--fail-fast"/>
       <arg value="--schematron" />
       <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
