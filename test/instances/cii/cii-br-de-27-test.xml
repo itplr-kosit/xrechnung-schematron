@@ -109,7 +109,7 @@
                                 description="CII BR-DE-27 valid test" ?>
                         <?xmute mutator="code" values="0,01,a12,a1b4d,99,0a1,-0-1-" 
                                 schematron-invalid="xrcii:BR-DE-27" id="cii-BR-DE-27-invalid-test"
-                                description="CII invalid test" ?>
+                                description="CII BR-DE-27 invalid test" ?>
                         <ram:CompleteNumber>+49 1234-5678</ram:CompleteNumber>
                     </ram:TelephoneUniversalCommunication>
                     <ram:EmailURIUniversalCommunication>
