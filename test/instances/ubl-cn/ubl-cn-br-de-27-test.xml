@@ -73,6 +73,12 @@
       </cac:PartyLegalEntity>
       <cac:Contact>
         <cbc:Name>Tim Tester</cbc:Name>
+        <?xmute mutator="code" values="0123456789,000,a1asdji2cva0,a123,a582b,282a,a2h-31" 
+              schematron-valid="xrcn:BR-DE-27" id="ubl-cn-BR-DE-27-valid-test"
+              description="UBL CreditNote BR-DE-27 valid test" ?>
+        <?xmute mutator="code" values="0,01,a12,a1b4d,99,0a1,-0-1-" 
+              schematron-invalid="xrcn:BR-DE-27" id="ubl-cn-BR-DE-27-invalid-test"
+              description="UBL CreditNote BR-DE-27 invalid test" ?>
         <cbc:Telephone>012 3456789</cbc:Telephone>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
@@ -163,7 +169,13 @@
         <cbc:Name>[Deliver to party name]</cbc:Name>
       </cac:PartyName>
     </cac:DeliveryParty>
-  </cac:Delivery>  
+  </cac:Delivery>
+  <?xmute mutator="identity"
+                    schematron-valid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16"
+                    description="mandatory BG-16" ?>
+  <?xmute mutator="remove"
+                    schematron-invalid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16-2"
+                    description="mandatory BG-16" ?>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
@@ -176,12 +188,7 @@
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
-      <?xmute mutator="identity" schematron-invalid="xrcn:BR-DE-18" id="ubl-cn-br-de-18-too-much-digits-after-dot-2" description="ubl cn br-de-18 too much digits after dot" ?>
-      <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
-          #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.523#
-          #VERZUG#TAGE=30#PROZENT=0.00#
-          #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
-      </cbc:Note>
+    <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>

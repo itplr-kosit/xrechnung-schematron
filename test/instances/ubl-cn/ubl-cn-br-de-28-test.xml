@@ -72,8 +72,14 @@
         <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […], Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
       <cac:Contact>
-        <cbc:Name>Tim Tester</cbc:Name>
+        <cbc:Name>Tim Tester</cbc:Name>       
         <cbc:Telephone>012 3456789</cbc:Telephone>
+        <?xmute mutator="code" values="tim.tester@test.com,aa@bb,a.b@c.d,abc@bcd.def,ab.cd@ef" 
+              schematron-valid="xrcn:BR-DE-28" id="ubl-cn-BR-DE-28-valid-test"
+              description="UBL CreditNote BR-DE-28 valid test" ?>
+        <?xmute mutator="code" values="@,name,ame@,.test@test.com,@name,test.@test.com,tim.tester@.com,tim@test.com.,tim@test.,test @test.com,test@ test.com,test @ test.com,test@test@test.com,test@@test.com,a@b,ab@c,a@bd" 
+              schematron-invalid="xrcn:BR-DE-28" id="ubl-cn-BR-DE-28-invalid-test"
+              description="UBL CreditNote BR-DE-28 invalid test" ?>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
@@ -163,7 +169,13 @@
         <cbc:Name>[Deliver to party name]</cbc:Name>
       </cac:PartyName>
     </cac:DeliveryParty>
-  </cac:Delivery>  
+  </cac:Delivery>
+  <?xmute mutator="identity"
+                    schematron-valid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16"
+                    description="mandatory BG-16" ?>
+  <?xmute mutator="remove"
+                    schematron-invalid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16-2"
+                    description="mandatory BG-16" ?>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
@@ -176,12 +188,7 @@
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
-      <?xmute mutator="identity" schematron-invalid="xrcn:BR-DE-18" id="ubl-cn-br-de-18-too-much-digits-after-dot-2" description="ubl cn br-de-18 too much digits after dot" ?>
-      <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
-          #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.523#
-          #VERZUG#TAGE=30#PROZENT=0.00#
-          #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
-      </cbc:Note>
+    <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>

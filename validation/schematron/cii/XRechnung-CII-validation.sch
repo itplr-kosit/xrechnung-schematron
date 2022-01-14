@@ -104,6 +104,14 @@
               flag="fatal"
               id="BR-DE-7"
           >[BR-DE-7] Das Element "Seller contact email address" (BT-43) muss übermittelt werden.</assert>
+      <assert test="matches(normalize-space(ram:TelephoneUniversalCommunication/ram:CompleteNumber), $XR-TELEPHONE-REGEX)"
+        flag="warning"
+        id="BR-DE-27"
+        >[BR-DE-27] In BT-42 sollen mindestens drei Ziffern enthalten sein.</assert>
+      <assert test="matches(normalize-space(ram:EmailURIUniversalCommunication/ram:URIID), $XR-EMAIL-REGEX)"
+        flag="warning"
+        id="BR-DE-28"
+        >[BR-DE-28] In BT-43 soll genau ein @-Zeichen enthalten sein, welches nicht von einem Leerzeichen, einem Punkt, aber mindestens zwei Zeichen auf beiden Seiten flankiert werden soll. Ein Punkt sollte nicht am Anfang oder am Ende stehen.</assert>
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress">

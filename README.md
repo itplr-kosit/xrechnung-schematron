@@ -23,7 +23,6 @@ Given a version number MAJOR.MINOR.PATCH, we increment the:
 
 The development takes place in an internal repository. Please contact xrechnung@finanzen.bremen.de.
 
-
 ## Entwicklung / Development
 
 Further information on development may be found in our [Developer Documentation](./docs/development.md)

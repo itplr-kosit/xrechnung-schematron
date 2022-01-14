@@ -4,7 +4,7 @@
     xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -100,11 +100,17 @@
                     <ram:TradingBusinessName>[Seller trading name]</ram:TradingBusinessName>
                 </ram:SpecifiedLegalOrganization>
                 <ram:DefinedTradeContact>
-                    <ram:PersonName>nicht vorhanden</ram:PersonName>
-                    <ram:TelephoneUniversalCommunication>
+                    <ram:PersonName>nicht vorhanden</ram:PersonName>                    
+                    <ram:TelephoneUniversalCommunication>                        
                         <ram:CompleteNumber>+49 1234-5678</ram:CompleteNumber>
                     </ram:TelephoneUniversalCommunication>
                     <ram:EmailURIUniversalCommunication>
+                        <?xmute mutator="code" values="tim.tester@test.com,aa@bb,a.b@c.d,abc@bcd.def,ab.cd@ef" 
+                                schematron-valid="xrcii:BR-DE-28" id="cii-BR-DE-28-valid-test"
+                                description="CII BR-DE-28 valid test" ?>
+                        <?xmute mutator="code" values="@,name,ame@,.test@test.com,@name,test.@test.com,tim.tester@.com,tim@test.com.,tim@test.,test @test.com,test@ test.com,test @ test.com,test@test@test.com,test@@test.com,a@b,ab@c,a@bd" 
+                                schematron-invalid="xrcii:BR-DE-28" id="cii-BR-DE-28-invalid-test"
+                                description="CII BR-DE-28 invalid test" ?>
                         <ram:URIID>seller@email.de</ram:URIID>
                     </ram:EmailURIUniversalCommunication>
                 </ram:DefinedTradeContact>
@@ -130,16 +136,13 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>     
-            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
+        <ram:ApplicableHeaderTradeSettlement>            
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>           
             <ram:SpecifiedTradeSettlementPaymentMeans>
-                <ram:TypeCode>59</ram:TypeCode>                
-                <ram:PayerPartyDebtorFinancialAccount>                    
-                    <?xmute mutator="remove"
-                            schematron-invalid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-remove-BT-91"
-                            description="mandatory for BG-19 is (1 of 3) BT-91" ?>
+                <ram:TypeCode>58</ram:TypeCode>
+                <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayerPartyDebtorFinancialAccount>
+                </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
