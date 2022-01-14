@@ -4,7 +4,7 @@
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
   <cbc:ID>1234/78/901</cbc:ID>
   <cbc:IssueDate>2016-06-16+01:00</cbc:IssueDate>
 
@@ -69,7 +69,7 @@
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
       <?xmute mutator="identity" id="correct-iban"
-              schematron-valid="xrinv:BR-DE-21" description="Correct IBAN" ?>
+              schematron-valid="xrinv:BR-DE-19" description="Correct IBAN" ?>
       <?xmute mutator="code" id="valid-iban" values="DE90200400000625899000"
               schematron-valid="xrinv:BR-DE-19" description="Correct IBAN alternatives" ?>
       <?xmute mutator="code" id="invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912, DE90200400000625894000"
