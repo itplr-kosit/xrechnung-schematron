@@ -215,7 +215,7 @@
           <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
             flag="fatal"
             id="BR-DEX-04"
-            >[BR-DEX-04] </assert>
+              >[BR-DEX-04] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]">
         <!-- BR-DEX-05
@@ -224,7 +224,7 @@
           <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
             flag="fatal"
             id="BR-DEX-05"
-            >[BR-DEX-05] </assert>
+              >[BR-DEX-05] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]">
         <!-- BR-DEX-06
@@ -233,7 +233,7 @@
           <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
             flag="fatal"
             id="BR-DEX-06"
-            >[BR-DEX-06] </assert>
+              >[BR-DEX-06] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>    
       <rule context="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]">
         <!-- BR-DEX-07
@@ -242,7 +242,7 @@
           <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
             flag="fatal"
             id="BR-DEX-07"
-            >[BR-DEX-07] </assert>
+              >[BR-DEX-07] Any scheme identifier for an Endpoint Identifier in <name/> MUST belong to the CEF EAS code list. </assert>
       </rule>
       <rule context="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]">
         <!-- BR-DEX-08
@@ -251,7 +251,7 @@
           <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
             flag="fatal"
             id="BR-DEX-08"
-            >[BR-DEX-08] </assert>
+              >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
   </pattern>
 </schema>

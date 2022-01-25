@@ -238,7 +238,7 @@
       <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))  or ((not(contains(normalize-space(@schemeID), ' ')) and contains(' SEPA ', concat(' ', normalize-space(@schemeID), ' '))) and ((ancestor::cac:AccountingSupplierParty) or (ancestor::cac:PayeeParty)))"
         flag="fatal"
         id="BR-DEX-04"
-        >[BR-DEX-04] </assert>
+        >[BR-DEX-04] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
     <rule context="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]">
       <!-- BR-DEX-05
@@ -247,7 +247,7 @@
       <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
         flag="fatal"
         id="BR-DEX-05"
-        >[BR-DEX-05] </assert>
+        >[BR-DEX-05] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
     <rule context="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-06
@@ -256,7 +256,7 @@
       <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
         flag="fatal"
         id="BR-DEX-06"
-        >[BR-DEX-06] </assert>
+        >[BR-DEX-06] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>    
     <rule context="cbc:EndpointID[@schemeID and $isExtension]">
       <!-- BR-DEX-07
@@ -265,7 +265,7 @@
       <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
         flag="fatal"
         id="BR-DEX-07"
-        >[BR-DEX-07] </assert>
+        >[BR-DEX-07] Any scheme identifier for an Endpoint Identifier in <name/> MUST belong to the CEF EAS code list. </assert>
     </rule>
     <rule context="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-08
@@ -274,7 +274,7 @@
       <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
         flag="fatal"
         id="BR-DEX-08"
-        >[BR-DEX-08] </assert>
+        >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
   </pattern>
 </schema>
