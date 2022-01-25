@@ -58,6 +58,11 @@
               flag="fatal"
               id="BR-DE-22"
           >[BR-DE-22] Das "filename"-Attribut aller "EmbeddedDocumentBinaryObject"-Elemente muss eindeutig sein</assert>
+      <assert test="not(cbc:CreditNoteTypeCode = 384) or
+                    (cac:BillingReference/cac:InvoiceDocumentReference)"
+              flag="warning"
+              id="BR-DE-26"
+      >[BR-DE-26] Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
     </rule>
     
     <rule context="/ubl:CreditNote/cac:AccountingSupplierParty">
