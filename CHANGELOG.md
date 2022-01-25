@@ -5,6 +5,10 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+This version is compatible with XRechnung ?
+
 ## v1.7.0 on 2022-01-31
 
 This version is compatible with XRechnung 2.2.0
@@ -14,6 +18,7 @@ This version is compatible with XRechnung 2.2.0
 * Schematron Rules
   * BR-DE-27, that a telephone number must have at least three digits
   * BR-DE-28, that an email address must have exactly one @ sign, does not start or end with a dot, the @ sign must not be flanked by a whitespace or a dot and must be preceded and followed by at least two characters.
+  * BR-DE-18-a, CII cardinality for BT-20 
 
 * Schematron Rules for XRechnung Extension to include DIGA Codes (XR01, XR02, XR03)
   * BR-DEX-04 replaces CEN rule BR-CL-10 (ISO 6523 ICD Codelist)
@@ -23,6 +28,14 @@ This version is compatible with XRechnung 2.2.0
   * BR-DEX-08 replaces CEN rule BR-CL-26 (ISO 6523 ICD Codelist)
 
 * numerous tests for BR-DEX-04 to BR-DEX-08 rules 
+
+### Changed
+
+* BR-DE-18 more robust checking of Skonto rules
+
+### Fixed
+
+* Corrected UBL invoice test for IBAN, checking for BR-DE-19 instead of BR-DE-21
 
 ## v1.6.1 on 2021-11-15
 
