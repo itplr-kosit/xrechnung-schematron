@@ -177,5 +177,50 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+    <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-04
+        Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))  or ((not(contains(normalize-space(@schemeID), ' ')) and contains(' SEPA ', concat(' ', normalize-space(@schemeID), ' '))) and ((ancestor::cac:AccountingSupplierParty) or (ancestor::cac:PayeeParty)))"
+        flag="fatal"
+        id="BR-DEX-04"
+        >[BR-DEX-04] </assert>
+    </rule>
+    <rule context="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]">
+      <!-- BR-DEX-05
+        Überschreibt BR-CL-11 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-05"
+        >[BR-DEX-05] </assert>
+    </rule>
+    <rule context="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-06
+        Überschreibt BR-CL-21 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-06"
+        >[BR-DEX-06] </assert>
+    </rule>    
+    <rule context="cbc:EndpointID[@schemeID and $isExtension]">
+      <!-- BR-DEX-07
+        Überschreibt BR-CL-25 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-07"
+        >[BR-DEX-07] </assert>
+    </rule>
+    <rule context="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]">
+      <!-- BR-DEX-08
+        Überschreibt BR-CL-26 und ergänzt um XR01, XR02, XR03
+          -->
+      <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
+        flag="fatal"
+        id="BR-DEX-08"
+        >[BR-DEX-08] </assert>
+    </rule>
   </pattern>
 </schema>
