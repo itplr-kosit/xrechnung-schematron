@@ -14,6 +14,7 @@
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
     <active pattern="ubl-pattern" />
+    <active pattern="ubl-extension-pattern" />
   </phase>
   
   <include href="../common.sch" />
@@ -177,6 +178,12 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+  </pattern>
+  <pattern id="ubl-extension-pattern">
+    <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
+    <let name="isExtension"
+         value="exists(/ubl:CreditNote/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xoev-de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
+
     <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-04
         Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
