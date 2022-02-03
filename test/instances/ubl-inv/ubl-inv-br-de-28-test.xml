@@ -79,7 +79,8 @@
       <cac:Contact>        
         <cbc:Name>Tim Tester</cbc:Name>                
         <cbc:Telephone>012 3456789</cbc:Telephone>
-        <?xmute mutator="code" values="tim.tester@test.com,aa@bb,a.b@c.d,abc@bcd.def,ab.cd@ef" 
+        <!-- Excluded for #81: ,aa@bb,ab.cd@ef -->
+        <?xmute mutator="code" values="tim.tester@test.com,tim@test.com,a.b@c.d,abc@bcd.def,tim-tom.tester@test-er.org,tim_tom@test.com" 
               schematron-valid="xrinv:BR-DE-28" id="ubl-inv-BR-DE-28-valid-test"
               description="UBL Invoice BR-DE-28 valid test" ?>
         <?xmute mutator="code" values="@,name,ame@,.test@test.com,@name,test.@test.com,tim.tester@.com,tim@test.com.,tim@test.,test @test.com,test@ test.com,test @ test.com,test@test@test.com,test@@test.com,a@b,ab@c,a@bd" 
