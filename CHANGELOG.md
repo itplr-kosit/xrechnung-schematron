@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This version is compatible with XRechnung ?
 
+## v1.7.1 on 2022-02-07
+
+This version is compatible with XRechnung 2.2.0
+
+### Fixed
+
+* Schematron Rules
+  * BR-DE-28, that - (minus), \_ (underscore), and other special characters are allowed in emails 
+
 ## v1.7.0 on 2022-01-31
 
 This version is compatible with XRechnung 2.2.0
