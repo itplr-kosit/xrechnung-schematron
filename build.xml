@@ -8,7 +8,7 @@
   <property name="build.dir" location="${basedir}/build" />
   <property name="download.dir" location="${build.dir}/download" />
   <property name="dist.dir" location="${basedir}/dist" />
-  <property name="test.src.dir" location="${basedir}/test" />
+  <property name="test.src.dir" location="${basedir}/test/instances" />
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
@@ -186,9 +186,9 @@
       <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
       <arg value="--schematron" />
       <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
-      <arg value="test/instances/ubl-inv/" />
-      <arg value="test/instances/ubl-cn/" />
-      <arg value="test/instances/cii/" />
+      <arg value="${test.src.dir}/ubl-inv/" />
+      <arg value="${test.src.dir}/ubl-cn/" />
+      <arg value="${test.src.dir}/cii/" />
     </java>
   </target>
 
@@ -208,11 +208,11 @@
       <arg value="--schematron" />
       <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
 
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-freespace-test.xml" />
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-negative-test.xml" />
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml" />
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-test.xml" />
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test-2.xml" />
+      <arg value="${test.src.dir}/ubl-inv/ubl-inv-br-de-18-freespace-test.xml" />
+      <arg value="${test.src.dir}/ubl-inv/ubl-inv-br-de-18-negative-test.xml" />
+      <arg value="${test.src.dir}/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml" />
+      <arg value="${test.src.dir}/ubl-inv/ubl-inv-br-de-18-test.xml" />
+      <arg value="${test.src.dir}/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test-2.xml" />
       
     </java>
   </target>
