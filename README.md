@@ -2,9 +2,11 @@
 
 Technical implementation of the German CIUS (XRechnung) business rules for EN16931:2017 as Schematron Rules for XML validation.
 
-If you think you have found a bug, please file an issue in the [XRechnung Schematron Issue Tracker](https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/issues).
+If you think you have found a bug, please [contact us](https://www.xoev.de/xrechnung-16828).
 
-You can find packaged releases on our [GitLab project](https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/releases).
+Existing issues can be found at [our issue tracker](https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/issues).
+
+You can find packaged releases on [our GitLab project](https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/releases).
 
 ## Semantic Versioning
 
