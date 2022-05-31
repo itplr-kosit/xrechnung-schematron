@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This version is compatible with XRechnung ?
 
+### Changed
+
+* Schematron Rules
+  * BR-DE-20, that testing is more robust, because type conversion is now explicitly to decimal and thus more compatible with xpath 1.0
+
 ## v1.7.1 on 2022-02-07
 
 This version is compatible with XRechnung 2.2.0
