@@ -135,7 +135,7 @@
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>58</ram:TypeCode>
                 <ram:PayeePartyCreditorFinancialAccount>
-                    <?xmute mutator="code" id="cii-iban-with-whitespace-inside" values="DE 75512108001245126199, DE75 51 2108 00124512 6199" separator="," schematron-valid="xrcii:BR-DE-19" description="IBAN whitespace inside, should still be validated"?>
+                    <?xmute mutator="code" id="cii-iban-with-whitespace-inside" values="DE 75512108001245126199, DE75 51 2108 00124512 6199, DE93420700240615192200" separator="," schematron-valid="xrcii:BR-DE-19" description="IBAN whitespace inside, should still be validated"?>
                     <!--<?xmute mutator="whitespace" schematron-valid="xrcii:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>-->
                     <?xmute mutator="code" id="cii-invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912" separator="," schematron-invalid="xrcii:BR-DE-19" description="Expect to fail on wrong IBAN" ?>                    
                     <?xmute mutator="code" id="cii-iban-from-gb" values="GB29NWBK60161331926819" separator="," schematron-valid="xrcii:BR-DE-19" description="british iban, should still be validated"?>
