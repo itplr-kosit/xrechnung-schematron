@@ -52,11 +52,11 @@ We recommend `Apache Ant` version 1.10.x or newer (but should work with > 1.8.x)
 
 The main `ant` targets for developing are:
 
-* `compile`
+* `compile-schematron-rules`
 * `test` (unit testing)
 * and `dist` (creating the distribution artefact)
 
-However, because of the complex dependencies, you may only expect `compile` target to work without any customizations.
+However, because of the complex dependencies, you may only expect `compile-schematron-rules` target to work without any customizations.
 
 ## Distribution
 
