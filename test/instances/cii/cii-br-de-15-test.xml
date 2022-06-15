@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
-    xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
-    xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+<?xml version="1.0" encoding="UTF-8"?><rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
     <rsm:ExchangedDocumentContext>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.1</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -14,7 +11,8 @@
             <udt:DateTimeString format="102">20160404</udt:DateTimeString>
         </ram:IssueDateTime>
         <ram:IncludedNote>
-            <ram:Content>Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […] finden.</ram:Content>
+            <ram:Content>Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […]
+                finden.</ram:Content>
             <ram:SubjectCode>ADU</ram:SubjectCode>
         </ram:IncludedNote>
     </rsm:ExchangedDocument>
@@ -23,7 +21,9 @@
             <ram:AssociatedDocumentLineDocument>
                 <ram:LineID>Zeitschrift [...]</ram:LineID>
                 <ram:IncludedNote>
-                    <ram:Content>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</ram:Content>
+                    <ram:Content>Die letzte Lieferung im Rahmen des abgerechneten Abonnements
+                        erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom
+                        Verlag</ram:Content>
                 </ram:IncludedNote>
             </ram:AssociatedDocumentLineDocument>
             <ram:SpecifiedTradeProduct>
@@ -136,7 +136,7 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>            
+        <ram:ApplicableHeaderTradeSettlement>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <?xmute mutator="identity"
                     schematron-valid="xrcii:BR-DE-1" id="cii-mandatory-BG-16"
@@ -146,7 +146,7 @@
                     description="mandatory BG-16" ?>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>58</ram:TypeCode>
-                <ram:PayeePartyCreditorFinancialAccount>                    
+                <ram:PayeePartyCreditorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>

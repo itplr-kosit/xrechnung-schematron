@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-  xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
@@ -34,8 +30,7 @@
     <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf"/>
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
@@ -134,9 +129,9 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
-      <cbc:StreetName />
-      <cbc:CityName />
-      <cbc:PostalZone />
+      <cbc:StreetName/>
+      <cbc:CityName/>
+      <cbc:PostalZone/>
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
@@ -258,8 +253,7 @@
         <cbc:ID>1034</cbc:ID>
       </cac:SellersItemIdentification>
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="IB"
-          >0721-880X</cbc:ItemClassificationCode>
+        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
