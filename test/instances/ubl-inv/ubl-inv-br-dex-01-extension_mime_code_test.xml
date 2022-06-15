@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-  xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
-  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
 
   <?xmute mutator="identity" id="correct-customization-id" 
           schematron-valid="xrinv:BR-DE-21" description="Correct customization ids"?>
@@ -53,8 +49,7 @@
       <?xmute mutator="empty" 
               schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize mime-type not empty" 
               attribute="mimeCode" ?>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml" 
-        filename="01_15_Anhang_01.xml" />
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml" filename="01_15_Anhang_01.xml"/>
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
@@ -153,9 +148,9 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
-      <cbc:StreetName />
-      <cbc:CityName />
-      <cbc:PostalZone />
+      <cbc:StreetName/>
+      <cbc:CityName/>
+      <cbc:PostalZone/>
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
@@ -288,8 +283,7 @@
         <cbc:ID>1034</cbc:ID>
       </cac:SellersItemIdentification>
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="IB"
-          >0721-880X</cbc:ItemClassificationCode>
+        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>

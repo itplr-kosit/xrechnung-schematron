@@ -1,6 +1,4 @@
-<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <?xmute mutator="identity" 
           id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" 
           description="Correct customization ids"?>
@@ -119,8 +117,7 @@
         <?xmute mutator="code" values="190.20" 
                 schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-2" 
                 description="Expect to fail as wrong LineExtensionAmount" ?>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >193.70</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
         </cac:Item>
@@ -135,8 +132,7 @@
         <?xmute mutator="code" values="51.25" 
                 schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-3"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >48.75</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">48.75</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Demontage SML DN 100</cbc:Name>
         </cac:Item>
@@ -151,8 +147,7 @@
         <?xmute mutator="code" values="95.22" 
                 schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-4"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >93.34</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">93.34</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Demontage AW-Rohrleitungen Kunststoff PP bis DN100</cbc:Name>
         </cac:Item>
@@ -177,8 +172,7 @@
         <?xmute mutator="code" values="99.74" 
                 schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-6"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >99.75</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">99.75</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Abwasserleitung HT-PP DN 100</cbc:Name>
         </cac:Item>
@@ -193,8 +187,7 @@
         <?xmute mutator="code" values="333.50"
                 schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-7"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >382.50</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">382.50</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Abwasserleitung HT-PP DN 50</cbc:Name>
         </cac:Item>
@@ -256,16 +249,14 @@
     </cac:SubInvoiceLine>
     <cac:SubInvoiceLine>
       <cbc:ID>2 2</cbc:ID>
-      <cbc:LineExtensionAmount currencyID="EUR"
-        >10394.8</cbc:LineExtensionAmount>
+      <cbc:LineExtensionAmount currencyID="EUR">10394.8</cbc:LineExtensionAmount>
       <cac:Item>
         <cbc:Name>Heizflächen und Zubehör</cbc:Name>
       </cac:Item>
       <cac:SubInvoiceLine>
         <cbc:ID>2 2 1</cbc:ID>
         <cbc:InvoicedQuantity unitCode="C62">52</cbc:InvoicedQuantity>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >10202.4</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">10202.4</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Flachheizkörper Stahl profiliert Seitent. H 300mm L -500mm Typ22</cbc:Name>
         </cac:Item>
@@ -277,8 +268,7 @@
       <cac:SubInvoiceLine>
         <cbc:ID>2 2 2</cbc:ID>
         <cbc:InvoicedQuantity unitCode="C62">104</cbc:InvoicedQuantity>
-        <cbc:LineExtensionAmount currencyID="EUR"
-          >192.4</cbc:LineExtensionAmount>
+        <cbc:LineExtensionAmount currencyID="EUR">192.4</cbc:LineExtensionAmount>
         <cac:Item>
           <cbc:Name>Einzelrosette aus Kunststoff, weiß</cbc:Name>
         </cac:Item>

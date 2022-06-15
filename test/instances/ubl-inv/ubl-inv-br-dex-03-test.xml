@@ -1,6 +1,4 @@
-<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
-    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
     <?xmute mutator="identity" 
           id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" 
           description="Correct customization ids"?>
@@ -130,8 +128,7 @@
             <cac:SubInvoiceLine>
                 <cbc:ID>1 1 1</cbc:ID>
                 <cbc:InvoicedQuantity unitCode="MTR">149</cbc:InvoicedQuantity>       
-                <cbc:LineExtensionAmount currencyID="EUR"
-                    >193.70</cbc:LineExtensionAmount>
+                <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
                 <cac:Item>
                     <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
                     <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-2" description="Sub invoice lines shall have one and only one classified tax category." ?>
@@ -151,8 +148,7 @@
                 <cac:SubInvoiceLine>
                     <cbc:ID>1 1 1 1</cbc:ID>
                     <cbc:InvoicedQuantity unitCode="MTR">149</cbc:InvoicedQuantity>       
-                    <cbc:LineExtensionAmount currencyID="EUR"
-                        >193.70</cbc:LineExtensionAmount>
+                    <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
                     <cac:Item>
                         <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
                         <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-3" description="Sub invoice lines shall have one and only one classified tax category." ?>
