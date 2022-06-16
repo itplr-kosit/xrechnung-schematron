@@ -153,6 +153,10 @@
       deleteonexit="false" overwrite="true"/>
   </target>
 
+  <target name="compile" depends="compile-schematron-rules"
+    description="Compiling Schematron rules from sources">
+  </target>
+
   <target name="test-only" description="Unit testing Schematron Rules wit XML-Mutate"
     if="xmute.download.url.prefix">
     <echo>Unit testing Schematron rules ...</echo>
@@ -208,10 +212,10 @@
   </target>
 
 
-  <target name="test" depends="retrieve-xmute, compile-schematron-rules, test-only"
+  <target name="test" depends="retrieve-xmute, compile, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate"/>
 
-  <target name="dist-only" depends="compile-schematron-rules"
+  <target name="dist-only" depends="compile"
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
