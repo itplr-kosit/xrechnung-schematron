@@ -174,28 +174,6 @@
     </java>
   </target>
 
-  <target name="test-skonto-rules" description="Unit testing Schematron Rules wit XML-Mutate"
-    if="xmute.download.url.prefix">
-    <echo>Unit testing Schematron rules ...</echo>
-    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes" dir="${basedir}">
-      <arg value="-fae"/>
-      <arg value="--target"/>
-      <arg value="${build.dir}/generated"/>
-      <arg value="--schematron"/>
-      <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl"/>
-      <arg value="--schematron"/>
-      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl"/>
-      <arg value="--schematron"/>
-      <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl"/>
-
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-freespace-test.xml"/>
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-skonto-many-tests.xml"/>
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-test.xml"/>
-      <arg value="test/instances/ubl-inv/ubl-inv-br-de-18-wrong-skonto-basisbetrag-test.xml"/>
-
-    </java>
-  </target>
-
   <target name="update-spec-id" description="Updating Specification IDs for tests">
 
     <echo>Checking Specification IDs</echo>
