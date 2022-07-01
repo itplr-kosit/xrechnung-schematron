@@ -2,6 +2,12 @@
 
 Schematron sources are in `validation/schematron/{cii, ubl-cn, ubl-inv}` directories. 
 
+## Testing
+
+We are only testing with **Saxon HE 9.9** and later.
+Proper execution of the rules with other XSLT environments cannot be guaranteed.
+
+Hint: the CEN rules are also tested with Saxon HE.
 
 ## Test case development with XML Mutate
 
