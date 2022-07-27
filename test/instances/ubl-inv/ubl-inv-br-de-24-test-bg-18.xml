@@ -57,14 +57,14 @@
     </cac:AccountingCustomerParty>
     <cac:PaymentMeans>
         <?xmute mutator="code" values="48,54,55" 
-                schematron-valid="xrinv:BR-DE-24-a" id="ubl-br-de-24-possible-typecodes"
+                schematron-valid="xrubl:BR-DE-24-a" id="ubl-br-de-24-possible-typecodes"
                 description="possible typecodes" ?> 
         <cbc:PaymentMeansCode>48</cbc:PaymentMeansCode>                       
         <?xmute mutator="identity"
-                schematron-valid="xrinv:BR-DE-24-a" id="ubl-mandatory-BG-18"
+                schematron-valid="xrubl:BR-DE-24-a" id="ubl-mandatory-BG-18"
                 description="mandatory BG-18" ?>
         <?xmute mutator="remove"
-                schematron-invalid="xrinv:BR-DE-24-a" id="ubl-mandatory-BG-18-remove"
+                schematron-invalid="xrubl:BR-DE-24-a" id="ubl-mandatory-BG-18-remove"
                 description="mandatory BG-18" ?>
         <cac:CardAccount>
             <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>

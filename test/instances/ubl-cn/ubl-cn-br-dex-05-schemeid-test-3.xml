@@ -92,7 +92,7 @@
       </cac:PartyTaxScheme>
       <cac:PartyLegalEntity>
         <cbc:RegistrationName>[Buyer name]</cbc:RegistrationName>
-        <?xmute mutator="identity" schematron-invalid="xrcn:BR-DEX-05" id="ubl-cn-br-dex-05-test-scheme-id-3" description="UBL-CN BR-DEX-05 schemeID must be valid" ?>
+        <?xmute mutator="identity" schematron-invalid="xrubl:BR-DEX-05" id="ubl-cn-br-dex-05-test-scheme-id-3" description="UBL-CN BR-DEX-05 schemeID must be valid" ?>
         <cbc:CompanyID schemeID="0321">90000000-03083-12</cbc:CompanyID>
       </cac:PartyLegalEntity>
       <cac:Contact>

@@ -57,7 +57,7 @@
     </cac:AccountingCustomerParty>
     <cac:PaymentMeans> 
         <?xmute mutator="identity"
-                schematron-invalid="xrinv:BR-DE-25-b" id="ubl-inv-BG-17-not-allowed-with-BG-19"
+                schematron-invalid="xrubl:BR-DE-25-b" id="ubl-inv-BG-17-not-allowed-with-BG-19"
                 description="UBL-Inv BG-17 not allowed with BG-19" ?>
         <cac:PayeeFinancialAccount>
             <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->

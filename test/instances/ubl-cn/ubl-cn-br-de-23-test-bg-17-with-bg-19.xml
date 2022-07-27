@@ -152,7 +152,7 @@
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
     <?xmute mutator="identity"
-            schematron-invalid="xrcn:BR-DE-23-b" id="ubl-cn-BG-19-not-allowed-with-BG-17"
+            schematron-invalid="xrubl:BR-DE-23-b" id="ubl-cn-BG-19-not-allowed-with-BG-17"
             description="UBL-CN BG-19 not allowed with BG-17" ?>
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>

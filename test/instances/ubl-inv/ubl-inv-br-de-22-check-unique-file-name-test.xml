@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <?xmute mutator="identity" id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" description="Correct customization ids" 
+  <?xmute mutator="identity" id="correct-customization-id" schematron-valid="xrubl:BR-DE-21" description="Correct customization ids" 
   ?>
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
@@ -26,12 +26,12 @@
   <cac:ContractDocumentReference>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
-  <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-22" id="unique-file-names" description="Check all file names are unique" ?>
+  <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-22" id="unique-file-names" description="Check all file names are unique" ?>
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
-      <?xmute mutator="code" values="01_15_Anhang_02.pdf" attribute="filename" schematron-invalid="xrinv:BR-DE-22" id="duplicate-file-name" description="Expect to fail as duplicate file name" ?>
+      <?xmute mutator="code" values="01_15_Anhang_02.pdf" attribute="filename" schematron-invalid="xrubl:BR-DE-22" id="duplicate-file-name" description="Expect to fail as duplicate file name" ?>
       <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf"/>
     </cac:Attachment>
   </cac:AdditionalDocumentReference>

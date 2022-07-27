@@ -3,10 +3,10 @@
     <cbc:ID>123456XX</cbc:ID>
     <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
     <?xmute mutator="code" values="326,380,384,389,381,875,876,877" 
-                    schematron-valid="xrinv:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
+                    schematron-valid="xrubl:BR-DE-17" id="ubl-inv-br-de-17-test-type-codes"
                     description="br-de-17 test valid type codes" ?>
     <?xmute mutator="code" values="383,527" 
-                    schematron-invalid="xrinv:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
+                    schematron-invalid="xrubl:BR-DE-17" id="ubl-inv-br-de-17-test-invalid-type-codes"
                     description="br-de-17 test invalid type codes" ?>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>#ADU#Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […] finden.</cbc:Note>

@@ -27,7 +27,7 @@
             </cac:PartyTaxScheme>
             <cac:PartyLegalEntity>
                 <cbc:RegistrationName>[Seller name]</cbc:RegistrationName>
-                <?xmute mutator="identity" schematron-invalid="xrinv:BR-DEX-05" id="br-dex-05-test-scheme-id-3" description="BR-DE-05 invalid schemeID must not be valid" ?>
+                <?xmute mutator="identity" schematron-invalid="xrubl:BR-DEX-05" id="br-dex-05-test-scheme-id-3" description="BR-DE-05 invalid schemeID must not be valid" ?>
                 <cbc:CompanyID schemeID="0321">[HRA-Eintrag]</cbc:CompanyID>
                 <cbc:CompanyLegalForm>123/456/7890, HRA-Eintrag in […]</cbc:CompanyLegalForm>
             </cac:PartyLegalEntity>

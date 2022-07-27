@@ -12,10 +12,10 @@
     </cac:InvoicePeriod>
     <cac:BillingReference>
         <?xmute mutator="identity"
-            schematron-valid="xrinv:BR-DE-26" id="ubl-br-de-26-inv-mandatory-BG-3"
+            schematron-valid="xrubl:BR-DE-26" id="ubl-br-de-26-inv-mandatory-BG-3"
             description="UBL-Inv BR-DE-26 mandatory BG-3 with BT-3 384" ?>
         <?xmute mutator="remove"
-            schematron-invalid="xrinv:BR-DE-26" id="ubl-br-de-26-inv-mandatory-BG-3-2"
+            schematron-invalid="xrubl:BR-DE-26" id="ubl-br-de-26-inv-mandatory-BG-3-2"
             description="UBL-Inv BR-DE-26 mandatory BG-3 with BT-3 384" ?>
         <cac:InvoiceDocumentReference>
             <cbc:ID>PRG1502168</cbc:ID>

@@ -152,10 +152,10 @@
         <cbc:AdditionalStreetName>4. OG</cbc:AdditionalStreetName>        
         <cbc:CityName>[Deliver to city]</cbc:CityName>
         <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-11" id="ubl-inv-mandatory-BT-78"
+                    schematron-valid="xrubl:BR-DE-11" id="ubl-inv-mandatory-BT-78"
                     description="mandatory BT-78 if BG-15 exists" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-11" id="ubl-inv-mandatory-BT-78-2"
+                    schematron-invalid="xrubl:BR-DE-11" id="ubl-inv-mandatory-BT-78-2"
                     description="mandatory BT-78 if BG-15 exists" ?>
         <cbc:PostalZone>98765</cbc:PostalZone>
         <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>

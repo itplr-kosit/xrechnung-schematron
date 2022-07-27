@@ -186,7 +186,7 @@
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
       <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-valid="xrcn:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-95-valid"
+                    schematron-valid="xrubl:BR-DE-16" id="ubl-cn-mandatory-companyID-with-some-tax-category-BT-95-valid"
                     description="mandatory companyID with some tax category" ?>
       <cbc:ID>S</cbc:ID>
       <cbc:Percent>19</cbc:Percent>

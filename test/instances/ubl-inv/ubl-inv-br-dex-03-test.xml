@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
     <?xmute mutator="identity" 
-          id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" 
+          id="correct-customization-id" schematron-valid="xrubl:BR-DE-21" 
           description="Correct customization ids"?>
     <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2#conformant#urn:xoev-de:kosit:extension:xrechnung_2.2</cbc:CustomizationID>
     <cbc:ID>12345</cbc:ID>
@@ -115,8 +115,8 @@
             <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
             <cac:Item>
                 <cbc:Name>Demontage Sanitär</cbc:Name>
-                <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-1" description="Sub invoice lines shall have one and only one classified tax category." ?>
-                <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-1" description="Sub invoice lines shall have one and only one classified tax category." ?>                
+                <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-1" description="Sub invoice lines shall have one and only one classified tax category." ?>
+                <?xmute mutator="remove" schematron-invalid="xrubl:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-1" description="Sub invoice lines shall have one and only one classified tax category." ?>                
                 <cac:ClassifiedTaxCategory>
                     <cbc:ID>S</cbc:ID>
                     <cbc:Percent>7</cbc:Percent>
@@ -131,8 +131,8 @@
                 <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
                 <cac:Item>
                     <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
-                    <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-2" description="Sub invoice lines shall have one and only one classified tax category." ?>
-                    <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-2" description="Sub invoice lines shall have one and only one classified tax category." ?>                    
+                    <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-2" description="Sub invoice lines shall have one and only one classified tax category." ?>
+                    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-2" description="Sub invoice lines shall have one and only one classified tax category." ?>                    
                     <cac:ClassifiedTaxCategory>
                         <cbc:ID>S</cbc:ID>
                         <cbc:Percent>7</cbc:Percent>
@@ -151,8 +151,8 @@
                     <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
                     <cac:Item>
                         <cbc:Name>Demontage TW-Rohrleitung DN 12-25</cbc:Name>
-                        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-3" description="Sub invoice lines shall have one and only one classified tax category." ?>
-                        <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-4" description="Sub invoice lines shall have one and only one classified tax category." ?>                    
+                        <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-03" id="br-dex-03-test-bg-dex-06-must-exists-3" description="Sub invoice lines shall have one and only one classified tax category." ?>
+                        <?xmute mutator="remove" schematron-invalid="xrubl:BR-DEX-03" id="br-dex-03-remove-bg-dex-06-4" description="Sub invoice lines shall have one and only one classified tax category." ?>                    
                         <cac:ClassifiedTaxCategory>
                             <cbc:ID>S</cbc:ID>
                             <cbc:Percent>7</cbc:Percent>

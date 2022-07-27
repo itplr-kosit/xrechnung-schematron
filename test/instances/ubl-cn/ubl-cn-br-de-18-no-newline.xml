@@ -176,7 +176,7 @@
   </cac:PaymentMeans>
   <cac:PaymentTerms>
     <?xmute mutator="identity" 
-            schematron-invalid="xrcn:BR-DE-18" id="ubl-cn-br-de-18-skonto_missing_newline"
+            schematron-invalid="xrubl:BR-DE-18" id="ubl-cn-br-de-18-skonto_missing_newline"
             description="Every skonto entry should end with a newline" ?>
     <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
 #SKONTO#TAGE=14#PROZENT=1.00#

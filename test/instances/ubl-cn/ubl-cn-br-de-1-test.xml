@@ -165,10 +165,10 @@
     </cac:DeliveryParty>
   </cac:Delivery>
   <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16"
+                    schematron-valid="xrubl:BR-DE-1" id="ubl-cn-mandatory-BG-16"
                     description="mandatory BG-16" ?>
   <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-1" id="ubl-cn-mandatory-BG-16-2"
+                    schematron-invalid="xrubl:BR-DE-1" id="ubl-cn-mandatory-BG-16-2"
                     description="mandatory BG-16" ?>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>

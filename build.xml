@@ -128,8 +128,7 @@
     <copy todir="${build.dir}" filtering="true">
       <fileset dir="${src.dir}">
         <include name="**/*.sch"/>
-        <exclude name="**/*.xsl"/>
-        <exclude name="**/XRechnung-UBL-validation.sch"/>
+        <exclude name="**/*.xsl"/>        
       </fileset>
       <fileset dir="${basedir}">
         <include name="README.md"/>
@@ -142,14 +141,10 @@
     description="Compiling schematron rules">
     <schematron-compile schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
       insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/cii"
-      deleteonexit="false" overwrite="true"/>
+      deleteonexit="false" overwrite="true"/>    
     <schematron-compile
-      schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch"
-      insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-cn"
-      overwrite="true"/>
-    <schematron-compile
-      schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch"
-      insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl-inv"
+      schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl"
       deleteonexit="false" overwrite="true"/>
   </target>
 
@@ -167,9 +162,7 @@
       <!-- Has no impact -->
       <arg value="--fail-fast"/>
       <arg value="--schematron"/>
-      <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl"/>
-      <arg value="--schematron"/>
-      <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl"/>
+      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>      
       <arg value="--schematron"/>
       <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl"/>
       <arg value="test/instances/ubl-inv/"/>
@@ -184,9 +177,8 @@
 
     <!-- get fileset -->
     <mkdir dir="${test.build.dir}/tmp/cii"/>
-    <mkdir dir="${test.build.dir}/tmp/ubl-cn"/>
-    <mkdir dir="${test.build.dir}/tmp/ubl-inv"/>
-
+    <mkdir dir="${test.build.dir}/tmp/ubl"/>    
+    
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
       style="validation/normalization.xsl" classpath="${lib.dir}/${saxon.jar}" extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl"/>

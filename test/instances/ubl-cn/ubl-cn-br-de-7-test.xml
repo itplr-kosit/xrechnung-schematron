@@ -74,10 +74,10 @@
         <cbc:Name>Tim Tester</cbc:Name>        
         <cbc:Telephone>012 3456789</cbc:Telephone>
         <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-7" id="ubl-cn-mandatory-BT-43"
+                    schematron-valid="xrubl:BR-DE-7" id="ubl-cn-mandatory-BT-43"
                     description="mandatory BT-43" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-7" id="ubl-cn-mandatory-BT-43-2"
+                    schematron-invalid="xrubl:BR-DE-7" id="ubl-cn-mandatory-BT-43-2"
                     description="mandatory BT-43" ?>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>

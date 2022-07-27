@@ -99,7 +99,7 @@
     </cac:PaymentMeans>
     <cac:PaymentTerms>
         <?xmute mutator="identity" 
-                schematron-valid="xrinv:BR-DE-18" id="ubl-inv-br-de-18-freespace-is-allowed"
+                schematron-valid="xrubl:BR-DE-18" id="ubl-inv-br-de-18-freespace-is-allowed"
                 description="BR-DE-18 Freespace is allowed" ?>
         <cbc:Note>   testentry
             #SKONTO#TAGE=7#PROZENT=2.00#

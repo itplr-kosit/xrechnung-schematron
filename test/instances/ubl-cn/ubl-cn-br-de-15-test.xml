@@ -10,10 +10,10 @@
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <?xmute mutator="identity"
-          schematron-valid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10"
+          schematron-valid="xrubl:BR-DE-15" id="ubl-cn-mandatory-BT-10"
           description="mandatory BT-10" ?>
   <?xmute mutator="remove"
-          schematron-invalid="xrcn:BR-DE-15" id="ubl-cn-mandatory-BT-10-removed"
+          schematron-invalid="xrubl:BR-DE-15" id="ubl-cn-mandatory-BT-10-removed"
           description="mandatory BT-10" ?>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>

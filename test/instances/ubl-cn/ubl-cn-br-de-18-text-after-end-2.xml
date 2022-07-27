@@ -175,7 +175,7 @@
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
-    <?xmute mutator="identity" schematron-invalid="xrcn:BR-DE-18" id="ubl-cn-br-de-18-text-after-end-2" description="UBL CN BR-DE-18 Text after end" ?>
+    <?xmute mutator="identity" schematron-invalid="xrubl:BR-DE-18" id="ubl-cn-br-de-18-text-after-end-2" description="UBL CN BR-DE-18 Text after end" ?>
     <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
         #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
         #VERZUG#TAGE=30#PROZENT=0.00# Test text
