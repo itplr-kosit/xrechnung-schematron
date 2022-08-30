@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+* Schematron Rules
+  * Missing Rules BR-DE-29, BR-DE-30, BR-DE-31 for mandatory elements of BG-19.
+
 ## v1.7.2 on 2022-05-31
 
 This version is compatible with XRechnung 2.2.0
