@@ -24,6 +24,21 @@
 
   <pattern id="cii-pattern">
     <rule context="/rsm:CrossIndustryInvoice">
+      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
+        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID)"
+              flag="fatal"
+              id="BR-DE-29"
+        >[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
+      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
+        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID)"
+              flag="fatal"
+              id="BR-DE-30"
+        >[BR-DE-30] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden.</assert>
+      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
+        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID)"
+              flag="fatal"
+              id="BR-DE-31"
+        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
       <assert test="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
               flag="fatal"
               id="BR-DE-1"
