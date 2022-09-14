@@ -31,6 +31,12 @@
         <cbc:ID>[Seller identifier 2]</cbc:ID>
       </cac:PartyIdentification>
       <cac:PartyIdentification>
+        <?xmute mutator="identity"
+                    schematron-valid="xrinv:BR-DE-30" id="ubl-inv-mandatory-BT-90"
+                    description="mandatory BT-90" ?>
+        <?xmute mutator="remove"
+                    schematron-invalid="xrinv:BR-DE-30" id="ubl-inv-mandatory-BT-90-2"
+                    description="mandatory BT-90" ?>
         <cbc:ID schemeID="SEPA">[Bank assigned creditor identifier]</cbc:ID> <!-- BT-90 -->
       </cac:PartyIdentification>
           <cac:PartyName>
@@ -83,7 +89,13 @@
   </cac:AccountingCustomerParty>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
-      <cac:PaymentMandate><!-- BG-19 -->        
+      <cac:PaymentMandate><!-- BG-19 -->
+        <?xmute mutator="identity"
+                    schematron-valid="xrinv:BR-DE-29" id="ubl-inv-mandatory-BT-89"
+                    description="mandatory BT-89" ?>
+        <?xmute mutator="remove"
+                    schematron-invalid="xrinv:BR-DE-29" id="ubl-inv-mandatory-BT-89-2"
+                    description="mandatory BT-89" ?>
         <cbc:ID>[Mandate reference identifier]</cbc:ID><!-- BT-89 -->
         <cac:PayerFinancialAccount>
           <?xmute mutator="identity"

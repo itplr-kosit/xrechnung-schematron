@@ -162,6 +162,12 @@
                     description="mandatory BT-89" ?>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>
+        <?xmute mutator="identity"
+                    schematron-valid="xrcn:BR-DE-31" id="ubl-cn-mandatory-BT-91"
+                    description="mandatory BT-91" ?>
+        <?xmute mutator="remove"
+                    schematron-invalid="xrcn:BR-DE-31" id="ubl-cn-mandatory-BT-91-2"
+                    description="mandatory BT-91" ?>
         <cbc:ID>DE75512108001245126199</cbc:ID>
       </cac:PayerFinancialAccount>
     </cac:PaymentMandate>
