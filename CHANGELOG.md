@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+* Removed wrong unit test from ubl-inv-contact-tests.xml
+
 ## v1.7.2 on 2022-05-31
 
 This version is compatible with XRechnung 2.2.0
