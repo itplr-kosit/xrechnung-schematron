@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* Schematron Rules
+  * BR-DE-21 in CII to allow for Extensiopn specification identifier 
+
 ## v1.7.2 on 2022-05-31
 
 This version is compatible with XRechnung 2.2.0
