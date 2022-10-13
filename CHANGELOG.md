@@ -16,6 +16,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 * Removed superfluous duplicate unit test from ubl-inv-contact-tests.xml
+* Changed some IDs to German IDs
 
 ## v1.7.2 on 2022-05-31
 
