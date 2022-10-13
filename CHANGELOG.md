@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* Schematron Rules
+  * BR-DE-21 in CII to allow for Extension specification identifier 
+
 ### Fixed
 * Removed superfluous duplicate unit test from ubl-inv-contact-tests.xml
 
