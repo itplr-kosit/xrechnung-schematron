@@ -12,7 +12,7 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * Schematron Rules
-  * BR-DE-21 in CII to allow for Extensiopn specification identifier 
+  * BR-DE-21 in CII to allow for Extension specification identifier 
 
 ## v1.7.2 on 2022-05-31
 
