@@ -182,6 +182,12 @@
               flag="fatal"
               id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
+    <rule context="/ubl:Invoice/cac:InvoiceLine/cac:Price/cac:AllowanceCharge">
+      <assert
+        test="not(cbc:Amount) or xs:decimal(../cbc:PriceAmount) = xs:decimal(cbc:BaseAmount) - xs:decimal(cbc:Amount)"
+        flag="fatal" id="BR-DE-32">[BR-DE-32] Wenn das Element "Item price discount" (BT-147)
+        übermittelt wird, muss der "Item net price" (BT-146) dem "Item gross price" (BT-148)
+        abzüglich des "Item price discount" (BT-147) entsprechen.</assert>
     </rule>
   </pattern>
 
