@@ -5,13 +5,26 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## UNRELEASED v1.8.0
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 2.3.0
 
 ### Added
 * Schematron Rules
   * Missing Rules BR-DE-29, BR-DE-30, BR-DE-31 for mandatory elements of BG-19.
+
+## v1.7.3 on 2022-11-15
+
+This release is compatible with XRechnung 2.2.0
+
+### Changed
+
+* Schematron Rules
+  * BR-DE-21 in CII to allow for Extension specification identifier 
+
+### Fixed
+* Removed superfluous duplicate unit test from ubl-inv-contact-tests.xml
+* Changed some IDs to German IDs
 
 ## v1.7.2 on 2022-05-31
 
