@@ -63,6 +63,20 @@
               flag="warning"
               id="BR-DE-26"
       >[BR-DE-26] Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cbc:ID)"
+        flag="fatal"
+        id="BR-DE-29"
+        >[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) 
+        or (cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='SEPA'] 
+        | cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID='SEPA'])"
+        flag="fatal"
+        id="BR-DE-30"
+        >[BR-DE-30] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)"
+        flag="fatal"
+        id="BR-DE-31"
+        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
     </rule>
     
     <rule context="/ubl:CreditNote/cac:AccountingSupplierParty">
