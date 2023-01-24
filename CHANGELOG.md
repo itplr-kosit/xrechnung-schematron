@@ -12,7 +12,7 @@ This release is compatible with XRechnung 2.3.0
 ### Added
 * Schematron Rules
   * Missing Rules BR-DE-29, BR-DE-30, BR-DE-31 for mandatory elements of BG-19.
-
+  * Rules BR-DEX-09, BR-DEX-10, BR-DEX-11, BR-DEX-12 for third party payment
 ## v1.7.3 on 2022-11-15
 
 This release is compatible with XRechnung 2.2.0
