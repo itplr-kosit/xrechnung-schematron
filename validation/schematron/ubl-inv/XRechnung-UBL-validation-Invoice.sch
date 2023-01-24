@@ -313,5 +313,19 @@
         id="BR-DEX-08"
         >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
+    <rule context="/ubl:Invoice/cac:PrepaidPayment">
+      <assert test="cbc:ID"
+        flag="fatal"
+        id="BR-DEX-10"
+        >[BR-DEX-10] Das Element "Third party payment type" BT-DEX-01 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:PaidAmount"
+        flag="fatal"
+        id="BR-DEX-11"
+        >[BR-DEX-11] Das Element "Third party payment amount" BT-DEX-02 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:InstructionID"
+        flag="fatal"
+        id="BR-DEX-12"
+        >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-03 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+    </rule>
   </pattern>
 </schema>
