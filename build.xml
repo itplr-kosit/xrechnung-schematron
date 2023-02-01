@@ -186,7 +186,7 @@
     </fail>
 </target>
 
-  <target name="test-single-file"
+  <target name="test-single-file" depends="compile-schematron-rules"
     description="Unit testing Schematron Rules wit XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
     
@@ -205,7 +205,7 @@
       <arg value="--schematron" />
       <arg
         value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
-      <arg value="test/instances/ubl-inv/${test.file.name}" />
+      <arg value="test/instances/${test.file.name}" />
     </java>
   </target>
 
