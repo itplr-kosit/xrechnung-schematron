@@ -24,22 +24,28 @@
 
   <pattern id="cii-pattern">
     <rule context="/rsm:CrossIndustryInvoice">
-      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
-        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID)"
+<let name="BT-89-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID"/>
+
+<let name="BT-90-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID"/>
+
+<let name="BT-91-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID"/>
+
+      <assert test="($BT-90-path or $BT-91-path) and $BT-89-path"
               flag="fatal"
-              id="BR-DE-29"
-        >[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
-      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
-        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID)"
+              id="BR-DE-29">[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
+
+      <assert test="($BT-89-path or $BT-91-path) and $BT-90-path"
               flag="fatal"
               id="BR-DE-30"
         >[BR-DE-30] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden.</assert>
-      <assert test="not(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement) or
-        (rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID)"
+      <assert test="($BT-89-path or $BT-90-path) and $BT-91-path"
               flag="fatal"
               id="BR-DE-31"
         >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
-      <assert test="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
+      
+
+
+<assert test="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
               flag="fatal"
               id="BR-DE-1"
           >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
