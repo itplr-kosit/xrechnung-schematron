@@ -251,11 +251,12 @@
     <rule context="cac:LegalMonetaryTotal[$isExtension and exists(/ubl:Invoice/cac:PrepaidPayment)]">
       <let name="prepaid" value="if(exists(cbc:PrepaidAmount)) then (xs:decimal(cbc:PrepaidAmount)) else (0)"/>
       <let name="payablerounding" value="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)" />
+      <let name="paidamount" value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount)) then (sum(xs:decimal(../cac:PrepaidPayment/cbc:PaidAmount))) else (0)" />
       <!-- BR-DEX-09
         Overrides BR-CO-16
         Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).
           -->
-      <assert test="(round((xs:decimal(cbc:PayableAmount) - $payablerounding) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaid + sum(../cac:PrepaidPayment/cbc:PaidAmount)) * 10 * 10) div 100)"
+      <assert test="(round((xs:decimal(cbc:PayableAmount) - $payablerounding) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaid + $paidamount) * 10 * 10) div 100)"
         flag="fatal"
         id="BR-DEX-09"
         >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
