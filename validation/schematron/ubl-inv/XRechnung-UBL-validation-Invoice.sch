@@ -258,6 +258,7 @@
       <assert test="(round((xs:decimal(cbc:PayableAmount) - $payablerounding) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaid + sum(../cac:PrepaidPayment/cbc:PaidAmount)) * 10 * 10) div 100)"
         flag="fatal"
         id="BR-DEX-09"
+        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
         >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).</assert>
     </rule>
     <rule context="cac:LegalMonetaryTotal[$isExtension and not(exists(/ubl:Invoice/cac:PrepaidPayment))]">
