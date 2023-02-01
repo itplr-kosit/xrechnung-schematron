@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?>
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
     <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2#conformant#urn:xoev-de:kosit:extension:xrechnung_2.2</cbc:CustomizationID>
     <cbc:ID>123456XX</cbc:ID>
     <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
@@ -14,7 +17,7 @@
             <cac:PostalAddress>
                 <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
                 <cbc:CityName>[Seller city]</cbc:CityName>
-                <cbc:PostalZone>12345</cbc:PostalZone>
+                <cbc:PostalZone>12345</cbc:PostalZone>              
                 <cac:Country>
                     <cbc:IdentificationCode>DE</cbc:IdentificationCode>
                 </cac:Country>
@@ -27,10 +30,7 @@
             </cac:PartyTaxScheme>
             <cac:PartyLegalEntity>
                 <cbc:RegistrationName>[Seller name]</cbc:RegistrationName>
-<?xmute mutator="code" schematron-valid="xrinv:BR-DEX-05" values="XR01,0013" attribute="schemeID" id="br-dex-05-test-scheme-id-1" description="BR-DEX-05 schemeID must be valid" ?>
-
-                <?xmute mutator="code" schematron-invalid="xrinv:BR-DEX-05" values="0321,XR11" attribute="schemeID" id="br-dex-05-test-scheme-id-4" description="BR-DE-05 invalid schemeID must not be valid" ?>
-                <cbc:CompanyID schemeID="XR01">[HRA-Eintrag]</cbc:CompanyID>
+                <cbc:CompanyID>[HRA-Eintrag]</cbc:CompanyID>
                 <cbc:CompanyLegalForm>123/456/7890, HRA-Eintrag in […]</cbc:CompanyLegalForm>
             </cac:PartyLegalEntity>
             <cac:Contact>
@@ -42,7 +42,7 @@
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
-            <cac:PartyIdentification>                
+            <cac:PartyIdentification>
                 <cbc:ID>[Buyer identifier]</cbc:ID>
             </cac:PartyIdentification>
             <cac:PostalAddress>
@@ -67,8 +67,20 @@
     </cac:PaymentMeans>
     <cac:PaymentTerms>
         <cbc:Note>Zahlbar sofort ohne Abzug.</cbc:Note>
-    </cac:PaymentTerms>
+    </cac:PaymentTerms>    
+    <!-- BG-DEX-09-->
+    <cac:PrepaidPayment>
+        <!-- BT-DEX-001 -->
+        <cbc:ID>MobilesBezahlen</cbc:ID>
+        <!-- BT-DEX-002 -->
+        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-11" id="br-dex-11-test-1" description="BR-DEX-11 BR-DEX-02 must exists" ?>
+        <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-11" id="br-dex-11-test-2" description="BR-DEX-11 BR-DEX-02 must exists" ?>
+        <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
+        <!-- BT-DEX-003 -->
+        <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
+    </cac:PrepaidPayment>    
     <cac:TaxTotal>
+        <!-- BT-110 -->
         <cbc:TaxAmount currencyID="EUR">22.04</cbc:TaxAmount>
         <cac:TaxSubtotal>
             <cbc:TaxableAmount currencyID="EUR">314.86</cbc:TaxableAmount>
@@ -81,11 +93,14 @@
                 </cac:TaxScheme>
             </cac:TaxCategory>
         </cac:TaxSubtotal>
-    </cac:TaxTotal>
+    </cac:TaxTotal>    
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="EUR">314.86</cbc:LineExtensionAmount>
+        <!-- BT-109 -->
         <cbc:TaxExclusiveAmount currencyID="EUR">314.86</cbc:TaxExclusiveAmount>
-        <cbc:TaxInclusiveAmount currencyID="EUR">336.9</cbc:TaxInclusiveAmount>
+        <!-- BT-112 -->
+        <cbc:TaxInclusiveAmount currencyID="EUR">336.9</cbc:TaxInclusiveAmount>        
+        <!-- BT-115 -->        
         <cbc:PayableAmount currencyID="EUR">336.9</cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
     <cac:InvoiceLine>
