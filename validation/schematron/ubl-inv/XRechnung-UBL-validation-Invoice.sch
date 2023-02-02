@@ -251,7 +251,7 @@
     <rule context="cac:LegalMonetaryTotal[$isExtension]">
       <let name="prepaid" value="if (exists(cbc:PrepaidAmount)) then (xs:decimal(cbc:PrepaidAmount)) else (0)"/>
       <let name="payablerounding" value="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)" />
-      <let name="paidamount" value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount)) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)" />
+      <let name="paidamount" value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount[boolean(normalize-space(xs:string(.)))])) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)" />
       <!-- BR-DEX-09
         Overrides BR-CO-16
         Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).
@@ -307,15 +307,15 @@
         >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
     <rule context="/ubl:Invoice/cac:PrepaidPayment">
-      <assert test="cbc:ID and not(xs:string(cbc:ID) = '')"
+      <assert test="cbc:ID[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-10"
         >[BR-DEX-10] Das Element "Third party payment type" BT-DEX-001 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
-      <assert test="cbc:PaidAmount"
+      <assert test="cbc:PaidAmount[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-11"
         >[BR-DEX-11] Das Element "Third party payment amount" BT-DEX-002 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
-      <assert test="cbc:InstructionID and not(cbc:InstructionID = '')"
+      <assert test="cbc:InstructionID[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-12"
         >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>

@@ -75,6 +75,7 @@
         <!-- BT-DEX-002 -->
         <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-11" id="br-dex-11-test-1" description="BR-DEX-11 BT-DEX-002 must exist" ?>
         <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-11" id="br-dex-11-test-2" description="BR-DEX-11 BT-DEX-002 must exist" ?>
+        <?xmute mutator="empty" schematron-invalid="xrinv:BR-DEX-11" id="br-dex-11-test-3" description="BR-DEX-11 BT-DEX-002 must not be empty" ?>
         <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
