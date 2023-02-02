@@ -248,25 +248,18 @@
               id="BR-DEX-03"
         >[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
     </rule>
-    <rule context="cac:LegalMonetaryTotal[$isExtension and exists(/ubl:Invoice/cac:PrepaidPayment)]">
+    <rule context="cac:LegalMonetaryTotal[$isExtension]">
+      <let name="prepaid" value="if (exists(cbc:PrepaidAmount)) then (xs:decimal(cbc:PrepaidAmount)) else (0)"/>
+      <let name="payablerounding" value="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)" />
+      <let name="paidamount" value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount[boolean(normalize-space(xs:string(.)))])) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)" />
       <!-- BR-DEX-09
         Overrides BR-CO-16
         Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).
           -->
-      <assert test="(exists(cbc:PrepaidAmount) and not(exists(cbc:PayableRoundingAmount)) and (xs:decimal(cbc:PayableAmount) = (round((xs:decimal(cbc:TaxInclusiveAmount) - xs:decimal(cbc:PrepaidAmount) + sum(../cac:PrepaidPayment/cbc:PaidAmount)) * 10 * 10) div 100))) or (not(exists(cbc:PrepaidAmount)) and not(exists(cbc:PayableRoundingAmount)) and xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount) + xs:decimal(sum(../cac:PrepaidPayment/cbc:PaidAmount)*100) div 100) or (exists(cbc:PrepaidAmount) and exists(cbc:PayableRoundingAmount) and ((round((xs:decimal(cbc:PayableAmount) - xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100)= (round((xs:decimal(cbc:TaxInclusiveAmount) - xs:decimal(cbc:PrepaidAmount) + sum(../cac:PrepaidPayment/cbc:PaidAmount)) * 10 * 10) div 100))) or (not(exists(cbc:PrepaidAmount)) and exists(cbc:PayableRoundingAmount)and ((round((xs:decimal(cbc:PayableAmount) - xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100)= (round((xs:decimal(cbc:TaxInclusiveAmount) + sum(../cac:PrepaidPayment/cbc:PaidAmount)) * 10 * 10) div 100)))"
+      <assert test="(round((xs:decimal(cbc:PayableAmount) - $payablerounding) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaid + $paidamount) * 10 * 10) div 100)"
         flag="fatal"
         id="BR-DEX-09"
-        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).</assert>
-    </rule>
-    <rule context="cac:LegalMonetaryTotal[$isExtension and not(exists(/ubl:Invoice/cac:PrepaidPayment))]">
-      <!-- If there is no BG-DEX-09, BR-CO-16 must be tested
-        BR-CO-16
-        Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114).
-          -->
-      <assert test="(exists(cbc:PrepaidAmount) and not(exists(cbc:PayableRoundingAmount)) and (xs:decimal(cbc:PayableAmount) = (round((xs:decimal(cbc:TaxInclusiveAmount) - xs:decimal(cbc:PrepaidAmount)) * 10 * 10) div 100))) or (not(exists(cbc:PrepaidAmount)) and not(exists(cbc:PayableRoundingAmount)) and xs:decimal(cbc:PayableAmount) = xs:decimal(cbc:TaxInclusiveAmount)) or (exists(cbc:PrepaidAmount) and exists(cbc:PayableRoundingAmount) and ((round((xs:decimal(cbc:PayableAmount) - xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - xs:decimal(cbc:PrepaidAmount)) * 10 * 10) div 100))) or (not(exists(cbc:PrepaidAmount)) and exists(cbc:PayableRoundingAmount) and ((round((xs:decimal(cbc:PayableAmount) - xs:decimal(cbc:PayableRoundingAmount)) * 10 * 10) div 100) = xs:decimal(cbc:TaxInclusiveAmount)))"
-        flag="fatal"
-        id="BR-CO-16"
-        >[BR-CO-16] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).</assert>
+        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
     </rule>
     <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-04
@@ -314,18 +307,18 @@
         >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
     <rule context="/ubl:Invoice/cac:PrepaidPayment">
-      <assert test="cbc:ID"
+      <assert test="cbc:ID[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-10"
-        >[BR-DEX-10] Das Element "Third party payment type" BT-DEX-01 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
-      <assert test="cbc:PaidAmount"
+        >[BR-DEX-10] Das Element "Third party payment type" BT-DEX-001 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:PaidAmount[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-11"
-        >[BR-DEX-11] Das Element "Third party payment amount" BT-DEX-02 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
-      <assert test="cbc:InstructionID"
+        >[BR-DEX-11] Das Element "Third party payment amount" BT-DEX-002 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:InstructionID[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-12"
-        >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-03 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+        >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
     </rule>
   </pattern>
 </schema>

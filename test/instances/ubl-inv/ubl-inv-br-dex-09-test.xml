@@ -78,7 +78,7 @@
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
     </cac:PrepaidPayment>
-    <!-- BT-DEX-09-->
+    <!-- BG-DEX-09-->
     <cac:PrepaidPayment>
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
