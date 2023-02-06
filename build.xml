@@ -12,7 +12,7 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="1.7.4" />
+  <property name="xr-schematron.version.full" value="1.8.0" />
   <property name="xrechnung.version" value="2.3.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
