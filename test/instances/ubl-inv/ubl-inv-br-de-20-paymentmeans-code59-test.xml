@@ -6,7 +6,7 @@
           values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0" 
           id="check-BR-DEX-02-without-sub-invoic-line" 
           schematron-valid="xrinv:BR-DEX-02" description="Expect BR-DEX-02 to be valid without sub invoice lines"?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
 
   <cbc:ID>123456789</cbc:ID>
   <cbc:IssueDate>2019-02-28</cbc:IssueDate>
