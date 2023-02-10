@@ -163,24 +163,15 @@
     </rule>
     
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]">
-      <assert test="not(ram:TypeCode = '58') or
-                    matches(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
-                    xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
-              flag="warning"
-              id="BR-DE-19"
-        >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
-      <assert test="ram:PayeePartyCreditorFinancialAccount"
-              flag="fatal"
-              id="BR-DE-23-a"
-        >[BR-DE-23-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden.</assert>
-      <assert test="not(ram:ApplicableTradeSettlementFinancialCard) and
-                    not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID or
-                        /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID or
-                        ram:PayerPartyDebtorFinancialAccount/ram:IBANID)"
-              flag="fatal"
-              id="BR-DE-23-b"
-        >[BR-DE-23-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden.</assert>
-    </rule>
+        <let name="PAYMENT-MEANS-TYPE-CODE" value="ram:TypeCode"/>
+        <let name="IBAN" value="ram:PayeePartyCreditorFinancialAccount/ram:IBANID"/>
+        <let name="PAYEE-ACCOUNT" value="ram:PayeePartyCreditorFinancialAccount"/>
+        <let name="CARD" value="ram:ApplicableTradeSettlementFinancialCard"/>
+        <let name="ACCOUNT" value="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID or
+            /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID or
+            ram:PayerPartyDebtorFinancialAccount/ram:IBANID"/>
+        <extends rule="IBAN-VALIDATION"/>
+        </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]">
       <assert test="ram:ApplicableTradeSettlementFinancialCard"

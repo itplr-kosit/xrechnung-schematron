@@ -21,4 +21,23 @@
     <let name="CEF-EAS-CODES" value="' 0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0147 0151 0170 0183 0184 0188 0190 0191 0192 0193 0194 0195 0196 0198 0199 0200 0201 0202 0203 0204 0205 0208 0209 0210 0211 0212 0213 0215 0216 0217 0218 0219 0220 9901 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9955 9957 9959 AN AQ AS AU EM '" />
     <let name="CEF-EAS-EXT-CODES" value="concat($DIGA-CODES, $CEF-EAS-CODES)" />
     
+    <rule abstract="true" id="IBAN-VALIDATION">
+        <let name="IBAN-REGEX" value="'^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$'"/>
+        <assert test="not($PAYMENT-MEANS-TYPE-CODE = '58') or
+            matches(normalize-space(replace($IBAN, '([ \n\r\t\s])', '')), $IBAN-REGEX) and
+            xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace($IBAN, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace($IBAN, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace($IBAN, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"
+            flag="warning"
+            id="BR-DE-19"
+            >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
+        <assert test="$PAYEE-ACCOUNT"
+            flag="fatal"
+            id="BR-DE-23-a"
+            >[BR-DE-23-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden.</assert>
+        <assert test="not($CARD) and
+            not($ACCOUNT)"
+            flag="fatal"
+            id="BR-DE-23-b"
+            >[BR-DE-23-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden.</assert>
+    </rule>
+
 </pattern>
