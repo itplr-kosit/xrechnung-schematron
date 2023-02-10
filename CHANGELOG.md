@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* IBAN validation is now more robust 
+
 ## v1.8.0 on 2023-01-31
 
 This release is compatible with XRechnung 2.3.x
