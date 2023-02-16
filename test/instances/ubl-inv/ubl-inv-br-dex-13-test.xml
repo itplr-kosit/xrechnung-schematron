@@ -70,7 +70,8 @@
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
         <!-- BT-DEX-002 -->
-        <?xmute mutator="code" values="19.961111" schematron-invalid="xrinv:BR-DEX-13" id="br-dex-13-test" description="BR-DEX-13: only two decimals allowed for BT-DEX-002" ?>
+        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-13" id="br-dex-13-test-1" description="BR-DEX-13: two decimals allowed for BT-DEX-002" ?>
+        <?xmute mutator="code" values="19.961111" schematron-invalid="xrinv:BR-DEX-13" id="br-dex-13-test-2" description="BR-DEX-13: no more than two decimals allowed for BT-DEX-002" ?>
         <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
