@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+## Added
+
+* BR-DEX-13 to validate maximum number of two allowed fractions digits in BT-DEX-002 ("Third party payment amount").
+
 ## Fixed
 
 * Validation of BR-DEX-10, BR-DEX-11 and BR-DEX-12 now restricted to extension 
