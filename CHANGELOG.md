@@ -13,6 +13,14 @@ This release is compatible with XRechnung ?.?.?
 
 * IBAN validation is now more robust 
 
+## v1.8.1 on 2023-02-17
+
+This release is compatible with XRechnung 2.3.x
+
+### Fixed
+
+* Validation of BR-DEX-10, BR-DEX-11 and BR-DEX-12 now restricted to extension
+
 ## v1.8.0 on 2023-01-31
 
 This release is compatible with XRechnung 2.3.x

@@ -297,7 +297,7 @@
         id="BR-DEX-08"
         >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
-    <rule context="/ubl:Invoice/cac:PrepaidPayment">
+    <rule context="/ubl:Invoice/cac:PrepaidPayment[$isExtension]">
       <assert test="cbc:ID[boolean(normalize-space(xs:string(.)))]"
         flag="fatal"
         id="BR-DEX-10"
