@@ -100,7 +100,7 @@
         <!-- BT-112 -->
         <cbc:TaxInclusiveAmount currencyID="EUR">336.9</cbc:TaxInclusiveAmount>        
         <!-- BT-115 -->        
-        <cbc:PayableAmount currencyID="EUR">336.9</cbc:PayableAmount>
+        <cbc:PayableAmount currencyID="EUR">356.86</cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
     <cac:InvoiceLine>
         <cbc:ID>Zeitschrift [...]</cbc:ID>
