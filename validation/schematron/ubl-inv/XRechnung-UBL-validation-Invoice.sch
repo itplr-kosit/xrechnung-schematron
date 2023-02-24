@@ -323,6 +323,10 @@
         flag="fatal"
         id="BR-DEX-13"
         >[BR-DEX-13] Die maximale Anzahl zulässiger Nachkommastellen für das Element "Third party payment amount" (BT-DEX-002) ist 2."</assert>
+      <assert test="cbc:PaidAmount/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
+        flag="fatal"
+        id="BR-DEX-14"
+        >[BR-DEX-14] Die Währungsangabe von "Third party payment amount" BT-DEX-002 muss BT-5 ("Invoice currency code") entsprechen.</assert>
     </rule>
   </pattern>
 </schema>
