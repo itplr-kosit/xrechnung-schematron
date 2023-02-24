@@ -73,7 +73,7 @@
         <cbc:ID>MobilesBezahlen</cbc:ID>
         <!-- BT-DEX-002 -->
         <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-12" id="br-dex-13-test-3" description="BR-DEX-13 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
-        <?xmute mutator="code" values="USD,GBP" schematron-invalid="xrinv:BR-DEX-13" id="br-dex-13-test-4" description="BR-DEX-13 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
+        <?xmute mutator="code" attribute="currencyID" values="USD,GBP" schematron-invalid="xrinv:BR-DEX-13" id="br-dex-13-test-4" description="BR-DEX-13 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
         <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
