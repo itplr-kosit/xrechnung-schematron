@@ -11,7 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* BR-DEX-13 to validate maximum number of two allowed fractions digits in BT-DEX-002 ("Third party payment amount").
+* BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
 
 ## v1.8.1 on 2023-02-17
 
