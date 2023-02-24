@@ -322,7 +322,7 @@
       <assert test="cbc:PaidAmount[boolean(normalize-space(xs:string(.)))]/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
         flag="fatal"
         id="BR-DEX-13"
-        >[BR-DEX-13] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+        >[BR-DEX-13] Die Währungsangabe von "Third party payment amount" BT-DEX-002 muss BT-5 (Invoice currency code) entsprechen.</assert>
     </rule>
   </pattern>
 </schema>
