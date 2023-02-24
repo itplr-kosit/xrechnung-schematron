@@ -319,6 +319,10 @@
         flag="fatal"
         id="BR-DEX-12"
         >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:PaidAmount[boolean(normalize-space(xs:string(.)))]/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
+        flag="fatal"
+        id="BR-DEX-13"
+        >[BR-DEX-13] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
     </rule>
   </pattern>
 </schema>
