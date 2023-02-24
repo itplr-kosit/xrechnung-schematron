@@ -319,6 +319,10 @@
         flag="fatal"
         id="BR-DEX-12"
         >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="string-length(substring-after(cbc:PaidAmount, '.')) &lt;= 2"
+        flag="fatal"
+        id="BR-DEX-13"
+        >[BR-DEX-13] Die maximale Anzahl zulässiger Nachkommastellen für das Element "Third party payment amount" (BT-DEX-002) ist 2."</assert>
     </rule>
   </pattern>
 </schema>
