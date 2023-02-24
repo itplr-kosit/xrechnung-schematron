@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Schematron Rules
+    *  BR-DEX-13 Currency of BT-DEX-002 has to be the same as Invoice Currency code (BT-5)
+
 ## v1.8.1 on 2023-02-17
 
 This release is compatible with XRechnung 2.3.x
