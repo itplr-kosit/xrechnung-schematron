@@ -12,7 +12,8 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Schematron Rules
-    *  BR-DEX-14 Currency of BT-DEX-002 has to be the same as "Invoice Currency Code" (BT-5)
+    * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
+    * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
 
 ## v1.8.1 on 2023-02-17
 
