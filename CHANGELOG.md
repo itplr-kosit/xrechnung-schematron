@@ -12,7 +12,7 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Schematron Rules
-    *  BR-DEX-13 Currency of BT-DEX-002 has to be the same as Invoice Currency code (BT-5)
+    *  BR-DEX-13 Currency of BT-DEX-002 has to be the same as "Invoice Currency Code" (BT-5)
 
 ## v1.8.1 on 2023-02-17
 
