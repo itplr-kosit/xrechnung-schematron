@@ -144,10 +144,7 @@
     <copy todir="${build.dir}" filtering="true">
       <fileset dir="${src.dir}">
         <include name="**/*.sch" />
-        <exclude name="**/*.xsl" />
-        <exclude name="**/XRechnung-UBL-validation.sch" />
-        <include name="**/*.sch"/>
-        <exclude name="**/*.xsl"/>        
+        <exclude name="**/*.xsl" />     
       </fileset>
       <fileset dir="${basedir}">
         <include name="README.md" />
