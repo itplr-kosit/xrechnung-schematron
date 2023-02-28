@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <?xmute mutator="identity" id="correct-customization-id" schematron-valid="xrubl:BR-DE-21" description="Correct customization ids" 
   ?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ID>123456XX</cbc:ID>
   <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
   <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
@@ -11,8 +11,6 @@
   <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>04011000-12345-34</cbc:BuyerReference>
   <cac:AccountingSupplierParty>
-    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-2" id="party-rm-r2"
-            description="A party element with conatct must exist" ?>
     <cac:Party>
       <cac:PartyName>
         <cbc:Name>[Seller trading name]</cbc:Name>

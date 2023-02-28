@@ -24,7 +24,26 @@
 
   <pattern id="cii-pattern">
     <rule context="/rsm:CrossIndustryInvoice">
-      <assert test="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
+
+        <!-- Only if BG-19 exists, rules BR-DE-29, BR-DE-30 and BR-DE-31 should fail on missing elements BT-89, BT-90 or BT-91.
+            Because there is no specific (sub-)element for BG-19 in CII, are making use of the semantic definition that BG-19 has three mandatory elements and,
+            accordingly, either all of the three BTs must exist or none. -->
+        <let name="BT-89-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID"/>
+        <let name="BT-90-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID"/>
+        <let name="BT-91-path" value="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans/ram:PayerPartyDebtorFinancialAccount/ram:IBANID"/>
+        <let name="BG-19-not-existing" value="not(exists(($BT-89-path, $BT-90-path, $BT-91-path)))" />
+        <assert test="(($BT-90-path or $BT-91-path) and $BT-89-path) or $BG-19-not-existing"
+              flag="fatal"
+              id="BR-DE-29">[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
+        <assert test="(($BT-89-path or $BT-91-path) and $BT-90-path) or $BG-19-not-existing"
+              flag="fatal"
+              id="BR-DE-30"
+        >[BR-DE-30] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden.</assert>
+        <assert test="(($BT-89-path or $BT-90-path) and $BT-91-path) or $BG-19-not-existing"
+              flag="fatal"
+              id="BR-DE-31"
+        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
+<assert test="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans"
               flag="fatal"
               id="BR-DE-1"
           >[BR-DE-1] Eine Rechnung (INVOICE) muss Angaben zu "PAYMENT INSTRUCTIONS" (BG-16) enthalten.</assert>
@@ -73,7 +92,8 @@
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
-      <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID"
+      <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or
+                    ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID"
               flag="warning"
               id="BR-DE-21"
           >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>

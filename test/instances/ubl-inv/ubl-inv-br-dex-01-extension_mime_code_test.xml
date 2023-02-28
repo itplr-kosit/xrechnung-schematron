@@ -6,7 +6,7 @@
           schematron-invalid="xrubl:BR-DE-21" description="Expect to fail on wrong customization id"?>
   <?xmute mutator="empty" id="empty-customization-id"
           schematron-invalid="xrubl:BR-DE-21" description="Expect to fail on empty customization id"?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.2#conformant#urn:xoev-de:kosit:extension:xrechnung_2.2</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -74,7 +74,7 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
-        <cbc:CompanyID>ATU123456789</cbc:CompanyID>
+        <cbc:CompanyID>DEU123456789</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>

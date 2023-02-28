@@ -63,7 +63,24 @@
               flag="warning"
               id="BR-DE-26"
         >[BR-DE-26] Wenn im Element "Invoice type code" (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cbc:ID)"
+        flag="fatal"
+        id="BR-DE-29"
+        >[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) 
+                      or (cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeID='SEPA'] 
+                        | cac:PayeeParty/cac:PartyIdentification/cbc:ID[@schemeID='SEPA'])"
+        flag="fatal"
+        id="BR-DE-30"
+        >[BR-DE-30] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Bank assigned creditor identifier" BT-90 übermittelt werden.</assert>
+      <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)"
+        flag="fatal"
+        id="BR-DE-31"
+        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
+      
     </rule>
+    
+
   
     <rule context="/ubl:Invoice/cac:AccountingSupplierParty">
       <assert test="cac:Party/cac:Contact"
@@ -231,6 +248,19 @@
               id="BR-DEX-03"
         >[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
     </rule>
+    <rule context="cac:LegalMonetaryTotal[$isExtension]">
+      <let name="prepaidamount" value="if (exists(cbc:PrepaidAmount)) then (xs:decimal(cbc:PrepaidAmount)) else (0)"/>
+      <let name="payableroundingamount" value="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)" />
+      <let name="thirdpartyprepaidamount" value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount[boolean(normalize-space(xs:string(.)))])) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)" />
+      <!-- BR-DEX-09
+        Overrides BR-CO-16
+        Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BR-DEX-002).
+          -->
+      <assert test="(round((xs:decimal(cbc:PayableAmount) - $payableroundingamount) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaidamount + $thirdpartyprepaidamount) * 10 * 10) div 100)"
+        flag="fatal"
+        id="BR-DEX-09"
+        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
+    </rule>
     <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-04
         Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
@@ -275,6 +305,28 @@
         flag="fatal"
         id="BR-DEX-08"
         >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
+    </rule>
+    <rule context="/ubl:Invoice/cac:PrepaidPayment[$isExtension]">
+      <assert test="cbc:ID[boolean(normalize-space(xs:string(.)))]"
+        flag="fatal"
+        id="BR-DEX-10"
+        >[BR-DEX-10] Das Element "Third party payment type" BT-DEX-001 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:PaidAmount[boolean(normalize-space(xs:string(.)))]"
+        flag="fatal"
+        id="BR-DEX-11"
+        >[BR-DEX-11] Das Element "Third party payment amount" BT-DEX-002 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="cbc:InstructionID[boolean(normalize-space(xs:string(.)))]"
+        flag="fatal"
+        id="BR-DEX-12"
+        >[BR-DEX-12] Das Element "Third party payment description" BT-DEX-003 muss übermittelt werden, wenn die Gruppe "THIRD PARTY PAYMENT" (BG-DEX-09) übermittelt wird.</assert>
+      <assert test="string-length(substring-after(cbc:PaidAmount, '.')) &lt;= 2"
+        flag="fatal"
+        id="BR-DEX-13"
+        >[BR-DEX-13] Die maximale Anzahl zulässiger Nachkommastellen für das Element "Third party payment amount" (BT-DEX-002) ist 2."</assert>
+      <assert test="cbc:PaidAmount/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
+        flag="fatal"
+        id="BR-DEX-14"
+        >[BR-DEX-14] Die Währungsangabe von "Third party payment amount" BT-DEX-002 muss BT-5 ("Invoice currency code") entsprechen.</assert>
     </rule>
   </pattern>
 </schema>

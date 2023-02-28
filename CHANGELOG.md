@@ -5,12 +5,57 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## UNRELEASED NEXT MAJOR
 
 This release is compatible with XRechnung ?.?.?
 
-* Changed
+### Changed
+* Schematron Rules
   * merged ubl invoice and ubl creditnote rules 
+
+## UNRELEASED 
+
+This release is compatible with XRechnung ?.?.?
+
+### Added
+
+* Schematron Rules
+    * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
+    * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
+
+## v1.8.1 on 2023-02-17
+
+This release is compatible with XRechnung 2.3.x
+
+### Fixed
+
+* Validation of BR-DEX-10, BR-DEX-11 and BR-DEX-12 now restricted to extension 
+
+## v1.8.0 on 2023-01-31
+
+This release is compatible with XRechnung 2.3.x
+
+### Added
+* Schematron Rules
+  * Missing Rules BR-DE-29, BR-DE-30, BR-DE-31 for mandatory elements of BG-19.
+  * Rules BR-DEX-09, BR-DEX-10, BR-DEX-11, BR-DEX-12 for third party payment
+
+### Changed
+
+* ISO 6523 ICD and CEF EAS codelist values in extension validation rules that override CEN rules contain newest codelist values
+
+## v1.7.3 on 2022-11-15
+
+This release is compatible with XRechnung 2.2.0
+
+### Changed
+
+* Schematron Rules
+  * BR-DE-21 in CII to allow for Extension specification identifier 
+
+### Fixed
+* Removed superfluous duplicate unit test from ubl-inv-contact-tests.xml
+* Changed some IDs to German IDs
 
 ## v1.7.2 on 2022-05-31
 
