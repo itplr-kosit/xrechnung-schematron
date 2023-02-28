@@ -24,10 +24,10 @@
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
       <cac:PartyIdentification>
         <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-30" id="ubl-cn-mandatory-BT-90"
+                    schematron-valid="xrubl:BR-DE-30" id="ubl-cn-mandatory-BT-90"
                     description="mandatory BT-90" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-30" id="ubl-cn-mandatory-BT-90-2"
+                    schematron-invalid="xrubl:BR-DE-30" id="ubl-cn-mandatory-BT-90-2"
                     description="mandatory BT-90" ?>
         <cbc:ID schemeID="SEPA">987654321</cbc:ID>
       </cac:PartyIdentification>
@@ -155,18 +155,18 @@
     <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>    
     <cac:PaymentMandate>
       <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-29" id="ubl-cn-mandatory-BT-89"
+                    schematron-valid="xrubl:BR-DE-29" id="ubl-cn-mandatory-BT-89"
                     description="mandatory BT-89" ?>
       <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-29" id="ubl-cn-mandatory-BT-89-2"
+                    schematron-invalid="xrubl:BR-DE-29" id="ubl-cn-mandatory-BT-89-2"
                     description="mandatory BT-89" ?>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>
         <?xmute mutator="identity"
-                    schematron-valid="xrcn:BR-DE-31" id="ubl-cn-mandatory-BT-91"
+                    schematron-valid="xrubl:BR-DE-31" id="ubl-cn-mandatory-BT-91"
                     description="mandatory BT-91" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrcn:BR-DE-31" id="ubl-cn-mandatory-BT-91-2"
+                    schematron-invalid="xrubl:BR-DE-31" id="ubl-cn-mandatory-BT-91-2"
                     description="mandatory BT-91" ?>
         <cbc:ID>DE75512108001245126199</cbc:ID>
       </cac:PayerFinancialAccount>
