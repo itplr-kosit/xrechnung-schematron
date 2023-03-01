@@ -30,22 +30,27 @@
         flag="fatal"
         id="BR-DE-15"
         >[BR-DE-15] Das Element "Buyer reference" (BT-10) muss übermittelt werden.</assert>
-      <assert test="(exists(/ubl:Invoice) and ((not((cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false' and
-        following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
-        (cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
-        (cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M'))) or
-        (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))]))))
+      <let name="supportedVATCodes" value="('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')" />
+      <let name="BT-31OrBT-32Path" value="cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))]" />
+      <let name="BT-95Path" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID" />
+      <let name="BT-102" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true']" />
+      <assert test="(exists(/ubl:Invoice) and ((not(($BT-95Path[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false' and
+        following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = $supportedVATCodes) or
+        ($BT-102 = $supportedVATCodes) or
+        (cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = $supportedVATCodes)) or
+        (cac:TaxRepresentativeParty, $BT-31OrBT-32Path))))
         or
-        (exists(/cn:CreditNote) and ((not((cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
-        (cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')) or
-        (cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID[following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = ('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M'))) or
-        (cac:TaxRepresentativeParty, cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))]))))
+        (exists(/cn:CreditNote) and ((not(($BT-95Path[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false'] = $supportedVATCodes) or
+        ($BT-102 = $supportedVATCodes) or
+        (cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = $supportedVATCodes)) or
+        (cac:TaxRepresentativeParty, $BT-31OrBT-32Path))))
         "
         flag="fatal"
         id="BR-DE-16"
         >[BR-DE-16] In der Rechnung muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden.</assert>
-      <assert test="cbc:InvoiceTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877') 
-        or cbc:CreditNoteTypeCode = ('326', '380', '384', '389', '381', '875', '876', '877')"
+      <let name="supportedInvAndCNTypeCodes" value="('326', '380', '384', '389', '381', '875', '876', '877')" />
+      <assert test="cbc:InvoiceTypeCode = $supportedInvAndCNTypeCodes
+        or cbc:CreditNoteTypeCode = $supportedInvAndCNTypeCodes"
         flag="warning"
         id="BR-DE-17"
         >[BR-DE-17] Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice).</assert>
