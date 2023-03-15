@@ -30,20 +30,30 @@
         flag="fatal"
         id="BR-DE-15"
         >[BR-DE-15] Das Element "Buyer reference" (BT-10) muss übermittelt werden.</assert>
+      
       <let name="supportedVATCodes" value="('S', 'Z', 'E', 'AE', 'K', 'G', 'L', 'M')" />
-      <let name="BT-31OrBT-32Path" value="cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))]" />
-      <let name="BT-95Path" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID" />
+      <let name="BT-31orBT-32Path" value="cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID[boolean(normalize-space(.))]" />      
+      <let name="BT-95-UBL-Inv" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false' and
+        following-sibling::cac:TaxScheme/cbc:ID = 'VAT']" />
+      <let name="BT-95-UBL-CN" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false']" />
       <let name="BT-102" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true']" />
-      <assert test="(exists(/ubl:Invoice) and ((not(($BT-95Path[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false' and
-        following-sibling::cac:TaxScheme/cbc:ID = 'VAT'] = $supportedVATCodes) or
-        ($BT-102 = $supportedVATCodes) or
-        (cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = $supportedVATCodes)) or
-        (cac:TaxRepresentativeParty, $BT-31OrBT-32Path))))
-        or
-        (exists(/cn:CreditNote) and ((not(($BT-95Path[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false'] = $supportedVATCodes) or
-        ($BT-102 = $supportedVATCodes) or
-        (cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID = $supportedVATCodes)) or
-        (cac:TaxRepresentativeParty, $BT-31OrBT-32Path))))
+      <let name="BT-151-UBL-Inv" value="cac:InvoiceLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />
+      <let name="BT-151-UBL-CN" value="cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />      
+      <assert test="
+        (exists(/ubl:Invoice) and ((not(
+          ($BT-95-UBL-Inv = $supportedVATCodes) or
+          ($BT-102 = $supportedVATCodes) or
+          ($BT-151-UBL-Inv = $supportedVATCodes)
+          ) or
+          (cac:TaxRepresentativeParty, $BT-31orBT-32Path)))
+        ) or
+        (exists(/cn:CreditNote) and ((not(
+          ($BT-95-UBL-CN = $supportedVATCodes) or
+          ($BT-102 = $supportedVATCodes) or
+          ($BT-151-UBL-CN = $supportedVATCodes)
+          ) or
+          (cac:TaxRepresentativeParty, $BT-31orBT-32Path)))
+        )
         "
         flag="fatal"
         id="BR-DE-16"
