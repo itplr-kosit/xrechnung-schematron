@@ -228,6 +228,13 @@
     <let name="isExtension"
         value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xoev-de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
     
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]">
+          <assert test="not(exists(//ram:ParentLineID))"
+              flag="warning"
+              id="BR-DEX-XX">
+              [BR-DEX-XX] This CII file might use the concept of Sub Invoice Lines. However XRechnung does not support this.
+          </assert>
+      </rule>
       <rule context="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]">
         <!-- BR-DEX-04
     Überschreibt BR-CL-10 und ergänzt um XR01, XR02, XR03
