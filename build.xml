@@ -112,7 +112,7 @@
     <mkdir dir="${build.dir}/generated" />
   </target>
 
-  <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
+  <target name="retrieve-xmute" depends="init">
     <fail unless="xmute.download.url.prefix"
       message="Property xmute.download.url.prefix must exist for this target to work" />
     <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
