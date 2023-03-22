@@ -5,14 +5,6 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED NEXT MAJOR
-
-This release is compatible with XRechnung ?.?.?
-
-### Changed
-* Schematron Rules
-  * merged ubl invoice and ubl creditnote rules 
-
 ## UNRELEASED 
 
 This release is compatible with XRechnung ?.?.?
@@ -22,6 +14,12 @@ This release is compatible with XRechnung ?.?.?
 * Schematron Rules
     * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
     * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
+
+### Changed
+* Schematron Rules
+  * merged ubl invoice and ubl creditnote rules
+* References to Schematron files in mutator tests
+
 
 ## v1.8.1 on 2023-02-17
 
