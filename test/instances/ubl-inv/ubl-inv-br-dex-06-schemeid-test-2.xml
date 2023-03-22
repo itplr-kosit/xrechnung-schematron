@@ -104,7 +104,7 @@
                 <cbc:ID>246</cbc:ID>
             </cac:SellersItemIdentification>
             <cac:StandardItemIdentification>
-                <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-06" id="br-dex-06-test-scheme-id-2" description="BR-DE-06 schemeID must be valid" ?>
+                <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-06" id="br-dex-06-test-scheme-id-2" description="BR-DE-06 schemeID must be valid" ?>
                 <cbc:ID schemeID="XR01">0123456789</cbc:ID>
             </cac:StandardItemIdentification>
             <cac:CommodityClassification>

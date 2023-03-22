@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Example with sub invoce lines from https://github.com/itplr-kosit/validator-configuration-xrechnung/issues/48 --><?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-02" 
+<?xml version="1.0" encoding="UTF-8"?><!-- Example with sub invoce lines from https://github.com/itplr-kosit/validator-configuration-xrechnung/issues/48 --><?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-02" 
                 id="ubl-inv-valid-subinvoiceline-total" description="sum over only some invoicelines" ?><!--
   1.    10000.00
   2.     1942.50

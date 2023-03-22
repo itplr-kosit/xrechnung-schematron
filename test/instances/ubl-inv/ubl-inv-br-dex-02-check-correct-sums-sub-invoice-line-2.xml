@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <?xmute mutator="identity" 
-          id="correct-customization-id" schematron-valid="xrinv:BR-DE-21" 
+          id="correct-customization-id" schematron-valid="xrubl:BR-DE-21" 
           description="Correct customization ids"?>
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ID>12345</cbc:ID>
@@ -100,12 +100,12 @@
       <cbc:Name>Sanitär und Zubehör</cbc:Name>
     </cac:Item>
     <?xmute mutator="identity" 
-            schematron-valid="xrinv:BR-DEX-02" id="correct_sum"
+            schematron-valid="xrubl:BR-DEX-02" id="correct_sum"
             description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
     <cac:SubInvoiceLine>
       <cbc:ID>1 1</cbc:ID>
       <?xmute mutator="code" values="333.79" 
-              schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount"
+              schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount"
               description="Expect to fail as wrong LineExtensionAmount" ?>
       <cbc:LineExtensionAmount currencyID="EUR">335.79</cbc:LineExtensionAmount>
       <cac:Item>
@@ -115,7 +115,7 @@
         <cbc:ID>1 1 1</cbc:ID>
         <cbc:InvoicedQuantity unitCode="MTR">149</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="190.20" 
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-2" 
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-2" 
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">193.70</cbc:LineExtensionAmount>
         <cac:Item>
@@ -130,7 +130,7 @@
         <cbc:ID>1 1 2</cbc:ID>
         <cbc:InvoicedQuantity unitCode="MTR">32.50</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="51.25" 
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-3"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-3"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">48.75</cbc:LineExtensionAmount>
         <cac:Item>
@@ -145,7 +145,7 @@
         <cbc:ID>1 1 3</cbc:ID>
         <cbc:InvoicedQuantity unitCode="MTR">71.80</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="95.22" 
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-4"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-4"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">93.34</cbc:LineExtensionAmount>
         <cac:Item>
@@ -160,7 +160,7 @@
     <cac:SubInvoiceLine>
       <cbc:ID>1 2</cbc:ID>
       <?xmute mutator="code" values="382.25" 
-              schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-5" 
+              schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-5" 
               description="Expect to fail as wrong LineExtensionAmount" ?>
       <cbc:LineExtensionAmount currencyID="EUR">482.25</cbc:LineExtensionAmount>
       <cac:Item>
@@ -170,7 +170,7 @@
         <cbc:ID>1 2 1</cbc:ID>
         <cbc:InvoicedQuantity unitCode="MTR">9.5</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="99.74" 
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-6"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-6"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">99.75</cbc:LineExtensionAmount>
         <cac:Item>
@@ -185,7 +185,7 @@
         <cbc:ID>1 2 2</cbc:ID>
         <cbc:InvoicedQuantity unitCode="MTR">45.0</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="333.50"
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-7"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-7"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">382.50</cbc:LineExtensionAmount>
         <cac:Item>
@@ -205,12 +205,12 @@
       <cbc:Name>Heizung und Zubehör</cbc:Name>
     </cac:Item>
     <?xmute mutator="identity" 
-            schematron-valid="xrinv:BR-DEX-02" id="correct_sum-2" 
+            schematron-valid="xrubl:BR-DEX-02" id="correct_sum-2" 
             description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
     <cac:SubInvoiceLine>
       <cbc:ID>2 1</cbc:ID>
       <?xmute mutator="code" values="4321"
-              schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-8"
+              schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-8"
               description="Expect to fail as wrong LineExtensionAmount" ?>
       <cbc:LineExtensionAmount currencyID="EUR">1324</cbc:LineExtensionAmount>
       <cac:Item>
@@ -220,7 +220,7 @@
         <cbc:ID>2 1 1</cbc:ID>
         <cbc:InvoicedQuantity unitCode="C62">20</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="600"
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-9"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-9"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">700</cbc:LineExtensionAmount>
         <cac:Item>
@@ -235,7 +235,7 @@
         <cbc:ID>2 1 2</cbc:ID>
         <cbc:InvoicedQuantity unitCode="C62">52</cbc:InvoicedQuantity>
         <?xmute mutator="code" values="333.79"
-                schematron-invalid="xrinv:BR-DEX-02" id="incorrect_LineExtensionAmount-10"
+                schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-10"
                 description="Expect to fail as wrong LineExtensionAmount" ?>
         <cbc:LineExtensionAmount currencyID="EUR">624</cbc:LineExtensionAmount>
         <cac:Item>

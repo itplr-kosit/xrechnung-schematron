@@ -144,7 +144,7 @@
   <cac:Delivery>
     <cbc:ActualDeliveryDate>2018-04-13</cbc:ActualDeliveryDate>
     <cac:DeliveryLocation>
-      <?xmute mutator="identity" schematron-invalid="xrinv:BR-DEX-08" id="br-dex-08-test-scheme-id-3" description="BR-DE-08 invalid schemeID must not be valid" ?>
+      <?xmute mutator="identity" schematron-invalid="xrubl:BR-DEX-08" id="br-dex-08-test-scheme-id-3" description="BR-DE-08 invalid schemeID must not be valid" ?>
       <cbc:ID schemeID="0321">68</cbc:ID>
       <cac:Address>
         <cbc:StreetName>[Deliver to street]</cbc:StreetName>

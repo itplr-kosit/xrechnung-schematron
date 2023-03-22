@@ -4,8 +4,8 @@
     <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>#ADU#Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […] finden.</cbc:Note>
-    <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-14" id="br-dex-14-test-1" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
-    <?xmute mutator="code" values="USD,GBP" schematron-invalid="xrinv:BR-DEX-14" id="br-dex-14-test-2" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-14" id="br-dex-14-test-1" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
+    <?xmute mutator="code" values="USD,GBP" schematron-invalid="xrubl:BR-DEX-14" id="br-dex-14-test-2" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
     <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
     <cbc:BuyerReference>04011000-12345-34</cbc:BuyerReference>
     <cac:AccountingSupplierParty>
@@ -72,8 +72,8 @@
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
         <!-- BT-DEX-002 -->
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-14" id="br-dex-14-test-3" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
-        <?xmute mutator="code" attribute="currencyID" values="USD,GBP" schematron-invalid="xrinv:BR-DEX-14" id="br-dex-14-test-4" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
+        <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-14" id="br-dex-14-test-3" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
+        <?xmute mutator="code" attribute="currencyID" values="USD,GBP" schematron-invalid="xrubl:BR-DEX-14" id="br-dex-14-test-4" description="BR-DEX-14 BT-DEX-002-currencyID has to be the same as Invoice Currency code (BT-5)" ?>
         <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            

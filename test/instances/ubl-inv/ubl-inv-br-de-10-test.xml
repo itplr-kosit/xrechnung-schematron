@@ -151,10 +151,10 @@
         <cbc:StreetName>[Deliver to street]</cbc:StreetName>
         <cbc:AdditionalStreetName>4. OG</cbc:AdditionalStreetName>
         <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-10" id="ubl-inv-mandatory-BT-77"
+                    schematron-valid="xrubl:BR-DE-10" id="ubl-inv-mandatory-BT-77"
                     description="mandatory BT-77 if BG-15 exists" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-10" id="ubl-inv-mandatory-BT-77-2"
+                    schematron-invalid="xrubl:BR-DE-10" id="ubl-inv-mandatory-BT-77-2"
                     description="mandatory BT-77 if BG-15 exists" ?>
         <cbc:CityName>[Deliver to city]</cbc:CityName>
         <cbc:PostalZone>98765</cbc:PostalZone>

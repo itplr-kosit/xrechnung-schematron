@@ -101,7 +101,7 @@
     <cac:PaymentTerms>
         <!-- This test is a placeholder for future tests using the alternative mutator, once it is fixed -->
         <?xmute mutator="identity" 
-        schematron-valid="xrinv:BR-DE-18" id="skonto-korrekt"
+        schematron-valid="xrubl:BR-DE-18" id="skonto-korrekt"
         description="Every skonto has to be compliant has to be formed as an amount type" ?> 
         <cbc:Note>#SKONTO#TAGE=1#PROZENT=2.00#
 #SKONTO#TAGE=2#PROZENT=1.00#BASISBETRAG=23.88#
