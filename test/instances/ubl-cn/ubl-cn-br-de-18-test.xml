@@ -175,7 +175,7 @@
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
-    <?xmute mutator="identity" schematron-valid="xrcn:BR-DE-18" id="ubl-cn-br-de-18-correct_skonto" description="ubl cn br-de-18 Correct skonto/verzug has to be accepted" ?>
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-18" id="ubl-cn-br-de-18-correct_skonto" description="ubl cn br-de-18 Correct skonto/verzug has to be accepted" ?>
     <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
         #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
         #VERZUG#TAGE=30#PROZENT=0.00#

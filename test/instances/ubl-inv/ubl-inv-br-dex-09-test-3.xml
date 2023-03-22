@@ -66,7 +66,7 @@
         <cbc:Note>Zahlbar sofort ohne Abzug.</cbc:Note>
     </cac:PaymentTerms>    
     <!-- BG-DEX-09-->
-    <?xmute mutator="identity" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-3a" description="BR-DEX-09 sum must be correct" ?>    
+    <?xmute mutator="identity" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-3a" description="BR-DEX-09 sum must be correct" ?>    
     <cac:PrepaidPayment>
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>

@@ -33,7 +33,7 @@ Otherwise the build skips this target silently.
 
 
 The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification. 
-There are three directoriesfor the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
+There are three directories for the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
 
 
 ### Conventions
@@ -45,10 +45,9 @@ In order to keep test case development consistent it is important to follow seve
 The following names are used to reference different schematron files
 
 ```
-ceninv:  for CEN UBL Invoice (and Credit Note) rules
+cenubl:  for CEN UBL Invoice (and Credit Note) rules
 cencii:  for CEN UN/CEFACT CII rules
-xrinv:   for XRechnung UBL Invoice
-xrcn:    for XRechnung UBL Credit Note
+xrubl:   for XRechnung UBL Invoice (and Credit Note)
 xrcii:   for XRechnung UN/CEFACT CII
 ```
 

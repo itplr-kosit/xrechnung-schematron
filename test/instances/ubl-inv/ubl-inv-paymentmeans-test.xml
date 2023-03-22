@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-02" id="extension-rule-should-not-fire-in-standard-invoice"?>
+  <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-02" id="extension-rule-should-not-fire-in-standard-invoice"?>
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ID>1234/78/901</cbc:ID>
   <cbc:IssueDate>2016-06-16+01:00</cbc:IssueDate>
 
-  <?xmute mutator="code" values="326, 380, 384, 389, 381, 875, 876, 877" schematron-valid="xrinv:BR-DE-17" 
+  <?xmute mutator="code" values="326, 380, 384, 389, 381, 875, 876, 877" schematron-valid="xrubl:BR-DE-17" 
                 id="inv-type-code" description="Invoice type code should be allowed" ?>
-  <?xmute mutator="code" values="123, 0, 1000" schematron-invalid="xrinv:BR-DE-17" 
+  <?xmute mutator="code" values="123, 0, 1000" schematron-invalid="xrubl:BR-DE-17" 
                 id="invalid-inv-type-code" description="Wrong invoice type code should not be allowed" ?>
   <cbc:InvoiceTypeCode>326</cbc:InvoiceTypeCode>
   <cbc:Note>#ADU#Diese Leistung ist umsatzsteuerbefreit nach § 4 Nr. 22a UStG.</cbc:Note>
@@ -65,19 +65,19 @@
     </cac:Party>
   </cac:AccountingCustomerParty>
   <?xmute mutator="identity" 
-          schematron-valid="xrinv:BR-DE-1" id="paymentmeans-exists-p"
+          schematron-valid="xrubl:BR-DE-1" id="paymentmeans-exists-p"
           description="PaymentMeans has to exist" ?>
   <?xmute mutator="remove" 
-          schematron-invalid="xrinv:BR-DE-1" 
+          schematron-invalid="xrubl:BR-DE-1" 
           id="paymentmeans-exists-n" description="PaymentMeans can not be removed" ?>
   <cac:PaymentMeans>
     <?xmute mutator="code" values="58"
-            schematron-valid="xrinv:BR-DE-19" 
+            schematron-valid="xrubl:BR-DE-19" 
             id="sepa-code" description="If 58 then PayeeFinancialAccount has to be valid iban" ?>
     <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
       <?xmute mutator="code" values="sdsfsadgfa"
-              schematron-valid="xrinv:BR-DE-19" id="wrong-iban"
+              schematron-valid="xrubl:BR-DE-19" id="wrong-iban"
               description="Wrong iban should not get evaluated  at all cause code 30" ?>
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>

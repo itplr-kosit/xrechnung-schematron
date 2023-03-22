@@ -92,10 +92,10 @@
         <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>       
         <cbc:CityName>[Buyer city]</cbc:CityName>
         <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-9" id="ubl-inv-mandatory-BT-53"
+                    schematron-valid="xrubl:BR-DE-9" id="ubl-inv-mandatory-BT-53"
                     description="mandatory BT-53" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-9" id="ubl-inv-mandatory-BT-53-2"
+                    schematron-invalid="xrubl:BR-DE-9" id="ubl-inv-mandatory-BT-53-2"
                     description="mandatory BT-53" ?>
         <cbc:PostalZone>98765</cbc:PostalZone>
         <cac:AddressLine>

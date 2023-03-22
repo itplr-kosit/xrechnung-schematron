@@ -118,7 +118,7 @@
             </cac:SellersItemIdentification>
             <cac:ClassifiedTaxCategory>
                 <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
-                    schematron-invalid="xrinv:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151-invalid"
+                    schematron-invalid="xrubl:BR-DE-16" id="ubl-inv-mandatory-companyID-with-some-tax-category-BT-151-invalid"
                     description="mandatory companyID with some tax category" ?>
                 <cbc:ID schemeID="UNCL5305">S</cbc:ID>
                 <cac:TaxScheme>
