@@ -16,9 +16,14 @@ This release is compatible with XRechnung ?.?.?
     * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
 
 ### Changed
+
 * Schematron Rules
   * merged ubl invoice and ubl creditnote rules
 * References to Schematron files in mutator tests
+
+### Fixed
+
+* BR-DE-16 description now includes restriction to all tax codes except "O" (as implemented with XR version 2.0.1 / Schematron 1.5.0).
 
 
 ## v1.8.1 on 2023-02-17
