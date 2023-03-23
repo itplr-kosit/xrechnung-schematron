@@ -57,7 +57,8 @@
         "
         flag="fatal"
         id="BR-DE-16"
-        >[BR-DE-16] In der Rechnung muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32) oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden.</assert>
+        >[BR-DE-16] Wenn in einer Rechnung die Steuercodes S, Z, E, AE, K, G, L oder M verwendet werden, muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32)
+        oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden.</assert>
       <let name="supportedInvAndCNTypeCodes" value="('326', '380', '384', '389', '381', '875', '876', '877')" />
       <assert test="cbc:InvoiceTypeCode = $supportedInvAndCNTypeCodes
         or cbc:CreditNoteTypeCode = $supportedInvAndCNTypeCodes"
