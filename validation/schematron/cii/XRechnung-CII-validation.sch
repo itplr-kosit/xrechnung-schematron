@@ -231,8 +231,8 @@
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]">
           <assert test="not(exists(//ram:ParentLineID))"
               flag="warning"
-              id="BR-DEX-XX">
-              [BR-DEX-XX] This CII file might use the concept of Sub Invoice Lines. However XRechnung does not support this.
+              id="BR-DEX-15">
+              [BR-DEX-15] This CII file might use the concept of Sub Invoice Lines. However XRechnung does not support this.
           </assert>
       </rule>
       <rule context="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]">
