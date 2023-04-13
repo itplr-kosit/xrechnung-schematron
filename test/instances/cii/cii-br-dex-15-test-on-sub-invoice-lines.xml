@@ -65,8 +65,8 @@
         <ram:IncludedSupplyChainTradeLineItem>
             <ram:AssociatedDocumentLineDocument>
                 <ram:LineID>Porto + Versandkosten</ram:LineID>
-                <?xmute mutator="identity" schematron-invalid="xrcii:BR-DEX-XX" id="cii-br-dex-xx-test-sub-invoice-lines-1" description="BR-DEX-XX: Sub Invoice Lines not supported" ?>
-                <?xmute mutator="remove" schematron-valid="xrcii:BR-DEX-XX" id="cii-br-dex-xx-test-sub-invoice-lines-2" description="BR-DEX-XX: No Sub Invoice Lines" ?>
+                <?xmute mutator="identity" schematron-invalid="xrcii:BR-DEX-15" id="cii-br-dex-15-test-sub-invoice-lines-1" description="BR-DEX-15: Sub Invoice Lines not supported" ?>
+                <?xmute mutator="remove" schematron-valid="xrcii:BR-DEX-15" id="cii-br-dex-15-test-sub-invoice-lines-2" description="BR-DEX-15: No Sub Invoice Lines" ?>
                 <ram:ParentLineID>1234</ram:ParentLineID>
             </ram:AssociatedDocumentLineDocument>
             <ram:SpecifiedTradeProduct>
