@@ -37,22 +37,14 @@
         following-sibling::cac:TaxScheme/cbc:ID = 'VAT']" />
       <let name="BT-95-UBL-CN" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'false']" />
       <let name="BT-102" value="cac:AllowanceCharge/cac:TaxCategory/cbc:ID[ancestor::cac:AllowanceCharge/cbc:ChargeIndicator = 'true']" />
-      <let name="BT-151" value="//cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />
+      <let name="BT-151" value="(cac:InvoiceLine | cac:CreditNoteLine)/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />
       <assert test="
-        (exists(/ubl:Invoice) and ((not(
-          ($BT-95-UBL-Inv = $supportedVATCodes) or
-          ($BT-102 = $supportedVATCodes) or
-          ($BT-151 = $supportedVATCodes)
-          ) or
-          (cac:TaxRepresentativeParty, $BT-31orBT-32Path)))
+        (not(
+        ($BT-95-UBL-Inv = $supportedVATCodes or $BT-95-UBL-CN = $supportedVATCodes) or
+        ($BT-102 = $supportedVATCodes) or
+        ($BT-151 = $supportedVATCodes)
         ) or
-        (exists(/cn:CreditNote) and ((not(
-          ($BT-95-UBL-CN = $supportedVATCodes) or
-          ($BT-102 = $supportedVATCodes) or
-          ($BT-151 = $supportedVATCodes)
-          ) or
-          (cac:TaxRepresentativeParty, $BT-31orBT-32Path)))
-        )
+        (cac:TaxRepresentativeParty, $BT-31orBT-32Path))
         "
         flag="fatal"
         id="BR-DE-16"
