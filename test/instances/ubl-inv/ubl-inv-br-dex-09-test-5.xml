@@ -66,7 +66,7 @@
         <cbc:Note>Zahlbar sofort ohne Abzug.</cbc:Note>
     </cac:PaymentTerms>    
     <!-- BG-DEX-09-->
-    <?xmute mutator="remove" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-1a" description="BR-DEX-09 sum must be correct" ?>
+    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-1a" description="BR-DEX-09 sum must be correct" ?>
     <cac:PrepaidPayment>
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
@@ -108,8 +108,8 @@
         <!-- BT-113 -->        
         <cbc:PrepaidAmount currencyID="EUR">5.12</cbc:PrepaidAmount>
         <!-- BT-115 -->
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-09" id="br-dex-09-test-1b" description="BR-DEX-09 sum must be correct" ?>
-        <?xmute mutator="code" values="366.86,336.9,123.11" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-1c" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-09" id="br-dex-09-test-1b" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="code" values="366.86,336.9,123.11" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-1c" description="BR-DEX-09 sum must be correct" ?>
         <cbc:PayableAmount currencyID="EUR">361.74</cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
     <cac:InvoiceLine>

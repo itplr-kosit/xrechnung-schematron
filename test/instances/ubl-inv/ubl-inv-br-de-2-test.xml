@@ -72,10 +72,10 @@
         <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […], Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
       </cac:PartyLegalEntity>
       <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-2" id="ubl-inv-mandatory-BG-6"
+                    schematron-valid="xrubl:BR-DE-2" id="ubl-inv-mandatory-BG-6"
                     description="mandatory BG-6" ?>
       <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-2" id="ubl-inv-mandatory-BG-6-2"
+                    schematron-invalid="xrubl:BR-DE-2" id="ubl-inv-mandatory-BG-6-2"
                     description="mandatory BG-6" ?>
       <cac:Contact>
         <cbc:Name>Tim Tester</cbc:Name>

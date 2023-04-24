@@ -84,7 +84,7 @@
         </cac:DeliveryParty>
     </cac:Delivery>
     <cac:PaymentTerms>
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DE-18" id="correct_skonto_no_newline_last_note" description="Correct skonto/verzug has to be accepted. No newline after last note." ?>
+        <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-18" id="correct_skonto_no_newline_last_note" description="Correct skonto/verzug has to be accepted. No newline after last note." ?>
         <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
             #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
             #VERZUG#TAGE=30#PROZENT=0.00#

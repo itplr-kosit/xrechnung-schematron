@@ -36,7 +36,7 @@
   </cac:ProjectReference>
   <cac:AccountingSupplierParty>
     <cac:Party>
-      <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-07" id="br-dex-07-test-scheme-id-2" description="BR-DE-07 schemeID must be valid" ?>
+      <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-07" id="br-dex-07-test-scheme-id-2" description="BR-DE-07 schemeID must be valid" ?>
       <cbc:EndpointID schemeID="XR01">rechnungsausgang@test.com</cbc:EndpointID>
       <cac:PartyIdentification>
         <cbc:ID schemeID="0013">987654321</cbc:ID>

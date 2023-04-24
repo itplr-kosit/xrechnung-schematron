@@ -147,7 +147,7 @@
   </cac:Delivery>
   <cac:PaymentMeans> 
     <?xmute mutator="identity"
-            schematron-invalid="xrcn:BR-DE-25-b" id="ubl-cn-BG-17-not-allowed-with-BG-19"
+            schematron-invalid="xrubl:BR-DE-25-b" id="ubl-cn-BG-17-not-allowed-with-BG-19"
             description="UBL-CN BG-17 not allowed with BG-19" ?>
     <cac:PayeeFinancialAccount>
       <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->

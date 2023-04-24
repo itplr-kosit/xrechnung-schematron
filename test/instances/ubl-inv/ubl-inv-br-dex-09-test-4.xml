@@ -70,7 +70,7 @@
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
         <!-- BT-DEX-002 -->
-        <?xmute mutator="code" values="0,1,3.43,19.97" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-4a" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="code" values="0,1,3.43,19.97" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-4a" description="BR-DEX-09 sum must be correct" ?>
         <cbc:PaidAmount currencyID="EUR">19.96</cbc:PaidAmount>     
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
@@ -80,7 +80,7 @@
         <!-- BT-DEX-001 -->
         <cbc:ID>MobilesBezahlen</cbc:ID>
         <!-- BT-DEX-002 -->
-        <?xmute mutator="code" values="0,1,3.43,9.99" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-4b" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="code" values="0,1,3.43,9.99" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-4b" description="BR-DEX-09 sum must be correct" ?>
         <cbc:PaidAmount currencyID="EUR">10.00</cbc:PaidAmount>      
         <!-- BT-DEX-003 -->
         <cbc:InstructionID>Mobiles Bezahlen (Brutto-Forderung für Fremdleistungen)</cbc:InstructionID>            
@@ -107,8 +107,8 @@
         <!-- BT-112 -->
         <cbc:TaxInclusiveAmount currencyID="EUR">336.9</cbc:TaxInclusiveAmount>        
         <!-- BT-115 -->
-        <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-09" id="br-dex-09-test-1b" description="BR-DEX-09 sum must be correct" ?>
-        <?xmute mutator="code" values="365.86,336.9,123.11" schematron-invalid="xrinv:BR-DEX-09" id="br-dex-09-test-1c" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-09" id="br-dex-09-test-1b" description="BR-DEX-09 sum must be correct" ?>
+        <?xmute mutator="code" values="365.86,336.9,123.11" schematron-invalid="xrubl:BR-DEX-09" id="br-dex-09-test-1c" description="BR-DEX-09 sum must be correct" ?>
         <cbc:PayableAmount currencyID="EUR">366.86</cbc:PayableAmount>
     </cac:LegalMonetaryTotal>
     <cac:InvoiceLine>

@@ -40,7 +40,7 @@
     <cac:AccountingCustomerParty>
         <cac:Party>
             <cac:PartyIdentification>
-                <?xmute mutator="identity" schematron-valid="xrinv:BR-DEX-04" id="br-dex-04-test-scheme-id-1" description="BR-DEX-04 schemeID must be valid" ?>
+                <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-04" id="br-dex-04-test-scheme-id-1" description="BR-DEX-04 schemeID must be valid" ?>
                 <cbc:ID schemeID="0013">[Buyer identifier]</cbc:ID>
             </cac:PartyIdentification>
             <cac:PostalAddress>
