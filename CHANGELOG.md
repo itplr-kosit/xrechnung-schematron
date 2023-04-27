@@ -20,6 +20,7 @@ This release is compatible with XRechnung ?.?.?
 * Schematron Rules
   * merged ubl invoice and ubl creditnote rules
 * References to Schematron files in mutator tests
+* BR-DE-19 and BR-DE-20 IBAN validation is now more robust
 
 ### Fixed
 
