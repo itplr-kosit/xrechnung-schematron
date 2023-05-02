@@ -177,7 +177,7 @@
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
-    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>TAC</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Testing</cbc:AllowanceChargeReason>
     <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
