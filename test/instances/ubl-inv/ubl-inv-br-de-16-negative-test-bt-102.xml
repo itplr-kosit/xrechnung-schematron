@@ -184,6 +184,9 @@
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     <cac:TaxCategory>
+      <?xmute mutator="identity"
+              schematron-invalid="xrubl:BR-DE-16" id="ubl-inv-mandatory-seller-identification-with-tax-category-S-BT-102-invalid"
+              description="mandatory seller identification with tax category S" ?>
       <?xmute mutator="code" values="Z,E,AE,K,G,L,M" 
               schematron-invalid="xrubl:BR-DE-16" id="ubl-inv-mandatory-seller-identification-with-some-tax-category-BT-102-invalid"
               description="mandatory seller identification with some tax category" ?>
