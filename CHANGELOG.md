@@ -14,6 +14,7 @@ This release is compatible with XRechnung ?.?.?
 * Schematron Rules
     * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
     * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
+* Tests for BR-DE-16 with VAT code "O".
 
 ### Changed
 
@@ -25,6 +26,7 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * BR-DE-16 description now includes restriction to all tax codes except "O" (as implemented with XR version 2.0.1 / Schematron 1.5.0).
+* Incorrect ChargeIndicator in BR-DE-16 tests with BT-102. 
 
 
 ## v1.8.1 on 2023-02-17
