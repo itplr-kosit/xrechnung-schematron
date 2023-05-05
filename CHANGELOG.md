@@ -14,6 +14,9 @@ This release is compatible with XRechnung ?.?.?
 * Schematron Rules
     * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
     * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
+    * BR-DEX-15 to detect possible use of unsupported Sub Invoice Lines in CII.
+* Tests
+    * `cii-br-dex-15-test-on-sub-invoice-lines.xml`
 
 ### Changed
 
