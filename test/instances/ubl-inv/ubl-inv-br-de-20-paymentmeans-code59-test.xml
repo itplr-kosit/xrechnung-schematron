@@ -3,8 +3,8 @@
           id="correct-customization-id"
           schematron-valid="xrubl:BR-DE-21" description="Correct customization ids" ?>
   <?xmute mutator="code" 
-          values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0" 
-          id="check-BR-DEX-02-without-sub-invoic-line" 
+          values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3"
+          id="check-BR-DEX-02-without-sub-invoice-line"
           schematron-valid="xrubl:BR-DEX-02" description="Expect BR-DEX-02 to be valid without sub invoice lines"?>
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
 
