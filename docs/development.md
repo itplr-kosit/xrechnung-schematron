@@ -1,6 +1,6 @@
 # Project Structure
 
-Schematron sources are in `validation/schematron/{cii, ubl-cn, ubl-inv}` directories. 
+Schematron sources are in `validation/schematron/{cii, ubl}` directories.
 
 ## Testing
 
@@ -88,7 +88,7 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 ```
 
 * Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
-  `git tag release-1.8.1 && git push origin release-1.8.1`
+  `git tag release-1.8.2 && git push origin release-1.8.2`
 
 ### Publish
 
@@ -97,7 +97,9 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 * Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version}`
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
 * Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released componentes are checked to be okay, then uncheck pre-release.
+* If **all** released components are checked to be okay, then uncheck pre-release.
+
+* Publish the new release in GitLab
 
 ### Post-Release
 
