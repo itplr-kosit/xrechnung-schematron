@@ -26,7 +26,8 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * BR-DE-16 description now includes restriction to all tax codes except "O" (as implemented with XR version 2.0.1 / Schematron 1.5.0).
-* Incorrect ChargeIndicator in BR-DE-16 tests with BT-102. 
+* Incorrect ChargeIndicator in BR-DE-16 tests with BT-95.
+* Incorrect ChargeIndicator in BR-DE-16 tests with BT-102.
 
 
 ## v1.8.1 on 2023-02-17
