@@ -40,13 +40,13 @@
       <let name="BT-151" value="(cac:InvoiceLine | cac:CreditNoteLine)/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />
       <!-- If one of BT-95, BT-102, BT-151 is in List of supportedVATCodes then either BG-11=cac:TaxRepresentativeParty or $BT-31orBT-32Path has to exist -->
       <assert test="
-        if (
-        ($BT-95-UBL-Inv = $supportedVATCodes or $BT-95-UBL-CN = $supportedVATCodes) or
-        ($BT-102 = $supportedVATCodes) or
-        ($BT-151 = $supportedVATCodes)
-        ) then
-        (cac:TaxRepresentativeParty, $BT-31orBT-32Path)
-        else false()"
+        (not(
+          ($BT-95-UBL-Inv = $supportedVATCodes or $BT-95-UBL-CN = $supportedVATCodes) or
+          ($BT-102 = $supportedVATCodes) or
+          ($BT-151 = $supportedVATCodes)
+        ) or
+        (cac:TaxRepresentativeParty, $BT-31orBT-32Path))
+        "
         flag="fatal"
         id="BR-DE-16"
         >[BR-DE-16] Wenn in einer Rechnung die Steuercodes S, Z, E, AE, K, G, L oder M verwendet werden, muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32)
