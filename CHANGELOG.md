@@ -5,6 +5,10 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+This release is compatible with XRechnung ?.?.?
+
 ## v1.8.2 on 2023-05-12
 
 This release is compatible with XRechnung 2.3.x
