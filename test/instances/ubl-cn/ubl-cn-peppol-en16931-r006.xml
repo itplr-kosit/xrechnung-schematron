@@ -30,7 +30,6 @@
                     schematron-valid="xrubl:PEPPOL-EN16931-R006" id="ubl-cn-maximum-one-invoiced-object-allowed-on-document-level"
                     description="BT-18 allowed maximum once" ?>
     <cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
-    <cbc:DocumentType>ATS</cbc:DocumentType>
   </cac:AdditionalDocumentReference>
   <!-- BG-24 (ADDITIONAL SUPPORTING DOCUMENTS) -->
   <cac:AdditionalDocumentReference>
