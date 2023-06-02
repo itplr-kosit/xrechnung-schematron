@@ -252,15 +252,15 @@
       <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
       <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
       <!-- BT-138 (or BT-143 with ChargeIndicator="true") -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R042" id="ubl-inv-percentage-mandatory"
+                  description="percentage is mandatory when base amount is provided" ?>
+      <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R042" id="ubl-inv-percentage-mandatory-invalid"
+                  description="percentage is mandatory when base amount is provided" ?>
       <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
       <cbc:Amount currencyID="EUR">0</cbc:Amount>
       <!-- BT-137 (or BT-142 with ChargeIndicator="true") -->
-      <?xmute mutator="identity"
-              schematron-valid="xrubl:PEPPOL-EN16931-R041" id="ubl-inv-base-amount-mandatory-2"
-              description="base amount is mandatory when percentage is provided" ?>
-      <?xmute mutator="remove"
-              schematron-invalid="xrubl:PEPPOL-EN16931-R041" id="ubl-inv-base-amount-mandatory-invalid-2"
-              description="base amount is mandatory when percentage is provided" ?>
       <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     </cac:AllowanceCharge>
     <cac:Item>
