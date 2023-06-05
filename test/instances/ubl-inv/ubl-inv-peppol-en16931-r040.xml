@@ -173,6 +173,15 @@
     <!-- BT-94 (or BT-101 with ChargeIndicator="true") -->
     <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
     <!-- BT-92 (or BT-99 with ChargeIndicator="true") -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-allowance-amount-must-be-correct"
+                  description="document allowance amount must be correct" ?>
+    <?xmute mutator="remove"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-no-document-allowance-amount-provided"
+                  description="document allowance amount not provided" ?>
+    <?xmute mutator="code" values="0.02, -0.02"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-allowance-amount-slack"
+                  description="document allowance amount correct" ?>
     <cbc:Amount currencyID="EUR">0</cbc:Amount>
     <!-- BT-93 (or BT-100 with ChargeIndicator="true") -->
     <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
@@ -194,7 +203,6 @@
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
-
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
@@ -250,11 +258,14 @@
       <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
       <!-- BT-136 (or BT-141 with ChargeIndicator="true") -->
       <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-must-be-correct"
-                  description="amount must be correct" ?>
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-line-allowance-amount-must-be-correct"
+                  description="invoice line allowance amount is correct" ?>
       <?xmute mutator="remove"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-is-incorrect"
-                  description="amount must be correct" ?>
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-no-line-allowance-amount"
+                  description="invoice line amount not provided" ?>
+      <?xmute mutator="code" values="0.02, -0.02"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-line-allowance-amount-slack"
+                  description="invoice line amount correct" ?>
       <cbc:Amount currencyID="EUR">0</cbc:Amount>
       <!-- BT-137 (or BT-142 with ChargeIndicator="true") -->
       <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
