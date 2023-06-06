@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?><CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>1234567</cbc:ID>
+  <cbc:IssueDate>2018-04-13</cbc:IssueDate>
+  <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
+  <cbc:Note>Invoice Note Description</cbc:Note>
+  <!-- BT-5 -->
+  <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-document-currency-same"
+                  description="document currency code equals other amounts' currencies" ?>
+  <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-document-currency-differs"
+                  description="document currency code differs from other amounts' currencies" ?>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:TaxCurrencyCode>GBP</cbc:TaxCurrencyCode>
+  <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2018-04-13</cbc:StartDate>
+    <cbc:EndDate>2018-04-13</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <cac:OrderReference>
+    <cbc:ID>65002278</cbc:ID>
+    <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
+  </cac:OrderReference>
+  <cac:OriginatorDocumentReference>
+    <cbc:ID>ANG987654321</cbc:ID>
+  </cac:OriginatorDocumentReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0013">987654321</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>[Seller name]</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
+        <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>
+        <cbc:CityName>[Seller city]</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyTaxScheme>
+        <cac:TaxScheme>
+          <cbc:ID>FC</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Seller trading name]</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0198">123456789</cbc:CompanyID>
+        <cbc:CompanyLegalForm>Amtsgericht […], Geschäftsführer: […], Sitz der Gesellschaft […],
+          Aufsichtsratvorsitzender: […]</cbc:CompanyLegalForm>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Tim Tester</cbc:Name>
+        <cbc:Telephone>012 3456789</cbc:Telephone>
+        <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID>138</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>[Buyer name]</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
+        <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>
+        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <cbc:PostalZone>98765</cbc:PostalZone>
+        <cac:AddressLine>
+          <cbc:Line>[Buyer address line 3]</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE12345ABC</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Buyer name]</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0198">90000000-03083-12</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Tina Tester</cbc:Name>
+        <cbc:Telephone>0800 123456</cbc:Telephone>
+        <cbc:ElectronicMail>tester@test.de</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PayeeParty>
+    <cac:PartyIdentification>
+      <cbc:ID>74</cbc:ID>
+    </cac:PartyIdentification>
+    <cac:PartyName>
+      <cbc:Name>[Payee name]</cbc:Name>
+    </cac:PartyName>
+  </cac:PayeeParty>
+  <cac:TaxRepresentativeParty>
+    <cac:PartyName>
+      <cbc:Name>[Seller tax representative name]</cbc:Name>
+    </cac:PartyName>
+    <cac:PostalAddress>
+      <cac:Country>
+        <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+    </cac:PostalAddress>
+    <cac:PartyTaxScheme>
+      <cbc:CompanyID>DE124567</cbc:CompanyID>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:PartyTaxScheme>
+  </cac:TaxRepresentativeParty>
+  <cac:Delivery>
+    <cbc:ActualDeliveryDate>2018-04-13</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocation>
+      <cbc:ID>68</cbc:ID>
+      <cac:Address>
+        <cbc:StreetName>[Deliver to street]</cbc:StreetName>
+        <cbc:AdditionalStreetName>4. OG</cbc:AdditionalStreetName>
+        <cbc:CityName>[Deliver to city]</cbc:CityName>
+        <cbc:PostalZone>98765</cbc:PostalZone>
+        <cbc:CountrySubentity>Bayern</cbc:CountrySubentity>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>[Deliver to party name]</cbc:Name>
+      </cac:PartyName>
+    </cac:DeliveryParty>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE75512108001245126199</cbc:ID>
+      <cbc:Name>[Payment account name]</cbc:Name>
+      <cac:FinancialInstitutionBranch>
+        <cbc:ID>[BIC]</cbc:ID>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:PaymentTerms>
+    <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
+  </cac:PaymentTerms>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+    <!-- BT-92 / BT-99 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-92-BT-99-currency-valid"
+                  description="BT-92 / BT-99 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-92-BT-99-currency-invalid"
+                  description="BT-92 / BT-99 currency is invalid" ?>
+    <cbc:Amount currencyID="EUR">0</cbc:Amount>
+    <!-- BT-100 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-100-currency-valid"
+                  description="BT-100 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-100-currency-invalid"
+                  description="BT-100 currency is invalid" ?>
+    <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:TaxTotal>
+    <!-- BT-110 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-110-currency-valid"
+                  description="BT-110 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-110-currency-invalid"
+                  description="BT-110 currency is invalid" ?>
+    <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <!-- Bt-116 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-116-currency-valid"
+                  description="BT-116 currency is valid" ?>
+      <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-116-currency-invalid"
+                  description="BT-116 currency is invalid" ?>
+      <cbc:TaxableAmount currencyID="EUR">10781.25</cbc:TaxableAmount>
+      <!-- BT-117 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid"
+                  description="BT-117 currency is valid" ?>
+      <?xmute mutator="code" values="GBP"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid-2"
+                  description="BT-117 currency is invalid" ?>
+      <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:TaxTotal>
+    <!-- BT-111 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-111-currency-valid"
+                  description="BT-117 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-111-currency-valid-2"
+                  description="BT-117 currency is invalid" ?>
+    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <!-- BT-106 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-106-currency-valid"
+                  description="BT-106 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-106-currency-invalid"
+                  description="BT-106 currency is invalid" ?>
+    <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
+    <!-- BT-109 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-109-currency-valid"
+                  description="BT-109 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-109-currency-invalid"
+                  description="BT-109 currency is invalid" ?>
+    <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
+    <!-- BT-112 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-112-currency-valid"
+                  description="BT-112 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-112-currency-invalid"
+                  description="BT-112 currency is invalid" ?>
+    <cbc:TaxInclusiveAmount currencyID="EUR">12829.69</cbc:TaxInclusiveAmount>
+    <!-- BT-107 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid"
+                  description="BT-117 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-invalid"
+                  description="BT-117 currency is invalid" ?>
+    <cbc:AllowanceTotalAmount currencyID="EUR">0</cbc:AllowanceTotalAmount>
+    <!-- BT-108 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-118-currency-valid"
+                  description="BT-118 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-118-currency-invalid"
+                  description="BT-118 currency is invalid" ?>
+    <cbc:ChargeTotalAmount currencyID="EUR">0</cbc:ChargeTotalAmount>
+    <!-- BT-113 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-113-currency-valid"
+                  description="BT-113 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-113-currency-invalid"
+                  description="BT-113 currency is invalid" ?>
+    <cbc:PrepaidAmount currencyID="EUR">0</cbc:PrepaidAmount>
+    <!-- BT-114 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-114-currency-valid"
+                  description="BT-114 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-114-currency-invalid"
+                  description="BT-114 currency is invalid" ?>
+    <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
+    <!-- BT-115 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-115-currency-valid"
+                  description="BT-115 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-115-currency-invalid"
+                  description="BT-115 currency is invalid" ?>
+    <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:CreditNoteLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
+      Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
+    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
+    <!-- BT-131 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-131-currency-valid"
+                  description="BT-131 currency is valid" ?>
+    <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-131-currency-invalid"
+                  description="BT-131 currency is invalid" ?>
+    <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2016-01-01</cbc:StartDate>
+      <cbc:EndDate>2016-12-31</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:OrderLineReference>
+      <cbc:LineID>6171175.1</cbc:LineID>
+    </cac:OrderLineReference>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cac:AllowanceChargeReason>[Reason]</cac:AllowanceChargeReason>
+      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+      <!-- BT-136 / BT-141 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-136-BT-141-currency-valid"
+                  description="BT-136 / BT-141 currency is valid" ?>
+      <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-136-BT-141-currency-invalid"
+                  description="BT-136 / BT-141 currency is invalid" ?>
+      <cbc:Amount currencyID="EUR">0</cbc:Amount>
+      <!-- BT-137 / BT-142 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-137-BT-142-currency-valid"
+                  description="BT-137 / BT-142 currency is valid" ?>
+      <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-137-BT-142-currency-invalid"
+                  description="BT-137 / BT-142 currency is invalid" ?>
+      <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+    </cac:AllowanceCharge><cac:Item>
+      <cbc:Description>Anforderungmanagament</cbc:Description>
+      <cbc:Name>Beratung</cbc:Name>
+      <cac:SellersItemIdentification>
+        <cbc:ID>1034</cbc:ID>
+      </cac:SellersItemIdentification>
+      <cac:CommodityClassification>
+        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
+      </cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <!-- BT-146 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-146-currency-valid"
+                  description="BT-146 currency is valid" ?>
+      <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-146-currency-invalid"
+                  description="BT-146 currency is invalid" ?>
+      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+        <cac:AllowanceChargeReason>[Reason]</cac:AllowanceChargeReason>
+        <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+        <!-- BT-147 -->
+        <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-147-currency-valid"
+                  description="BT-147 currency is valid" ?>
+        <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-147-currency-invalid"
+                  description="BT-147 currency is invalid" ?>
+        <cbc:Amount currencyID="EUR">0</cbc:Amount>
+        <!-- BT-148 -->
+        <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-148-currency-valid"
+                  description="BT-148 currency is valid" ?>
+        <?xmute mutator="code" values="GBP"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-148-currency-invalid"
+                  description="BT-148 currency is invalid" ?>
+        <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+      </cac:AllowanceCharge>
+    </cac:Price>
+  </cac:CreditNoteLine>
+  <cac:CreditNoteLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:CreditedQuantity unitCode="XPP">42</cbc:CreditedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Beratung</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+    </cac:Price>
+  </cac:CreditNoteLine>
+</CreditNote>
