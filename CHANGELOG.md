@@ -12,6 +12,8 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Ant target `retrieve-peppol-bis-billing-rules`
+* Ant target `merge-peppol-rules-into-xr-rules` 
+* Add xsl script for merging peppol bis billing rules into xrechnung rules
 
 ## v1.8.2 on 2023-05-12
 

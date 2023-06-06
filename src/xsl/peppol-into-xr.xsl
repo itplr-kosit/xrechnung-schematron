@@ -28,12 +28,12 @@
     <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">        
         <xsl:copy-of select="."/>    
         <xsl:comment>BEGIN Parameters from PEPPOL</xsl:comment>
-        <xsl:apply-templates select="document('../../build/download/peppol-bis-invoice-3-3.0.14/rules/sch/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
+        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
         <xsl:comment>END Parameters from PEPPOL</xsl:comment>          
     </xsl:template>
     <xsl:template match="/*/pattern[@id='ubl-pattern']" mode="xrechung-rules" priority="1">        
         <xsl:comment>BEGIN Pattern from PEPPOL</xsl:comment>
-        <xsl:apply-templates select="document('../../build/download/peppol-bis-invoice-3-3.0.14/rules/sch/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="peppol-rules"/>
+        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="peppol-rules"/>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>    

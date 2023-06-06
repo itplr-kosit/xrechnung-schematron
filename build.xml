@@ -147,11 +147,8 @@
       value="${xr-schematron.version.full}" />
 
     <filter token="xrechnung.version" value="${xrechnung.version}" />
-    <copy todir="${build.dir}" filtering="true">
-      <fileset dir="${validation.dir}">
-        <include name="**/*.sch" />
-        <exclude name="**/*.xsl" />     
-      </fileset>
+    <copy todir="${build.dir}/schematron" file="${validation.dir}/schematron/common.sch"/>
+    <copy todir="${build.dir}" filtering="true">      
       <fileset dir="${basedir}">
         <include name="README.md" />
         <include name="CHANGELOG.md" />
@@ -211,8 +208,22 @@
     </fail>
   </target>
 
+  <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
+    <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      out="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}"/>        
+      </classpath>      
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />      
+    </xslt>
+    
+    <!-- WIP copy CII files -->
+    <copy todir="${build.dir}/schematron/cii/" file="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+  </target>
+
   <target name="compile-schematron-rules"
-    depends="prepare-saxon, prepare-build-dir"
+    depends="prepare-saxon, prepare-build-dir, merge-peppol-rules-with-xr-rules"
     description="Compiling schematron rules">
     <schematron-compile
       schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
