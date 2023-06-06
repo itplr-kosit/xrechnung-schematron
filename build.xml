@@ -3,7 +3,8 @@
   <description>Build XRechnung Schematron Rules</description>
   <!-- set global default properties for this build -->
   <!-- main build directories -->
-  <property name="src.dir" location="${basedir}/validation" />
+  <property name="src.dir" location="${basedir}/src" />
+  <property name="validation.dir" location="${src.dir}/validation" />
   <property name="lib.dir" location="${basedir}/lib" />
   <property name="build.dir" location="${basedir}/build" />
   <property name="download.dir" location="${build.dir}/download" />
@@ -142,7 +143,7 @@
 
     <filter token="xrechnung.version" value="${xrechnung.version}" />
     <copy todir="${build.dir}" filtering="true">
-      <fileset dir="${src.dir}">
+      <fileset dir="${validation.dir}">
         <include name="**/*.sch" />
         <exclude name="**/*.xsl" />     
       </fileset>
