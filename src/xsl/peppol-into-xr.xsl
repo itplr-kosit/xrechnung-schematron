@@ -20,11 +20,13 @@
         <xsl:value-of select="'PEPPOL-EN16931-R080'"/>
     </xsl:variable>
     
-    <xsl:template match="/">        
+    <xsl:template match="/">    
         <xsl:apply-templates mode="xrechung-rules"/>
     </xsl:template>
+    
+    <!-- Adds global lets from PEPPOL --> 
     <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">        
-        <xsl:copy-of select="."/>            
+        <xsl:copy-of select="."/>    
         <xsl:comment>BEGIN Parameters from PEPPOL</xsl:comment>
         <xsl:apply-templates select="document('../../build/download/peppol-bis-invoice-3-3.0.14/rules/sch/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
         <xsl:comment>END Parameters from PEPPOL</xsl:comment>          
@@ -70,7 +72,7 @@
                 <xsl:apply-templates select="@*" mode="peppol-rules"/>
                 <xsl:apply-templates mode="peppol-rules"/>
             </xsl:copy>    
-        </xsl:if>        
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="*" mode="peppol-rules" priority="0">        
@@ -83,5 +85,4 @@
         <xsl:copy-of select="."/>
     </xsl:template>
    
-    
 </xsl:stylesheet>
