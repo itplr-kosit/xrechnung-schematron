@@ -5,24 +5,19 @@
     xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
     xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
     xmlns:ubl-creditnote="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
-    xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+    xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:r="rule">
     <xsl:output indent="true"/>
     <xsl:namespace-alias stylesheet-prefix="ubl-creditnote" result-prefix="cn"/>
     <xsl:namespace-alias stylesheet-prefix="ubl-invoice" result-prefix="ubl"/>
-    <!-- List of rules to be integrated -->
+    <!-- List of rules to be integrated -->    
     <xsl:variable name="rules" as="xs:string *">        
-        <xsl:value-of select="'PEPPOL-EN16931-R001'"/>        
-        <xsl:value-of select="'PEPPOL-EN16931-R002'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R003'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R004'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R005'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R007'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R010'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R053'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R054'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R055'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R056'"/>
-        <xsl:value-of select="'PEPPOL-EN16931-R080'"/>
+        <xsl:for-each select="document('rule-list.xml')/*/r:rule">
+            <xsl:comment>
+                <xsl:value-of select="."/>
+            </xsl:comment>
+            <xsl:value-of select="."/>
+        </xsl:for-each>        
     </xsl:variable>
     
     <xsl:template match="/">    
