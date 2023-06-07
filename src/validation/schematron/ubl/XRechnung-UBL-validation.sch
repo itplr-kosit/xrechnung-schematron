@@ -3,7 +3,7 @@
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
   queryBinding="xslt2"
-  defaultPhase="xrechnung-model">
+  >
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - UBL - Invoice / Creditnote</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
   <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
@@ -11,11 +11,11 @@
   <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="cn" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />  
-  <phase id="xrechnung-model">
+  <!--<phase id="xrechnung-model">
     <active pattern="variable-pattern" />
     <active pattern="ubl-pattern" />
     <active pattern="ubl-extension-pattern" />
-  </phase>
+  </phase>-->
   
   <include href="../common.sch" />
   
