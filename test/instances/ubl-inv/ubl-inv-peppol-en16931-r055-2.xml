@@ -26,14 +26,6 @@
   <cac:ContractDocumentReference>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
-  <cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen
-      Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf"/>
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
     <cbc:ID>PR12345678</cbc:ID>
   </cac:ProjectReference>
@@ -131,9 +123,6 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
-      <cbc:StreetName/>
-      <cbc:CityName/>
-      <cbc:PostalZone/>
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
@@ -195,8 +184,6 @@
       </cac:TaxScheme>
     </cac:TaxCategory>
   </cac:AllowanceCharge>
-
-
   <cac:TaxTotal>
     <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R055" id="ubl-inv-operational-signs-BT-110-BT-111-identical"
@@ -215,7 +202,6 @@
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
-
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
@@ -234,8 +220,6 @@
       </cac:TaxCategory>
     </cac:TaxSubtotal>
   </cac:TaxTotal>
-
-
   <cac:TaxTotal>
     <!-- BT-111 -->
     <?xmute mutator="identity"
@@ -267,11 +251,11 @@
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
-    <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
+    <cbc:InvoicedQuantity unitCode="XPP">-30</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">-4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
-      <cbc:StartDate>2016-01-01</cbc:StartDate>
-      <cbc:EndDate>2016-12-31</cbc:EndDate>
+      <cbc:StartDate>2018-04-13</cbc:StartDate>
+      <cbc:EndDate>2018-04-13</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
@@ -294,13 +278,13 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
     <cbc:ID>2</cbc:ID>
-    <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
-    <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
+    <cbc:InvoicedQuantity unitCode="XPP">-42</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">-6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
       <cac:ClassifiedTaxCategory>
