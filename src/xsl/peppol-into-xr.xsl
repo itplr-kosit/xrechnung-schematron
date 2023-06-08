@@ -8,6 +8,7 @@
     xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
     xmlns:r="rule">
     <xsl:output indent="true"/>
+    <xsl:param name="syntax"/>
     <!-- List of rules to be integrated -->    
     <xsl:variable name="rules" as="xs:string *">        
         <xsl:for-each select="document('rule-list.xml')/*/r:rule">
@@ -26,13 +27,23 @@
     <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">        
         <xsl:copy-of select="."/>    
         <xsl:comment>BEGIN Parameters from PEPPOL</xsl:comment>
-        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
+        <xsl:if test="$syntax='UBL'">
+            <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
+        </xsl:if>
+        <xsl:if test="$syntax='CII'">
+            <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/let" mode="peppol-rules"/>
+        </xsl:if>
         <xsl:comment>END Parameters from PEPPOL</xsl:comment>          
     </xsl:template>
     <xsl:template match="/*/include" mode="xrechung-rules" priority="1">
         <xsl:copy-of select="."/>
         <xsl:comment>BEGIN Functions from PEPPOL</xsl:comment>
-        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/xsl:function" mode="peppol-rules"/>
+        <xsl:if test="$syntax='UBL'">
+            <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/xsl:function" mode="peppol-rules"/>
+        </xsl:if>
+        <xsl:if test="$syntax='CII'">
+            <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/xsl:function" mode="peppol-rules"/>
+        </xsl:if>
         <xsl:comment>END Functions from PEPPOL</xsl:comment>
     </xsl:template>
     <xsl:template match="/*/pattern[@id='ubl-pattern']" mode="xrechung-rules" priority="1">        
