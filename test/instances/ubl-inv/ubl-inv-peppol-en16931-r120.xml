@@ -120,7 +120,9 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
+      <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
     </cac:PostalAddress>
     <cac:PartyTaxScheme>
       <cbc:CompanyID>DE124567</cbc:CompanyID>
@@ -150,12 +152,6 @@
       </cac:PartyName>
     </cac:DeliveryParty>
   </cac:Delivery>
-  <?xmute mutator="identity"
-                    schematron-valid="xrubl:BR-DE-1" id="ubl-inv-mandatory-BG-16"
-                    description="mandatory BG-16" ?>
-  <?xmute mutator="remove"
-                    schematron-invalid="xrubl:BR-DE-1" id="ubl-inv-mandatory-BG-16-2"
-                    description="mandatory BG-16" ?>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
@@ -214,13 +210,6 @@
       </cac:TaxCategory>
     </cac:TaxSubtotal>
   </cac:TaxTotal>
-
-
-  <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-
-
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -235,7 +224,9 @@
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
+    <!-- BT-129 $quantity -->
     <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
+    <!-- BT-106 $lineExtensionAmount -->
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -262,12 +253,23 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <!-- BT-146 $priceAmount -->
+      <cbc:PriceAmount currencyID="EUR">470.36</cbc:PriceAmount>
+      <!-- BT-149 $baseQuantity -->
+      <cbc:BaseQuantity>3</cbc:BaseQuantity>
+      <!-- BG-28 -->
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+        <!-- BT-141 $chargesTotal -->
+        <cbc:Amount currencyID="EUR">40.00</cbc:Amount>
+      </cac:AllowanceCharge>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
     <cbc:ID>2</cbc:ID>
+    <!-- BT-129 $quantity -->
     <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
+    <!-- BT-106 $lineExtensionAmount -->
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
@@ -280,7 +282,23 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
+      <!-- BT-146 $priceAmount -->
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <!-- BT-149 $baseQuantity -->
+      <!--
+      <cbc:BaseQuantity>2</cbc:BaseQuantity>
+      -->
+      <!-- BG-27 -->
+      <!--
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+        -->
+        <!-- BT-136 $allowancesTotal -->
+      <!--
+        <cbc:Amount currencyID="EUR">40.00</cbc:Amount>
+        <cbc:BaseAmount currencyID="EUR">800.00</cbc:BaseAmount>
+      </cac:AllowanceCharge>
+      -->
     </cac:Price>
-  </cac:InvoiceLine>
+  </cac:InvoiceLine>  
 </Invoice>
