@@ -252,7 +252,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">153.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:CreditNoteLine>
   <cac:CreditNoteLine>
