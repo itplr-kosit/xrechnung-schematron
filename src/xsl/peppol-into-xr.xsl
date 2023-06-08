@@ -8,8 +8,6 @@
     xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
     xmlns:r="rule">
     <xsl:output indent="true"/>
-    <xsl:namespace-alias stylesheet-prefix="ubl-creditnote" result-prefix="cn"/>
-    <xsl:namespace-alias stylesheet-prefix="ubl-invoice" result-prefix="ubl"/>
     <!-- List of rules to be integrated -->    
     <xsl:variable name="rules" as="xs:string *">        
         <xsl:for-each select="document('rule-list.xml')/*/r:rule">
@@ -82,16 +80,7 @@
         </xsl:copy> 
     </xsl:template>
     <xsl:template match="@*" mode="peppol-rules">
-        <xsl:choose>
-            <xsl:when test="name(.) = 'context'">
-                <xsl:attribute name="context">
-                    <xsl:value-of select="replace(replace(., 'ubl-creditnote:', 'cn:'), 'ubl-invoice:', 'ubl:')"/>
-                </xsl:attribute>                
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:copy-of select="."/>        
-            </xsl:otherwise>
-        </xsl:choose>        
+        <xsl:copy-of select="."/>
     </xsl:template>
    
 </xsl:stylesheet>
