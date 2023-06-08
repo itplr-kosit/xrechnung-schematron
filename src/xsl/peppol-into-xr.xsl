@@ -29,12 +29,18 @@
         <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>
         <xsl:comment>END Parameters from PEPPOL</xsl:comment>          
     </xsl:template>
+    <xsl:template match="/*/include" mode="xrechung-rules" priority="1">
+        <xsl:copy-of select="."/>
+        <xsl:comment>BEGIN Functions from PEPPOL</xsl:comment>
+        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/xsl:function" mode="peppol-rules"/>
+        <xsl:comment>END Functions from PEPPOL</xsl:comment>
+    </xsl:template>
     <xsl:template match="/*/pattern[@id='ubl-pattern']" mode="xrechung-rules" priority="1">        
         <xsl:comment>BEGIN Pattern from PEPPOL</xsl:comment>
         <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="peppol-rules"/>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
-    </xsl:template>    
+    </xsl:template>
     
     <xsl:template match="*" mode="xrechung-rules" priority="0">        
         <xsl:copy select=".">
@@ -50,7 +56,9 @@
     <xsl:template match="/*/let" mode="peppol-rules" priority="1">
         <xsl:copy-of select="."/>
     </xsl:template>
-    
+    <xsl:template match="/*/xsl:stylesheet/xsl:function" mode="peppol-rules" priority="1">
+        <xsl:copy-of select="."/>
+    </xsl:template>
     <xsl:template match="assert" mode="peppol-rules" priority="1">        
         <xsl:if test="@id=$rules">
             <xsl:copy-of select="."/> 
