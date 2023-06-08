@@ -41,6 +41,12 @@
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
+    <xsl:template match="/*/pattern[@id='cii-pattern']" mode="xrechung-rules" priority="1">
+        <xsl:comment>BEGIN Pattern from PEPPOL</xsl:comment>
+        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="peppol-rules"/>
+        <xsl:comment>END Pattern from PEPPOL</xsl:comment>
+        <xsl:copy-of select="."/>
+    </xsl:template>
     
     <xsl:template match="*" mode="xrechung-rules" priority="0">        
         <xsl:copy select=".">

@@ -217,9 +217,15 @@
       </classpath>      
       <factory name="net.sf.saxon.TransformerFactoryImpl" />      
     </xslt>
-    
-    <!-- WIP copy CII files -->
-    <copy todir="${build.dir}/schematron/cii/" file="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+
+    <xslt in="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      out="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}"/>
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
   </target>
 
   <target name="compile-schematron-rules"
