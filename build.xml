@@ -3,7 +3,8 @@
   <description>Build XRechnung Schematron Rules</description>
   <!-- set global default properties for this build -->
   <!-- main build directories -->
-  <property name="src.dir" location="${basedir}/validation" />
+  <property name="src.dir" location="${basedir}/src" />
+  <property name="validation.dir" location="${src.dir}/validation" />
   <property name="lib.dir" location="${basedir}/lib" />
   <property name="build.dir" location="${basedir}/build" />
   <property name="download.dir" location="${build.dir}/download" />
@@ -20,6 +21,10 @@
 
   <property name="xmute.version.full" value="0.5" />
   <property name="xmute.jar" value="xml-mutate.jar" />
+
+  <property name="bis.version" value="3.0.14" />
+  <property name="bis.zip" value="${bis.version}.zip" />
+  <property name="bis.download.url" value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
   <property name="xr-schematron.zip" value="${dist.name}.zip" />
 
@@ -110,6 +115,7 @@
     <mkdir dir="${lib.dir}" />
     <mkdir dir="${dist.dir}" />
     <mkdir dir="${build.dir}/generated" />
+    <mkdir dir="${build.dir}/bis" />
   </target>
 
   <target name="retrieve-xmute" depends="init">
@@ -141,11 +147,8 @@
       value="${xr-schematron.version.full}" />
 
     <filter token="xrechnung.version" value="${xrechnung.version}" />
-    <copy todir="${build.dir}" filtering="true">
-      <fileset dir="${src.dir}">
-        <include name="**/*.sch" />
-        <exclude name="**/*.xsl" />     
-      </fileset>
+    <copy todir="${build.dir}/schematron" file="${validation.dir}/schematron/common.sch"/>
+    <copy todir="${build.dir}" filtering="true">      
       <fileset dir="${basedir}">
         <include name="README.md" />
         <include name="CHANGELOG.md" />
@@ -153,8 +156,82 @@
       </fileset>
     </copy>
   </target>
+
+  <target name="retrieve-peppol-bis-billing-rules"
+    depends="init"
+    description="Download and prepare Peppol BIS Billing 3.0 rules">
+
+    <echo message="Loading Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
+    <get src="${bis.download.url}" dest="${download.dir}"
+      verbose="true" skipexisting="true" usetimestamp="false" httpusecaches="false" />
+
+    <fail message="No Peppol BIS Billing zip file available">
+      <condition>
+        <not>
+          <resourceexists>
+            <file file="${download.dir}/${bis.zip}" />
+          </resourceexists>
+        </not>
+      </condition>
+    </fail>
+
+    <echo message="Unpacking Peppol BIS Billing ${bis.version} from ${bis.zip}" />
+    <unzip src="${download.dir}/${bis.zip}" dest="${build.dir}/bis" failonemptyarchive="true">
+      <patternset>
+        <include name="**/PEPPOL-EN16931-*.sch" />
+      </patternset>
+      <flattenmapper />
+    </unzip>
+
+    <path id="schematron-path">
+      <fileset dir="${build.dir}/bis" includes="**.sch" />
+    </path>
+    <fail
+      message="Could not extract UBL PEPPOL BIS Billing rules">
+      <condition>
+        <not>
+          <available file="PEPPOL-EN16931-UBL.sch">
+            <filepath refid="schematron-path" />
+          </available>
+        </not>
+      </condition>
+    </fail>
+    <fail
+      message="Could not extract CII PEPPOL BIS Billing rules">
+      <condition>
+        <not>
+          <available file="PEPPOL-EN16931-CII.sch">
+            <filepath refid="schematron-path" />
+          </available>
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+  <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
+    <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      out="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      <param name="syntax" expression="UBL"/>
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}"/>        
+      </classpath>      
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />      
+    </xslt>
+
+    <xslt in="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      out="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      <param name="syntax" expression="CII"/>
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}"/>
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+  </target>
+
   <target name="compile-schematron-rules"
-    depends="prepare-saxon, prepare-build-dir"
+    depends="prepare-saxon, prepare-build-dir, merge-peppol-rules-with-xr-rules"
     description="Compiling schematron rules">
     <schematron-compile
       schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
@@ -169,7 +246,7 @@
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
-<target name="check-xmute-available" depends="retrieve-xmute">
+  <target name="check-xmute-available" depends="retrieve-xmute">
     <fail message="You must have xml-mutate installed in ${lib.dir}">
       <condition>
         <not>
@@ -178,7 +255,7 @@
         </not>
       </condition>
     </fail>
-</target>
+  </target>
 
   <target name="test-single-file" depends="compile-schematron-rules"
     description="Unit testing Schematron Rules with XML-Mutate">
