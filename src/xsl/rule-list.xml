@@ -3,9 +3,7 @@
     <r:rule>PEPPOL-EN16931-R001</r:rule>
     <!--
     <r:rule>PEPPOL-EN16931-R002</r:rule>
-    -->
     <r:rule>PEPPOL-EN16931-R003</r:rule>
-    <!--
     <r:rule>PEPPOL-EN16931-R004</r:rule>
     -->
     <r:rule>PEPPOL-EN16931-R005</r:rule>
@@ -37,4 +35,5 @@
     <r:rule>PEPPOL-EN16931-P0100</r:rule>
     <r:rule>PEPPOL-EN16931-P0101</r:rule>
     -->
+    <r:rule>PEPPOL-EN16931-F001</r:rule>
 </rules>
