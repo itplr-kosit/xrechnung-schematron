@@ -6,19 +6,22 @@
         xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
         queryBinding="xslt2"
-        defaultPhase="xrechnung-model">
+        xmlns:u="utils">
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - CII</title>
   <ns prefix="rsm"  uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" />
   <ns prefix="ccts" uri="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2" />
   <ns prefix="udt"  uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
   <ns prefix="qdt"  uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
   <ns prefix="ram"  uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
+  <ns uri="utils" prefix="u"/>
 
+<!--
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
     <active pattern="cii-pattern" />
     <active pattern="cii-extension-pattern" />
   </phase>
+  -->
 
   <include href="../common.sch" />
 
