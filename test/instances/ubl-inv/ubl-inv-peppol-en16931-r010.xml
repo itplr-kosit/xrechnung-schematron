@@ -75,7 +75,7 @@
                     schematron-valid="xrubl:PEPPOL-EN16931-R010" id="ubl-inv-BT-49-exists"
                     description="mandatory BT-49" ?>
       <?xmute mutator="remove"
-                    schematron-invalid="xrubl:PEPPOL-EN16931-R010" id="ubl-inv-BT-49-does-not-existz"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R010" id="ubl-inv-BT-49-does-not-exist"
                     description="mandatory BT-49" ?>
       <cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
       <cac:PartyIdentification>
