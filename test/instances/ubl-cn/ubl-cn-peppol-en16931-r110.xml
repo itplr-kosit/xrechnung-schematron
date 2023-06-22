@@ -211,10 +211,10 @@
       <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-cn-BT-134-within-invoice-period"
                     description="BT-134 is within invoice period" ?>
-      <?xmute mutator="code" values="2018-04-14, 2018-04-15"
+      <?xmute mutator="code" values="2018-04-13, 2018-04-14, 2018-04-15, 2018-04-16"
                     schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-cn-BT-134-within-invoice-period-2"
                     description="BT-134 is within invoice period" ?>
-      <?xmute mutator="code" values="2018-04-12, 2018-04-16"
+      <?xmute mutator="code" values="2018-04-12"
                     schematron-invalid="xrubl:PEPPOL-EN16931-R110" id="ubl-cn-BT-134-not-within-invoice-period"
                     description="BT-134 must be within invoice period" ?>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
