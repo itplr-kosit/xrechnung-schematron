@@ -240,7 +240,7 @@
       <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R044" id="ubl-cn-allowance-allowed"
                     description="allowance allowed on price level" ?>
-      <?xmute mutator="code" values="true"
+      <?xmute mutator="code" values="true,123,0,no"
                     schematron-invalid="xrubl:PEPPOL-EN16931-R044" id="ubl-cn-charge-not-allowed-on-price-levl"
                     description="charge not allowed on price level" ?>
       <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
