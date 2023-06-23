@@ -10,14 +10,7 @@
     <xsl:output indent="true"/>
     <xsl:param name="syntax"/>
     <!-- List of rules to be integrated -->    
-    <xsl:variable name="rules" as="xs:string *">        
-        <xsl:for-each select="document('rule-list.xml')/*/r:rule">
-            <xsl:comment>
-                <xsl:value-of select="."/>
-            </xsl:comment>
-            <xsl:value-of select="."/>
-        </xsl:for-each>        
-    </xsl:variable>
+    <xsl:variable name="rules" as="xs:string *" select="document('rule-list.xml')/*/r:rule/string(.)"/>     
     
     <xsl:template match="/">    
         <xsl:apply-templates mode="xrechung-rules"/>
