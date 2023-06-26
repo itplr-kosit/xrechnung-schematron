@@ -351,8 +351,7 @@
     </cac:OrderLineReference>
     <cac:AllowanceCharge>
       <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-      <cac:AllowanceChargeReason>[Reason]</cac:AllowanceChargeReason>
-      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+      <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
       <!-- BT-136 / BT-141 -->
       <?xmute mutator="identity"
                   schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-inv-BT-136-BT-141-currency-valid"
@@ -398,8 +397,6 @@
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
       <cac:AllowanceCharge>
         <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-        <cac:AllowanceChargeReason>[Reason]</cac:AllowanceChargeReason>
-        <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
         <!-- BT-147 -->
         <?xmute mutator="identity"
                   schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-inv-BT-147-currency-valid"
