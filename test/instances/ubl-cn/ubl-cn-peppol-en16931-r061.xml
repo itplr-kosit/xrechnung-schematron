@@ -168,7 +168,7 @@
                     schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-mandatory-BT-89-with-BT-81-2"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
       <?xmute mutator="remove"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-missing-BT-89-with-BT-81-invalid-2"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-missing-BT-89-with-BT-81-invalid-2"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
       <cbc:ID>[ID]</cbc:ID>
       <cac:PayerFinancialAccount>
