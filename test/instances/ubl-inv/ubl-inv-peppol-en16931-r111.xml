@@ -211,12 +211,6 @@
     </cac:TaxSubtotal>
   </cac:TaxTotal>
 
-
-  <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-
-
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -244,7 +238,7 @@
       <?xmute mutator="code" values="2018-04-14, 2018-04-13"
                     schematron-valid="xrubl:PEPPOL-EN16931-R111" id="ubl-inv-BT-135-within-invoice-period-2"
                     description="BT-134 is within invoice period" ?>
-      <?xmute mutator="code" values="2018-04-12, 2018-04-16"
+      <?xmute mutator="code" values="2018-04-16"
                     schematron-invalid="xrubl:PEPPOL-EN16931-R111" id="ubl-inv-BT-135-not-within-invoice-period"
                     description="BT-134 must be within invoice period" ?>
       <cbc:EndDate>2018-04-15</cbc:EndDate>
@@ -270,7 +264,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
