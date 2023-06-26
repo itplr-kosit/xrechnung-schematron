@@ -217,8 +217,8 @@
     <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
-      <cbc:StartDate>2016-01-01</cbc:StartDate>
-      <cbc:EndDate>2016-12-31</cbc:EndDate>
+      <cbc:StartDate>2018-04-13</cbc:StartDate>
+      <cbc:EndDate>2018-04-13</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
@@ -228,10 +228,10 @@
       <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
       <!-- BT-138 (or BT-143 with ChargeIndicator="true") -->
       <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R042" id="ubl-cn-percentage-mandatory"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R042" id="ubl-cn-percentage-mandatory-2"
                   description="percentage is mandatory when base amount is provided" ?>
       <?xmute mutator="remove"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R042" id="ubl-cn-percentage-mandatory-invalid"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R042" id="ubl-cn-percentage-mandatory-invalid-2"
                   description="percentage is mandatory when base amount is provided" ?>
       <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
       <cbc:Amount currencyID="EUR">0</cbc:Amount>
@@ -239,7 +239,7 @@
       <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
     </cac:AllowanceCharge>
     <cac:Item>
-      <cbc:Description>Anforderungmanagament</cbc:Description>
+      <cbc:Description>Anforderungmanagement</cbc:Description>
       <cbc:Name>Beratung</cbc:Name>
       <cac:SellersItemIdentification>
         <cbc:ID>1034</cbc:ID>
@@ -256,7 +256,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:CreditNoteLine>
   <cac:CreditNoteLine>
