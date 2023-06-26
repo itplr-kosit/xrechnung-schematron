@@ -216,7 +216,7 @@
                   schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid"
                   description="BT-117 currency is valid" ?>
       <?xmute mutator="code" values="GBP"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid-2"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R051" id="ubl-cn-BT-117-currency-valid-2"
                   description="BT-117 currency is invalid" attribute="currencyID" ?>
       <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
       <cac:TaxCategory>
