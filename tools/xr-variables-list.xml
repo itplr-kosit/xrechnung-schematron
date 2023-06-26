@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- variables to be excluded from NRS -->
+<!-- blacklist of variables from XR schematron not used in NRS -->
 <variables xmlns:v="variable">
 <v:variable>XR-MAJOR-MINOR-VERSION</v:variable>
 <v:variable>XR-CIUS-ID</v:variable>

@@ -18,7 +18,8 @@
     <a:assert key="BR-DE-16" id="DE-R-016">BR-DE-16 translation</a:assert>
     <!-- not decided, yet -->
     <a:assert key="BR-DE-17" id="DE-R-017" exclude="true">[BR-DE-17] Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice).</a:assert>
-    <!-- SKONTO rules removed entirely
+    <!-- SKONTO rules removed entirely -->
+    <!--
     <a:assert key="BR-DE-18" id="DE-R-018">BR-DE-18 translation</a:assert>
     -->
     <a:assert key="BR-DE-19" id="DE-R-019">BR-DE-19 translation</a:assert>
@@ -36,7 +37,9 @@
     <a:assert key="BR-DE-27" id="DE-R-027">BR-DE-27 translation</a:assert>
     <a:assert key="BR-DE-28" id="DE-R-028">BR-DE-28 translation</a:assert>
     <!-- BR-DE-29 is replaced by Peppol R061 (see https://projekte.kosit.org/xrechnung/xrechnung/-/issues/108) -->
+    <!--
     <a:assert key="BR-DE-29" id="DE-R-029" exclude="true">[BR-DE-29] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Mandate reference identifier" BT-89 übermittelt werden.</a:assert>
+    -->
     <a:assert key="BR-DE-30" id="DE-R-030">BR-DE-30 translation</a:assert>
     <a:assert key="BR-DE-31" id="DE-R-031">BR-DE-31 translation</a:assert>
 </asserts>
