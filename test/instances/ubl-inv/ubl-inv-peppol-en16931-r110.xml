@@ -211,12 +211,6 @@
     </cac:TaxSubtotal>
   </cac:TaxTotal>
 
-
-  <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-
-
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -270,7 +264,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
