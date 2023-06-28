@@ -16,8 +16,7 @@
     <a:assert key="BR-DE-14" id="DE-R-014">BR-DE-14 translation</a:assert>
     <a:assert key="BR-DE-15" id="DE-R-015">BR-DE-15 translation</a:assert>
     <a:assert key="BR-DE-16" id="DE-R-016">BR-DE-16 translation</a:assert>
-    <!-- not decided, yet -->
-    <a:assert key="BR-DE-17" id="DE-R-017" exclude="true">[BR-DE-17] Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice).</a:assert>
+    <a:assert key="BR-DE-17" id="DE-R-017">BR-DE-17 translation</a:assert>
     <!-- SKONTO rules removed entirely -->
     <!--
     <a:assert key="BR-DE-18" id="DE-R-018">BR-DE-18 translation</a:assert>
