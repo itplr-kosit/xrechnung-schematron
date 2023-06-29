@@ -11,8 +11,6 @@
     xmlns="http://purl.oclc.org/dsdl/schematron"
     exclude-result-prefixes="xs math a v sch ubl-invoice ubl-creditnote"
     version="3.0">
-    <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
-    <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
     
     <xsl:output indent="true"/>
     
