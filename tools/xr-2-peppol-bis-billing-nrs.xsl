@@ -76,13 +76,12 @@
     <!-- translate XR rule ids and texts to peppol rule ids and texts -->
     <xsl:template match="sch:assert">
         <xsl:if test="@id=$asserts">
-            <xsl:variable name="rule-id" select="./@id"/>
+          <xsl:variable name="rule-id" select="@id"/>
+          <xsl:variable name="new-assert" select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]"/>
             <xsl:copy>
                 <xsl:apply-templates select="@*"/>
-                <xsl:attribute name="id">
-                    <xsl:value-of select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]/@id"/>
-                </xsl:attribute>
-                <xsl:value-of select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]"/>
+                <xsl:attribute name="id" select="$new-assert/@id"/>
+                <xsl:value-of select="$new-assert"/>
             </xsl:copy> 
         </xsl:if>
     </xsl:template>
