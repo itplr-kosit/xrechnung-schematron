@@ -69,17 +69,8 @@
   </xsl:template>
     
   <xsl:template match="sch:rule/@context">
-      <!-- TODO -->
-      <xsl:variable name="supplier-customer" select='"[\$supplierCountryIsDE and \$customerCountryIsDE]"'/>
-      <xsl:variable name="invoice-ns" select="concat('ubl-invoice:Invoice', $supplier-customer)"/>
-      <xsl:variable name="creditnote-ns" select="concat('ubl-creditnote:CreditNote', $supplier-customer)"/>
-  
-      <xsl:variable name="invoice-path" select="normalize-space(substring-before(replace(., 'ubl:Invoice', $invoice-ns), '|'))"/>  
-      <xsl:variable name="creditnote-path" select="normalize-space(substring-after(replace(., 'cn:CreditNote', $creditnote-ns), '|'))"/>
-      <xsl:variable name="inv-and-cn-path" select='$invoice-path || " | " || $creditnote-path'/>
-      <xsl:attribute name="context">
-          <xsl:value-of select="$inv-and-cn-path"/>
-      </xsl:attribute>
+      <xsl:attribute name="context" 
+                     select="'(' || . || ')' || '[$supplierCountryIsDE and $customerCountryIsDE]'"/>
   </xsl:template>
     
     <!-- translate XR rule ids and texts to peppol rule ids and texts -->
