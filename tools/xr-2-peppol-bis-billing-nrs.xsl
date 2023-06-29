@@ -50,12 +50,10 @@
         
         <!-- set DESupplierCountry and DECustomerCountry -->    
         <let name="supplierCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')" />
-        <xsl:text>&#xa;  </xsl:text>
         <let name="customerCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')" />
-        <xsl:text>&#xa;  </xsl:text>
         
         <!-- include variables needed from common.sch -->
-        <xsl:apply-templates select="document('../src/validation/schematron/common.sch')/sch:pattern/sch:let"/>
+        <xsl:copy-of select="document('../src/validation/schematron/common.sch')/sch:pattern/sch:let[not(@name = $commons)]"/>
 
         <xsl:apply-templates select="sch:rule"/>
       
@@ -102,15 +100,6 @@
                 <xsl:value-of select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]"/>
             </xsl:copy> 
         </xsl:if>
-    </xsl:template>
-    
-    <xsl:template match="sch:pattern/sch:let">
-        <xsl:if test="./not(@name=$commons)">
-            <xsl:copy select=".">
-                <xsl:apply-templates select="@*"/>
-                <xsl:apply-templates />
-            </xsl:copy>
-        </xsl:if>  
     </xsl:template>
     
     <xsl:template match="sch:rule/sch:let">
