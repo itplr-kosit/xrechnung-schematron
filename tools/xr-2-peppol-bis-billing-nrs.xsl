@@ -62,7 +62,6 @@
     
     <xsl:template match="sch:rule">
         
-        <xsl:apply-templates select="sch:rule/sch:let"/>
         
         <!-- exclude rules not needed in NRS -->
         <xsl:if test="./sch:assert/@id=$asserts">            
