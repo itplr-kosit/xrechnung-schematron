@@ -5,24 +5,22 @@
     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:ubl-creditnote="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
     xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-    xmlns:a="assert"
-    xmlns:v="variable"
     xpath-default-namespace="http://purl.oclc.org/dsdl/schematron"
     xmlns="http://purl.oclc.org/dsdl/schematron"
-    exclude-result-prefixes="xs math a v sch ubl-invoice ubl-creditnote"
+    exclude-result-prefixes="xs math sch ubl-invoice ubl-creditnote"
     version="3.0">
     
     <xsl:output indent="true"/>
     
     <!-- List of BRs to be integrated -->
     <xsl:variable name="asserts" as="xs:string *">        
-        <xsl:for-each select="document('xr-rules-list.xml')/*/a:assert[not(@exclude)]/@key">
+        <xsl:for-each select="document('xr-rules-list.xml')/asserts/assert[not(@exclude)]/@key">
             <xsl:value-of select="."/>
         </xsl:for-each>        
     </xsl:variable>
     
     <xsl:variable name="commons" as="xs:string *">
-        <xsl:for-each select="document('xr-variables-list.xml')/*/v:variable">
+        <xsl:for-each select="document('xr-variables-list.xml')/variables/variable">
             <xsl:value-of select="."/>
         </xsl:for-each>
     </xsl:variable>
@@ -100,9 +98,9 @@
             <xsl:copy>
                 <xsl:apply-templates select="@*"/>
                 <xsl:attribute name="id">
-                    <xsl:value-of select="document('xr-rules-list.xml')/*/a:assert[@key = $rule-id]/@id"/>
+                    <xsl:value-of select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]/@id"/>
                 </xsl:attribute>
-                <xsl:value-of select="document('xr-rules-list.xml')/*/a:assert[@key = $rule-id]"/>
+                <xsl:value-of select="document('xr-rules-list.xml')/asserts/assert[@key = $rule-id]"/>
             </xsl:copy> 
         </xsl:if>
     </xsl:template>

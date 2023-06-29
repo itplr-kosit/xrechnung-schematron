@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- blacklist of variables from XR schematron not used in NRS -->
-<variables xmlns:v="variable">
-<v:variable>XR-MAJOR-MINOR-VERSION</v:variable>
-<v:variable>XR-CIUS-ID</v:variable>
-<v:variable>XR-EXTENSION-ID</v:variable>
-<v:variable>XR-SKONTO-REGEX</v:variable>
-<v:variable>DIGA-CODES</v:variable>
-<v:variable>ISO-6523-ICD-CODES</v:variable>
-<v:variable>ISO-6523-ICD-EXT-CODES</v:variable>
-<v:variable>CEF-EAS-CODES</v:variable>
-<v:variable>CEF-EAS-EXT-CODES</v:variable>
+<variables>
+<variable>XR-MAJOR-MINOR-VERSION</variable>
+<variable>XR-CIUS-ID</variable>
+<variable>XR-EXTENSION-ID</variable>
+<variable>XR-SKONTO-REGEX</variable>
+<variable>DIGA-CODES</variable>
+<variable>ISO-6523-ICD-CODES</variable>
+<variable>ISO-6523-ICD-EXT-CODES</variable>
+<variable>CEF-EAS-CODES</variable>
+<variable>CEF-EAS-EXT-CODES</variable>
 </variables>
