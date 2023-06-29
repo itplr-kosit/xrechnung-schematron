@@ -59,33 +59,28 @@
       
         </pattern>
     </xsl:template>
+  
+  <!-- Include only rules needed in NRS -->
+  <xsl:template match="sch:rule[sch:assert/@id=$asserts]">
+    <xsl:copy>
+        <xsl:apply-templates select="@*"/>
+        <xsl:apply-templates/>
+    </xsl:copy>    
+  </xsl:template>
     
-    <xsl:template match="sch:rule">
-        
-        
-        <!-- exclude rules not needed in NRS -->
-        <xsl:if test="./sch:assert/@id=$asserts">            
-            <xsl:copy select=".">
-                <xsl:apply-templates select="@*"/>
-                <xsl:apply-templates/>
-            </xsl:copy>    
-        </xsl:if>
-        
-    </xsl:template>
-    
-    <xsl:template match="sch:rule/@context">
-        <!-- TODO -->
-        <xsl:variable name="supplier-customer" select='"[\$supplierCountryIsDE and \$customerCountryIsDE]"'/>
-        <xsl:variable name="invoice-ns" select="concat('ubl-invoice:Invoice', $supplier-customer)"/>
-        <xsl:variable name="creditnote-ns" select="concat('ubl-creditnote:CreditNote', $supplier-customer)"/>
-    
-        <xsl:variable name="invoice-path" select="normalize-space(substring-before(replace(., 'ubl:Invoice', $invoice-ns), '|'))"/>  
-        <xsl:variable name="creditnote-path" select="normalize-space(substring-after(replace(., 'cn:CreditNote', $creditnote-ns), '|'))"/>
-        <xsl:variable name="inv-and-cn-path" select='$invoice-path || " | " || $creditnote-path'/>
-        <xsl:attribute name="context">
-            <xsl:value-of select="$inv-and-cn-path"/>
-        </xsl:attribute>
-    </xsl:template>
+  <xsl:template match="sch:rule/@context">
+      <!-- TODO -->
+      <xsl:variable name="supplier-customer" select='"[\$supplierCountryIsDE and \$customerCountryIsDE]"'/>
+      <xsl:variable name="invoice-ns" select="concat('ubl-invoice:Invoice', $supplier-customer)"/>
+      <xsl:variable name="creditnote-ns" select="concat('ubl-creditnote:CreditNote', $supplier-customer)"/>
+  
+      <xsl:variable name="invoice-path" select="normalize-space(substring-before(replace(., 'ubl:Invoice', $invoice-ns), '|'))"/>  
+      <xsl:variable name="creditnote-path" select="normalize-space(substring-after(replace(., 'cn:CreditNote', $creditnote-ns), '|'))"/>
+      <xsl:variable name="inv-and-cn-path" select='$invoice-path || " | " || $creditnote-path'/>
+      <xsl:attribute name="context">
+          <xsl:value-of select="$inv-and-cn-path"/>
+      </xsl:attribute>
+  </xsl:template>
     
     <!-- translate XR rule ids and texts to peppol rule ids and texts -->
     <xsl:template match="sch:assert">
