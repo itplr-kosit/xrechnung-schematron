@@ -5,7 +5,6 @@
     xmlns:sch="http://purl.oclc.org/dsdl/schematron"
     xmlns:ubl-creditnote="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
     xmlns:ubl-invoice="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
-    xpath-default-namespace="http://purl.oclc.org/dsdl/schematron"
     xmlns="http://purl.oclc.org/dsdl/schematron"
     exclude-result-prefixes="xs math sch ubl-invoice ubl-creditnote"
     version="3.0">
@@ -32,12 +31,12 @@
     <xsl:template match="@* | node()">
         <xsl:copy>
             <xsl:apply-templates select="@*" />
-            <xsl:apply-templates select="ns" />
-            <xsl:apply-templates select="pattern[@id='ubl-pattern']"/>
+            <xsl:apply-templates select="sch:ns" />
+            <xsl:apply-templates select="sch:pattern[@id='ubl-pattern']"/>
         </xsl:copy> 
     </xsl:template>
     
-    <xsl:template match="ns">
+    <xsl:template match="sch:ns">
         <xsl:copy select=".">
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates />
@@ -45,7 +44,7 @@
     </xsl:template>
     
     <!-- copy ubl-pattern only -->
-    <xsl:template match="pattern[@id='ubl-pattern']">
+    <xsl:template match="sch:pattern[@id='ubl-pattern']">
         
         <pattern>
         
@@ -56,19 +55,19 @@
         <xsl:text>&#xa;  </xsl:text>
         
         <!-- include variables needed from common.sch -->
-        <xsl:apply-templates select="document('../src/validation/schematron/common.sch')/pattern/let"/>
+        <xsl:apply-templates select="document('../src/validation/schematron/common.sch')/sch:pattern/sch:let"/>
 
-        <xsl:apply-templates select="rule"/>
+        <xsl:apply-templates select="sch:rule"/>
       
         </pattern>
     </xsl:template>
     
-    <xsl:template match="rule">
+    <xsl:template match="sch:rule">
         
-        <xsl:apply-templates select="rule/let"/>
+        <xsl:apply-templates select="sch:rule/sch:let"/>
         
         <!-- exclude rules not needed in NRS -->
-        <xsl:if test="./assert/@id=$asserts">            
+        <xsl:if test="./sch:assert/@id=$asserts">            
             <xsl:copy select=".">
                 <xsl:apply-templates select="@*"/>
                 <xsl:apply-templates/>
@@ -77,7 +76,7 @@
         
     </xsl:template>
     
-    <xsl:template match="rule/@context">
+    <xsl:template match="sch:rule/@context">
         <!-- TODO -->
         <xsl:variable name="supplier-customer" select='"[\$supplierCountryIsDE and \$customerCountryIsDE]"'/>
         <xsl:variable name="invoice-ns" select="concat('ubl-invoice:Invoice', $supplier-customer)"/>
@@ -92,7 +91,7 @@
     </xsl:template>
     
     <!-- translate XR rule ids and texts to peppol rule ids and texts -->
-    <xsl:template match="assert">
+    <xsl:template match="sch:assert">
         <xsl:if test="@id=$asserts">
             <xsl:variable name="rule-id" select="./@id"/>
             <xsl:copy>
@@ -105,7 +104,7 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template match="pattern/let">
+    <xsl:template match="sch:pattern/sch:let">
         <xsl:if test="./not(@name=$commons)">
             <xsl:copy select=".">
                 <xsl:apply-templates select="@*"/>
@@ -114,7 +113,7 @@
         </xsl:if>  
     </xsl:template>
     
-    <xsl:template match="rule/let">
+    <xsl:template match="sch:rule/sch:let">
         <xsl:copy select=".">
             <xsl:apply-templates select="@*" />
             <xsl:apply-templates />
