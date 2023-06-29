@@ -86,7 +86,7 @@
         </xsl:variable>
         <xsl:if test="rule/assert/@id=$rules">
             <xsl:element name="active">
-                <xsl:attribute name="id">
+                <xsl:attribute name="pattern">
                     <xsl:text>peppol-</xsl:text>
                     <xsl:if test="$syntax='UBL'">
                         <xsl:text>ubl</xsl:text>
