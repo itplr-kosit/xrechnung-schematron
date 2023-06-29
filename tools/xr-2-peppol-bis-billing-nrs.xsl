@@ -97,10 +97,7 @@
     </xsl:template>
     
     <xsl:template match="sch:rule/sch:let">
-        <xsl:copy select=".">
-            <xsl:apply-templates select="@*" />
-            <xsl:apply-templates />
-        </xsl:copy>
+        <xsl:copy-of select="."/>
     </xsl:template>
     
 </xsl:stylesheet>
