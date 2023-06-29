@@ -32,6 +32,7 @@
         <xsl:copy>
             <xsl:apply-templates select="@*" />
             <xsl:apply-templates select="sch:ns" />
+            <!-- copy ubl-pattern only -->
             <xsl:apply-templates select="sch:pattern[@id='ubl-pattern']"/>
         </xsl:copy> 
     </xsl:template>
@@ -43,8 +44,7 @@
         </xsl:copy>
     </xsl:template>
     
-    <!-- copy ubl-pattern only -->
-    <xsl:template match="sch:pattern[@id='ubl-pattern']">
+    <xsl:template match="sch:pattern">
         
         <pattern>
         
