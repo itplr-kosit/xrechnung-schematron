@@ -167,9 +167,10 @@
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
                 <ram:LineTotalAmount>314.86</ram:LineTotalAmount>
                 <ram:TaxBasisTotalAmount>314.86</ram:TaxBasisTotalAmount>
-                <ram:TaxTotalAmount currencyID="GBP">22.04</ram:TaxTotalAmount>
-                <ram:GrandTotalAmount>314.86</ram:GrandTotalAmount>
-                <ram:DuePayableAmount>314.86</ram:DuePayableAmount>
+                <ram:TaxTotalAmount currencyID="GBP">123.45</ram:TaxTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">22.04</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount>336.90</ram:GrandTotalAmount>
+                <ram:DuePayableAmount>336.90</ram:DuePayableAmount>
             </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
         </ram:ApplicableHeaderTradeSettlement>
     </rsm:SupplyChainTradeTransaction>
