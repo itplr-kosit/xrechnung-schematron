@@ -156,7 +156,17 @@
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
-        <ram:ApplicableHeaderTradeDelivery/>
+        <?xmute mutator="identity"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-7"
+                    description="no empty elements allowed" ?>
+        <?xmute mutator="empty"
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-8"
+                    description="no empty elements allowed" ?>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ShipToTradeParty>
+                <ram:Name>Schulungsanbieter</ram:Name>
+            </ram:ShipToTradeParty>
+        </ram:ApplicableHeaderTradeDelivery>
         <ram:ApplicableHeaderTradeSettlement>            
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
@@ -167,10 +177,10 @@
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <?xmute mutator="identity"
-                    schematron-valid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-7"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-9"
                     description="no empty elements allowed" ?>
                 <?xmute mutator="empty"
-                    schematron-invalid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-8"
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-10"
                     description="no empty elements allowed" ?>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
                 <ram:TypeCode>VAT</ram:TypeCode>
