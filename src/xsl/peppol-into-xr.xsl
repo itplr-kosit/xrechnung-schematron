@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="3.0"
-    xpath-default-namespace="http://purl.oclc.org/dsdl/schematron"
+    xpath-default-namespace="http://purl.oclc.org/dsdl/schematron"    
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
     xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
@@ -85,7 +85,7 @@
             <xsl:number count="."/>
         </xsl:variable>
         <xsl:if test="rule/assert/@id=$rules">
-            <xsl:element name="active">
+            <xsl:element name="active" namespace="{namespace-uri()}">
                 <xsl:attribute name="pattern">
                     <xsl:text>peppol-</xsl:text>
                     <xsl:if test="$syntax='UBL'">
@@ -108,9 +108,21 @@
     <xsl:template match="/*/xsl:stylesheet/xsl:function" mode="peppol-rules" priority="1">
         <xsl:copy-of select="."/>
     </xsl:template>
-    <xsl:template match="assert" mode="peppol-rules" priority="1">        
-        <xsl:if test="@id=$rules">
-            <xsl:copy-of select="."/> 
+    <xsl:template match="assert" mode="peppol-rules" priority="1">
+        <xsl:if test="@id=$rules">           
+            <xsl:copy select=".">
+                <xsl:attribute name="id">
+                    <xsl:variable name="rule-id" select="@id"/>
+                    <xsl:value-of select="@id"/>                   
+                    <xsl:value-of><xsl:number count="."/></xsl:value-of>
+                    <xsl:if test="count(../../rule/assert/@id[. = $rule-id]) &gt; 1">
+                        <xsl:text>-</xsl:text>
+                        <xsl:value-of><xsl:number count="."/></xsl:value-of>
+                    </xsl:if>
+                </xsl:attribute>
+                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
+                <xsl:apply-templates mode="peppol-rules"/>
+            </xsl:copy> 
         </xsl:if>
     </xsl:template>
     <xsl:template match="rule" mode="peppol-rules" priority="1">        
