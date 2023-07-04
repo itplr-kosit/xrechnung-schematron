@@ -113,8 +113,7 @@
             <xsl:copy select=".">
                 <xsl:attribute name="id">
                     <xsl:variable name="rule-id" select="@id"/>
-                    <xsl:value-of select="@id"/>                   
-                    <xsl:value-of><xsl:number count="."/></xsl:value-of>
+                    <xsl:value-of select="@id"/>                                       
                     <xsl:if test="count(../../rule/assert/@id[. = $rule-id]) &gt; 1">
                         <xsl:text>-</xsl:text>
                         <xsl:value-of><xsl:number count="."/></xsl:value-of>
