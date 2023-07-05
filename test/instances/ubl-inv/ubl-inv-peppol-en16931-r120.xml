@@ -289,7 +289,7 @@
     <cbc:ID>2</cbc:ID>
     <!-- BT-129 $quantity -->
     <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
-    <!-- BT-106 $lineExtensionAmount -->
+    <!-- BT-131 $lineExtensionAmount -->
     <cbc:LineExtensionAmount currencyID="EUR">6077.65</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
