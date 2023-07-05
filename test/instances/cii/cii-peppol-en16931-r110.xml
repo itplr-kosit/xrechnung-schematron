@@ -55,19 +55,19 @@
                     <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
                 </ram:ApplicableTradeTax>
                 <ram:BillingSpecifiedPeriod>
+                    <!-- BT-134 -->
+                    <?xmute mutator="identity"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R110" id="cii-BT-134-within-invoice-period"
+                    description="BT-134 is within invoice period" ?>
+                    <?xmute mutator="remove"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R110" id="cii-BT-134-within-invoice-period-2"
+                    description="BT-134 is within invoice period" ?>
                     <ram:StartDateTime>
-                        <!-- BT-134 -->
-                        <?xmute mutator="identity"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-inv-BT-134-within-invoice-period"
-                    description="BT-134 is within invoice period" ?>
-                        <?xmute mutator="remove"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-inv-BT-134-within-invoice-period-2"
-                    description="BT-134 is within invoice period" ?>
                         <?xmute mutator="code" values="20160401, 20160101, 20161231"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-inv-BT-134-within-invoice-period-3"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R110" id="cii-BT-134-within-invoice-period-3"
                     description="BT-134 is within invoice period" ?>
                         <?xmute mutator="code" values="20150131"
-                    schematron-invalid="xrubl:PEPPOL-EN16931-R110" id="ubl-inv-BT-134-not-within-invoice-period"
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R110" id="cii-BT-134-not-within-invoice-period"
                     description="BT-134 not within invoice period" ?>
                         <udt:DateTimeString format="102">20160401</udt:DateTimeString>
                     </ram:StartDateTime>
@@ -170,7 +170,7 @@
             <ram:BillingSpecifiedPeriod>
                 <!-- BT-73 -->
                 <?xmute mutator="remove"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R110" id="ubl-inv-BT-134-within-invoice-period-3"
+                    schematron-valid="xrcii:PEPPOL-EN16931-R110" id="cii-BT-134-within-invoice-period-3"
                     description="BT-134 must be within invoice period, if invoice period exists" ?>
                 <ram:StartDateTime>
                     <udt:DateTimeString format="102">20160101</udt:DateTimeString>
