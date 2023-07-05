@@ -201,7 +201,7 @@
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
     <!-- BT-129 $quantity -->
     <cbc:CreditedQuantity unitCode="XPP">20</cbc:CreditedQuantity>
-    <!-- BT-106 $lineExtensionAmount -->
+    <!-- BT-131 $lineExtensionAmount -->
     <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-valid-line-extension-amount"
                     description="Line Extension amount correct" ?>      
