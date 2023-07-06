@@ -9,8 +9,6 @@
   <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
-
-
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
     <cbc:EndDate>2018-04-13</cbc:EndDate>

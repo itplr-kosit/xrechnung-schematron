@@ -199,7 +199,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">0.1299</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">0.1022449</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
@@ -222,7 +222,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">0.1299</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">0.10225806</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
@@ -314,7 +314,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">0.1299</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">0.2878125</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
@@ -337,7 +337,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">0.1299</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">0.28779006</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
@@ -360,7 +360,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">0.1299</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">0.28806452</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
