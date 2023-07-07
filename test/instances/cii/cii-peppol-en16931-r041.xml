@@ -120,11 +120,11 @@
                     <ram:CalculationPercent>100</ram:CalculationPercent>
                     <!-- BT-142 -->
                     <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-line-charge-basis-amount-must-be-provided"
-                        description="invoice line allowance basis amount must be provided" ?>
+                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-line-charge-base-amount-must-be-provided"
+                        description="invoice line charge base amount must be provided" ?>
                     <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-line-charge-basis-amount"
-                        description="invoice line basis amount not provided" ?>                    
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-line-charge-base-amount"
+                        description="invoice line charge base amount not provided" ?>
                     <ram:BasisAmount>1</ram:BasisAmount>
                     <!-- BT-141 -->                    
                     <ram:ActualAmount>1</ram:ActualAmount>
@@ -141,11 +141,11 @@
                     <ram:CalculationPercent>100</ram:CalculationPercent>
                     <!-- BT-137 -->
                     <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-line-allowance-basis-amount-must-be-provided"
-                        description="invoice line charge basis amount must be provided" ?>
+                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-line-allowance-base-amount-must-be-provided"
+                        description="invoice line allowance base amount must be provided" ?>
                     <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-line-allowance-basis-amount"
-                        description="invoice line basis amount not provided" ?>          
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-line-allowance-base-amount"
+                        description="invoice line allowance base amount not provided" ?>
                     <ram:BasisAmount>1</ram:BasisAmount>
                     <!-- BT-136 -->                    
                     <ram:ActualAmount>1</ram:ActualAmount>
@@ -503,11 +503,11 @@
                 <ram:CalculationPercent>100</ram:CalculationPercent>
 				<!-- BT-100 -->
                 <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-charge-basis-amount-must-be-provided"
-                        description="invoice charge basis amount must be provided" ?>
+                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-charge-base-amount-must-be-provided"
+                        description="invoice charge base amount must be provided" ?>
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-charge-basis-amount"
-                        description="invoice basis amount not provided" ?>                
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-charge-base-amount"
+                        description="invoice charge base amount not provided" ?>
                 <ram:BasisAmount>1</ram:BasisAmount>
 				<!-- BT-99 -->                
                 <ram:ActualAmount>1</ram:ActualAmount>
@@ -532,11 +532,11 @@
                 <ram:CalculationPercent>100</ram:CalculationPercent>
 				<!-- BT-93 -->
                 <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-allowance-amount-basis-must-be-correct"
-                        description="invoice allowance basis amount is correct" ?>
+                        schematron-valid="xrcii:PEPPOL-EN16931-R041" id="cii-allowance-base-amount-must-be-provided"
+                        description="invoice allowance base amount is provided" ?>
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-allowance-basis-amount"
-                        description="invoice allowance basis amount not provided" ?>               
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R041" id="cii-no-allowance-base-amount"
+                        description="invoice allowance base amount not provided" ?>
                 <ram:BasisAmount>1</ram:BasisAmount>
 				<!-- BT-92 -->
                 <ram:ActualAmount>1</ram:ActualAmount>
