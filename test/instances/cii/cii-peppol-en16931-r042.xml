@@ -119,10 +119,10 @@
                     <!-- BT-143 -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R042" id="cii-line-charge-percentage-must-be-provided"
-                        description="invoice line allowance percentage must be provided" ?>
+                        description="invoice line charge percentage must be provided" ?>
                     <?xmute mutator="remove"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R042" id="cii-no-line-charge-percentage"
-                        description="invoice line percentage not provided" ?>                             
+                        description="invoice line charge percentage not provided" ?>
                     <ram:CalculationPercent>100</ram:CalculationPercent>
                     <!-- BT-142 -->
                     <ram:BasisAmount>1</ram:BasisAmount>
@@ -140,10 +140,10 @@
                     <!-- BT-138 -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R042" id="cii-line-allowance-percentage-must-be-provided"
-                        description="invoice line charge basis amount must be provided" ?>
+                        description="invoice line allowance basis amount must be provided" ?>
                     <?xmute mutator="remove"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R042" id="cii-no-line-allowance-percentage"
-                        description="invoice line basis amount not provided" ?>                              
+                        description="invoice line allowance basis amount not provided" ?>
                     <ram:CalculationPercent>100</ram:CalculationPercent>
                     <!-- BT-137 -->
                     <ram:BasisAmount>1</ram:BasisAmount>
@@ -505,7 +505,7 @@
                         description="invoice charge percentage must be provided" ?>
                 <?xmute mutator="remove"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R042" id="cii-no-charge-percentage"
-                        description="invoice charge percentage not provided" ?>                     
+                        description="invoice charge percentage not provided" ?>
                 <ram:CalculationPercent>100</ram:CalculationPercent>
 				<!-- BT-100 -->
                 <ram:BasisAmount>1</ram:BasisAmount>
@@ -534,7 +534,7 @@
                         description="invoice allowance percentage is correct" ?>
                 <?xmute mutator="remove"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R042" id="cii-no-allowance-percentage"
-                        description="invoice allowance percentage not provided" ?>         
+                        description="invoice allowance percentage not provided" ?>
                 <ram:CalculationPercent>100</ram:CalculationPercent>
 				<!-- BT-93 -->      
                 <ram:BasisAmount>1</ram:BasisAmount>
