@@ -162,18 +162,18 @@
                 <ram:LineTotalAmount>314.86</ram:LineTotalAmount>
                 <ram:TaxBasisTotalAmount>314.86</ram:TaxBasisTotalAmount>
                 <?xmute mutator="identity"
-                    schematron-valid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-6-and-BT-5-operational-signs-identical"
-                    description="BT-6 and BT-5 must have the same operational sign" ?>
+                    schematron-valid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-110-and-BT-111-operational-signs-identical"
+                    description="BT-110 and BT-111 must have the same operational sign" ?>
                 <?xmute mutator="code" values="-123.45"
-                    schematron-invalid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-6-and-BT-5-operational-signs-not-identical"
-                    description="BT-6 and BT-5 must have the same operational sign" ?>
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-110-and-BT-111-operational-signs-not-identical"
+                    description="BT-110 and BT-111 must have the same operational sign" ?>
                 <ram:TaxTotalAmount currencyID="GBP">123.45</ram:TaxTotalAmount>
                 <?xmute mutator="identity"
-                    schematron-valid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-6-and-BT-5-operational-signs-identical-2"
-                    description="BT-6 and BT-5 must have the same operational sign" ?>
+                    schematron-valid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-110-and-BT-111-operational-signs-identical-2"
+                    description="BT-110 and BT-111 must have the same operational sign" ?>
                 <?xmute mutator="code" values="-22.04"
-                    schematron-invalid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-6-and-BT-5-operational-signs-not-identical-2"
-                    description="BT-6 and BT-5 must have the same operational sign" ?>
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R055" id="cii-BT-110-and-BT-111-operational-signs-not-identical-2"
+                    description="BT-110 and BT-111 must have the same operational sign" ?>
                 <ram:TaxTotalAmount currencyID="EUR">22.04</ram:TaxTotalAmount>
                 <ram:GrandTotalAmount>336.90</ram:GrandTotalAmount>
                 <ram:DuePayableAmount>336.90</ram:DuePayableAmount>
