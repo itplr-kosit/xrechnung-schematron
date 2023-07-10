@@ -59,7 +59,7 @@
                             schematron-invalid="xrcii:BR-TMP-1" id="cii-only-one-BG-30-invalid"
                             description="exactly one BG-30 allowed withing BG-25" ?>
                 <?xmute mutator="remove"
-                            schematron-valid="xrcii:BR-DE-7" id="cii-only-one-BG-30-valid"
+                            schematron-valid="xrcii:BR-TMP-1" id="cii-only-one-BG-30-valid"
                             description="exactly one BG-30 allowed withing BG-25" ?>
                 <ram:ApplicableTradeTax>
                     <ram:TypeCode>VAT</ram:TypeCode>
