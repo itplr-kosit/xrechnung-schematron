@@ -9,7 +9,7 @@
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
-    <cbc:EndDate>2018-04-13</cbc:EndDate>
+    <cbc:EndDate>2018-04-15</cbc:EndDate>
   </cac:InvoicePeriod>
   <cac:OrderReference>
     <cbc:ID>65002278</cbc:ID>
@@ -157,18 +157,6 @@
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
-    <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-1"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-2"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-1"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-    <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-2"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
@@ -218,30 +206,21 @@
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
-      <cbc:EndDate>2018-04-13</cbc:EndDate>
+      <!-- BT-135 -->
+      <?xmute mutator="identity"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R111" id="ubl-cn-BT-135-within-invoice-period"
+                    description="BT-134 is within invoice period" ?>
+      <?xmute mutator="code" values="2018-04-14, 2018-04-13"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R111" id="ubl-cn-BT-135-within-invoice-period-2"
+                    description="BT-134 is within invoice period" ?>
+      <?xmute mutator="code" values="2018-04-16"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R111" id="ubl-cn-BT-135-not-within-invoice-period"
+                    description="BT-134 must be within invoice period" ?>
+      <cbc:EndDate>2018-04-15</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
     </cac:OrderLineReference>
-    <cac:AllowanceCharge>
-      <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-3"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-4"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-3"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-      <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-4"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-      <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
-      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
-      <cbc:Amount currencyID="EUR">0</cbc:Amount>
-      <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
-    </cac:AllowanceCharge>
     <cac:Item>
       <cbc:Description>Anforderungmanagament</cbc:Description>
       <cbc:Name>Beratung</cbc:Name>

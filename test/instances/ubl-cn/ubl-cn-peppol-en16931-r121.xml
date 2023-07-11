@@ -156,19 +156,7 @@
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
-  <cac:AllowanceCharge>
-    <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-1"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-2"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-1"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-    <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-2"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
+  <cac:AllowanceCharge>   
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
@@ -223,19 +211,7 @@
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
     </cac:OrderLineReference>
-    <cac:AllowanceCharge>
-      <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-3"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-4"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-3"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-      <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-4"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
+    <cac:AllowanceCharge>     
       <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
       <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
       <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
@@ -260,7 +236,16 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
+      <!-- BT-146 -->
+      <cbc:PriceAmount currencyID="EUR">316.25</cbc:PriceAmount>
+      <!-- BT-149 -->
+      <?xmute mutator="identity"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R121" id="ubl-cn-valid-test-base-quantity-must-be-a-positive-number-above-zero"
+                    description="mandatory profileID" ?>      
+      <?xmute mutator="code" values="0,-2"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R121" id="ubl-cn-invalid-test-base-quantity-must-be-a-positive-number-above-zero"
+                    description="mandatory profileID" ?>
+      <cbc:BaseQuantity>2</cbc:BaseQuantity>
     </cac:Price>
   </cac:CreditNoteLine>
   <cac:CreditNoteLine>
