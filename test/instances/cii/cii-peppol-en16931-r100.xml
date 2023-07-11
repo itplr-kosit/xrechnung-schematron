@@ -116,7 +116,6 @@
                         schematron-invalid="xrcii:PEPPOL-EN16931-R100" id="cii-document-type-code-invalid"
                         description="Only one document reference allowed per invoice line" ?>
                     <ram:TypeCode>50</ram:TypeCode>
-                    <ram:ReferenceTypeCode>ABZ</ram:ReferenceTypeCode>
                 </ram:AdditionalReferencedDocument>
                 <ram:ReceivableSpecifiedTradeAccountingAccount>
                     <ram:ID>Konto 1</ram:ID>
