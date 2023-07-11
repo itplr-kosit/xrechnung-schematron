@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
+  <cbc:DueDate>2018-04-13</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
+  <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
@@ -18,6 +20,12 @@
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
+  <cac:ContractDocumentReference>
+    <cbc:ID>0000000752</cbc:ID>
+  </cac:ContractDocumentReference>
+  <cac:ProjectReference>
+    <cbc:ID>PR12345678</cbc:ID>
+  </cac:ProjectReference>
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -37,11 +45,13 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
+        <cbc:CompanyID>DEU123456789</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
       <cac:PartyTaxScheme>
+        <cbc:CompanyID>123/456/789</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -157,24 +167,27 @@
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
   </cac:PaymentTerms>
   <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReasonCode>TAC</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
+    <!-- BT-101 -->
+    <cbc:MultiplierFactorNumeric>0.75</cbc:MultiplierFactorNumeric>
+    <!-- BT-99 -->
     <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-1"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-2"
-                  description="chargeindicator value is correct" ?>
-    <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-1"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-    <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-2"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-    <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
-    <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
-    <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
-    <cbc:Amount currencyID="EUR">0</cbc:Amount>
-    <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-charge-amount-must-be-correct"
+                  description="document charge amount must be correct" ?>
+    <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-charge-amount-is-incorrect"
+                  description="document charge amount must be correct" ?>
+    <?xmute mutator="code" values="0.05"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-charge-amount-is-incorrect"
+                  description="document charge amount must be correct" ?>
+    <?xmute mutator="code" values="0.06, 1.00, 0.00"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-document-charge-amount-is-incorrect"
+                  description="document charge amount must be correct" ?>
+    <cbc:Amount currencyID="EUR">0.03</cbc:Amount>
+    <!-- BT-100 -->
+    <cbc:BaseAmount currencyID="EUR">4.00</cbc:BaseAmount>
     <cac:TaxCategory>
       <cbc:ID>S</cbc:ID>
       <cbc:Percent>19</cbc:Percent>
@@ -198,23 +211,35 @@
         </cac:TaxScheme>
       </cac:TaxCategory>
     </cac:TaxSubtotal>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">0</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cbc:TaxExemptionReason>a reason</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
   </cac:TaxTotal>
 
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
-    <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
-    <cbc:TaxInclusiveAmount currencyID="EUR">12829.69</cbc:TaxInclusiveAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">10781.28</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="EUR">12829.72</cbc:TaxInclusiveAmount>
     <cbc:AllowanceTotalAmount currencyID="EUR">0</cbc:AllowanceTotalAmount>
-    <cbc:ChargeTotalAmount currencyID="EUR">0</cbc:ChargeTotalAmount>
+    <cbc:ChargeTotalAmount currencyID="EUR">0.03</cbc:ChargeTotalAmount>
     <cbc:PrepaidAmount currencyID="EUR">0</cbc:PrepaidAmount>
     <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
-    <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
+    <cbc:PayableAmount currencyID="EUR">12829.72</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
-  <cac:CreditNoteLine>
+  <cac:InvoiceLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
+    <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -224,23 +249,26 @@
       <cbc:LineID>6171175.1</cbc:LineID>
     </cac:OrderLineReference>
     <cac:AllowanceCharge>
-      <?xmute mutator="identity"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-3"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="true"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-correct-value-4"
-                  description="chargeindicator value is correct" ?>
-      <?xmute mutator="code" values="value, 1234"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-3"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-      <?xmute mutator="empty"
-                  schematron-invalid="xrubl:PEPPOL-EN16931-R043" id="ubl-cn-incorrect-value-4"
-                  description="chargeindicator value must be 'true' or 'false'" ?>
-      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
       <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
-      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
-      <cbc:Amount currencyID="EUR">0</cbc:Amount>
-      <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+      <!-- BT-143 -->
+      <cbc:MultiplierFactorNumeric>0.75</cbc:MultiplierFactorNumeric>
+      <!-- BT-141 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-must-be-correct"
+                  description="amount must be correct" ?>
+      <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-is-incorrect"
+                  description="amount must be correct" ?>
+      <?xmute mutator="code" values="0.05"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-is-incorrect"
+                  description="amount must be correct" ?>
+      <?xmute mutator="code" values="0.06, 1.00, 0.00"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-inv-amount-is-incorrect"
+                  description="amount must be correct" ?>
+      <cbc:Amount currencyID="EUR">0.03</cbc:Amount>
+      <!-- BT-142 -->
+      <cbc:BaseAmount currencyID="EUR">4.00</cbc:BaseAmount>
     </cac:AllowanceCharge>
     <cac:Item>
       <cbc:Description>Anforderungmanagament</cbc:Description>
@@ -260,12 +288,12 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.124</cbc:PriceAmount>
     </cac:Price>
-  </cac:CreditNoteLine>
-  <cac:CreditNoteLine>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
     <cbc:ID>2</cbc:ID>
-    <cbc:CreditedQuantity unitCode="XPP">42</cbc:CreditedQuantity>
+    <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
@@ -280,5 +308,6 @@
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
-  </cac:CreditNoteLine>
-</CreditNote>
+  </cac:InvoiceLine>
+</Invoice>
+
