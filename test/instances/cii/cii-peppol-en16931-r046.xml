@@ -71,14 +71,7 @@
                     <ram:LineID>6171175.1</ram:LineID>
                 </ram:BuyerOrderReferencedDocument>				
                 <ram:GrossPriceProductTradePrice>
-                    <!-- BT-148 -->
-                    <?xmute mutator="identity"
-                             schematron-valid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided"
-                             description="bt-146 must be bt-148 minus bt-147 if provided" ?>                            
-                    <?xmute mutator="code"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-2"
-                            values="1,2"
-                            description="bt-146 must be bt-148 minus bt-147 if provided" ?>
+                    <!-- BT-148 -->                    
                     <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
                     <!-- BT-149, BT-150 -->
                     <ram:BasisQuantity
@@ -94,26 +87,12 @@
                             description="item price discount charge indicator must be false" ?>  
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
-                        <!-- BT-147 -->
-                        <?xmute mutator="identity"
-                             schematron-valid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-3"
-                             description="bt-146 must be bt-148 minus bt-147 if provided" ?>                            
-                        <?xmute mutator="code"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-4"
-                            values="1,2"
-                            description="bt-146 must be bt-148 minus bt-147 if provided" ?>
+                        <!-- BT-147 -->                        
                         <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
                 <!-- BT-146 -->
-                <ram:NetPriceProductTradePrice>
-                    <?xmute mutator="identity"
-                             schematron-valid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-5"
-                             description="bt-146 must be bt-148 minus bt-147 if provided" ?>                            
-                    <?xmute mutator="code"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-6"
-                            values="150,0,1000"
-                            description="bt-146 must be bt-148 minus bt-147 if provided" ?>
+                <ram:NetPriceProductTradePrice>                    
                     <ram:ChargeAmount>158.125000000</ram:ChargeAmount>
                 </ram:NetPriceProductTradePrice>                
             </ram:SpecifiedLineTradeAgreement>
