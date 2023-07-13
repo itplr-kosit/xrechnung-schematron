@@ -140,7 +140,10 @@
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
         <ram:ApplicableHeaderTradeSettlement>
+            <!-- BT-90 -->
+            <!--
             <ram:CreditorReferenceID>[Creditor Reference ID]</ram:CreditorReferenceID>
+            -->
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <!-- BT-81 -->
@@ -152,12 +155,11 @@
                     description="mandate reference must be provided for direct debit" ?>
                 <ram:TypeCode>57</ram:TypeCode>
                 <!-- BT-91 -->
+                <!--
                 <ram:PayerPartyDebtorFinancialAccount>
-                    <ram:IBANID>DE75512108001245126198</ram:IBANID>
-                </ram:PayerPartyDebtorFinancialAccount>
-                <ram:PayeePartyCreditorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>
+                </ram:PayerPartyDebtorFinancialAccount>
+                -->
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>

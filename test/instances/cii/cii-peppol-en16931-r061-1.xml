@@ -144,14 +144,11 @@
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <!-- BT-81 -->
-                <ram:TypeCode>49</ram:TypeCode>
+                <ram:TypeCode>59</ram:TypeCode>
                 <!-- BT-91 -->
                 <ram:PayerPartyDebtorFinancialAccount>
-                    <ram:IBANID>DE75512108001245126198</ram:IBANID>
-                </ram:PayerPartyDebtorFinancialAccount>
-                <ram:PayeePartyCreditorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>
+                </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
