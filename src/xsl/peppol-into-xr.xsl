@@ -82,7 +82,8 @@
     
     <xsl:template match="pattern" mode="xrechnung-rules" priority="1">        
         <xsl:variable name="count-number">
-            <xsl:number count="."/>
+            <xsl:variable name="rule-id" select="@id"/>
+            <xsl:number level="any" count="pattern[rule/assert/@id=$rules]"/>
         </xsl:variable>
         <xsl:if test="rule/assert/@id=$rules">
             <xsl:element name="active" namespace="{namespace-uri()}">
@@ -134,7 +135,8 @@
     </xsl:template>    
     <xsl:template match="pattern" mode="peppol-rules" priority="1">       
         <xsl:variable name="count-number">
-            <xsl:number count="."/>
+            <xsl:variable name="rule-id" select="@id"/>
+            <xsl:number level="any" count="pattern[rule/assert/@id=$rules]"/>
         </xsl:variable>
         <xsl:if test="rule/assert/@id=$rules">
             <xsl:copy select=".">
