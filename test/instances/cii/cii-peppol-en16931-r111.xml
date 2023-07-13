@@ -62,9 +62,6 @@
                     <?xmute mutator="identity"
                     schematron-valid="xrcii:PEPPOL-EN16931-R111" id="cii-BT-135-within-invoice-period"
                     description="BT-135 is within invoice period" ?>
-                    <?xmute mutator="remove"
-                    schematron-valid="xrcii:PEPPOL-EN16931-R111" id="cii-BT-135-within-invoice-period-2"
-                    description="BT-135 is within invoice period" ?>
                     <ram:EndDateTime>
                         <?xmute mutator="code" values="20160401, 20160101, 20161231"
                     schematron-valid="xrcii:PEPPOL-EN16931-R111" id="cii-BT-135-within-invoice-period-3"
@@ -172,9 +169,6 @@
                     <udt:DateTimeString format="102">20160101</udt:DateTimeString>
                 </ram:StartDateTime>
                 <!-- BT-74 -->
-                <?xmute mutator="remove"
-                    schematron-valid="xrcii:PEPPOL-EN16931-R111" id="cii-BT-135-within-invoice-period-3"
-                    description="BT-135 must be within invoice period, if invoice period exists" ?>
                 <ram:EndDateTime>
                     <udt:DateTimeString format="102">20161231</udt:DateTimeString>
                 </ram:EndDateTime>
