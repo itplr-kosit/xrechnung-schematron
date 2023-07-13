@@ -143,8 +143,7 @@
     <cac:PayeeFinancialAccount>
 
       <cbc:ID>DE75512108001245126199</cbc:ID>
-    </cac:PayeeFinancialAccount>
-    <cac:PaymentMandate/>
+    </cac:PayeeFinancialAccount>   
   </cac:PaymentMeans>
   <cac:PaymentTerms>
     <cbc:Note>Zahlbar sofort ohne Abzug.</cbc:Note>

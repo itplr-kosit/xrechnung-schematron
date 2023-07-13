@@ -114,9 +114,6 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
-      <cbc:StreetName/>
-      <cbc:CityName/>
-      <cbc:PostalZone/>
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
