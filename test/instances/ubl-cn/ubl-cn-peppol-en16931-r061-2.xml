@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+<?xml version="1.0" encoding="UTF-8"?><CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <cbc:DueDate>2018-04-13</cbc:DueDate>
-  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
@@ -20,12 +18,6 @@
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
-  <cac:ContractDocumentReference>
-    <cbc:ID>0000000752</cbc:ID>
-  </cac:ContractDocumentReference>
-  <cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -45,13 +37,11 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
-        <cbc:CompanyID>DEU123456789</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
       <cac:PartyTaxScheme>
-        <cbc:CompanyID>123/456/789</cbc:CompanyID>
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -108,10 +98,6 @@
     </cac:Party>
   </cac:AccountingCustomerParty>
   <cac:PayeeParty>
-    <cac:PartyIdentification>
-      <!-- BT-90 -->
-      <cbc:ID schemeID="SEPA">74</cbc:ID>
-    </cac:PartyIdentification>
     <cac:PartyName>
       <cbc:Name>[Payee name]</cbc:Name>
     </cac:PartyName>
@@ -157,28 +143,13 @@
   <cac:PaymentMeans>
     <!-- BT-81 -->
     <?xmute mutator="identity"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-mandatory-BT-89-with-BT-81"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-mandatory-BT-89-with-BT-81"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-    <?xmute mutator="code" values="49"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-missing-BT-89-with-BT-81-invalid"
+    <?xmute mutator="code" values="49, 59"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-missing-BT-89-with-BT-81-invalid"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-    <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
+    <cbc:PaymentMeansCode>57</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
-    <!-- BG-19 DIRECT DEBIT -->
-    <cac:PaymentMandate>
-      <!-- BT-89 -->
-      <?xmute mutator="identity"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-mandatory-BT-89-with-BT-81-2"
-                    description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-      <?xmute mutator="remove"
-                    schematron-invalid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-missing-BT-89-with-BT-81-invalid-2"
-                    description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-      <cbc:ID>[ID]</cbc:ID>
-      <cac:PayerFinancialAccount>
-        <!-- BT-91 -->
-        <cbc:ID>DE75512108001245126199</cbc:ID>
-      </cac:PayerFinancialAccount>
-    </cac:PaymentMandate>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
@@ -198,6 +169,8 @@
       </cac:TaxScheme>
     </cac:TaxCategory>
   </cac:AllowanceCharge>
+
+
   <cac:TaxTotal>
     <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
     <cac:TaxSubtotal>
@@ -206,19 +179,6 @@
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
-
-        <cac:TaxScheme>
-          <cbc:ID>VAT</cbc:ID>
-        </cac:TaxScheme>
-      </cac:TaxCategory>
-    </cac:TaxSubtotal>
-    <cac:TaxSubtotal>
-      <cbc:TaxableAmount currencyID="EUR">0</cbc:TaxableAmount>
-      <cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
-      <cac:TaxCategory>
-        <cbc:ID>E</cbc:ID>
-        <cbc:Percent>19</cbc:Percent>
-        <cbc:TaxExemptionReason>a reason</cbc:TaxExemptionReason>
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
@@ -238,11 +198,11 @@
   </cac:LegalMonetaryTotal>
 
 
-  <cac:InvoiceLine>
+  <cac:CreditNoteLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
+    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -271,10 +231,10 @@
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
-  </cac:InvoiceLine>
-  <cac:InvoiceLine>
+  </cac:CreditNoteLine>
+  <cac:CreditNoteLine>
     <cbc:ID>2</cbc:ID>
-    <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
+    <cbc:CreditedQuantity unitCode="XPP">42</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
@@ -289,5 +249,5 @@
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
     </cac:Price>
-  </cac:InvoiceLine>
-</Invoice>
+  </cac:CreditNoteLine>
+</CreditNote>
