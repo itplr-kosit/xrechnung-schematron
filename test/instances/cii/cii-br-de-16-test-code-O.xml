@@ -76,6 +76,9 @@
                     <ram:CityName>[Seller city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">seller@seller.com</ram:URIID>
+                </ram:URIUniversalCommunication>
                 <ram:SpecifiedTaxRegistration>
                     <?xmute mutator="identity" 
               schematron-valid="xrcii:BR-DE-16" id="cii-seller-identification-not-mandatory-with-tax-category-O"
@@ -99,6 +102,9 @@
                     <ram:CityName>[Buyer city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">buyer@buyer.com</ram:URIID>
+                </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>

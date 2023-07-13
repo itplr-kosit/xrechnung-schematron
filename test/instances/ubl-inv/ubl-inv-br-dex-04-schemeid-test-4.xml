@@ -9,6 +9,7 @@
     <cbc:BuyerReference>04011000-12345-34</cbc:BuyerReference>
     <cac:AccountingSupplierParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">seller@seller.com</cbc:EndpointID>
             <cac:PartyName>
                 <cbc:Name>[Seller trading name]</cbc:Name>
             </cac:PartyName>
@@ -40,6 +41,7 @@
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">buyer@buyer.com</cbc:EndpointID>
             <cac:PartyIdentification>
                 <?xmute mutator="identity" schematron-invalid="xrubl:BR-DEX-04" id="br-dex-04-test-scheme-id-4" description="BR-DE-04 invalid schemeID must not be valid" ?>
                 <cbc:ID schemeID="XR11">[Buyer identifier]</cbc:ID>

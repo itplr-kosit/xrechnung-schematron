@@ -82,6 +82,9 @@
                     <ram:CityName>[Seller city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">seller@seller.com</ram:URIID>
+                </ram:URIUniversalCommunication>
             </ram:SellerTradeParty>
             <ram:BuyerTradeParty>
                 <ram:Name>[Buyer name]</ram:Name>
@@ -95,6 +98,9 @@
                     <ram:CityName>[Buyer city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">buyer@buyer.com</ram:URIID>
+                </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>

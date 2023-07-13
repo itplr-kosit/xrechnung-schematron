@@ -16,6 +16,7 @@
   <cbc:BuyerReference>04011000-12348-31</cbc:BuyerReference>
   <cac:AccountingSupplierParty>
     <cac:Party>
+      <cbc:EndpointID schemeID="EM">seller@seller.com</cbc:EndpointID>
       <cac:PartyName>
         <cbc:Name>[Seller trading name]</cbc:Name>
       </cac:PartyName>
@@ -48,6 +49,7 @@
   </cac:AccountingSupplierParty>
   <cac:AccountingCustomerParty>
     <cac:Party>
+      <cbc:EndpointID schemeID="EM">buyer@buyer.com</cbc:EndpointID>
       <cac:PostalAddress>
         <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
         <cbc:AdditionalStreetName>[Buyer address line 2]</cbc:AdditionalStreetName>
