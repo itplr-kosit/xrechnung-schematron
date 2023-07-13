@@ -3,7 +3,7 @@
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234/78/901</cbc:ID>
-  <cbc:IssueDate>2016-06-16+01:00</cbc:IssueDate>
+  <cbc:IssueDate>2016-06-16</cbc:IssueDate>
 
   <?xmute mutator="code" values="326, 380, 384, 389, 381, 875, 876, 877" schematron-valid="xrubl:BR-DE-17" 
                 id="inv-type-code" description="Invoice type code should be allowed" ?>
