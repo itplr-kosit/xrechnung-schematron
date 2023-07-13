@@ -116,7 +116,7 @@
                     <xsl:value-of select="@id"/>                                       
                     <xsl:if test="count(../../rule/assert/@id[. = $rule-id]) &gt; 1">
                         <xsl:text>-</xsl:text>
-                        <xsl:value-of><xsl:number count="."/></xsl:value-of>
+                        <xsl:value-of><xsl:number level="any" count="assert[@id = $rule-id]"/></xsl:value-of>
                     </xsl:if>
                 </xsl:attribute>
                 <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
