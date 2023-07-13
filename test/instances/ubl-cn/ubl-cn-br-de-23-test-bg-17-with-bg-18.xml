@@ -154,11 +154,9 @@
     <?xmute mutator="identity"
             schematron-invalid="xrubl:BR-DE-23-b" id="ubl-cn-BG-18-not-allowed-with-BG-17"
             description="UBL-CN BG-18 not allowed with BG-17" ?>
-    <cac:CardAccount>
-      <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
-      <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>
-      <cbc:HolderName>[Payment card holder name]</cbc:HolderName>
-    </cac:CardAccount>
+    <cac:CreditAccount>
+      <cbc:AccountID>41234</cbc:AccountID>          
+    </cac:CreditAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>

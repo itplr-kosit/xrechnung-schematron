@@ -146,14 +146,14 @@
     </cac:DeliveryParty>
   </cac:Delivery>
   <cac:PaymentMeans> 
+    <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>      
     <?xmute mutator="identity"
             schematron-invalid="xrubl:BR-DE-25-b" id="ubl-cn-BG-17-not-allowed-with-BG-19"
             description="UBL-CN BG-17 not allowed with BG-19" ?>
     <cac:PayeeFinancialAccount>
       <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
       <cbc:ID>DE75512108001245126199</cbc:ID>
-    </cac:PayeeFinancialAccount>        
-    <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>        
+    </cac:PayeeFinancialAccount>              
     <cac:PaymentMandate>
       <cbc:ID>[Mandate reference identifier]</cbc:ID>
       <cac:PayerFinancialAccount>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
     <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID>123456XX</cbc:ID>
     <cbc:IssueDate>2016-04-04+01:00</cbc:IssueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
@@ -64,11 +65,9 @@
             <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
             <cbc:ID>DE75512108001245126199</cbc:ID>
         </cac:PayeeFinancialAccount>
-        <cac:CardAccount>
-            <cbc:PrimaryAccountNumberID>41234</cbc:PrimaryAccountNumberID>
-            <cbc:NetworkID>mapped-from-cii</cbc:NetworkID>
-            <cbc:HolderName>[Payment card holder name]</cbc:HolderName>
-        </cac:CardAccount>
+        <cac:CreditAccount>
+            <cbc:AccountID>41234</cbc:AccountID>            
+        </cac:CreditAccount>
     </cac:PaymentMeans>
     <cac:PaymentTerms>
         <cbc:Note>Zahlbar sofort ohne Abzug.</cbc:Note>

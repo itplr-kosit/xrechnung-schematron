@@ -14,21 +14,21 @@
     <cbc:StartDate>2018-04-13</cbc:StartDate>
     <cbc:EndDate>2018-04-13</cbc:EndDate>
   </cac:InvoicePeriod>
-  <cac:BillingReference>
-        <?xmute mutator="identity"
-            schematron-valid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3"
-            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
-        <?xmute mutator="remove"
-            schematron-invalid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3-2"
-            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
-        <cac:InvoiceDocumentReference>
-            <cbc:ID>PRG1502168</cbc:ID>
-        </cac:InvoiceDocumentReference>
-    </cac:BillingReference>
   <cac:OrderReference>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
+  <cac:BillingReference>
+    <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3"
+            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
+    <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3-2"
+            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>PRG1502168</cbc:ID>
+    </cac:InvoiceDocumentReference>
+  </cac:BillingReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
