@@ -257,12 +257,6 @@
       <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R130" id="ubl-inv-unit-code-valid"
                     description="unit code of BaseQuantity is same as of InvoicedQuantity" ?>
-      <?xmute mutator="remove"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R130" id="ubl-inv-no-base-quantity-valid"
-                    description="unit code of BaseQuantity must be same as of InvoicedQuantity, if BaseQuantity/@unitCode exists" ?>
-      <?xmute mutator="remove" attribute="unitCode"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R130" id="ubl-inv-no-unit-code-valid"
-                    description="unit code of BaseQuantity must be same as of InvoicedQuantity, if BaseQuantity/@unitCode exists" ?>
       <?xmute mutator="code" values="XPK, XRO" attribute="unitCode"
                     schematron-invalid="xrubl:PEPPOL-EN16931-R130" id="ubl-inv-unit-code-invalid"
                     description="unit code of BaseQuantity must be same as of InvoicedQuantity" ?>
