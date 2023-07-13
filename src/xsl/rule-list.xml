@@ -20,7 +20,9 @@
     <r:rule>PEPPOL-EN16931-R043</r:rule>
     <r:rule>PEPPOL-EN16931-R044</r:rule>
     <r:rule>PEPPOL-EN16931-R046</r:rule>
+    <!--
     <r:rule>PEPPOL-EN16931-R051</r:rule>
+    -->
     <r:rule>PEPPOL-EN16931-R053</r:rule>
     <r:rule>PEPPOL-EN16931-R054</r:rule>
     <r:rule>PEPPOL-EN16931-R055</r:rule>
