@@ -149,18 +149,11 @@
     <?xmute mutator="identity"
                     schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-mandatory-BT-89-with-BT-81"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-    <?xmute mutator="code" values="59"
+    <?xmute mutator="code" values="49"
                     schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-cn-missing-BT-89-with-BT-81-invalid"
                     description="mandatory BT-89 with BT-81 value '49' or '59'" ?>
-    <cbc:PaymentMeansCode>49</cbc:PaymentMeansCode>
+    <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
-    <cac:PayeeFinancialAccount>
-      <cbc:ID>DE75512108001245126199</cbc:ID>
-      <cbc:Name>[Payment account name]</cbc:Name>
-      <cac:FinancialInstitutionBranch>
-        <cbc:ID>[BIC]</cbc:ID>
-      </cac:FinancialInstitutionBranch>
-    </cac:PayeeFinancialAccount>
     <!-- BG-19 DIRECT DEBIT -->
     <cac:PaymentMandate>
       <!-- BT-89 -->
@@ -173,7 +166,7 @@
       <cbc:ID>[ID]</cbc:ID>
       <cac:PayerFinancialAccount>
         <!-- BT-91 -->
-        <cbc:ID>[ID]</cbc:ID>
+        <cbc:ID>DE75512108001245126199</cbc:ID>
       </cac:PayerFinancialAccount>
     </cac:PaymentMandate>
   </cac:PaymentMeans>
