@@ -37,6 +37,9 @@
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_02.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
+    <cac:Attachment>
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_02.pdf">JVBERi0xLjMKJcTl8uXrp/Og0MTGCjMgMCBvYmoKPDwgL0ZpbHRlciAvRmxhdGVEZWNvZGUgL0xlbmd0aCAxNjYgPj4Kc3RyZWFtCngBnY67DsIwDEV3vuLydgZSx0lDs4JY2Cp5o0yVGJA6VP1/iZKqEywgD7627KPTo0aP4jw4tAM419COK7YSpvkdnLMpcUSUykpKgrbDSVFOD2OTkCwzO5TBL7RDoSpw0AduoKXBga0HrczIDaB1XjjQZpuTgHY5lKD9HKbjBTVkcIdecdEs+6NZ4MomH+OnGTXGQJ//cn2wcqzCN+5oPHPrF+VVRx8KZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA0IDAgUiAvQ29udGVudHMg</cbc:EmbeddedDocumentBinaryObject>
+    </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
     <cbc:ID>PR12345678</cbc:ID>

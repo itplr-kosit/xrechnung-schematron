@@ -144,15 +144,15 @@
   <cac:PaymentMeans>        
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>       
     <cac:PayeeFinancialAccount>
-      <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
+      <!-- dies ist eine nicht existierende aber valide IBAN als test dummy -->
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
     <?xmute mutator="identity"
             schematron-invalid="xrubl:BR-DE-23-b" id="ubl-cn-BG-18-not-allowed-with-BG-17"
             description="UBL-CN BG-18 not allowed with BG-17" ?>
-    <cac:CreditAccount>
+    <cac:CardAccount>
       <cbc:AccountID>41234</cbc:AccountID>          
-    </cac:CreditAccount>
+    </cac:CardAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
     <cbc:Note>Bitte überweisen Sie bis zum 24.01.2015 auf das unten aufgeführte Konto.</cbc:Note>
