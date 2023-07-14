@@ -10,6 +10,7 @@
     <assert key="BR-DE-8" id="DE-R-008">BR-DE-8 translation</assert>
     <assert key="BR-DE-9" id="DE-R-009">BR-DE-9 translation</assert>
     <assert key="BR-DE-10" id="DE-R-010">BR-DE-10 translation</assert>
+    <assert key="BR-DE-11" id="DE-R-011">The element "Deliver to post code" (BT-78) shall be provided if the group "DELIVER TO ADDRESS" (BG-15) is delivered.</assert>
     <!-- BR-DE-12 included in NRS only as normative rule -->
     <assert key="BR-DE-12" id="DE-R-012">BR-DE-12 translation</assert>
     <assert key="BR-DE-14" id="DE-R-014">BR-DE-14 translation</assert>
