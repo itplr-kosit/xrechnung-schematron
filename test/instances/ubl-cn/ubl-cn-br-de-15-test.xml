@@ -8,7 +8,6 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <?xmute mutator="identity"
           schematron-valid="xrubl:BR-DE-15" id="ubl-cn-mandatory-BT-10"
           description="mandatory BT-10" ?>
