@@ -98,15 +98,20 @@
   </cac:LegalMonetaryTotal>
   <cac:InvoiceLine>
     <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="MTR">307.8</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">818.04</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Sanitär und Zubehör</cbc:Name>
     </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">2.65769981</cbc:PriceAmount>
+    </cac:Price>
     <?xmute mutator="identity" 
             schematron-valid="xrubl:BR-DEX-02" id="correct_sum"
             description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
     <cac:SubInvoiceLine>
       <cbc:ID>1 1</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="MTR">253.3</cbc:InvoicedQuantity>
       <?xmute mutator="code" values="333.79" 
               schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount"
               description="Expect to fail as wrong LineExtensionAmount" ?>
@@ -162,6 +167,7 @@
     </cac:SubInvoiceLine>
     <cac:SubInvoiceLine>
       <cbc:ID>1 2</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="MTR">54.5</cbc:InvoicedQuantity>
       <?xmute mutator="code" values="382.25" 
               schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-5" 
               description="Expect to fail as wrong LineExtensionAmount" ?>
@@ -203,15 +209,20 @@
   </cac:InvoiceLine>
   <cac:InvoiceLine>
     <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="MTR">228</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">11718.8</cbc:LineExtensionAmount>
     <cac:Item>
       <cbc:Name>Heizung und Zubehör</cbc:Name>
     </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">51.3982456</cbc:PriceAmount>
+    </cac:Price>
     <?xmute mutator="identity" 
             schematron-valid="xrubl:BR-DEX-02" id="correct_sum-2" 
             description="Check whether the value of the LineExtensionAmount of SubInvoiceLine is the sum of the LineExtensionAmounts of the ancillary SubInvoiceLines" ?>
     <cac:SubInvoiceLine>
       <cbc:ID>2 1</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="C62">72</cbc:InvoicedQuantity>
       <?xmute mutator="code" values="4321"
               schematron-invalid="xrubl:BR-DEX-02" id="incorrect_LineExtensionAmount-8"
               description="Expect to fail as wrong LineExtensionAmount" ?>
@@ -252,6 +263,7 @@
     </cac:SubInvoiceLine>
     <cac:SubInvoiceLine>
       <cbc:ID>2 2</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="C62">156</cbc:InvoicedQuantity>
       <cbc:LineExtensionAmount currencyID="EUR">10394.8</cbc:LineExtensionAmount>
       <cac:Item>
         <cbc:Name>Heizflächen und Zubehör</cbc:Name>
@@ -277,7 +289,7 @@
         </cac:Item>
         <cac:Price>
           <cbc:PriceAmount currencyID="EUR">1.85</cbc:PriceAmount>
-          <cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity>
+          <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
         </cac:Price>
       </cac:SubInvoiceLine>
     </cac:SubInvoiceLine>
