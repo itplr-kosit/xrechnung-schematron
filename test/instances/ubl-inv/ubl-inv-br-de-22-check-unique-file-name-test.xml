@@ -10,7 +10,6 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -32,14 +31,14 @@
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
       <?xmute mutator="code" values="01_15_Anhang_02.pdf" attribute="filename" schematron-invalid="xrubl:BR-DE-22" id="duplicate-file-name" description="Expect to fail as duplicate file name" ?>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf"/>
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBERi0xLjMKJcTl8uXrp/Og0MTGCjMgMCBvYmoKPDwgL0ZpbHRlciAvRmxhdGVEZWNvZGUgL0xlbmd0aCAxNjYgPj4Kc3RyZWFtCngBnY67DsIwDEV3vuLydgZSx0lDs4JY2Cp5o0yVGJA6VP1/iZKqEywgD7627KPTo0aP4jw4tAM419COK7YSpvkdnLMpcUSUykpKgrbDSVFOD2OTkCwzO5TBL7RDoSpw0AduoKXBga0HrczIDaB1XjjQZpuTgHY5lKD9HKbjBTVkcIdecdEs+6NZ4MomH+OnGTXGQJ//cn2wcqzCN+5oPHPrF+VVRx8KZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA0IDAgUiAvQ29udGVudHMg</cbc:EmbeddedDocumentBinaryObject>
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_02.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_02.pdf"/>
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_02.pdf">JVBERi0xLjMKJcTl8uXrp/Og0MTGCjMgMCBvYmoKPDwgL0ZpbHRlciAvRmxhdGVEZWNvZGUgL0xlbmd0aCAxNjYgPj4Kc3RyZWFtCngBnY67DsIwDEV3vuLydgZSx0lDs4JY2Cp5o0yVGJA6VP1/iZKqEywgD7627KPTo0aP4jw4tAM419COK7YSpvkdnLMpcUSUykpKgrbDSVFOD2OTkCwzO5TBL7RDoSpw0AduoKXBga0HrczIDaB1XjjQZpuTgHY5lKD9HKbjBTVkcIdecdEs+6NZ4MomH+OnGTXGQJ//cn2wcqzCN+5oPHPrF+VVRx8KZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA0IDAgUiAvQ29udGVudHMg</cbc:EmbeddedDocumentBinaryObject>
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:ProjectReference>
@@ -138,9 +137,6 @@
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
     <cac:PostalAddress>
-      <cbc:StreetName/>
-      <cbc:CityName/>
-      <cbc:PostalZone/>
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
@@ -237,11 +233,6 @@
   </cac:TaxTotal>
 
 
-  <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-
-
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -260,8 +251,8 @@
     <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
-      <cbc:StartDate>2016-01-01</cbc:StartDate>
-      <cbc:EndDate>2016-12-31</cbc:EndDate>
+      <cbc:StartDate>2018-04-13</cbc:StartDate>
+      <cbc:EndDate>2018-04-13</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
@@ -284,7 +275,7 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
