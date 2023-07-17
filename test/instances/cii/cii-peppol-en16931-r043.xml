@@ -156,7 +156,7 @@
                         <?xmute mutator="code" values="0,no,yes,1"
                             schematron-invalid="xrcii:PEPPOL-EN16931-R043-2" id="cii-line-charge-indicator-must-be-true-or-false-6"
                             description="invoice line charge indicator must be true or false" ?>  
-                        <udt:Indicator>1</udt:Indicator>
+                        <udt:Indicator>false</udt:Indicator>
                     </ram:ChargeIndicator>
                     <!-- BT-138 -->
                     <ram:CalculationPercent>100</ram:CalculationPercent>
