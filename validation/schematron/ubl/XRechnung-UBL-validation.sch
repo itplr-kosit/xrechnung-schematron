@@ -338,7 +338,7 @@
       <assert test="string-length(substring-after(cbc:PaidAmount, '.')) &lt;= 2"
         flag="fatal"
         id="BR-DEX-13"
-        >[BR-DEX-13] Die maximale Anzahl zulässiger Nachkommastellen für das Element "Third party payment amount" (BT-DEX-002) ist 2."</assert>
+        >[BR-DEX-13] Die maximale Anzahl zulässiger Nachkommastellen für das Element "Third party payment amount" (BT-DEX-002) ist 2.</assert>
       <assert test="cbc:PaidAmount/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
         flag="fatal"
         id="BR-DEX-14"
