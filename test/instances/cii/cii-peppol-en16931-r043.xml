@@ -148,13 +148,13 @@
                 <ram:SpecifiedTradeAllowanceCharge>
                     <ram:ChargeIndicator>
                         <?xmute mutator="identity"
-                             schematron-valid="xrcii:PEPPOL-EN16931-R043-2" id="cii-line-charge-indicator-must-be-true-or-false-4"
+                             schematron-valid="xrcii:PEPPOL-EN16931-R043-1" id="cii-line-charge-indicator-must-be-true-or-false-4"
                              description="invoice line charge indicator must be true or false" ?>
                         <?xmute mutator="code" values="true"
-                            schematron-valid="xrcii:PEPPOL-EN16931-R043-2" id="cii-line-charge-indicator-must-be-true-or-false-5"
+                            schematron-valid="xrcii:PEPPOL-EN16931-R043-1" id="cii-line-charge-indicator-must-be-true-or-false-5"
                             description="invoice line charge indicator must be true or false" ?>
                         <?xmute mutator="code" values="0,no,yes,1"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R043-2" id="cii-line-charge-indicator-must-be-true-or-false-6"
+                            schematron-invalid="xrcii:PEPPOL-EN16931-R043-1" id="cii-line-charge-indicator-must-be-true-or-false-6"
                             description="invoice line charge indicator must be true or false" ?>  
                         <udt:Indicator>false</udt:Indicator>
                     </ram:ChargeIndicator>
