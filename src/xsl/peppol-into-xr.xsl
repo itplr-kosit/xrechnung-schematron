@@ -25,7 +25,13 @@
                 <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="xrechnung-rules"/>
             </xsl:if>
             <xsl:if test="$syntax='CII'">
-                <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="xrechnung-rules"/>
+                <!-- Add phase for R008 in CII -->                 
+                <xsl:element name="active" namespace="{namespace-uri()}">
+                    <xsl:attribute name="pattern">
+                        <xsl:text>peppol-cii-pattern-0</xsl:text>
+                    </xsl:attribute>
+                </xsl:element>
+                <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="xrechnung-rules"/>                
             </xsl:if>              
         </xsl:copy> 
     </xsl:template>
@@ -66,6 +72,10 @@
         <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="peppol-rules">
             <xsl:with-param name="syntax" select="'cii'"/>
         </xsl:apply-templates>
+        <!-- add R008 to CII -->
+        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern[rule/assert/@id='PEPPOL-EN16931-R008']" mode="peppol-rules">
+            <xsl:with-param name="syntax" select="'cii'"/>
+        </xsl:apply-templates>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -99,7 +109,7 @@
                     <xsl:value-of select="$count-number"/>
                 </xsl:attribute>
             </xsl:element>
-        </xsl:if>
+        </xsl:if>        
     </xsl:template>
     
     <!-- peppol-rules -->
@@ -149,7 +159,14 @@
                         <xsl:text>cii</xsl:text>
                     </xsl:if>
                     <xsl:text>-pattern-</xsl:text>
-                    <xsl:value-of select="$count-number"/>
+                    <xsl:choose>
+                        <xsl:when test="$syntax='CII' and rule/assert/@id='PEPPOL-EN16931-R008'">
+                            <xsl:text>0</xsl:text>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$count-number"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:attribute>
                 <xsl:apply-templates select="@*" mode="peppol-rules"/>
                 <xsl:apply-templates mode="peppol-rules"/>
