@@ -72,10 +72,19 @@
         <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="peppol-rules">
             <xsl:with-param name="syntax" select="'cii'"/>
         </xsl:apply-templates>
-        <!-- add R008 to CII -->
-        <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern[rule/assert/@id='PEPPOL-EN16931-R008']" mode="peppol-rules">
-            <xsl:with-param name="syntax" select="'cii'"/>
-        </xsl:apply-templates>
+        <!-- add R008 to CII -->        
+        <xsl:element name="pattern" namespace="{namespace-uri()}">
+            <xsl:attribute name="id">peppol-cii-pattern-0</xsl:attribute>
+            <xsl:element name="rule" namespace="{namespace-uri()}">
+                <xsl:attribute name="context">//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]</xsl:attribute>
+                <xsl:element name="assert" namespace="{namespace-uri()}">
+                    <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
+                    <xsl:attribute name="test">false()</xsl:attribute>
+                    <xsl:attribute name="flag">fatal</xsl:attribute>
+                    <xsl:text>Document MUST not contain empty elements.</xsl:text>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>     
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -159,14 +168,7 @@
                         <xsl:text>cii</xsl:text>
                     </xsl:if>
                     <xsl:text>-pattern-</xsl:text>
-                    <xsl:choose>
-                        <xsl:when test="$syntax='CII' and rule/assert/@id='PEPPOL-EN16931-R008'">
-                            <xsl:text>0</xsl:text>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$count-number"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <xsl:value-of select="$count-number"/>
                 </xsl:attribute>
                 <xsl:apply-templates select="@*" mode="peppol-rules"/>
                 <xsl:apply-templates mode="peppol-rules"/>
