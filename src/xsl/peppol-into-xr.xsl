@@ -32,10 +32,9 @@
                     </xsl:attribute>
                 </xsl:element>
                 <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="xrechnung-rules"/>                
-            </xsl:if>              
+            </xsl:if>
         </xsl:copy> 
-    </xsl:template>
-    
+    </xsl:template>    
     <!-- Adds global lets from PEPPOL --> 
     <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">        
         <xsl:copy-of select="."/>    
@@ -74,17 +73,39 @@
         </xsl:apply-templates>
         <!-- add R008 to CII -->        
         <xsl:element name="pattern" namespace="{namespace-uri()}">
-            <xsl:attribute name="id">peppol-cii-pattern-0</xsl:attribute>
+            <xsl:attribute name="id">peppol-cii-pattern-0-a</xsl:attribute>
             <xsl:element name="rule" namespace="{namespace-uri()}">
                 <xsl:attribute name="context">//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]</xsl:attribute>
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
                     <xsl:attribute name="test">false()</xsl:attribute>
-                    <xsl:attribute name="flag">fatal</xsl:attribute>
+                    <xsl:attribute name="flag">warning</xsl:attribute>
                     <xsl:text>Document MUST not contain empty elements.</xsl:text>
                 </xsl:element>
             </xsl:element>
-        </xsl:element>     
+        </xsl:element>  
+        <!-- add R044 and R46 to CII -->        
+        <xsl:element name="pattern" namespace="{namespace-uri()}">
+            <xsl:attribute name="id">peppol-cii-pattern-0-b</xsl:attribute>            
+            <xsl:element name="rule" namespace="{namespace-uri()}">
+                <xsl:attribute name="context">rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge</xsl:attribute>
+                <!-- R044 -->
+                <xsl:element name="assert" namespace="{namespace-uri()}">
+                    <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
+                    <xsl:attribute name="test">ram:ChargeIndicator/udt:Indicator = 'false'</xsl:attribute>
+                    <xsl:attribute name="flag">warning</xsl:attribute>
+                    <xsl:text>Charge on price level is NOT allowed. Only value 'false' allowed.</xsl:text>
+                </xsl:element>
+                <!-- R046 -->
+                <xsl:element name="assert" namespace="{namespace-uri()}">
+                    <xsl:attribute name="id">PEPPOL-EN16931-R046</xsl:attribute>
+                    <xsl:attribute name="test">not(../ram:ChargeAmount) or xs:decimal(../../ram:NetPriceProductTradePrice) = xs:decimal(../ram:ChargeAmount) - xs:decimal(ram:ActualAmount)</xsl:attribute>
+                    <xsl:attribute name="flag">warning</xsl:attribute>
+                    <xsl:text>Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
+                </xsl:element>
+            </xsl:element>            
+        </xsl:element>  
+        
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -129,7 +150,8 @@
         <xsl:copy-of select="."/>
     </xsl:template>
     <xsl:template match="assert" mode="peppol-rules" priority="1">
-        <xsl:if test="@id=$rules">           
+        <!-- exclude R120 in CII-->
+        <xsl:if test="@id=$rules and ((not(@id='PEPPOL-EN16931-R120') and $syntax='CII') or $syntax='UBL')">           
             <xsl:copy select=".">
                 <xsl:attribute name="id">
                     <xsl:variable name="rule-id" select="@id"/>
@@ -156,7 +178,7 @@
         <xsl:variable name="count-number">
             <xsl:variable name="rule-id" select="@id"/>
             <xsl:number level="any" count="pattern[rule/assert/@id=$rules]"/>
-        </xsl:variable>
+        </xsl:variable>        
         <xsl:if test="rule/assert/@id=$rules">
             <xsl:copy select=".">
                 <xsl:attribute name="id">
@@ -170,6 +192,9 @@
                     <xsl:text>-pattern-</xsl:text>
                     <xsl:value-of select="$count-number"/>
                 </xsl:attribute>
+                <xsl:if test="$syntax='CII'">
+                    <xsl:attribute name="flag">warning</xsl:attribute>
+                </xsl:if>
                 <xsl:apply-templates select="@*" mode="peppol-rules"/>
                 <xsl:apply-templates mode="peppol-rules"/>
             </xsl:copy>    
