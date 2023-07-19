@@ -85,13 +85,6 @@
                         unitCode="XPP">30</ram:BasisQuantity>
                     <ram:AppliedTradeAllowanceCharge>                        
                         <ram:ChargeIndicator>
-                            <?xmute mutator="identity"
-                             schematron-valid="xrcii:PEPPOL-EN16931-R044" id="cii-item-price-discount-charge-indicator-must-be-false"
-                             description="item price discount charge indicator must be false" ?>                            
-                            <?xmute mutator="code"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R044" id="cii-item-price-discount-charge-indicator-must-be-false-2"
-                            values="true,1,yes,0,no"
-                            description="item price discount charge indicator must be false" ?>  
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
                         <!-- BT-147 -->
