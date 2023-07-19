@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* ISO 6523 ICD and CEF EAS codelist values in extension validation rules that override CEN rules contain newest codelist values.
+
 ## v1.8.2 on 2023-05-12
 
 This release is compatible with XRechnung 2.3.x
