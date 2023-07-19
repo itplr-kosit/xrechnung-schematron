@@ -160,8 +160,8 @@
                     schematron-valid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-7"
                     description="no empty elements allowed" ?>
         <?xmute mutator="empty"
-                    schematron-invalid="xrcii:PEPPOL-EN16931-R008" id="no-empty-elements-allowed-8"
-                    description="no empty elements allowed" ?>
+                    schematron-valid="xrcii:PEPPOL-EN16931-R008" id="empty-applicable-header-trade-delivery-allowed"
+                    description="empty ApplicableHeaderTradeDelivery allowed" ?>
         <ram:ApplicableHeaderTradeDelivery>
             <ram:ShipToTradeParty>
                 <ram:Name>Schulungsanbieter</ram:Name>
