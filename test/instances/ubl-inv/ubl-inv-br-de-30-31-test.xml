@@ -90,10 +90,10 @@
     <cbc:PaymentMeansCode>59</cbc:PaymentMeansCode>
       <cac:PaymentMandate><!-- BG-19 -->
         <?xmute mutator="identity"
-                    schematron-valid="xrubl:BR-DE-29" id="ubl-inv-mandatory-BT-89"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-mandatory-BT-89"
                     description="mandatory BT-89" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrubl:BR-DE-29" id="ubl-inv-mandatory-BT-89-2"
+                    schematron-invalid="xrubl:PEPPOL-EN16931-R061" id="ubl-inv-mandatory-BT-89-2"
                     description="mandatory BT-89" ?>
         <cbc:ID>[Mandate reference identifier]</cbc:ID><!-- BT-89 -->
         <cac:PayerFinancialAccount>
