@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* removed BR-DE-29
+* removed tests for BR-DE-29
+
 ## v1.8.2 on 2023-05-12
 
 This release is compatible with XRechnung 2.3.x
