@@ -3,6 +3,7 @@
           id="correct-customization-id" schematron-valid="xrubl:BR-DE-21" 
           description="Correct customization ids"?>
     <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID>12345</cbc:ID>
     <cbc:IssueDate>2019-05-15</cbc:IssueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
@@ -17,6 +18,7 @@
     </cac:OrderReference>
     <cac:AccountingSupplierParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">seller@seller.com</cbc:EndpointID>
             <cac:PartyName>
                 <cbc:Name>M. Meier Handwerk GbR</cbc:Name>
             </cac:PartyName>
@@ -47,6 +49,7 @@
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">buyer@buyer.com</cbc:EndpointID>
             <cac:PartyIdentification>
                 <cbc:ID>345LA5324</cbc:ID>
             </cac:PartyIdentification>
@@ -108,7 +111,7 @@
             </cac:ClassifiedTaxCategory>
         </cac:Item>
         <cac:Price>
-            <cbc:PriceAmount currencyID="EUR">120</cbc:PriceAmount>
+            <cbc:PriceAmount currencyID="EUR">1.937</cbc:PriceAmount>
         </cac:Price>
         <cac:SubInvoiceLine>
             <cbc:ID>1 1</cbc:ID>
