@@ -30,8 +30,14 @@
       <!-- BG-29 (1..1) -->
       <ram:SpecifiedLineTradeAgreement> 
         <ram:GrossPriceProductTradePrice>
+          <ram:AppliedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+              <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:ActualAmount>10.0000</ram:ActualAmount>
+          </ram:AppliedTradeAllowanceCharge>
           <!-- BT-148 (0..1) -->
-          <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
+          <ram:ChargeAmount>110.0000</ram:ChargeAmount>
           <!-- BT-149 (0..1) with BT-150 (0..1) -->
           <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R130" id="cii-BT-150-identical-with-BT-130"
@@ -90,10 +96,16 @@
         <ram:Description>Ersatztext bei Entsorgung</ram:Description> 
       </ram:SpecifiedTradeProduct>  
       <ram:SpecifiedLineTradeAgreement> 
-        <ram:GrossPriceProductTradePrice> 
-          <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
-          <ram:BasisQuantity unitCode="TNE">1.0000</ram:BasisQuantity> 
-        </ram:GrossPriceProductTradePrice>  
+        <ram:GrossPriceProductTradePrice>
+          <ram:AppliedTradeAllowanceCharge>
+            <ram:ChargeIndicator>
+              <udt:Indicator>false</udt:Indicator>
+            </ram:ChargeIndicator>
+            <ram:ActualAmount>10.0000</ram:ActualAmount>
+          </ram:AppliedTradeAllowanceCharge>
+          <ram:ChargeAmount>110.0000</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="TNE">1.0000</ram:BasisQuantity>
+        </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice> 
           <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
           <ram:BasisQuantity unitCode="TNE">1.0000</ram:BasisQuantity> 
