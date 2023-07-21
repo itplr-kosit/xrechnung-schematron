@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
     <rsm:ExchangedDocumentContext>
+        <ram:BusinessProcessSpecifiedDocumentContextParameter>
+            <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+        </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <ram:GuidelineSpecifiedDocumentContextParameter>
             <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
@@ -111,6 +114,9 @@
                     <ram:CityName>[Seller city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">seller@seller.com</ram:URIID>
+                </ram:URIUniversalCommunication>
                 <ram:SpecifiedTaxRegistration>
                     <ram:ID schemeID="VA">DE 123456789</ram:ID>
                 </ram:SpecifiedTaxRegistration>
@@ -124,6 +130,9 @@
                     <ram:CityName>[Buyer city]</ram:CityName>
                     <ram:CountryID>DE</ram:CountryID>
                 </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">buyer@buyer.com</ram:URIID>
+                </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
@@ -131,16 +140,16 @@
             <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:SpecifiedTradeSettlementPaymentMeans>                
-                <ram:TypeCode>59</ram:TypeCode>         
+                <ram:TypeCode>59</ram:TypeCode>       
+                <ram:PayerPartyDebtorFinancialAccount>                                      
+                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                </ram:PayerPartyDebtorFinancialAccount>
                 <?xmute mutator="identity"
                         schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19"
                         description="CII BG-17 not allowed with BG-19" ?>                
                 <ram:PayeePartyCreditorFinancialAccount>                    
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayeePartyCreditorFinancialAccount>                                
-                <ram:PayerPartyDebtorFinancialAccount>                                      
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                </ram:PayerPartyDebtorFinancialAccount>
+                </ram:PayeePartyCreditorFinancialAccount>                                                
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
