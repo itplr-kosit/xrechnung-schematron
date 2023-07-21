@@ -60,9 +60,6 @@
                     <?xmute mutator="code" values="0, -10"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R121" id="cii-BT-149-not-greater-0"
                         description="BT-149 must be a positive number above zero" ?>
-                    <?xmute mutator="remove"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R121" id="cii-BT-149-not-provided"
-                        description="BT-149 must be a positive number above zero when provided" ?>
                     <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>                
             </ram:SpecifiedLineTradeAgreement>
@@ -130,9 +127,6 @@
                     <?xmute mutator="code" values="0, -10"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R121" id="cii-BT-149-not-greater-0-2"
                         description="BT-149 must be a positive number above zero" ?>
-                    <?xmute mutator="remove"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R121" id="cii-BT-149-not-provided-2"
-                        description="BT-149 must be a positive number above zero when provided" ?>
                     <ram:BasisQuantity unitCode="XPP">30</ram:BasisQuantity>
                     <ram:AppliedTradeAllowanceCharge>
                         <ram:ChargeIndicator>
