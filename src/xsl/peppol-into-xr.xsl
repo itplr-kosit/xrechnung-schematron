@@ -88,7 +88,7 @@
         <xsl:element name="pattern" namespace="{namespace-uri()}">
             <xsl:attribute name="id">peppol-cii-pattern-0-b</xsl:attribute>            
             <xsl:element name="rule" namespace="{namespace-uri()}">
-                <xsl:attribute name="context">rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge</xsl:attribute>
+                <xsl:attribute name="context">rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice</xsl:attribute>
                 <!-- R044 -->
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
@@ -99,7 +99,7 @@
                 <!-- R046 -->
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R046</xsl:attribute>
-                    <xsl:attribute name="test">not(../ram:ChargeAmount) or xs:decimal(../../ram:NetPriceProductTradePrice) = xs:decimal(../ram:ChargeAmount) - xs:decimal(ram:ActualAmount)</xsl:attribute>
+                    <xsl:attribute name="test">not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - xs:decimal(../ram:AppliedTradeAllowanceCharge/ram:ActualAmount)</xsl:attribute>
                     <xsl:attribute name="flag">warning</xsl:attribute>
                     <xsl:text>Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
                 </xsl:element>
