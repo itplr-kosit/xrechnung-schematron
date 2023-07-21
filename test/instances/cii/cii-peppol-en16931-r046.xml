@@ -79,7 +79,7 @@
                             schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-2"
                             values="1,2"
                             description="bt-146 must be bt-148 minus bt-147 if provided" ?>
-                    <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
+                    <ram:ChargeAmount>168.1250000000000</ram:ChargeAmount>
                     <!-- BT-149, BT-150 -->
                     <ram:BasisQuantity
                         unitCode="XPP">30</ram:BasisQuantity>
@@ -95,7 +95,7 @@
                             schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-bt-146-must-be-bt-148-minus-bt-147-if-provided-4"
                             values="1,2"
                             description="bt-146 must be bt-148 minus bt-147 if provided" ?>
-                        <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
+                        <ram:ActualAmount>10.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
                 <!-- BT-146 -->
