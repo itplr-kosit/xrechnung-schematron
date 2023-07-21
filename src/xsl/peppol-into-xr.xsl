@@ -28,7 +28,13 @@
                 <!-- Add phase for R008 in CII -->                 
                 <xsl:element name="active" namespace="{namespace-uri()}">
                     <xsl:attribute name="pattern">
-                        <xsl:text>peppol-cii-pattern-0</xsl:text>
+                        <xsl:text>peppol-cii-pattern-0-a</xsl:text>
+                    </xsl:attribute>
+                </xsl:element>
+                <!-- Add phase for R044 and R046 in CII -->                 
+                <xsl:element name="active" namespace="{namespace-uri()}">
+                    <xsl:attribute name="pattern">
+                        <xsl:text>peppol-cii-pattern-0-b</xsl:text>
                     </xsl:attribute>
                 </xsl:element>
                 <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/pattern" mode="xrechnung-rules"/>                
@@ -160,8 +166,11 @@
                         <xsl:text>-</xsl:text>
                         <xsl:value-of><xsl:number level="any" count="assert[@id = $rule-id]"/></xsl:value-of>
                     </xsl:if>
-                </xsl:attribute>                
-                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>                
+                </xsl:attribute>                  
+                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
+                <xsl:if test="$syntax='CII'">
+                    <xsl:attribute name="flag">warning</xsl:attribute>
+                </xsl:if>                
                 <xsl:choose>
                     <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R043' and $syntax='CII'">
@@ -189,8 +198,8 @@
     <xsl:template match="rule" mode="peppol-rules" priority="1">        
         <xsl:if test="assert/@id=$rules">            
             <xsl:copy select=".">                
-                <xsl:apply-templates select="@*" mode="peppol-rules"/>
-                <xsl:apply-templates mode="peppol-rules"/>
+                <xsl:apply-templates select="@*" mode="peppol-rules"/>                
+                <xsl:apply-templates mode="peppol-rules"/>                
             </xsl:copy>    
         </xsl:if>        
     </xsl:template>    
@@ -211,10 +220,7 @@
                     </xsl:if>
                     <xsl:text>-pattern-</xsl:text>
                     <xsl:value-of select="$count-number"/>
-                </xsl:attribute>
-                <xsl:if test="$syntax='CII'">
-                    <xsl:attribute name="flag">warning</xsl:attribute>
-                </xsl:if>
+                </xsl:attribute>               
                 <xsl:apply-templates select="@*" mode="peppol-rules"/>
                 <xsl:apply-templates mode="peppol-rules"/>
             </xsl:copy>    
