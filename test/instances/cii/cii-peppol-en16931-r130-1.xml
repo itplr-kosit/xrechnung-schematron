@@ -26,7 +26,6 @@
       </ram:AssociatedDocumentLineDocument>  
       <ram:SpecifiedTradeProduct> 
         <ram:Name>Behältermiete</ram:Name>  
-        <ram:Description/> 
       </ram:SpecifiedTradeProduct>
       <!-- BG-29 (1..1) -->
       <ram:SpecifiedLineTradeAgreement> 
