@@ -29,10 +29,6 @@
       </ram:SpecifiedTradeProduct>
       <!-- BG-29 (1..1) -->
       <ram:SpecifiedLineTradeAgreement> 
-        <ram:GrossPriceProductTradePrice>
-          <!-- BT-148 (0..1) -->
-          <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
-        </ram:GrossPriceProductTradePrice>  
         <ram:NetPriceProductTradePrice>
           <!-- BT-146 -->
           <ram:ChargeAmount>100.0000</ram:ChargeAmount>
@@ -89,11 +85,7 @@
         <ram:Name>Entsorgung</ram:Name>  
         <ram:Description>Ersatztext bei Entsorgung</ram:Description> 
       </ram:SpecifiedTradeProduct>  
-      <ram:SpecifiedLineTradeAgreement> 
-        <ram:GrossPriceProductTradePrice> 
-          <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
-          <ram:BasisQuantity unitCode="TNE">1.0000</ram:BasisQuantity> 
-        </ram:GrossPriceProductTradePrice>  
+      <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice> 
           <ram:ChargeAmount>100.0000</ram:ChargeAmount>  
           <ram:BasisQuantity unitCode="TNE">1.0000</ram:BasisQuantity> 
