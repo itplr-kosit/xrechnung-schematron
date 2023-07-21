@@ -121,7 +121,8 @@
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>
                 <ram:GrossPriceProductTradePrice>
-                    <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
+                    <!-- BT-148 -->
+                    <ram:ChargeAmount>153.75</ram:ChargeAmount>
                     <!-- BT-149 (item price base quantity), BT-150 -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R121" id="cii-BT-149-is-greater-0-2"
@@ -137,10 +138,12 @@
                         <ram:ChargeIndicator>
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
-                        <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
+                        <!-- BT-147 -->
+                        <ram:ActualAmount>10.00</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
                 <ram:NetPriceProductTradePrice>
+                    <!-- BT-146 -->
                     <ram:ChargeAmount>143.75</ram:ChargeAmount>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>
