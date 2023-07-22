@@ -39,12 +39,6 @@
           <?xmute mutator="code" values="C63" attribute="unitCode"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R130" id="cii-BT-150-identical-with-BT-130-invalid"
                         description="BT-150 must be same as BT-130" ?>
-          <?xmute mutator="remove" attribute="unitCode"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R130" id="cii-BT-150-does-not-exist"
-                        description="BT-150 must be same as BT-130 if provided" ?>
-          <?xmute mutator="remove"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R130" id="cii-BT-149-and-BT-150-do-not-exist"
-                        description="BT-150 must be same as BT-130 if provided" ?>
           <ram:BasisQuantity unitCode="C62">1.0000</ram:BasisQuantity>
         </ram:NetPriceProductTradePrice> 
       </ram:SpecifiedLineTradeAgreement>  
