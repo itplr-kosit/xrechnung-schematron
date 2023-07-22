@@ -57,10 +57,10 @@
                 </ram:ApplicableTradeTax>
                 <?xmute mutator="identity"
                             schematron-invalid="xrcii:BR-TMP-1" id="cii-only-one-BG-30-invalid"
-                            description="exactly one BG-30 allowed withing BG-25" ?>
+                            description="exactly one BG-30 allowed within BG-25" ?>
                 <?xmute mutator="remove"
                             schematron-valid="xrcii:BR-TMP-1" id="cii-only-one-BG-30-valid"
-                            description="exactly one BG-30 allowed withing BG-25" ?>
+                            description="exactly one BG-30 allowed within BG-25" ?>
                 <ram:ApplicableTradeTax>
                     <ram:TypeCode>VAT</ram:TypeCode>
                     <ram:CategoryCode>S</ram:CategoryCode>
