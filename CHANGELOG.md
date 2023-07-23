@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Schematron Rules
+    * temporary BR-TMP-1 to add warning on prohibited multiple BG-30 LINE VAT INFORMATION within BG-25 INVOICE LINE (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349).
+
+## v1.8.2 on 2023-05-12
+
+This release is compatible with XRechnung 2.3.x
+
+### Added
+
+* Schematron Rules
+    * BR-DEX-13 to validate maximum number of two allowed fraction digits in BT-DEX-002 ("Third party payment amount").
+    * BR-DEX-14 to validate currency of BT-DEX-002 is the same as "Invoice Currency Code" (BT-5).
+    * BR-DEX-15 to detect possible use of unsupported Sub Invoice Lines in CII.
+* Tests 
+    * for BR-DE-16 with VAT code "O"
+    * `cii-br-dex-15-test-on-sub-invoice-lines.xml`
+
+### Changed
+
+* Schematron Rules
+  * merged ubl invoice and ubl creditnote rules
+* References to Schematron files in mutator tests
+* BR-DE-19 and BR-DE-20 IBAN validation is now more robust
+
+### Fixed
+
+* BR-DE-16 description now includes restriction to all tax codes except "O" (as implemented with XR version 2.0.1 / Schematron 1.5.0).
+* Incorrect ChargeIndicator in BR-DE-16 tests with BT-95.
+* Incorrect ChargeIndicator in BR-DE-16 tests with BT-102.
+
+
 ## v1.8.1 on 2023-02-17
 
 This release is compatible with XRechnung 2.3.x

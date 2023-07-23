@@ -202,10 +202,10 @@
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <?xmute mutator="identity"
-                schematron-valid="xrcn:BR-DE-14" id="ubl-cn-mandatory-BT-119"
+                schematron-valid="xrubl:BR-DE-14" id="ubl-cn-mandatory-BT-119"
                 description="mandatory BT-119" ?>
         <?xmute mutator="remove"
-                schematron-invalid="xrcn:BR-DE-14" id="ubl-cn-mandatory-BT-119-removed"
+                schematron-invalid="xrubl:BR-DE-14" id="ubl-cn-mandatory-BT-119-removed"
                 description="mandatory BT-119" ?>
         <cbc:Percent>19</cbc:Percent>
         <cac:TaxScheme>

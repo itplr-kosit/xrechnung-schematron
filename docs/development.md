@@ -1,6 +1,6 @@
 # Project Structure
 
-Schematron sources are in `validation/schematron/{cii, ubl-cn, ubl-inv}` directories. 
+Schematron sources are in `validation/schematron/{cii, ubl}` directories.
 
 ## Testing
 
@@ -15,7 +15,11 @@ We also create test cases using XML Mutate https://projekte.kosit.org/kosit/xml-
 
 Currently, you need to manually download the newest version from https://projekte.kosit.org/kosit/xml-mutate/-/jobs and put it somewhere local.
 
-If you set the ant property to the URL of directory (full path) like e.g. `xmute.download.url.prefix=file:/mnt/c/data/git-repos/xml-mutator/target` (Linux), you can als execute the `test` target e.g. 
+Additionally, you must set a custom ant property that points to the URL of the XML Mutate repository (full path),
+
+e.g. `xmute.download.url.prefix=file:/mnt/c/data/git-repos/xml-mutator/target` (Linux).
+
+Example ant call:
 
 ```shell
 ant -Dxmute.download.url.prefix=file:/home/renzo/projects/xml-mutate/target test
@@ -28,12 +32,8 @@ ant "-Dxmute.download.url.prefix=file:/c:/dev/git/xml-mutate/target" test
 ```
 
 
-Otherwise the build skips this target silently.
-
-
-
 The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification. 
-There are three directoriesfor the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
+There are three directories for the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
 
 
 ### Conventions
@@ -45,10 +45,9 @@ In order to keep test case development consistent it is important to follow seve
 The following names are used to reference different schematron files
 
 ```
-ceninv:  for CEN UBL Invoice (and Credit Note) rules
+cenubl:  for CEN UBL Invoice (and Credit Note) rules
 cencii:  for CEN UN/CEFACT CII rules
-xrinv:   for XRechnung UBL Invoice
-xrcn:    for XRechnung UBL Credit Note
+xrubl:   for XRechnung UBL Invoice (and Credit Note)
 xrcii:   for XRechnung UN/CEFACT CII
 ```
 
@@ -89,7 +88,7 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 ```
 
 * Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
-  `git tag release-1.8.1 && git push origin release-1.8.1`
+  `git tag release-1.8.2 && git push origin release-1.8.2`
 
 ### Publish
 
@@ -98,7 +97,9 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 * Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version}`
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
 * Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released componentes are checked to be okay, then uncheck pre-release.
+* If **all** released components are checked to be okay, then uncheck pre-release.
+
+* Publish the new release in GitLab
 
 ### Post-Release
 

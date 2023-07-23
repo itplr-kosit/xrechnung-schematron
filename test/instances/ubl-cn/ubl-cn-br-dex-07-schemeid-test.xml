@@ -23,7 +23,7 @@
   </cac:OriginatorDocumentReference>
   <cac:AccountingSupplierParty>
     <cac:Party>
-      <?xmute mutator="identity" schematron-valid="xrcn:BR-DEX-07" id="ubl-cn-br-dex-07-test-scheme-id-1" description="UBL-CN BR-DEX-07 schemeID must be valid" ?>
+      <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-07" id="ubl-cn-br-dex-07-test-scheme-id-1" description="UBL-CN BR-DEX-07 schemeID must be valid" ?>
       <cbc:EndpointID schemeID="0037">rechnungsausgang@test.com</cbc:EndpointID>
       <cac:PartyIdentification>
         <cbc:ID schemeID="0013">987654321</cbc:ID>

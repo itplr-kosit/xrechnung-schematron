@@ -226,7 +226,7 @@
         <cbc:ID>1034</cbc:ID>
       </cac:SellersItemIdentification>
       <cac:StandardItemIdentification>
-          <?xmute mutator="identity" schematron-valid="xrcn:BR-DEX-06" id="ubl-cn-br-dex-06-test-scheme-id-1" description="UBL-CN BR-DEX-06 schemeID must be valid" ?>
+          <?xmute mutator="identity" schematron-valid="xrubl:BR-DEX-06" id="ubl-cn-br-dex-06-test-scheme-id-1" description="UBL-CN BR-DEX-06 schemeID must be valid" ?>
           <cbc:ID schemeID="0013">0123456789</cbc:ID>
       </cac:StandardItemIdentification>
       <cac:CommodityClassification>

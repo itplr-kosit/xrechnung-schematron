@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
 
   <?xmute mutator="identity" id="correct-customization-id" 
-          schematron-valid="xrinv:BR-DE-21" description="Correct customization ids"?>
+          schematron-valid="xrubl:BR-DE-21" description="Correct customization ids"?>
   <?xmute mutator="code" id="invalid-customization-id" values="invalid_customizationid"
-          schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on wrong customization id"?>
+          schematron-invalid="xrubl:BR-DE-21" description="Expect to fail on wrong customization id"?>
   <?xmute mutator="empty" id="empty-customization-id"
-          schematron-invalid="xrinv:BR-DE-21" description="Expect to fail on empty customization id"?>
+          schematron-invalid="xrubl:BR-DE-21" description="Expect to fail on empty customization id"?>
   <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
@@ -34,20 +34,20 @@
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
   <?xmute mutator="remove" 
-          schematron-valid="xrinv:BR-DEX-01"
+          schematron-valid="xrubl:BR-DEX-01"
           description="Expect rule not to fire if it is an extension, but does not have attachments " ?>
   <cac:AdditionalDocumentReference>
     <cbc:ID>01_15_Anhang_01.xml</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
       <?xmute mutator="code" values="application/xml, application/pdf, image/png, image/jpeg, text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-              schematron-valid="xrinv:BR-DEX-01" description="Expect all valid mime-codes to be correct" 
+              schematron-valid="xrubl:BR-DEX-01" description="Expect all valid mime-codes to be correct" 
               attribute="mimeCode" ?>      
       <?xmute mutator="code" values="application/nonsense"
-              schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize wrong mime-type" 
+              schematron-invalid="xrubl:BR-DEX-01" description="Expect rule recognize wrong mime-type" 
               attribute="mimeCode" ?>
       <?xmute mutator="empty" 
-              schematron-invalid="xrinv:BR-DEX-01" description="Expect rule recognize mime-type not empty" 
+              schematron-invalid="xrubl:BR-DEX-01" description="Expect rule recognize mime-type not empty" 
               attribute="mimeCode" ?>
       <cbc:EmbeddedDocumentBinaryObject mimeCode="application/xml" filename="01_15_Anhang_01.xml"/>
     </cac:Attachment>

@@ -12,7 +12,7 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="1.8.2-SNAPSHOT" />
+  <property name="xr-schematron.version.full" value="1.8.3-SNAPSHOT" />
   <property name="xrechnung.version" value="2.3.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
@@ -112,7 +112,7 @@
     <mkdir dir="${build.dir}/generated" />
   </target>
 
-  <target name="retrieve-xmute" depends="init" if="xmute.download.url.prefix">
+  <target name="retrieve-xmute" depends="init">
     <fail unless="xmute.download.url.prefix"
       message="Property xmute.download.url.prefix must exist for this target to work" />
     <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
@@ -144,8 +144,7 @@
     <copy todir="${build.dir}" filtering="true">
       <fileset dir="${src.dir}">
         <include name="**/*.sch" />
-        <exclude name="**/*.xsl" />
-        <exclude name="**/XRechnung-UBL-validation.sch" />
+        <exclude name="**/*.xsl" />     
       </fileset>
       <fileset dir="${basedir}">
         <include name="README.md" />
@@ -162,14 +161,9 @@
       insuffix="sch" workdir="${download.dir}"
       outdir="${build.dir}/schematron/cii" deleteonexit="false" overwrite="true" />
     <schematron-compile
-      schematron="${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.sch"
-      insuffix="sch" workdir="${download.dir}"
-      outdir="${build.dir}/schematron/ubl-cn" overwrite="true" />
-    <schematron-compile
-      schematron="${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.sch"
-      insuffix="sch" workdir="${download.dir}"
-      outdir="${build.dir}/schematron/ubl-inv" deleteonexit="false"
-      overwrite="true" />
+      schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl"
+      deleteonexit="false" overwrite="true"/>
   </target>
 
   <target name="compile" depends="compile-schematron-rules"
@@ -187,7 +181,7 @@
 </target>
 
   <target name="test-single-file" depends="compile-schematron-rules"
-    description="Unit testing Schematron Rules wit XML-Mutate">
+    description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
     
     <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
@@ -198,9 +192,7 @@
       <!-- Has no impact -->
       <arg value="--fail-fast" />
       <arg value="--schematron" />
-      <arg value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
-      <arg value="--schematron" />
-      <arg value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
+      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>
       <arg value="--schematron" />
       <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
       <arg value="test/instances/${test.file.name}" />
@@ -218,19 +210,14 @@
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <!-- Has no impact -->
-      <arg value="--fail-fast" />
-      <arg value="--schematron" />
-      <arg
-        value="xrinv=${build.dir}/schematron/ubl-inv/XRechnung-UBL-validation-Invoice.xsl" />
-      <arg value="--schematron" />
-      <arg
-        value="xrcn=${build.dir}/schematron/ubl-cn/XRechnung-UBL-validation-CreditNote.xsl" />
-      <arg value="--schematron" />
-      <arg
-        value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
-      <arg value="test/instances/ubl-inv/" />
-      <arg value="test/instances/ubl-cn/" />
-      <arg value="test/instances/cii/" />
+      <arg value="--fail-fast"/>
+      <arg value="--schematron"/>
+      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>      
+      <arg value="--schematron"/>
+      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl"/>
+      <arg value="test/instances/ubl-inv/"/>
+      <arg value="test/instances/ubl-cn/"/>
+      <arg value="test/instances/cii/"/>
     </java>
   </target>
 
@@ -240,10 +227,9 @@
     <echo>Checking Specification IDs</echo>
 
     <!-- get fileset -->
-    <mkdir dir="${test.build.dir}/tmp/cii" />
-    <mkdir dir="${test.build.dir}/tmp/ubl-cn" />
-    <mkdir dir="${test.build.dir}/tmp/ubl-inv" />
-
+    <mkdir dir="${test.build.dir}/tmp/cii"/>
+    <mkdir dir="${test.build.dir}/tmp/ubl"/>    
+    
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
       style="validation/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
       extension=".xml">

@@ -49,10 +49,10 @@
         <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
         <cbc:AdditionalStreetName>[Seller address line 2]</cbc:AdditionalStreetName>
         <?xmute mutator="identity"
-                    schematron-valid="xrinv:BR-DE-3" id="ubl-inv-mandatory-BT-37"
+                    schematron-valid="xrubl:BR-DE-3" id="ubl-inv-mandatory-BT-37"
                     description="mandatory BT-37" ?>
         <?xmute mutator="remove"
-                    schematron-invalid="xrinv:BR-DE-3" id="ubl-inv-mandatory-BT-37-2"
+                    schematron-invalid="xrubl:BR-DE-3" id="ubl-inv-mandatory-BT-37-2"
                     description="mandatory BT-37" ?>
         <cbc:CityName>[Seller city]</cbc:CityName>
         <cbc:PostalZone>12345</cbc:PostalZone>
