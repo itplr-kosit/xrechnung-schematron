@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
-### Changed
+### Added
+
+* Schematron Rules
+    * temporary BR-TMP-1 to add warning on prohibited multiple BG-30 LINE VAT INFORMATION within BG-25 INVOICE LINE (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349).
+
+    ### Changed
 
 * removed reference to "Verzugszinsen" from Schematron and Test files
 
