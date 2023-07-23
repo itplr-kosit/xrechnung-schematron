@@ -98,7 +98,7 @@
                 <!-- R044 -->
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
-                    <xsl:attribute name="test">ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'</xsl:attribute>
+                    <xsl:attribute name="test">not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'</xsl:attribute>
                     <xsl:attribute name="flag">warning</xsl:attribute>
                     <xsl:text>Charge on price level is NOT allowed. Only value 'false' allowed.</xsl:text>
                 </xsl:element>
@@ -172,18 +172,12 @@
                     <xsl:attribute name="flag">warning</xsl:attribute>
                 </xsl:if>                
                 <xsl:choose>
-                    <!-- Replace some texts in CII -->
-                    <xsl:when test="@id='PEPPOL-EN16931-R043' and $syntax='CII'">
-                        <xsl:text>Allowance/charge ChargeIndicator value SHOULD equal 'true' or 'false'</xsl:text>
-                    </xsl:when>
-                    <xsl:when test="@id='PEPPOL-EN16931-R044' and $syntax='CII'">
-                        <xsl:text>Charge on price level is not allowed. Only value 'false' should be used.</xsl:text>
-                    </xsl:when>                    
+                    <!-- Replace some texts in CII -->                                        
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
-                        <xsl:text>Only one tax total amount should be provided where currency id equals document currency code.</xsl:text>
+                        <xsl:text>Only one tax total amount must be provided where currency id equals document currency code.</xsl:text>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R054' and $syntax='CII'">
-                        <xsl:text>Only one tax total amount should be provided where currency id equals tax currency code, if tax currency code (BT-5) is provided.</xsl:text>
+                        <xsl:text>Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-5) is provided.</xsl:text>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R101' and $syntax='CII'">
                         <xsl:text>Element Additional referenced document can only be used for Invoice line object.</xsl:text>
