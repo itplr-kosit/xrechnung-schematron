@@ -72,7 +72,7 @@
                 </ram:BuyerOrderReferencedDocument>				
                 <ram:GrossPriceProductTradePrice>
                     <!-- BT-148 -->
-                    <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
+                    <ram:ChargeAmount>168.125000000</ram:ChargeAmount>
                     <!-- BT-149, BT-150 -->
                     <ram:BasisQuantity
                         unitCode="XPP">30</ram:BasisQuantity>
@@ -90,7 +90,7 @@
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
                         <!-- BT-147 -->
-                        <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
+                        <ram:ActualAmount>10.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
                 <!-- BT-146 -->

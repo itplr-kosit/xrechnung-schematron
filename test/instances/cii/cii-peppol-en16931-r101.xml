@@ -52,12 +52,12 @@
                     <ram:LineID>6171175.1</ram:LineID>
                 </ram:BuyerOrderReferencedDocument>				
                 <ram:GrossPriceProductTradePrice>
-                    <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
+                    <ram:ChargeAmount>2381.875</ram:ChargeAmount>
                     <ram:AppliedTradeAllowanceCharge>
                         <ram:ChargeIndicator>
                             <udt:Indicator>false</udt:Indicator>
                         </ram:ChargeIndicator>
-                        <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
+                        <ram:ActualAmount>10.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
                 <ram:NetPriceProductTradePrice>
