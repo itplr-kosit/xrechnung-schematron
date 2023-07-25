@@ -126,7 +126,7 @@
                 <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <?xmute mutator="identity" schematron-valid="xrcii:BR-DE-18" id="cii_correct_skonto_no_newline_last_note" description="Correct skonto/verzug has to be accepted. No newline after last note." ?>
+                <?xmute mutator="identity" schematron-valid="xrcii:BR-DE-18" id="cii_correct_skonto_no_newline_last_note" description="Correct skonto has to be accepted. No newline after last note." ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00#
                     #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-3.21#
                     #SKONTO#TAGE=30#PROZENT=0.00#BASISBETRAG=1.23#
