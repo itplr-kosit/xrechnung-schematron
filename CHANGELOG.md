@@ -21,6 +21,11 @@ This release is compatible with XRechnung ?.?.?
 * "VERZUG" removed from BR-DE-18 SKONTO Regex
 * removed reference to "Verzugszinsen" from Schematron and Test files
 
+### Changed
+
+* removed BR-DE-29 to be replaced by PEPPOL-EN16931-R061
+* removed tests for BR-DE-29
+
 ## v1.8.2 on 2023-05-12
 
 This release is compatible with XRechnung 2.3.x
