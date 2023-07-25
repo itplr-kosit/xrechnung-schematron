@@ -320,7 +320,7 @@
     <mkdir dir="${test.build.dir}/tmp/ubl"/>    
     
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
-      style="validation/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
+      style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
       extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
       <param name="xr-version" expression="_2.3" />
@@ -339,7 +339,7 @@
     <mkdir dir="${build.dir}/tmp" />
 
     <xslt basedir="${test.src.dir}" destdir="${build.dir}/tmp"
-      style="validation/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
+      style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
       extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
