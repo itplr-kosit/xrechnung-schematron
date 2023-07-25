@@ -131,7 +131,6 @@
                 description="The keywords have to be in big letters" ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00#
                     #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
-                    #VERZUG#TAGE=30#PROZENT=0.00#
                     #SKoNTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
                 </ram:Description>
             </ram:SpecifiedTradePaymentTerms>

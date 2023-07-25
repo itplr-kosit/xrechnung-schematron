@@ -17,7 +17,8 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * BR-DE-16 adapted to CEN schematron: 'VAT' no longer permitted as BT-31 value
-
+* "VERZUG" removed from BR-DE-18 SKONTO Regex
+* removed reference to "Verzugszinsen" from Schematron and Test files
 
 ## v1.8.2 on 2023-05-12
 
