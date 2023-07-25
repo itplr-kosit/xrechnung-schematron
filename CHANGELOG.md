@@ -9,20 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* ISO 6523 ICD and CEF EAS codelist values in extension validation rules that override CEN rules contain newest codelist values.
 * Schematron Rules
     * temporary BR-TMP-1 to add warning on prohibited multiple BG-30 LINE VAT INFORMATION within BG-25 INVOICE LINE (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349).
     * Ant target `retrieve-peppol-bis-billing-rules`
 * Ant target `merge-peppol-rules-into-xr-rules` 
 * Add xsl script for merging peppol bis billing rules into xrechnung rules
-
-### Changed
-
 * BR-DE-16 adapted to CEN schematron: 'VAT' no longer permitted as BT-31 value
 * "VERZUG" removed from BR-DE-18 SKONTO Regex
 * removed reference to "Verzugszinsen" from Schematron and Test files
-
-### Changed
-
 * removed BR-DE-29 to be replaced by PEPPOL-EN16931-R061
 * removed tests for BR-DE-29
 
