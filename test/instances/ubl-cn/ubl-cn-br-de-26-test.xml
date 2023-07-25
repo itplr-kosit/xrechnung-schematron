@@ -8,27 +8,26 @@
   <cbc:Note>Invoice Note Description</cbc:Note>
   <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-  <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
-    <cbc:StartDate>2018-04-13</cbc:StartDate>
-    <cbc:EndDate>2018-04-13</cbc:EndDate>
+    <cbc:StartDate>2016-01-01</cbc:StartDate>
+    <cbc:EndDate>2016-12-31</cbc:EndDate>
   </cac:InvoicePeriod>
-  <cac:BillingReference>
-        <?xmute mutator="identity"
-            schematron-valid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3"
-            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
-        <?xmute mutator="remove"
-            schematron-invalid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3-2"
-            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
-        <cac:InvoiceDocumentReference>
-            <cbc:ID>PRG1502168</cbc:ID>
-        </cac:InvoiceDocumentReference>
-    </cac:BillingReference>
   <cac:OrderReference>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
+  <cac:BillingReference>
+    <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3"
+            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
+    <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-26" id="ubl-cn-br-de-26-inv-mandatory-BG-3-2"
+            description="UBL-CN BR-DE-26 mandatory BG-3 with BT-3 384" ?>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>PRG1502168</cbc:ID>
+    </cac:InvoiceDocumentReference>
+  </cac:BillingReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
@@ -138,10 +137,7 @@
     <cac:PartyName>
       <cbc:Name>[Seller tax representative name]</cbc:Name>
     </cac:PartyName>
-    <cac:PostalAddress>
-      <cbc:StreetName/>
-      <cbc:CityName/>
-      <cbc:PostalZone/>
+    <cac:PostalAddress>      
       <cac:Country>
         <cbc:IdentificationCode>DE</cbc:IdentificationCode>
       </cac:Country>
@@ -235,7 +231,7 @@
   <cac:CreditNoteLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
+    <cbc:CreditedQuantity unitCode="XPP">33</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2016-01-01</cbc:StartDate>

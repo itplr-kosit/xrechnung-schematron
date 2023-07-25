@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
     <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
     <cbc:ID>Rechnungsnummer</cbc:ID>
-    <cbc:IssueDate>2016-06-27+01:00</cbc:IssueDate>
+    <cbc:IssueDate>2016-06-27</cbc:IssueDate>
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>#ADU#Wir liefern Ihnen ausschließlich zu unseren allgemeinen Geschäftsbedingungen (Stand Februar 2013). Diese werden Ihnen jederzeit auf Wunsch übersandt. Bei Aufträgen, basierend auf öffentlichen Vergaben, gelten die ggf. vereinbarten abweichenden Liefer- und Zahungsbedingungen des Auftraggebers.</cbc:Note>
     <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
-    <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
     <cbc:BuyerReference>04011000-12351-28</cbc:BuyerReference>
     <cac:OrderReference>
         <cbc:ID>Dummywert</cbc:ID>
@@ -13,6 +13,7 @@
     </cac:OrderReference>
     <cac:AccountingSupplierParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
             <cac:PartyName>
                 <cbc:Name>[Seller trading name]</cbc:Name>
             </cac:PartyName>
@@ -50,6 +51,7 @@
     </cac:AccountingSupplierParty>
     <cac:AccountingCustomerParty>
         <cac:Party>
+            <cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
             <cac:PostalAddress>
                 <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
                 <cbc:CityName>[Buyer city]</cbc:CityName>
