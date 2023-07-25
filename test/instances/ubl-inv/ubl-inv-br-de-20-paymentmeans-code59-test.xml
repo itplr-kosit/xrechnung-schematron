@@ -3,10 +3,10 @@
           id="correct-customization-id"
           schematron-valid="xrubl:BR-DE-21" description="Correct customization ids" ?>
   <?xmute mutator="code" 
-          values="urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3#conformant#urn:xoev-de:kosit:extension:xrechnung_2.3"
+          values="urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0"
           id="check-BR-DEX-02-without-sub-invoice-line"
           schematron-valid="xrubl:BR-DEX-02" description="Expect BR-DEX-02 to be valid without sub invoice lines"?>
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>123456789</cbc:ID>
   <cbc:IssueDate>2019-02-28</cbc:IssueDate>
