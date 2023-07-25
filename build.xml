@@ -15,7 +15,7 @@
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
   <property name="xr-schematron.version.full" value="2.0.0" />
-  <property name="xrechnung.version" value="2.3.1" />
+  <property name="xrechnung.version" value="3.0.0" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
   <property name="saxon.jar" value="saxon9he.jar" />
@@ -323,7 +323,7 @@
       style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
       extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
-      <param name="xr-version" expression="_2.3" />
+      <param name="xr-version" expression="_3.0" />
     </xslt>
 
     <copy todir="test/instances" overwrite="true">
