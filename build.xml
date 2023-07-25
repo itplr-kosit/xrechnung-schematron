@@ -244,7 +244,7 @@
       deleteonexit="false" overwrite="true"/>
   </target>
 
-  <target name="transform-xr-rules-to-peppol-nrs" depends="compile-schematron-rules">
+  <target name="transform-xr-rules-to-peppol-nrs" depends="prepare-saxon, prepare-build-dir">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
       out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
       style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl">
@@ -347,7 +347,7 @@
   </target>
 
 
-  <target name="test" depends="retrieve-xmute, check-xmute-available, compile, test-only"
+  <target name="test" depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"
