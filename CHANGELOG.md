@@ -14,6 +14,11 @@ This release is compatible with XRechnung ?.?.?
 * Schematron Rules
     * temporary BR-TMP-1 to add warning on prohibited multiple BG-30 LINE VAT INFORMATION within BG-25 INVOICE LINE (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349).
 
+### Changed
+
+* BR-DE-16 adapted to CEN schematron: 'VAT' no longer permitted as BT-31 value
+
+
 ## v1.8.2 on 2023-05-12
 
 This release is compatible with XRechnung 2.3.x
