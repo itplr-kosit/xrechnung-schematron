@@ -11,8 +11,28 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* TODO: Peppol Regeln
-* PEPPOL-EN16931-R008 (note on ram:ApplicableHeaderTradeDelivery
+* PEPPOL-EN16931-R001 Business process MUST be provided
+* PEPPOL-EN16931-R005 VAT accounting currency code MUST be different from invoice currency code when provided
+* PEPPOL-EN16931-R008 Document MUST not contain empty elements (disabled in CII for element ram:ApplicableHeaderTradeDelivery)
+* PEPPOL-EN16931-R010: Buyer electronic address MUST be provided
+* PEPPOL-EN16931-R020: Seller electronic address MUST be provided
+* PEPPOL-EN16931-R040 Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists
+* PEPPOL-EN16931-R041 Allowance/charge base amount MUST be provided when allowance/charge percentage is provided
+* PEPPOL-EN16931-R042 Allowance/charge percentage MUST be provided when allowance/charge base amount is provided
+* PEPPOL-EN16931-R043 Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'
+* PEPPOL-EN16931-R044 Charge on price level is NOT allowed. Only value 'false' allowed
+* PEPPOL-EN16931-R046 Item net price MUST equal (Gross price - Allowance amount) when gross price is provided
+* PEPPOL-EN16931-R053 Only one tax total with tax subtotals MUST be provided
+* PEPPOL-EN16931-R054 Only one tax total without tax subtotals MUST be provided when tax currency code is provided
+* PEPPOL-EN16931-R055 Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign
+* PEPPOL-EN16931-R061 Mandate reference MUST be provided for direct debit (Replaces BR-DE-29)
+* PEPPOL-EN16931-R101 Element Document reference can only be used for Invoice line object
+* PEPPOL-EN16931-R110 Start date of line period MUST be within invoice period
+* PEPPOL-EN16931-R111 End date of line period MUST be within invoice period
+* PEPPOL-EN16931-R120 Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount (disabled in CII due to syntax binding ambiguities)
+* PEPPOL-EN16931-R121 Base quantity MUST be a positive number above zero
+* PEPPOL-EN16931-R130 Unit code of price base quantity MUST be same as invoiced quantity
+* Unless otherwise indicated, all PEPPOL EN16931-XXX rules are switched to sveretiy level "warning" in CII during introduction phase
 
 ### Changed
 
