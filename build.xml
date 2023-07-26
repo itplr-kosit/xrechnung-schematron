@@ -316,8 +316,7 @@
     <echo>Checking Specification IDs</echo>
 
     <!-- get fileset -->
-    <mkdir dir="${test.build.dir}/tmp/cii"/>
-    <mkdir dir="${test.build.dir}/tmp/ubl"/>    
+    <mkdir dir="${test.build.dir}/tmp"/>
     
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
       style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
