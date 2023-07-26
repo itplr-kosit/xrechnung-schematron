@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* TODO: Peppol Regeln
+* PEPPOL-EN16931-R008 (note on ram:ApplicableHeaderTradeDelivery
+
 ### Changed
 
 * ISO 6523 ICD and CEF EAS codelist values in extension validation rules that override CEN rules contain newest codelist values.
