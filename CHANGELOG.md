@@ -5,17 +5,17 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## v2.0.0 on 2023-07-31
 
-This release is compatible with XRechnung ?.?.?
+This release is compatible with XRechnung 3.0.x
 
 ### Added
 
 * PEPPOL-EN16931-R001 Business process MUST be provided
 * PEPPOL-EN16931-R005 VAT accounting currency code MUST be different from invoice currency code when provided
 * PEPPOL-EN16931-R008 Document MUST not contain empty elements (disabled in CII for element ram:ApplicableHeaderTradeDelivery)
-* PEPPOL-EN16931-R010: Buyer electronic address MUST be provided
-* PEPPOL-EN16931-R020: Seller electronic address MUST be provided
+* PEPPOL-EN16931-R010 Buyer electronic address MUST be provided
+* PEPPOL-EN16931-R020 Seller electronic address MUST be provided
 * PEPPOL-EN16931-R040 Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists
 * PEPPOL-EN16931-R041 Allowance/charge base amount MUST be provided when allowance/charge percentage is provided
 * PEPPOL-EN16931-R042 Allowance/charge percentage MUST be provided when allowance/charge base amount is provided
@@ -32,7 +32,7 @@ This release is compatible with XRechnung ?.?.?
 * PEPPOL-EN16931-R120 Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount (disabled in CII due to syntax binding ambiguities)
 * PEPPOL-EN16931-R121 Base quantity MUST be a positive number above zero
 * PEPPOL-EN16931-R130 Unit code of price base quantity MUST be same as invoiced quantity
-* Unless otherwise indicated, all PEPPOL EN16931-XXX rules are switched to sveretiy level "warning" in CII during introduction phase
+* Unless otherwise indicated, all PEPPOL EN16931-XXX rules are switched to severity level "warning" in CII during introduction phase
 
 ### Changed
 
@@ -45,8 +45,9 @@ This release is compatible with XRechnung ?.?.?
 * BR-DE-16 adapted to CEN schematron: 'VAT' no longer permitted as BT-31 value
 * "VERZUG" removed from BR-DE-18 SKONTO Regex
 * removed reference to "Verzugszinsen" from Schematron and Test files
-* removed BR-DE-29 to be replaced by PEPPOL-EN16931-R061
+* removed BR-DE-29 (is replaced by PEPPOL-EN16931-R061)
 * removed tests for BR-DE-29
+* removed UBL CreditNote tests for BR-DEX-XXX rules
 
 ## v1.8.2 on 2023-05-12
 
