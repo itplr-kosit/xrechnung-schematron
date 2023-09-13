@@ -35,8 +35,13 @@ The relevant files are located here:
     |-- xr-variables-list.xml (Blacklist for variables not used in target rule set)
 ```
 
-## Executing the integration xr to peppol
+### Merging peppol rules with xr rules
 
+## peppol-into-xr.xsl
+
+## rule-list.xml
+
+## Executing the build target
 For the XR to PEPPOL integration, the relevant target is `merge-peppol-rules-with-xr-rules` in the Ant build script. Execute the transformation with the following command:
 
 ```bash
@@ -45,13 +50,19 @@ ant merge-peppol-rules-with-xr-rules
 
 In many instances, this transformation gets triggered through the `test` target.
 
-## Executing the transformation peppol to xr
+### Transform xr rules to peppol nrs
 
-The `transform-xr-rules-to-peppol-nrs` target within the Ant build script facilitates the transformation from PEPPOL to XR. To run this transformation, directly invoke the target using the command:
+## structure of the transformation
+
+## Executing the build target
+
+The `transform-xr-rules-to-peppol-nrs` target within the Ant build script is for the transformation from PEPPOL to XR. To run this transformation, directly invoke the target using the command:
 
 ```bash
 ant transform-xr-rules-to-peppol-nrs
 ```
 
 However, it is typically initiated by the `test` target, which is also invoked by other targets.
+
+
 
