@@ -15,7 +15,7 @@
     <xsl:template match="/">    
         <xsl:apply-templates mode="xrechung-rules"/>
     </xsl:template>
-
+    
     <!-- Add peppol pattern to phase-->
     <xsl:template match="/*/phase" mode="xrechung-rules" priority="1">        
         <xsl:copy select=".">
@@ -41,13 +41,9 @@
             </xsl:if>
         </xsl:copy> 
     </xsl:template>    
-    <!-- Adds global lets and utility namespace from PEPPOL --> 
-    <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">               
-        <xsl:copy-of select="."/>
-        <xsl:element name="ns" namespace="{namespace-uri()}">
-            <xsl:attribute name="uri">utils</xsl:attribute>
-            <xsl:attribute name="prefix">u</xsl:attribute>
-        </xsl:element>
+    <!-- Adds global lets from PEPPOL --> 
+    <xsl:template match="/*/ns[last()]" mode="xrechung-rules" priority="1">        
+        <xsl:copy-of select="."/>    
         <xsl:comment>BEGIN Parameters from PEPPOL</xsl:comment>
         <xsl:if test="$syntax='UBL'">
             <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/let" mode="peppol-rules"/>

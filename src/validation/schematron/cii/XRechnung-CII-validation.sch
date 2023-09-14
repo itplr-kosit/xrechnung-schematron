@@ -13,6 +13,7 @@
   <ns prefix="udt"  uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
   <ns prefix="qdt"  uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
   <ns prefix="ram"  uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
+  <ns uri="utils" prefix="u"/>
 
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
