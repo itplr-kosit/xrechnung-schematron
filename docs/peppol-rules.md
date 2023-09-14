@@ -39,7 +39,11 @@ The relevant files are located here:
 
 ## peppol-into-xr.xsl
 
+This script merges the PEPPOL rules listed in `rule-list.xml` into the xrechnung rule set. It creates multiple phases for CII and UBL and added the rules from PEPPOL filtered by the rule list. Some rules are handled in a special way like `PEPPOL-EN16931-R008` and in some rules lide `PEPPOL-EN16931-R053` in CII text is replaced.
+
 ## rule-list.xml
+
+In this file all PEPPOL rules are listed, which shall be included in XRechnung by the script.
 
 ## Executing the build target
 For the XR to PEPPOL integration, the relevant target is `merge-peppol-rules-with-xr-rules` in the Ant build script. Execute the transformation with the following command:
@@ -51,8 +55,8 @@ ant merge-peppol-rules-with-xr-rules
 In many instances, this transformation gets triggered through the `test` target.
 
 ### Transform xr rules to peppol nrs
-
-## structure of the transformation
+ 
+ `tools/xr-2-peppol-bis-billing-nrs.xsl` generates a snippet in `build/national-rules/XRechnung-UBL-NRS.sch` to be included in the PEPPOL NRS for the German rule set. It includes the rules listed in `xr-rules-list.xml` and excludes the variables provided in `xr-variables-list.xml`.
 
 ## Executing the build target
 
