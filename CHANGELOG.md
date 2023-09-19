@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* bug in PEPPOL-EN16931-R053 in CII
+
 ## v2.0.0 on 2023-07-31
 
 This release is compatible with XRechnung 3.0.x
