@@ -11,7 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* bug in PEPPOL-EN16931-R053 in CII
+* Bug in PEPPOL-EN16931-R053 in CII
 * CII tests for PEPPOL-EN16931-R053
 
 ## v2.0.0 on 2023-07-31
