@@ -174,7 +174,9 @@
                 <xsl:choose>
                     <!-- Replace some texts in CII -->                                        
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
-                        <xsl:text>Only one tax total amount must be provided where currency id equals document currency code.</xsl:text>
+                        <!-- modify test -->
+                        <xsl:attribute name="test">count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1</xsl:attribute>
+                        <xsl:text>No more than one tax total amount must be provided where currency id equals document currency code.</xsl:text>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R054' and $syntax='CII'">
                         <xsl:text>Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</xsl:text>
