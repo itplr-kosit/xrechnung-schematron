@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.x
 
+### Fixed
+
+* Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
+
 ## v2.0.1 on 2023-09-22
 
 This release is compatible with XRechnung 3.0.x
