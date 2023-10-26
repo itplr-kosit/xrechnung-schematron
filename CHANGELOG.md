@@ -13,6 +13,9 @@ This release is compatible with XRechnung ?.?.x
 
 * Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
 
+### Added
+* Test for BR-DE-18 with incorrect arrears
+
 ## v2.0.1 on 2023-09-22
 
 This release is compatible with XRechnung 3.0.x
