@@ -73,11 +73,9 @@
       <?xmute mutator="code" values="DE 75512108001245126199, DE75 51 2108 00124512 6199" separator=","
               schematron-valid="xrubl:BR-DE-19" id="iban-with-whitespace-inside" description="IBAN whitespace inside, should still be validated"?>
       <?xmute mutator="code" values="GB29NWBK60161331926819" separator="," 
-              schematron-valid="xrubl:BR-DE-19" id="iban-from-gb" description="British IBAN, should still be validated"?>      
-      <!--
-      <?xmute mutator="whitespace" 
-              schematron-valid="xrubl:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>
-      -->
+              schematron-valid="xrubl:BR-DE-19" id="iban-from-gb" description="British IBAN, should still be validated"?>            
+      <?xmute mutator="whitespace" position="prefix, suffix"
+              schematron-valid="xrubl:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>      
       <cbc:ID>DE75512108001245126199</cbc:ID>
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
