@@ -13,6 +13,10 @@ This release is compatible with XRechnung ?.?.x
 
 * Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
 
+### Changed
+
+* Removed BR-DE-18a from CII, because it is replaced by CII-SR-453
+
 ## v2.0.1 on 2023-09-22
 
 This release is compatible with XRechnung 3.0.x
