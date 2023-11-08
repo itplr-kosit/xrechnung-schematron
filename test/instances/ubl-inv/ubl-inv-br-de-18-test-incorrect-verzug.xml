@@ -100,7 +100,7 @@
         </cac:PayeeFinancialAccount>
     </cac:PaymentMeans>
     <cac:PaymentTerms>
-        <?xmute mutator="identity" schematron-invalid="xrubl:BR-DE-18" id="ubl-inv-br-de-18-invalid-arrears" description="ubl inv br-de-18 invalid arrears" ?>
+        <?xmute mutator="identity" schematron-invalid="xrubl:BR-DE-18" id="ubl-inv-br-de-18-invalid-verzug" description="ubl inv br-de-18 invalid VERZUG" ?>
         <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
             #VERZUG#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
             #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
