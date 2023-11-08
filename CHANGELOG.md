@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.x
 
+### Changed
+
+* BR-TMP-1 removed due to resolvement in CEN Schematron [#349](https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349)
+
 ### Fixed
 
 * Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
