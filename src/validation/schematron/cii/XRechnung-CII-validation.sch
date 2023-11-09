@@ -216,13 +216,6 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
-      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem">
-          <assert test="ram:SpecifiedLineTradeSettlement[count(ram:ApplicableTradeTax) = 1]"
-              flag="warning"
-              id="BR-TMP-1">
-              [BR-TMP-1] BG-30 LINE VAT INFORMATION is allowed exactly once within BG-25 INVOICE LINE. Violation may lead to rejection of the invoice when validation is implemented by CEN.
-          </assert>
-      </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
     <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
