@@ -20,7 +20,7 @@ This release is compatible with XRechnung 3.0.x
 
 ### Fixed
 
-* Bug in PEPPOL-EN16931-R055 - now valid without optional BT-110 "Invoice total VAT amount"
+* Bug in PEPPOL-EN16931-R055 in CII - now valid without optional BT-110 "Invoice total VAT amount"
 * Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
 
 
