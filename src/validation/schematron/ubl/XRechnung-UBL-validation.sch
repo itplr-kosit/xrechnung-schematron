@@ -2,6 +2,7 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   queryBinding="xslt2"
   xmlns:u="utils">
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - UBL - Invoice / Creditnote</title>
@@ -14,6 +15,12 @@
   <ns prefix="ubl-creditnote" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />
   <ns uri="utils" prefix="u"/>
+  
+  <xsl:function as="xs:decimal" name="u:decimalOrZero">
+    <xsl:param name="element" />
+    <xsl:value-of select="if (boolean($element)) then xs:decimal($element) else 0" />
+  </xsl:function>
+  
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
     <active pattern="ubl-pattern" />
