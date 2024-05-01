@@ -187,11 +187,7 @@
                     <!-- modify R055 in CII to allow for optional BT-110 -->
                     <xsl:when test="@id='PEPPOL-EN16931-R055' and $syntax='CII'">
                         <xsl:attribute name="test">not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)</xsl:attribute>
-                    </xsl:when>
-                    <!-- modify R046 in UBL to handle with empty BT-147 -->
-                    <xsl:when test="@id='PEPPOL-EN16931-R046' and $syntax='UBL'">
-                        <xsl:attribute name="test">not(cbc:BaseAmount) or xs:decimal(../cbc:PriceAmount) = xs:decimal(cbc:BaseAmount) - u:decimalOrZero(cbc:Amount)</xsl:attribute>
-                    </xsl:when>
+                    </xsl:when>       
                     <xsl:otherwise>
                         <xsl:apply-templates mode="peppol-rules"/>
                     </xsl:otherwise>

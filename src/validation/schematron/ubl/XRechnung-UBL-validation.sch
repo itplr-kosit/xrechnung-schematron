@@ -14,12 +14,7 @@
   <ns prefix="ubl-invoice" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="ubl-creditnote" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />
-  <ns uri="utils" prefix="u"/>
-  
-  <xsl:function as="xs:decimal" name="u:decimalOrZero">
-    <xsl:param name="element" />
-    <xsl:value-of select="if (boolean($element)) then xs:decimal($element) else 0" />
-  </xsl:function>
+  <ns uri="utils" prefix="u"/>  
   
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
