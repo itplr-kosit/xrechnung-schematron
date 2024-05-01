@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+# Added
+
+* Auxililary function for setting empty elements to zero in rule PEPPOL-EN16931-R046.
+
 ## v2.0.2 on 2023-11-15
 
 This release is compatible with XRechnung 3.0.x
