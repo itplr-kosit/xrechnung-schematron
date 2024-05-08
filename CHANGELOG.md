@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
-# Added
+### Added
 
-* Auxililary function for setting empty elements to zero in rule PEPPOL-EN16931-R046.
+* Auxililary function for setting empty elements to zero
+
+### Fixed
+
+* PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
 
 ## v2.0.2 on 2023-11-15
 
