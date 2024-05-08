@@ -74,8 +74,10 @@
                     <!-- BT-148 -->            
                     <ram:ChargeAmount>168.1250000000000</ram:ChargeAmount>
                     <!-- BT-149, BT-150 -->
-                    <ram:BasisQuantity
-                        unitCode="XPP">30</ram:BasisQuantity>
+                    <ram:BasisQuantity unitCode="XPP">30</ram:BasisQuantity>
+                    <?xmute mutator="remove"
+                         schematron-valid="xrcii:PEPPOL-EN16931-R046" id="cii-peppol-en-16931-r046-price-discount-not-provided"
+                         description="Item net price not provided" ?>
                     <ram:AppliedTradeAllowanceCharge>                        
                         <ram:ChargeIndicator>
                             <udt:Indicator>false</udt:Indicator>
@@ -87,9 +89,6 @@
                         <?xmute mutator="code" values="0.5, 1.25, 159.125"
                          schematron-invalid="xrcii:PEPPOL-EN16931-R046" id="cii-peppol-en-16931-r046-price-discount-invalid"
                          description="Item net price must equal gross price - allowance amount" ?>
-                        <?xmute mutator="remove"
-                         schematron-valid="xrcii:PEPPOL-EN16931-R046" id="cii-peppol-en-16931-r046-price-discount-not-provided"
-                         description="Item net price not provided" ?>
                         <ram:ActualAmount>0.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
