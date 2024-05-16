@@ -5,6 +5,7 @@
         xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
         xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2"
         xmlns:u="utils">
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - CII</title>
@@ -14,6 +15,11 @@
   <ns prefix="qdt"  uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
   <ns prefix="ram"  uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
   <ns uri="utils" prefix="u"/>
+
+  <xsl:function as="xs:decimal" name="u:decimalOrZero">
+    <xsl:param name="element" />
+    <xsl:value-of select="if (boolean($element)) then xs:decimal($element) else 0" />
+  </xsl:function>
 
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
