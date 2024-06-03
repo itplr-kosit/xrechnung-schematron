@@ -194,7 +194,7 @@
     <cbc:AllowanceChargeReasonCode>ER</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
     <!-- BT-101 -->
-    <cbc:MultiplierFactorNumeric>30.5</cbc:MultiplierFactorNumeric>
+    <cbc:MultiplierFactorNumeric>30</cbc:MultiplierFactorNumeric>
     <!-- BT-99 -->
     <?xmute mutator="identity"
                   schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-charge-amount-must-be-correct"
@@ -255,7 +255,24 @@
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
+    <!-- BT-129 -->
     <cbc:CreditedQuantity unitCode="XPP">50</cbc:CreditedQuantity>
+    <!-- BT-131 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-must-be-correct"
+                  description="line net amount must be correct" ?>
+    <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-no-line-net-amount"
+                  description="line net amount not provided" ?>
+    <?xmute mutator="code" values="562.98,563.02,563.265714,563.285714,563.305714"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack"
+                  description="line net amount is correct" ?>
+    <?xmute mutator="code" values="562.765714,563.765714"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack"
+                  description="line net amount is correct" ?>
+    <?xmute mutator="code" values="562.5,562.7657,563.7658"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-is-incorrect"
+                  description="line net amount must be correct" ?>
     <cbc:LineExtensionAmount currencyID="HUF">563</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
