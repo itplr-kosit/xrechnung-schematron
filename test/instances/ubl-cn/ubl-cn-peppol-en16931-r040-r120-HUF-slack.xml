@@ -264,13 +264,13 @@
     <?xmute mutator="remove"
                   schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-no-line-net-amount"
                   description="line net amount not provided" ?>
-    <?xmute mutator="code" values="562.98,563.02,563.265714,563.285714,563.305714"
+    <?xmute mutator="code" values="562.98,563.02,563.2657142857143,563.2857142857143,563.3057142857143"
                   schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack"
                   description="line net amount is correct" ?>
-    <?xmute mutator="code" values="562.765714,563.765714"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack"
+    <?xmute mutator="code" values="562.7857142857143,563.7857142857142"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack-HUF"
                   description="line net amount is correct" ?>
-    <?xmute mutator="code" values="562.5,562.7657,563.7658"
+    <?xmute mutator="code" values="562.5,562.7857142857142,563.7857142857143,562.78,563.79"
                   schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-is-incorrect"
                   description="line net amount must be correct" ?>
     <cbc:LineExtensionAmount currencyID="HUF">563</cbc:LineExtensionAmount>
