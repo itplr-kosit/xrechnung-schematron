@@ -9,6 +9,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Auxililary function for setting empty elements to zero
+
+### Fixed
+
+* PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
+
+## v2.0.2 on 2023-11-15
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* Test for BR-DE-18 with invalid reference to default interests ("VERZUG")
+
+### Changed
+
+* BR-TMP-1 removed due to resolvement in CEN Schematron [#349](https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/349)
+* Removed BR-DE-18a from CII, because it is replaced by CII-SR-453
+
+### Fixed
+
+* Bug in PEPPOL-EN16931-R055 in CII - now valid without optional BT-110 "Invoice total VAT amount"
+* Invalid code removed from CEF EAS codelist values in extension validation rules that override CEN rules
+
+
+## v2.0.1 on 2023-09-22
+
+This release is compatible with XRechnung 3.0.x
+
+### Fixed
+
+* Bug in PEPPOL-EN16931-R053 in CII
+* CII tests for PEPPOL-EN16931-R053
+
 ## v2.0.0 on 2023-07-31
 
 This release is compatible with XRechnung 3.0.x
