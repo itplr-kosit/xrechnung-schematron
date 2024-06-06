@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- blacklist of variables from XR schematron not used in NRS -->
+<!--
+    blacklist of XR schematron variables to be excluded from National Ruleset
+    see documentation in docs/peppol-rules.md
+-->
 <variables>
 <variable>XR-MAJOR-MINOR-VERSION</variable>
 <variable>XR-CIUS-ID</variable>

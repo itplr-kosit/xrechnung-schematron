@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    whitelist of PEPPOL-EN16931 rules for integration into XRechnung
+    see documentation in docs/peppol-rules.md
+-->
 <rules xmlns:r="rule">
     <r:rule>PEPPOL-EN16931-R001</r:rule>
     <!--
@@ -16,7 +20,7 @@
     <r:rule>PEPPOL-EN16931-R020</r:rule>
     <r:rule>PEPPOL-EN16931-R040</r:rule>
     <r:rule>PEPPOL-EN16931-R041</r:rule>
-    <r:rule>PEPPOL-EN16931-R042</r:rule>
+    <r:rule>PEPPOL-EN16931-R042</r:rule> <!--  -->
     <r:rule>PEPPOL-EN16931-R043</r:rule>
     <r:rule>PEPPOL-EN16931-R044</r:rule>
     <r:rule>PEPPOL-EN16931-R046</r:rule>
@@ -26,7 +30,7 @@
     <r:rule>PEPPOL-EN16931-R053</r:rule>
     <r:rule>PEPPOL-EN16931-R054</r:rule>
     <r:rule>PEPPOL-EN16931-R055</r:rule>
-    <r:rule>PEPPOL-EN16931-R061</r:rule>
+    <r:rule>PEPPOL-EN16931-R061</r:rule> <!-- replaces XRechnung business rule BR-DE-29 since XRechnung version 3.0.0 -->
     <!--
     <r:rule>PEPPOL-EN16931-R080</r:rule>
     <r:rule>PEPPOL-EN16931-R100</r:rule>
@@ -34,7 +38,7 @@
     <r:rule>PEPPOL-EN16931-R101</r:rule>
     <r:rule>PEPPOL-EN16931-R110</r:rule>
     <r:rule>PEPPOL-EN16931-R111</r:rule>
-    <r:rule>PEPPOL-EN16931-R120</r:rule>
+    <r:rule>PEPPOL-EN16931-R120</r:rule> <!-- excluded for CII in XRechnung -->
     <r:rule>PEPPOL-EN16931-R121</r:rule>
     <r:rule>PEPPOL-EN16931-R130</r:rule>
     <!--
