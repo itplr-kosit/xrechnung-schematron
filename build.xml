@@ -190,23 +190,20 @@
     <fail
       message="Could not extract UBL PEPPOL BIS Billing rules">
       <condition>
-        <not>
-          <available file="PEPPOL-EN16931-UBL.sch">
-            <filepath refid="schematron-path" />
-          </available>
-        </not>
+        <or>
+          <not>
+            <available file="PEPPOL-EN16931-UBL.sch">
+              <filepath refid="schematron-path" />
+            </available>
+          </not>
+          <not>
+            <available file="PEPPOL-EN16931-CII.sch">
+              <filepath refid="schematron-path" />
+            </available>
+          </not>
+        </or>
       </condition>
-    </fail>
-    <fail
-      message="Could not extract CII PEPPOL BIS Billing rules">
-      <condition>
-        <not>
-          <available file="PEPPOL-EN16931-CII.sch">
-            <filepath refid="schematron-path" />
-          </available>
-        </not>
-      </condition>
-    </fail>
+    </fail>   
   </target>
 
   <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
