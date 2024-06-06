@@ -13,6 +13,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Auxililary function for setting empty elements to zero
 
+### Changed
+
+* slack function to handle rounding without decimal places in currency HUF
+
 ### Fixed
 
 * PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
