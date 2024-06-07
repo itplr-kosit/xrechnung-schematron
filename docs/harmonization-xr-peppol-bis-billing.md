@@ -1,7 +1,5 @@
 # Harmonization of XRechnung and Peppol BIS Billing 3.0 XRechnung
 
-## Introduction
-
 This document outlines the process of integrating PEPPOL BIS Billing 3.0 rules into XRechnung and, vice versa, of creating the German national ruleset for Peppol BIS Billing from XRechnung national business rules.
 
 The integration is based on XSLT scripts, which are called within the build process.
@@ -47,7 +45,7 @@ ant merge-peppol-rules-with-xr-rules
 
 This script merges the rules from Peppol Bis Billing 3.0 listed in `rule-list.xml` into the XRechnung rule set by creating multiple phases for CII and UBL and adding the listed rules.
 
-### Set of rules `rule-list.xml`
+### Set of rules in `rule-list.xml`
 
 This file contains the list of Peppol BIS Billing rules to be included into XRechnung.
 
