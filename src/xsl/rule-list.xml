@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     whitelist of PEPPOL-EN16931 rules for integration into XRechnung
-    see documentation in docs/peppol-rules.md
+    see documentation in docs/harmonization-xr-peppol-bis-billing.md
 -->
 <rules xmlns:r="rule">
     <r:rule>PEPPOL-EN16931-R001</r:rule>

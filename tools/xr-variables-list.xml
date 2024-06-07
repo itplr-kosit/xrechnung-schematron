@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     blacklist of XR schematron variables to be excluded from National Ruleset
-    see documentation in docs/peppol-rules.md
+    see documentation in docs/harmonization-xr-peppol-bis-billing.md
 -->
 <variables>
 <variable>XR-MAJOR-MINOR-VERSION</variable>
