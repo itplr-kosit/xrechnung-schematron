@@ -20,11 +20,12 @@
     <r:rule>PEPPOL-EN16931-R020</r:rule>
     <r:rule>PEPPOL-EN16931-R040</r:rule>
     <r:rule>PEPPOL-EN16931-R041</r:rule>
-    <r:rule>PEPPOL-EN16931-R042</r:rule> <!--  -->
+    <r:rule>PEPPOL-EN16931-R042</r:rule>
     <r:rule>PEPPOL-EN16931-R043</r:rule>
     <r:rule>PEPPOL-EN16931-R044</r:rule>
     <r:rule>PEPPOL-EN16931-R046</r:rule>
     <!--
+        PEPPOL-EN16931-R051 will be included when Issue is solved, see https://github.com/OpenPEPPOL/peppol-bis-invoice-3/pull/140
     <r:rule>PEPPOL-EN16931-R051</r:rule>
     -->
     <r:rule>PEPPOL-EN16931-R053</r:rule>
