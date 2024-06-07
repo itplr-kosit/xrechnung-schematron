@@ -165,10 +165,10 @@
                 <ram:TaxTotalAmount currencyID="EUR">22.04</ram:TaxTotalAmount>
                 <?xmute mutator="identity"
                     schematron-invalid="xrcii:PEPPOL-EN16931-R053" id="cii-more-than-one-BT-110"
-                    description="BT-110 is allowed only once" ?>
+                    description="BT-110 is allowed maximum once" ?>
                 <?xmute mutator="remove"
                     schematron-valid="xrcii:PEPPOL-EN16931-R053" id="cii-only-one-BT-110"
-                    description="BT-110 is allowed only once" ?>
+                    description="BT-110 is allowed maximum once" ?>
                 <ram:TaxTotalAmount currencyID="EUR">22.04</ram:TaxTotalAmount>
                 <ram:GrandTotalAmount>336.90</ram:GrandTotalAmount>
                 <ram:DuePayableAmount>336.90</ram:DuePayableAmount>

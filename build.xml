@@ -14,8 +14,8 @@
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
   <!-- Naming -->
-  <property name="xr-schematron.version.full" value="2.0.1-SNAPSHOT" />
-  <property name="xrechnung.version" value="3.0.0" />
+  <property name="xr-schematron.version.full" value="2.0.3-SNAPSHOT" />
+  <property name="xrechnung.version" value="3.0.1" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
   <property name="saxon.jar" value="saxon9he.jar" />
@@ -190,23 +190,20 @@
     <fail
       message="Could not extract UBL PEPPOL BIS Billing rules">
       <condition>
-        <not>
-          <available file="PEPPOL-EN16931-UBL.sch">
-            <filepath refid="schematron-path" />
-          </available>
-        </not>
+        <or>
+          <not>
+            <available file="PEPPOL-EN16931-UBL.sch">
+              <filepath refid="schematron-path" />
+            </available>
+          </not>
+          <not>
+            <available file="PEPPOL-EN16931-CII.sch">
+              <filepath refid="schematron-path" />
+            </available>
+          </not>
+        </or>
       </condition>
-    </fail>
-    <fail
-      message="Could not extract CII PEPPOL BIS Billing rules">
-      <condition>
-        <not>
-          <available file="PEPPOL-EN16931-CII.sch">
-            <filepath refid="schematron-path" />
-          </available>
-        </not>
-      </condition>
-    </fail>
+    </fail>   
   </target>
 
   <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
