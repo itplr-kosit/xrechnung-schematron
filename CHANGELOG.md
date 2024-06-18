@@ -17,6 +17,7 @@ This release is compatible with XRechnung ?.?.?
 
 * slack function to handle rounding without decimal places in currency HUF
 * refactored ant target `retrieve-peppol-bis-billing-rules`
+* inclusion of utilities namespace in transformation of Peppol BIS Billing to XRechnung rules
 
 ### Fixed
 
