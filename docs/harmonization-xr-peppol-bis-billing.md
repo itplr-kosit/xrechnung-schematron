@@ -1,10 +1,9 @@
 # Harmonization of XRechnung and Peppol BIS Billing 3.0 XRechnung
 
-With the aims of minimizing the delta between XRechnung and Peppol BIS Billing - both CIUSes of the European Norm EN 16931 - a set of Peppol BIS Billing rules was included into XRechnung, and, vice versa, a set of rules to be added to Peppol BIS Billing as the German National ruleset was created from XRechnung national business rules.
+With the aims of minimizing the delta between XRechnung and Peppol BIS Billing - both CIUSes of the European Norm EN 16931 - a set of Peppol BIS Billing rules is included into XRechnung, and, vice versa, a set of rules to be added to Peppol BIS Billing as the German National ruleset is created from XRechnung national business rules.
 This document outlines the process of mutual harmonization of Peppol BIS Billing 3.0 and XRechnung on a technical level.
 
-The integration is based on XSLT transformation of Schematron rules, which are called within the build process.
-
+The integration is based on an automatic XSLT transformation of Schematron rules, which is initiated by an ANT build script. During the build process, transformed/generated files are saved to the `build/`folder. 
 
 ## File Structure and Location
 
@@ -16,7 +15,7 @@ The relevant files are located here:
 |   |-- xsl/
 |       |-- peppol-into-xr.xsl (Transformation script for generation of XRechnung rules)
 |       |-- rule-list.xml (Whitelist of Peppol BIS Billing rules to be transferred to XRechnung)
-|-- build/
+|-- build/ (temporary files downloaded/created during the build process)
 |   |-- bis/ (Peppol BIS Billing rules downloaded here)
 |   |-- schematron/
 |       |-- cii/ (generated CII rules stored here)
