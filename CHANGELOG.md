@@ -13,6 +13,10 @@ This release is compatible with XRechnung ?.?.?
 
 * Auxililary function for setting empty elements to zero
 
+### Changed
+
+* inclusion of utilities namespace in transformation of Peppol BIS Billing to XRechnung rules
+
 ### Fixed
 
 * PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
