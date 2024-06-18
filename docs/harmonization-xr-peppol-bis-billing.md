@@ -1,8 +1,9 @@
 # Harmonization of XRechnung and Peppol BIS Billing 3.0 XRechnung
 
-This document outlines the process of integrating PEPPOL BIS Billing 3.0 rules into XRechnung and, vice versa, of creating the German national ruleset for Peppol BIS Billing from XRechnung national business rules.
+With the aims of minimizing the delta between XRechnung and Peppol BIS Billing - both CIUSes of the European Norm EN 16931 - a set of Peppol BIS Billing rules was included into XRechnung, and, vice versa, a set of rules to be added to Peppol BIS Billing as the German National ruleset was created from XRechnung national business rules.
+This document outlines the process of mutual harmonization of Peppol BIS Billing 3.0 and XRechnung on a technical level.
 
-The integration is based on XSLT scripts, which are called within the build process.
+The integration is based on XSLT transformation of Schematron rules, which are called within the build process.
 
 
 ## File Structure and Location
@@ -31,7 +32,8 @@ The relevant files are located here:
 
 ## Transformation of Peppol BIS Billing rules into XRechnung
 
-The corresponding source files are contained within `src/xsl/`.
+Per transformation script `peppol-into-xr.xsl` patterns, global parameters and functions are copied from the Peppol BIS Billing 3.0 Schematron files into the XRechnung Schematron files (UBL and CII, respectively).
+The set of rules as provided in `rule-list.xml` are then copied and modified, if necessary (see details below).
 
 The transformation is invoked by the Ant target `merge-peppol-rules-with-xr-rules`.
 
@@ -41,28 +43,29 @@ Call
 ant merge-peppol-rules-with-xr-rules
 ```
 
-### Transformation script `peppol-into-xr.xsl`
-
-This script merges the rules from Peppol Bis Billing 3.0 listed in `rule-list.xml` into the XRechnung rule set by creating multiple phases for CII and UBL and adding the listed rules.
-
-### Set of rules in `rule-list.xml`
-
-This file contains the list of Peppol BIS Billing rules to be included into XRechnung.
+The corresponding source files are contained within `src/xsl/`. The output files are saved in `build/schematron/`.
 
 ### Handling of CII
 
 Notably, as Peppol BIS Billing does not officially support CII, severity levels were set to "warning" per default for all CII rules. **They will be implemented as "error"/"fatal" with an upcoming release.** 
 
-Additionally, some rules had to be customized or added for CII:
+### Modifications
 
-- `PEPPOL-EN16931-R008` was added
-- `PEPPOL-EN16931-R042` and `PEPPOL-EN16931-R046` were added
-- message texts were replaced for `PEPPOL-EN16931-R053`, `PEPPOL-EN16931-R054`, and `PEPPOL-EN16931-R101`
+Additionally, some rules had to be added or customized:
+
+- `PEPPOL-EN16931-R008` was added for CII
+- `PEPPOL-EN16931-R042` and `PEPPOL-EN16931-R046` were added for CII
+- `PEPPOL-EN16931-R053` and `PEPPOL-EN16931-R055` were modified for CII due to bugs in source code
+- message texts were replaced in `PEPPOL-EN16931-R053`, `PEPPOL-EN16931-R054`, and `PEPPOL-EN16931-R101` for CII
 - `PEPPOL-EN16931-R120` was excluded for CII due to syntaxbinding inconsistencies
+- the slack function provided in Peppol BIS Billing and rules `PEPPOL-EN16931-R040` and `PEPPOL-EN16931-R120` were modified for UBL and CII to handle rounding without decimals places in currency HUF
 
 ## Transformation of XRechnung national business rules to Peppol BIS Billing National Ruleset
 
-The corresponding source files are contained within `tools/`.
+XRechnung Schematron rules as whitelisted in `xr-rules-list.xml` are transformed via `xr-2-peppol-bis-billing-nrs.xsl` to create the German National Ruleset for Peppol BIS Billing. XRechnung Schematron variables not blacklisted in `xr-variables-list.xml` are included as global variables. To ensure that the German national rules apply only in case of German seller AND customer country (BT-40 and BT-55), respective predicates are applied to the rules' contexts. 
+The list of rules in `xr-rules-list.xml` provides translations of XRechnung rules' IDs and texts to Peppol BIS Billing rules' IDs and texts that are applied during the transformation.
+
+As Peppol BIS Billing does not officially support CII, only UBL is taken into account in the transformation process.
 
 The transformation is invoked by Ant target `transform-xr-rules-to-peppol-nrs`.
 
@@ -72,14 +75,4 @@ Call
 ant transform-xr-rules-to-peppol-nrs
 ```
 
-### Transformation script `xr-2-peppol-bis-billing-nrs.xsl`
-
-The script generates the German National Ruleset for PEPPOL BIS Billing to `XRechnung-UBL-NRS.sch` by including the rules listed in `xr-rules-list.xml` and excluding the XRechnung Schematron variables provided in `xr-variables-list.xml`.
-
-### Set of rules in `xr-rules-list.xml`
-
-The file contains a list of XRechnung national business rules to be transformed to the National Ruleset and serves as the basis for the translation of XRechnung rules' IDs and  texts to Peppol BIS Billing rules' IDs and texts. 
-
-
-
-
+The corresponding source files are contained within `tools/`. The output file is saved in `build/national-rules/`.
