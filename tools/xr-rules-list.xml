@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    whitelist of XRechnung national business rules to be converted to Peppol BIS Billing National Ruleset
+    see documentation in docs/harmonization-xr-peppol-bis-billing.md
+-->
 <asserts>
     <assert key="BR-DE-1" id="DE-R-001">An invoice shall contain information on "PAYMENT INSTRUCTIONS" (BG-16).</assert>
     <assert key="BR-DE-2" id="DE-R-002">The group "SELLER CONTACT" (BG-6) shall be provided.</assert>
