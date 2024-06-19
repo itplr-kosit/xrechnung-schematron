@@ -11,7 +11,8 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Auxililary function for setting empty elements to zero
+* auxililary function for setting empty elements to zero
+* documentation of harmonization of XRechnung and Peppol BIS Billing
 
 ### Changed
 
