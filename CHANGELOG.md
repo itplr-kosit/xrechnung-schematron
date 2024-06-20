@@ -24,6 +24,10 @@ This release is compatible with XRechnung 3.0.x
 
 * PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
 
+
+**Advance notification: severity levels of Peppol BIS Billing rules are currently set to "warning" per default. They will be implemented as "error"/"fatal" with an upcoming release.**
+
+
 ## v2.0.2 on 2023-11-15
 
 This release is compatible with XRechnung 3.0.x
