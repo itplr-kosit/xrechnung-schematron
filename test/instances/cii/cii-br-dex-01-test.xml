@@ -114,6 +114,7 @@
             <ram:AdditionalReferencedDocument>
                 <!-- BT-122 -->
                 <ram:IssuerAssignedID>01_15_Anhang_01.xml</ram:IssuerAssignedID>
+                <ram:TypeCode>916</ram:TypeCode>
                 <?xmute mutator="code" values="application/xml, application/pdf, image/png, image/jpeg, text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               schematron-valid="xrcii:BR-DEX-01" id="cii-valid-mime-code-BT-125" description="Expect all valid mime-codes to be correct" 
               attribute="mimeCode" ?>      
