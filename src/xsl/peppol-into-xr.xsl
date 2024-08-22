@@ -179,11 +179,11 @@
                     </xsl:if>
                 </xsl:attribute>                  
                 <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
-                <xsl:if test="$syntax='CII'">
+                <!--<xsl:if test="$syntax='CII'">
                     <xsl:attribute name="flag">warning</xsl:attribute>
-                </xsl:if>                
+                </xsl:if>-->
                 <xsl:choose>
-                    <!-- Replace some texts in CII -->                                        
+                    <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
                         <!-- modify test -->
                         <xsl:attribute name="test">count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1</xsl:attribute>
