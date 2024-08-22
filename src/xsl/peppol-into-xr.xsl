@@ -178,10 +178,7 @@
                         <xsl:value-of><xsl:number level="any" count="assert[@id = $rule-id]"/></xsl:value-of>
                     </xsl:if>
                 </xsl:attribute>                  
-                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
-                <!--<xsl:if test="$syntax='CII'">
-                    <xsl:attribute name="flag">warning</xsl:attribute>
-                </xsl:if>-->
+                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>                
                 <xsl:choose>
                     <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
