@@ -205,6 +205,27 @@
       </condition>
     </fail>   
   </target>
+  
+  <target name="check-schematron-result">
+    <!-- Params: 1. source XML
+         Result: "true"|"false"
+     -->
+    <xslt in="${srcxml}"
+          out="${build.dir}/temp.out"
+          style="${src.dir}/xsl/check-schematron-asserts.xslt">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}"/>        
+      </classpath>      
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />      
+    </xslt>
+    <loadfile property="xpath-result" srcFile="${build.dir}/temp.out"/>
+    <condition property="sch-is-valid">
+      <equals arg1="${xpath-result}" arg2="true" />
+    </condition>
+    <delete file="${build.dir}/temp.out" quiet="true"/>
+    <fail message="The created Schematron ${srcxml} is not valid because it contains asserts without texts"
+          unless="sch-is-valid"/>
+  </target>
 
   <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
@@ -226,6 +247,14 @@
       </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
+    
+    <!-- Goal: run xpath check on result -->
+    <antcall target="check-schematron-result">
+      <param name="srcxml" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
+    </antcall>
+    <antcall target="check-schematron-result">
+      <param name="srcxml" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+    </antcall>
   </target>
 
   <target name="compile-schematron-rules"
