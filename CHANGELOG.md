@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* version of Peppol BIS Billing updated to 3.0.17
+
 ## v2.1.0 on 2024-06-20
 
 This release is compatible with XRechnung 3.0.x
