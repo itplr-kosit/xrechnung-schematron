@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>1234567</cbc:ID>
+  <cbc:IssueDate>2018-04-13</cbc:IssueDate>
+  <cbc:DueDate>2018-04-13</cbc:DueDate>
+  <!-- BT-3 / DE-R-017 The element "Invoice type code" (BT-3) should only contain the following values from code list UNTDID 1001: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice), 381 (Credit note), 875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice). -->
+  <?xmute mutator="code" values="326,380,384,389,381,875,876,877" 
+                    schematron-valid="nrs:DE-R-017 xrubl:BR-DE-17" id="ubl-inv-DE-R-017-test-type-codes-valid"
+                    description="DE-R-017 test valid invoice type codes" ?>
+  <?xmute mutator="code" values="383,527" 
+                    schematron-invalid="nrs:DE-R-017 xrubl:BR-DE-17" id="ubl-inv-DE-R-017-test-invalid-type-codes"
+                    description="DE-R-017 test invalid type codes" ?>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <!-- BT-10 / DE-R-015 The element "Buyer reference" (BT-10) shall be provided. -->
+  <cbc:BuyerReference>90000000-03083-72</cbc:BuyerReference>
+  <!-- BG-24 -->
+  <cac:AdditionalDocumentReference>
+    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
+    <cac:Attachment>
+      <!-- BT-125 / DE-R-022 Attached documents provided with an invoice in "ADDITIONAL SUPPORTING DOCUMENTS" (BG-24) shall have a unique filename (non case-sensitive) within the element ″Attached document″ (BT-125). -->
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBERi0xLjMKJcTl8uXrp/Og0MTGCjMgMCBvYmoKPDwgL0ZpbHRlciAvRmxhdGVEZWNvZGUgL0xlbmd0aCAxNjYgPj4Kc3RyZWFtCngBnY67DsIwDEV3vuLydgZSx0lDs4JY2Cp5o0yVGJA6VP1/iZKqEywgD7627KPTo0aP4jw4tAM419COK7YSpvkdnLMpcUSUykpKgrbDSVFOD2OTkCwzO5TBL7RDoSpw0AduoKXBga0HrczIDaB1XjjQZpuTgHY5lKD9HKbjBTVkcIdecdEs+6NZ4MomH+OnGTXGQJ//cn2wcqzCN+5oPHPrF+VVRx8KZW5kc3RyZWFtCmVuZG9iagoxIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgMiAwIFIgL1Jlc291cmNlcyA0IDAgUiAvQ29udGVudHMg</cbc:EmbeddedDocumentBinaryObject>
+    </cac:Attachment>
+  </cac:AdditionalDocumentReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID>9876543217894897438</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <!-- BT-3 / DE-R-003 The element "Seller city" (BT-37) shall be provided. -->
+        <cbc:CityName>[Seller city]</cbc:CityName>
+        <!-- BT-38 / DE-R-004 The element "Seller post code" (BT-38) shall be provided. -->
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <!-- BT-31 (with cac:TaxScheme/cbc:ID="VAT") / DE-R-016 If one of the VAT codes S, Z, E, AE, K, G, L, or M is used, an invoice shall contain at least one of the following elements: "Seller VAT identifier" (BT-31) or "Seller tax registration identifier" (BT-32) or "SELLER TAX REPRESENTATIVE PARTY" (BG-11). -->
+        <cbc:CompanyID>ATU123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Seller name]</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+      <!-- BG-6 / DE-R-002 The group "SELLER CONTACT" (BG-6) shall be provided. -->
+      <cac:Contact>
+        <!-- BT-41 / DE-R-005 The element "Seller contact point" (BT-41) shall be provided. -->
+        <cbc:Name>Tim Tester</cbc:Name>
+        <!-- BT-42 / DE-R-006 The element "Seller contact telephone number" (BT-42) shall be provided. -->
+        <!-- BT-42 / DE-R-027 "Seller contact telephone number" (BT-42) should contain a valid telephone number. A valid telephone should consist of 3 digits minimum. -->
+        <cbc:Telephone>012 3456789</cbc:Telephone>
+        <!-- BT-43 / DE-R-007 The element "Seller contact email address" (BT-43) shall be provided. -->
+        <!-- BT-43 / DE-R-028 "Seller contact email address" (BT-43) should contain exactly one @-sign, which should not be framed by a whitespace or a dot but by at least two characters on each side. A dot should not be the first or last character. -->
+        <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
+      <cac:PostalAddress>
+        <!-- BT-52 / DE-R-008 The element "Buyer city" (BT-52) shall be provided. -->
+        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <!-- BT-53 / DE-R-009 The element "Buyer post code" (BT-53) shall be provided. -->
+        <cbc:PostalZone>98765</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Buyer name]</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <!-- BG-15 DELIVER TO ADDRESS -->
+  <cac:Delivery>
+    <cac:DeliveryLocation>
+      <cbc:ID>68</cbc:ID>
+      <cac:Address>
+        <!-- BT-77 / DE-R-010 The element "Deliver to city" (BT-77) shall be provided if the group "DELIVER TO ADDRESS" (BG-15) is delivered. -->
+        <cbc:CityName>[Deliver to city]</cbc:CityName>
+        <!-- BT-78 / DE-R-011 The element "Deliver to post code" (BT-78) shall be provided if the group "DELIVER TO ADDRESS" (BG-15) is delivered. -->
+        <cbc:PostalZone>98765</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>[Deliver to party name]</cbc:Name>
+      </cac:PartyName>
+    </cac:DeliveryParty>
+  </cac:Delivery>
+  <!-- BG-16 / DE-R-001 An invoice shall contain information on "PAYMENT INSTRUCTIONS" (BG-16). -->
+  <cac:PaymentMeans>
+    <!-- BT-81 / DE-R-019 The element "Payment account identifier" (BT-84) should contain a valid IBAN if code 58 SEPA is provided in "Payment means type code" (BT-81). -->
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <!-- BG-17 / DE-R-023-1 If "Payment means type code" (BT-81) contains a code for credit transfer (30, 58), "CREDIT TRANSFER" (BG-17) shall be provided. -->
+    <cac:PayeeFinancialAccount>
+      <!-- BT-84 / DE-R-019 The element "Payment account identifier" (BT-84) should contain a valid IBAN if code 58 SEPA is provided in "Payment means type code" (BT-81). -->
+      <cbc:ID>DE75512108001245126199</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:PaymentTerms>
+    <!-- BT-20 / DE-R-018 Information on cash discounts for prompt payment (Skonto) shall be provided within the element "Payment terms" BT-20 in the following way: First segment "SKONTO", second segment amount of days ("TAGE=N"), third segment percentage ("PROZENT=N"). Percentage must be separated by dot with two decimal places. In case the base value of the invoiced amount is not provided in BT-115 but as a partial amount, the base value shall be provided as fourth segment "BASISBETRAG=N" as semantic data type amount. Each entry shall start with a #, the segments must be separated by # and a row shall end with a #. A complete statement on cash discount for prompt payment shall end with a XML-conformant line break. All statements on cash discount for prompt payment shall be given in capital letters. Additional whitespaces (blanks, tabulators or line breaks) are not allowed. Other characters or texts than defined above are not allowed. -->
+    <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00#
+      #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
+      #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
+    </cbc:Note>
+  </cac:PaymentTerms>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">757.41</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">3986.34</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">757.41</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <!-- BT-119 / DE-R-014 The element "VAT category rate" (BT-119) shall be provided. -->
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">3986.34</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">3986.34</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="EUR">4743.75</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="EUR">4743.75</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">3986.34</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Beratung</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <!-- BT-151 / DE-R-016 If one of the VAT codes S, Z, E, AE, K, G, L, or M is used, an invoice shall contain at least one of the following elements: "Seller VAT identifier" (BT-31) or "Seller tax registration identifier" (BT-32) or "SELLER TAX REPRESENTATIVE PARTY" (BG-11). -->
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">132.878</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

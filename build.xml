@@ -307,6 +307,23 @@
     </java>
   </target>
 
+  <target name="test-nrs"
+    description="Testing NRS Schematron Rules with XML Mutate">
+    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
+      dir="${basedir}">
+
+      <arg value="--target" />
+      <arg value="${build.dir}/generated/nrs" />
+      <!-- Has no impact -->
+      <arg value="--fail-fast"/>
+      <arg value="--schematron"/>
+      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>
+      <arg value="--schematron"/>
+      <arg value="nrs=${build.dir}/national-rules/XRechnung-UBL-NRS.sch"/>
+      <arg value="tools/test/"/>
+    </java>
+  </target>
+
   <target name="update-spec-id"
     description="Updating Specification IDs for tests">
 
