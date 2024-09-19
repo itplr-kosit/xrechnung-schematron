@@ -20,14 +20,14 @@
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
   <property name="saxon.jar" value="saxon9he.jar" />
 
-  <property name="xmute.version.full" value="0.5" />
-  <property name="xmute.jar" value="xml-mutate.jar" />
+  <property name="xmute.version.full" value="0.6" />
+  <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
 
   <property name="bis.version" value="3.0.14" />
   <property name="bis.zip" value="${bis.version}.zip" />
   <property name="bis.download.url" value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
-  <property name="schxslt.version" value="1.9.5" />
+  <property name="schxslt.version" value="1.10" />
   <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
   <property name="schxslt.download.url" value="https://github.com/schxslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />     
 
