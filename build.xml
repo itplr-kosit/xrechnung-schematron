@@ -13,6 +13,7 @@
   <property name="test.src.dir" location="${basedir}/test/instances" />
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
+  <property name="xr-schematron.build.dir" location="${build.dir}/schematron" />
   <!-- Naming -->
   <property name="xr-schematron.version.full" value="2.1.1-SNAPSHOT" />
   <property name="xrechnung.version" value="3.0.2" />
@@ -25,7 +26,8 @@
 
   <property name="bis.version" value="3.0.14" />
   <property name="bis.zip" value="${bis.version}.zip" />
-  <property name="bis.download.url" value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
+  <property name="bis.download.url"
+    value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
   <property name="xr-schematron.zip" value="${dist.name}.zip" />
 
@@ -148,8 +150,9 @@
       value="${xr-schematron.version.full}" />
 
     <filter token="xrechnung.version" value="${xrechnung.version}" />
-    <copy todir="${build.dir}/schematron" file="${validation.dir}/schematron/common.sch"/>
-    <copy todir="${build.dir}" filtering="true">      
+    <copy todir="${build.dir}/schematron"
+      file="${validation.dir}/schematron/common.sch" />
+    <copy todir="${build.dir}" filtering="true">
       <fileset dir="${basedir}">
         <include name="README.md" />
         <include name="CHANGELOG.md" />
@@ -158,13 +161,13 @@
     </copy>
   </target>
 
-  <target name="retrieve-peppol-bis-billing-rules"
-    depends="init"
+  <target name="retrieve-peppol-bis-billing-rules" depends="init"
     description="Download and prepare Peppol BIS Billing 3.0 rules">
 
-    <echo message="Loading Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
-    <get src="${bis.download.url}" dest="${download.dir}"
-      verbose="true" skipexisting="true" usetimestamp="false" httpusecaches="false" />
+    <echo
+      message="Loading Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
+    <get src="${bis.download.url}" dest="${download.dir}" verbose="true"
+      skipexisting="true" usetimestamp="false" httpusecaches="false" />
 
     <fail message="No Peppol BIS Billing zip file available">
       <condition>
@@ -177,7 +180,8 @@
     </fail>
 
     <echo message="Unpacking Peppol BIS Billing ${bis.version} from ${bis.zip}" />
-    <unzip src="${download.dir}/${bis.zip}" dest="${build.dir}/bis" failonemptyarchive="true">
+    <unzip src="${download.dir}/${bis.zip}" dest="${build.dir}/bis"
+      failonemptyarchive="true">
       <patternset>
         <include name="**/PEPPOL-EN16931-*.sch" />
       </patternset>
@@ -187,8 +191,7 @@
     <path id="schematron-path">
       <fileset dir="${build.dir}/bis" includes="**.sch" />
     </path>
-    <fail
-      message="Could not extract PEPPOL BIS Billing rules">
+    <fail message="Could not extract PEPPOL BIS Billing rules">
       <condition>
         <or>
           <not>
@@ -203,59 +206,63 @@
           </not>
         </or>
       </condition>
-    </fail>   
-  </target>
-  
-  <target name="check-schematron-result">
-    <!-- Params: 1. source XML
-         Result: "true"|"false"
-     -->
-    <xslt in="${srcxml}"
-          out="${build.dir}/temp.out"
-          style="${src.dir}/xsl/check-schematron-asserts.xslt">
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}"/>        
-      </classpath>      
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />      
-    </xslt>
-    <loadfile property="xpath-result" srcFile="${build.dir}/temp.out"/>
-    <condition property="sch-is-valid">
-      <equals arg1="${xpath-result}" arg2="true" />
-    </condition>
-    <delete file="${build.dir}/temp.out" quiet="true"/>
-    <fail message="The created Schematron ${srcxml} is not valid because it contains asserts without texts"
-          unless="sch-is-valid"/>
+    </fail>
   </target>
 
-  <target name="merge-peppol-rules-with-xr-rules" depends="retrieve-peppol-bis-billing-rules">
+
+  <target name="merge-peppol-rules-with-xr-rules"
+    depends="retrieve-peppol-bis-billing-rules">
+    <!-- merge ubl -->
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      out="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
       style="${src.dir}/xsl/peppol-into-xr.xsl">
-      <param name="syntax" expression="UBL"/>
+      <param name="syntax" expression="UBL" />
       <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}"/>        
-      </classpath>      
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />      
-    </xslt>
-
-    <xslt in="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"
-      out="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
-      style="${src.dir}/xsl/peppol-into-xr.xsl">
-      <param name="syntax" expression="CII"/>
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}"/>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
       </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
-    
-    <!-- Goal: run xpath check on result -->
-    <antcall target="check-schematron-result">
-      <param name="srcxml" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
-    </antcall>
-    <antcall target="check-schematron-result">
-      <param name="srcxml" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
-    </antcall>
+    <!-- merge cii -->
+    <xslt in="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      out="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
+      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      <param name="syntax" expression="CII" />
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+
   </target>
+
+  <target name="check-merge-peppol-rules-with-xr-rules"
+    depends="merge-peppol-rules-with-xr-rules">
+    <property name="sch.test.tmp.out.file" value="${xr-schematron.build.dir}/check.tmp" />
+
+    <!-- failonerror must be yes -->
+    <!-- check ubl -->
+    <xslt in="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
+      out="${sch.test.tmp.out.file}-ubl.out"
+      style="${src.dir}/xsl/check-schematron-asserts.xslt" failonerror="yes">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+
+    <!-- check cii -->
+    <xslt in="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
+      out="${sch.test.tmp.out.file}-cii.out"
+      style="${src.dir}/xsl/check-schematron-asserts.xslt" failonerror="yes">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+  </target>
+
+
+
 
   <target name="compile-schematron-rules"
     depends="prepare-saxon, prepare-build-dir, merge-peppol-rules-with-xr-rules"
@@ -266,16 +273,18 @@
       outdir="${build.dir}/schematron/cii" deleteonexit="false" overwrite="true" />
     <schematron-compile
       schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      insuffix="sch" workdir="${download.dir}" outdir="${build.dir}/schematron/ubl"
-      deleteonexit="false" overwrite="true"/>
+      insuffix="sch" workdir="${download.dir}"
+      outdir="${build.dir}/schematron/ubl" deleteonexit="false" overwrite="true"
+     />
   </target>
 
-  <target name="transform-xr-rules-to-peppol-nrs" depends="prepare-saxon, prepare-build-dir">
+  <target name="transform-xr-rules-to-peppol-nrs"
+    depends="prepare-saxon, prepare-build-dir">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
       out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
       style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl">
       <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}"/>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
       </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
@@ -298,7 +307,7 @@
   <target name="test-single-file" depends="compile-schematron-rules"
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
-    
+
     <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
       dir="${basedir}">
 
@@ -307,9 +316,11 @@
       <!-- Has no impact -->
       <arg value="--fail-fast" />
       <arg value="--schematron" />
-      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>
+      <arg
+        value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl" />
       <arg value="--schematron" />
-      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+      <arg
+        value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
       <arg value="test/instances/${test.file.name}" />
     </java>
   </target>
@@ -325,14 +336,16 @@
       <arg value="--target" />
       <arg value="${build.dir}/generated" />
       <!-- Has no impact -->
-      <arg value="--fail-fast"/>
-      <arg value="--schematron"/>
-      <arg value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl"/>      
-      <arg value="--schematron"/>
-      <arg value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl"/>
-      <arg value="test/instances/ubl-inv/"/>
-      <arg value="test/instances/ubl-cn/"/>
-      <arg value="test/instances/cii/"/>
+      <arg value="--fail-fast" />
+      <arg value="--schematron" />
+      <arg
+        value="xrubl=${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl" />
+      <arg value="--schematron" />
+      <arg
+        value="xrcii=${build.dir}/schematron/cii/XRechnung-CII-validation.xsl" />
+      <arg value="test/instances/ubl-inv/" />
+      <arg value="test/instances/ubl-cn/" />
+      <arg value="test/instances/cii/" />
     </java>
   </target>
 
@@ -342,11 +355,11 @@
     <echo>Checking Specification IDs</echo>
 
     <!-- get fileset -->
-    <mkdir dir="${test.build.dir}/tmp"/>
-    
+    <mkdir dir="${test.build.dir}/tmp" />
+
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
-      style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
-      extension=".xml">
+      style="${src.dir}/xsl/normalization.xsl"
+      classpath="${lib.dir}/${saxon.jar}" extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
       <param name="xr-version" expression="_3.0" />
     </xslt>
@@ -364,22 +377,24 @@
     <mkdir dir="${build.dir}/tmp" />
 
     <xslt basedir="${test.src.dir}" destdir="${build.dir}/tmp"
-      style="${src.dir}/xsl/normalization.xsl" classpath="${lib.dir}/${saxon.jar}"
-      extension=".xml">
+      style="${src.dir}/xsl/normalization.xsl"
+      classpath="${lib.dir}/${saxon.jar}" extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
 
   </target>
 
 
-  <target name="test" depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
+  <target name="test"
+    depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**" />
+      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**"
+     />
   </target>
 
 
@@ -388,7 +403,8 @@
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**" />
+      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**"
+     />
   </target>
 
   <target name="clean" description="clean up">
