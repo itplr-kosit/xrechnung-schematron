@@ -88,6 +88,10 @@
               flag="warning"
               id="BR-DE-26"
           >[BR-DE-26] Wenn im Element Invoice type code (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
+      <assert test="matches(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:URIID, $XR-URL-REGEX)"
+        flag="fatal"
+        id="BR-TMP-2"
+      >[BR-TMP-2] Die "External document location" BT-124 muss eine gültige URL sein.</assert>
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">

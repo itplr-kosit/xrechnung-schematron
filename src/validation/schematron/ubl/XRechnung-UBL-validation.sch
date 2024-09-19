@@ -92,10 +92,14 @@
       <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)"
         flag="fatal"
         id="BR-DE-31"
-        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
-      
+        >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>      
     </rule>    
-    
+    <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
+      <assert test="matches(cbc:URI, $XR-URL-REGEX)"
+        flag="fatal"
+        id="BR-TMP-2"
+      >[BR-TMP-2] Die "External document location" BT-124 muss eine gültige URL sein.</assert>
+    </rule>
     <rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty">
       <assert test="cac:Party/cac:Contact"
         flag="fatal"

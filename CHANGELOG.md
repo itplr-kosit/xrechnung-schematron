@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+* BR-TMP-2 to checking valid url in BT-124
+
 ## v2.1.0 on 2024-06-20
 
 This release is compatible with XRechnung 3.0.x
