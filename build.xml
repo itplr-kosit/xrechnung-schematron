@@ -237,7 +237,8 @@
 
   <target name="check-merge-peppol-rules-with-xr-rules"
     depends="merge-peppol-rules-with-xr-rules">
-    <property name="sch.test.tmp.out.file" value="${xr-schematron.build.dir}/check.tmp" />
+    <property name="sch.test.tmp.out.file"
+      value="${xr-schematron.build.dir}/check.tmp" />
 
     <!-- failonerror must be yes -->
     <!-- check ubl -->
@@ -261,11 +262,14 @@
     </xslt>
   </target>
 
-
+  <target name="merge-peppol-xr-rules"
+    depends="retrieve-peppol-bis-billing-rules, merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
+    <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
+  </target>
 
 
   <target name="compile-schematron-rules"
-    depends="prepare-saxon, prepare-build-dir, merge-peppol-rules-with-xr-rules"
+    depends="prepare-saxon, prepare-build-dir, merge-peppol-xr-rules"
     description="Compiling schematron rules">
     <schematron-compile
       schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
