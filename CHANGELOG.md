@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* BR-DEX-01 in Extension CII
+
 ### Changed
 
 * Set severity level to "fatal" in adapted Peppol BIS Billing rules in CII
