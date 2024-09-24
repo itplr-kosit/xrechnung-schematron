@@ -13,6 +13,10 @@ This release is compatible with XRechnung ?.?.?
 
 * BR-DEX-01 in Extension CII
 
+### Changed
+
+* Set severity level to "fatal" in adapted Peppol BIS Billing rules in CII
+
 ## v2.1.0 on 2024-06-20
 
 This release is compatible with XRechnung 3.0.x
