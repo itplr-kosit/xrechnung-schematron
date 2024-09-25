@@ -279,5 +279,22 @@
             id="BR-DEX-08"
               >[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
     </rule>
+
+      <rule context="ram:AttachmentBinaryObject[$isExtension]">
+          <!-- BR-DEX-01
+        checks whether an EmbeddedCocumentBinaryObject has a valid mimeCode (incl. XML)
+        -->
+          <assert test=".[@mimeCode = 'application/pdf' or
+              @mimeCode = 'image/png' or
+              @mimeCode = 'image/jpeg' or
+              @mimeCode = 'text/csv' or
+              @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or
+              @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or
+              @mimeCode = 'application/xml']"
+              id="BR-DEX-01"
+              flag="fatal"
+              >[BR-DEX-01] Das Element <name /> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <value-of
+                  select="@mimeCode" />. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
+      </rule>
   </pattern>
 </schema>
