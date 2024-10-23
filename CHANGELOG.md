@@ -16,6 +16,7 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * Set severity level to "fatal" in adapted Peppol BIS Billing rules in CII
+* version of Peppol BIS Billing updated to 3.0.17
 
 ## v2.1.0 on 2024-06-20
 
