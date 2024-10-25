@@ -11,6 +11,12 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* BR-DEX-01 in Extension CII
+
+### Changed
+
+* Set severity level to "fatal" in adapted Peppol BIS Billing rules in CII
+* version of Peppol BIS Billing updated to 3.0.17
 * validity check on created Schematron rules to prevent missing assertion texts
 
 ### Fixed

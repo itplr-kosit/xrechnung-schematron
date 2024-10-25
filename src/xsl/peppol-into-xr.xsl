@@ -89,7 +89,7 @@
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
                     <xsl:attribute name="test">false()</xsl:attribute>
-                    <xsl:attribute name="flag">warning</xsl:attribute>
+                    <xsl:attribute name="flag">fatal</xsl:attribute>
                     <xsl:text>Document MUST not contain empty elements.</xsl:text>
                 </xsl:element>
             </xsl:element>
@@ -103,14 +103,14 @@
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
                     <xsl:attribute name="test">not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'</xsl:attribute>
-                    <xsl:attribute name="flag">warning</xsl:attribute>
+                    <xsl:attribute name="flag">fatal</xsl:attribute>
                     <xsl:text>Charge on price level is NOT allowed. Only value 'false' allowed.</xsl:text>
                 </xsl:element>
                 <!-- R046 -->
                 <xsl:element name="assert" namespace="{namespace-uri()}">
                     <xsl:attribute name="id">PEPPOL-EN16931-R046</xsl:attribute>
                     <xsl:attribute name="test">not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - u:decimalOrZero(ram:AppliedTradeAllowanceCharge/ram:ActualAmount)</xsl:attribute>
-                    <xsl:attribute name="flag">warning</xsl:attribute>
+                    <xsl:attribute name="flag">fatal</xsl:attribute>
                     <xsl:text>Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
                 </xsl:element>
             </xsl:element>            
@@ -178,12 +178,9 @@
                         <xsl:value-of><xsl:number level="any" count="assert[@id = $rule-id]"/></xsl:value-of>
                     </xsl:if>
                 </xsl:attribute>                  
-                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>
-                <xsl:if test="$syntax='CII'">
-                    <xsl:attribute name="flag">warning</xsl:attribute>
-                </xsl:if>                
+                <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>                
                 <xsl:choose>
-                    <!-- Replace some texts in CII -->                                        
+                    <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
                         <!-- modify test -->
                         <xsl:attribute name="test">count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1</xsl:attribute>
