@@ -244,7 +244,7 @@
     <!-- check ubl -->
     <xslt in="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
       out="${sch.test.tmp.out.file}-ubl.out"
-      style="${src.dir}/xsl/check-schematron-asserts.xslt" failonerror="yes">
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
         <pathelement location="${lib.dir}/${saxon.jar}" />
       </classpath>
@@ -254,7 +254,7 @@
     <!-- check cii -->
     <xslt in="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
       out="${sch.test.tmp.out.file}-cii.out"
-      style="${src.dir}/xsl/check-schematron-asserts.xslt" failonerror="yes">
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
         <pathelement location="${lib.dir}/${saxon.jar}" />
       </classpath>
