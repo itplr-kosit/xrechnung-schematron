@@ -402,13 +402,9 @@
   </target>
 
 
-
   <target name="dist" depends="dist-only,test"
     description="Generate the distribution">
 
-    <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**"
-     />
   </target>
 
   <target name="clean" description="clean up">
