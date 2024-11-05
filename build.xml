@@ -237,13 +237,12 @@
 
   <target name="check-merge-peppol-rules-with-xr-rules"
     depends="merge-peppol-rules-with-xr-rules">
-    <property name="sch.test.tmp.out.file"
-      value="${xr-schematron.build.dir}/check.tmp" />
+    <mkdir dir="${xr-schematron.build.dir}/tmp"/>
 
     <!-- failonerror must be yes -->
     <!-- check ubl -->
     <xslt in="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
-      out="${sch.test.tmp.out.file}-ubl.out"
+      out="${xr-schematron.build.dir}/tmp/ubl.out"
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
         <pathelement location="${lib.dir}/${saxon.jar}" />
@@ -253,13 +252,14 @@
 
     <!-- check cii -->
     <xslt in="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
-      out="${sch.test.tmp.out.file}-cii.out"
+      out="${xr-schematron.build.dir}/tmp/cii.out"
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
         <pathelement location="${lib.dir}/${saxon.jar}" />
       </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
+
   </target>
 
   <target name="merge-peppol-xr-rules"
@@ -397,7 +397,7 @@
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/QS*2017/**,bis/**,generated,national-rules/**"
+      excludes="download/**,schematron/tmp/**,bis/**,generated,national-rules/**"
      />
   </target>
 
