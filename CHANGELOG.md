@@ -22,6 +22,7 @@ This release is compatible with XRechnung 3.0.x
 ### Fixed
 
 * missing assertion texts in PEPPOL-EN16931-R040, PEPPOL-EN16931-R055, PEPPOL-EN16931-R120
+* Directory generated/, containing test instances generated with XML Mutate, removed from distribution
 
 ## v2.1.0 on 2024-06-20
 
