@@ -397,12 +397,12 @@
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/tmp/**,bis/**,generated,national-rules/**"
+      excludes="download/**,schematron/tmp/**,bis/**,generated/**,national-rules/**"
      />
   </target>
 
 
-  <target name="dist" depends="dist-only,test"
+  <target name="dist" depends="test,dist-only"
     description="Generate the distribution">
 
   </target>
