@@ -15,7 +15,7 @@ This release is compatible with XRechnung 3.0.x
 
 ### Changed
 
-* Set severity level to "fatal" in adapted Peppol BIS Billing rules in CII
+* Set assertion flag to "fatal" in adapted Peppol BIS Billing rules in CII
 * version of Peppol BIS Billing updated to 3.0.17
 * validity check on created Schematron rules to prevent missing assertion texts
 
@@ -23,6 +23,8 @@ This release is compatible with XRechnung 3.0.x
 
 * missing assertion texts in PEPPOL-EN16931-R040, PEPPOL-EN16931-R055, PEPPOL-EN16931-R120
 * Directory generated/, containing test instances generated with XML Mutate, removed from distribution
+
+**The severity levels of the adapted Peppol BIS Billing rules in CII have been raised to "error". Please evaluate impact!**
 
 ## v2.1.0 on 2024-06-20
 
