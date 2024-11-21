@@ -9,7 +9,6 @@
   <property name="build.dir" location="${basedir}/build" />
   <property name="download.dir" location="${build.dir}/download" />
   <property name="dist.dir" location="${basedir}/dist" />
-  <property name="tools.dir" location="${basedir}/tools" />
   <property name="test.src.dir" location="${basedir}/test/instances" />
   <property name="test.build.dir" location="${build.dir}/test" />
   <property name="bis.build.dir" location="${basedir}/build/bis" />
@@ -282,18 +281,6 @@
      />
   </target>
 
-  <target name="transform-xr-rules-to-peppol-nrs"
-    depends="prepare-saxon, prepare-build-dir">
-    <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
-      style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl">
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-      </classpath>
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />
-    </xslt>
-  </target>
-
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
@@ -390,7 +377,7 @@
 
 
   <target name="test"
-    depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
+    depends="retrieve-xmute, check-xmute-available, compile, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"

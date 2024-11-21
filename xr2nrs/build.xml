@@ -1,0 +1,62 @@
+<project name="xrechnung-schematron" default="compile-schematron-rules"
+  basedir=".">
+  <description>Transform XR Schematron Rules to Peppol National Rule set</description>
+  <!-- set global default properties for this build -->
+  <!-- main build directories -->
+  <property name="schematron.dir" location="${basedir}/.." />
+  <property name="src.dir" location="${schematron.dir}/src" />
+  <property name="validation.dir" location="${src.dir}/validation" />
+  <property name="lib.dir" location="${schematron.dir}/lib" />
+  <property name="build.dir" location="${schematron.dir}/build" />
+  <property name="download.dir" location="${build.dir}/download" />
+  
+  <property name="saxon.jar" value="saxon9he.jar" />
+  
+
+  <target name="init"
+    description="Initializes build directory structure and ISO timestamp">
+    <!-- Create timestamps -->
+    <tstamp>
+      <format property="build.date" pattern="yyyy-MM-dd" />
+    </tstamp>
+    <echo>Build date: ${build.date}</echo>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${download.dir}" />
+    <mkdir dir="${lib.dir}" />    
+  </target>
+
+  <target name="prepare-saxon" depends="init"
+    description="Download Saxon-HE and add jar to library directory">
+    <get
+      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-1-8J.zip/download"
+      dest="${download.dir}/SaxonHE9-9-1-8J.zip" verbose="true"
+      skipexisting="true" usetimestamp="true" />
+    <unzip src="${download.dir}/SaxonHE9-9-1-8J.zip" dest="${lib.dir}">
+      <patternset>
+        <include name="**/${saxon.jar}" />
+      </patternset>
+      <flattenmapper />
+    </unzip>
+  </target>
+
+  <target name="transform-xr-rules-to-peppol-nrs"
+    depends="prepare-saxon">
+    <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
+      style="${basedir}/xr-2-peppol-bis-billing-nrs.xsl">
+      <classpath>
+        <pathelement location="${lib.dir}/${saxon.jar}" />
+      </classpath>
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+  </target>
+
+  
+
+  <target name="clean" description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
+    <delete dir="${dist.dir}" verbose="true" includeEmptyDirs="true" />
+  </target>
+</project>
