@@ -54,7 +54,7 @@
         <let name="customerCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')" />
         
         <!-- include variables needed from common.sch -->
-        <xsl:copy-of select="document('../src/validation/schematron/common.sch')/sch:pattern/sch:let[not(@name = $commons)]"/>
+        <xsl:copy-of select="document('../../validation/schematron/common.sch')/sch:pattern/sch:let[not(@name = $commons)]"/>
 
         <xsl:apply-templates select="sch:rule"/>
       
