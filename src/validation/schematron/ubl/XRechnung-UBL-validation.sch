@@ -245,7 +245,7 @@
          part two proofs whether the count of invoice lines with correct lineextensionamounts according to part one is equal to the count of subinvoicelines with including subinvoicelines
          every amount has to be cast to decimal cause of floating point problems -->
       <assert test="(every $invoiceline 
-        in /Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ] 
+        in /ubl:Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ] 
         satisfies $invoiceline/xs:decimal(cbc:LineExtensionAmount) = sum($invoiceline/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and
         (count( //cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0 and xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0]))"
         flag="warning"
