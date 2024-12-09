@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* Wrong validation with BR-DEX-02 when LineExtensionAmount of 0 is provided.
+
 
 ## v2.2.0 on 2024-10-31
 
