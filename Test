@@ -1,0 +1,250 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<!--  English disclaimer below. -->
+<!-- rights of use 
+ZUGFeRD Data Format Version 2.3.1, 15.11.2024
+Example version 15.11.2024
+ 
+Purpose of the Forum electronic Invoice Germany, which was held on 31 March 2010 under the working group for 
+Economic Administration e.V., is, among other things, the creation and specification of an open data format 
+structured electronic data interchange based on open and non-discriminatory, standardised 
+technologies ("ZUGFeRD data format").
+ 
+The ZUGFeRD data format is used by both companies and public administration in accordance with the FeRD 
+freely accessible. To this end, FeRD offers all companies and organisations in the public administration a 
+license to use the copyrighted ZUGFeRD data format at fair, appropriate and non-compliant 
+discriminatory conditions.
+ 
+The specification of the FeRD for the implementation of the ZUGFeRD data format is available in its current version 
+available at www.ferd-net.de.
+ 
+In detail, the grant of use includes: 
+=====================================
+ 
+FeRD grants a license for the use of the copyrighted ZUGFeRD data format in the respective 
+valid and accepted version (www.ferd-net.de). 
+The license includes an irrevocable right of use, including the right to further develop, 
+Further processing and connection with other products.
+The licence applies in particular to the development, design, manufacture, sale, use or 
+Other use of the ZUGFeRD data format for hardware and/or software products as well as other 
+Applications and Services. 
+This license does not include the essential patents of the members of FeRD. The main patents are patents 
+and patent applications worldwide that include one or more patent claims that are 
+necessary claims. Necessary claims are only those claims of the essential patents which are 
+the implementation of the ZUGFeRD data format would necessarily be violated. 
+The Licensee shall be entitled to grant its respective group companies a perpetual, worldwide, non-transferable, 
+irrevocable right of use, including the right of further development, further processing and connection with 
+other products. 
+ 
+The license is provided free of charge. 
+ 
+Except in the case of intentional fault or gross negligence, FeRD shall not be liable for loss of use, loss of 
+Profit, loss of data, loss of communications, loss of revenue, loss of contract, loss of business or for costs, 
+damages, losses or liabilities in connection with an interruption of business activities, nor for specific, 
+incidental, indirect, punitive or consequential damages, even if the possibility of 
+Costs, losses or damages could normally have been foreseen. -->
+<!-- Right of use 
+ZUGFeRD Data format version 2.3.1, November 15th, 2024
+ 
+The purpose of the Forum elektronische Rechnung Deutschland (FeRD), which was founded on March 31, 2010 under the 
+umbrella of Arbeitsgemeinschaft für wirtschaftliche Verwaltung e. V., is, among other things, to create and specify an 
+open data format for structured electronic data exchange on the basis of open and non discriminatory, standardised 
+technologies ("ZUGFeRD data format").
+ 
+The ZUGFeRD data format is used by both companies and public administration according to the FeRD 
+made freely accessible. For this purpose, FeRD offers all companies and organisations of the public administration a 
+License to use the copyrighted ZUGFeRD data format in a fair, appropriate and non 
+discriminatory conditions.
+ 
+The specification of the FeRD for the implementation of the ZUGFeRD data format is, in its currently valid version 
+available at www.ferd-net.de.
+ 
+In detail, the grant of use includes 
+=====================================
+ 
+FeRD grants a license for the use of the copyrighted ZUGFeRD data format in the respective 
+valid and accepted version (www.ferd-net.de). 
+The license includes an irrevocable right of use including the right of further development, 
+Further processing and connection with other products.
+The license applies in particular to the development, design, production, sale, use or 
+other use of the ZUGFeRD data format for hardware and/or software products and other 
+applications and services. 
+This license does not include the essential patents of the members of FeRD. The essential patents are patents 
+and patent applications worldwide which contain one or more claims that are 
+necessary claims. Necessary claims are only those claims of the essential patents which are 
+the implementation of the ZUGFeRD data format would necessarily be violated. 
+The Licensee is entitled to provide its respective group companies with an unlimited, worldwide, non-transferable, 
+irrevocable right of use including the right of further development, further processing and connection with 
+other products. 
+ 
+The license is provided free of charge. 
+ 
+Except in the case of intentional fault or gross negligence, FeRD is not liable for loss of use, loss of 
+Profit, loss of data, loss of communication, loss of revenue, loss of contracts, loss of business or for costs 
+damages, losses or liabilities in connection with an interruption of business, nor for concrete, 
+incidental, indirect, punitive or consequential damages, even if the possibility of 
+costs, losses or damages could normally have been foreseen. -->
+<rsm:CrossIndustryInvoice>
+<rsm:ExchangedDocumentContext>
+<ram:BusinessProcessSpecifiedDocumentContextParameter>
+<ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+</ram:BusinessProcessSpecifiedDocumentContextParameter>
+<ram:GuidelineSpecifiedDocumentContextParameter>
+<ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
+</ram:GuidelineSpecifiedDocumentContextParameter>
+</rsm:ExchangedDocumentContext>
+<rsm:ExchangedDocument>
+<ram:ID>181301674</ram:ID>
+<ram:TypeCode>877</ram:TypeCode>
+<ram:IssueDateTime>
+</ram:IssueDateTime>
+<ram:IncludedNote>
+</ram:IncludedNote>
+</rsm:ExchangedDocument>
+<rsm:SupplyChainTradeTransaction>
+<ram:IncludedSupplyChainTradeLineItem>
+<ram:AssociatedDocumentLineDocument>
+<ram:LineID>01</ram:LineID>
+<ram:IncludedNote>
+</ram:IncludedNote>
+</ram:AssociatedDocumentLineDocument>
+<ram:SpecifiedTradeProduct>
+</ram:SpecifiedTradeProduct>
+<ram:SpecifiedLineTradeAgreement>
+<ram:NetPriceProductTradePrice>
+<ram:ChargeAmount>43.2</ram:ChargeAmount>
+</ram:NetPriceProductTradePrice>
+</ram:SpecifiedLineTradeAgreement>
+<ram:SpecifiedLineTradeDelivery>
+</ram:SpecifiedLineTradeDelivery>
+<ram:SpecifiedLineTradeSettlement>
+<ram:ApplicableTradeTax>
+<
+<ram:CategoryCode>S</ram:CategoryCode>
+<ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+</ram:ApplicableTradeTax>
+<ram:SpecifiedTradeSettlementLineMonetarySummation>
+<ram:LineTotalAmount>129.6</ram:LineTotalAmount>
+</ram:SpecifiedTradeSettlementLineMonetarySummation>
+</ram:SpecifiedLineTradeSettlement>
+</ram:IncludedSupplyChainTradeLineItem>
+<ram:IncludedSupplyChainTradeLineItem>
+<ram:AssociatedDocumentLineDocument>
+<ram:LineID>02</ram:LineID>
+<ram:IncludedNote>
+</ram:IncludedNote>
+</ram:AssociatedDocumentLineDocument>
+<ram:SpecifiedTradeProduct>
+</ram:SpecifiedTradeProduct>
+<ram:SpecifiedLineTradeAgreement>
+<ram:NetPriceProductTradePrice>
+<ram:ChargeAmount>122.5</ram:ChargeAmount>
+</ram:NetPriceProductTradePrice>
+</ram:SpecifiedLineTradeAgreement>
+<ram:SpecifiedLineTradeDelivery>
+</ram:SpecifiedLineTradeDelivery>
+<ram:SpecifiedLineTradeSettlement>
+<ram:ApplicableTradeTax>
+<
+<ram:CategoryCode>S</ram:CategoryCode>
+<ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+</ram:ApplicableTradeTax>
+<ram:SpecifiedTradeSettlementLineMonetarySummation>
+<ram:LineTotalAmount>122.5</ram:LineTotalAmount>
+</ram:SpecifiedTradeSettlementLineMonetarySummation>
+</ram:SpecifiedLineTradeSettlement>
+</ram:IncludedSupplyChainTradeLineItem>
+<ram:ApplicableHeaderTradeAgreement>
+<ram:BuyerReference>04011000-12345-34</ram:BuyerReference>
+<ram:SellerTradeParty>
+<ram:Name>ELEKTRON Industrieservice GmbH</ram:Name>
+<ram:DefinedTradeContact>
+<ram:TelephoneUniversalCommunication>
+<ram:CompleteNumber>+49891234567</ram:CompleteNumber>
+</ram:TelephoneUniversalCommunication>
+<ram:EmailURIUniversalCommunication>
+>>
+</ram:EmailURIUniversalCommunication>
+</ram:DefinedTradeContact>
+<ram:PostalTradeAddress>
+<ram:PostcodeCode>74465</ram:PostcodeCode>
+<ram:LineOne>Erfurter Strasse 13</ram:LineOne>
+<
+</ram:PostalTradeAddress>
+<ram:URIUniversalCommunication>
+>
+</ram:URIUniversalCommunication>
+<ram:SpecifiedTaxRegistration>
+</ram:SpecifiedTaxRegistration>
+<ram:SpecifiedTaxRegistration>
+</ram:SpecifiedTaxRegistration>
+</ram:SellerTradeParty>
+<ram:BuyerTradeParty>
+<ram:ID>16259</ram:ID>
+<ram:Name>ConsultingService GmbH</ram:Name>
+<ram:PostalTradeAddress>
+<ram:PostcodeCode>76138</ram:PostcodeCode>
+<ram:LineOne>Musterstr. 18</ram:LineOne>
+<ram:CityName>Karlsruhe</ram:CityName>
+<
+</ram:PostalTradeAddress>
+<ram:URIUniversalCommunication>
+>
+</ram:URIUniversalCommunication>
+</ram:BuyerTradeParty>
+<ram:SellerOrderReferencedDocument>
+</ram:SellerOrderReferencedDocument>
+<ram:AdditionalReferencedDocument>
+<ram:TypeCode>916</ram:TypeCode>
+<ram:Name>Aufmass.png</ram:Name>
+</ram:AdditionalReferencedDocument>
+<ram:AdditionalReferencedDocument>
+<ram:IssuerAssignedID>ElektronRapport</ram:IssuerAssignedID>
+<ram:TypeCode>916</ram:TypeCode>
+</ram:AdditionalReferencedDocument>
+<ram:SpecifiedProcuringProject>
+<ram:ID>13130162</ram:ID>
+<ram:Name>Projekt</ram:Name>
+</ram:SpecifiedProcuringProject>
+</ram:ApplicableHeaderTradeAgreement>
+<ram:ApplicableHeaderTradeDelivery>
+<ram:ActualDeliverySupplyChainEvent>
+<ram:OccurrenceDateTime>
+<udt:DateTimeString format="102">20241101</udt:DateTimeString>
+</ram:OccurrenceDateTime>
+</ram:ActualDeliverySupplyChainEvent>
+</ram:ApplicableHeaderTradeDelivery>
+<ram:ApplicableHeaderTradeSettlement>
+<ram:PaymentReference>Rechnung 181301674</ram:PaymentReference>
+<ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+<ram:SpecifiedTradeSettlementPaymentMeans>
+<ram:TypeCode>58</ram:TypeCode>
+<ram:PayeePartyCreditorFinancialAccount>
+<ram:IBANID>DE91100000000123456789</ram:IBANID>
+</ram:PayeePartyCreditorFinancialAccount>
+</ram:SpecifiedTradeSettlementPaymentMeans>
+<ram:ApplicableTradeTax>
+<ram:CalculatedAmount>47.9</ram:CalculatedAmount>
+<ram:TypeCode>VAT</ram:TypeCode>
+<ram:BasisAmount>252.1</ram:BasisAmount>
+<ram:CategoryCode>S</ram:CategoryCode>
+<ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+</ram:ApplicableTradeTax>
+<ram:SpecifiedTradePaymentTerms>
+<ram:Description>Zahlbar sofort rein netto</ram:Description>
+</ram:SpecifiedTradePaymentTerms>
+<ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+<ram:LineTotalAmount>252.1</ram:LineTotalAmount>
+<ram:ChargeTotalAmount>0</ram:ChargeTotalAmount>
+<ram:AllowanceTotalAmount>0</ram:AllowanceTotalAmount>
+<ram:TaxBasisTotalAmount>252.1</ram:TaxBasisTotalAmount>
+<ram:TaxTotalAmount currencyID="EUR">47.9</ram:TaxTotalAmount>
+<ram:GrandTotalAmount>300</ram:GrandTotalAmount>
+<ram:TotalPrepaidAmount>0</ram:TotalPrepaidAmount>
+<ram:DuePayableAmount>300</ram:DuePayableAmount>
+</ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+<ram:ReceivableSpecifiedTradeAccountingAccount>
+<ram:ID>420</ram:ID>
+</ram:ReceivableSpecifiedTradeAccountingAccount>
+</ram:ApplicableHeaderTradeSettlement>
+</rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
