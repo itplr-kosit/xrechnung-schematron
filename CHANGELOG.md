@@ -11,7 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Fixed
 
-* line end issue with BR-DE-18. Thanks to Andreas Pelekies!
+* Bug in BR-DE-18 that prevented detection of missing line breaks. Thanks to Andreas Pelekies!
 
 ## v2.2.0 on 2024-10-31
 
