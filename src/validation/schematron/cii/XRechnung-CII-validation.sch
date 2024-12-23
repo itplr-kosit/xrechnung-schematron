@@ -17,7 +17,7 @@
 
   <xsl:function as="xs:decimal" name="u:decimalOrZero">
     <xsl:param name="element" />
-    <xsl:value-of select="if (boolean($element)) then xs:decimal($element) else 0" />
+    <xsl:sequence select="if (boolean($element)) then xs:decimal($element) else 0" />
   </xsl:function>
 
   <phase id="xrechnung-model">
