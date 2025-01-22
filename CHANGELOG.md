@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* Regex in BR-DE-28 to accept special characters
 
 ## v2.2.0 on 2024-10-31
 
