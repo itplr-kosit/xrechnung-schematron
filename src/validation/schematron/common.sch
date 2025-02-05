@@ -7,7 +7,7 @@
     <let name="XR-EXTENSION-ID" value="concat($XR-CIUS-ID, '#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_' ,$XR-MAJOR-MINOR-VERSION )"/>
 
     <let name="XR-SKONTO-REGEX"  value="'#(SKONTO)#TAGE=([0-9]+#PROZENT=[0-9]+\.[0-9]{2})(#BASISBETRAG=-?[0-9]+\.[0-9]{2})?#$'" />
-    <let name="XR-EMAIL-REGEX"  value="'^[^@]+@([^@\.]+\.)+[^@\.]+$'" />
+    <let name="XR-EMAIL-REGEX"  value="'^[^@\s]+@([^@.\s]+\.)+[^@.\s]+$'" />
     <let name="XR-TELEPHONE-REGEX"  value="'.*([0-9].*){3,}.*'" />
 
     <let name="DIGA-CODES" value="' XR01 XR02 XR03 '" />
