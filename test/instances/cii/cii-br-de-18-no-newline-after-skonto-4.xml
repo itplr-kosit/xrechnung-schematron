@@ -135,7 +135,7 @@
                 <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <?xmute mutator="identity" schematron-invalid="xrcii:BR-DE-18" id="cii-incorrect-skonto-no-newline-4" description="No newline after SKONTO" ?>
+                <?xmute mutator="identity" schematron-invalid="xrcii:BR-DE-18" id="cii-br-de-18-missing-newline-between" description="CII BR-DE-18 missing newline" ?>
                 <ram:Description>#SKONTO#TAGE=7#PROZENT=2.00##SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-3.21#
                     #SKONTO#TAGE=30#PROZENT=0.00#BASISBETRAG=1.23#
                     #SKONTO#TAGE=30#PROZENT=0.00#

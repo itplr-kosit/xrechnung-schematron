@@ -86,7 +86,7 @@
         </cac:DeliveryParty>
     </cac:Delivery>
     <cac:PaymentTerms>
-        <?xmute mutator="identity" schematron-invalid="xrubl:BR-DE-18" id="incorrect-skonto-no-newline" description="Incorrect skonto. No newline between skontos." ?>
+        <?xmute mutator="identity" schematron-invalid="xrubl:BR-DE-18" id="ubl-br-de-18-skonto-missing-newline-between" description="UBL BR-DE-18 missing newline" ?>
         <cbc:Note>#SKONTO#TAGE=7#PROZENT=2.00##SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=2.53#
             #SKONTO#TAGE=14#PROZENT=1.00#BASISBETRAG=-5.53#
         </cbc:Note>
