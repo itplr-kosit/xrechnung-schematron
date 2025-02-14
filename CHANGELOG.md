@@ -9,9 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Tests for BR-DE-18 with missing linebreaks between Skonto information
+
 ### Changed
 
-* global codelist variables to adapt CEN 1.3.13 codelist updates
+* Global codelist variables to adapt CEN 1.3.13 codelist updates
+
+### Fixed
+
+* Bug in BR-DE-18 that prevented detection of missing line breaks.
+
 
 ## v2.2.0 on 2024-10-31
 
