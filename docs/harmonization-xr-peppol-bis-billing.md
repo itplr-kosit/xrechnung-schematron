@@ -15,6 +15,10 @@ The relevant files are located here:
 |   |-- xsl/
 |       |-- peppol-into-xr.xsl (Transformation script for generation of XRechnung rules)
 |       |-- rule-list.xml (Whitelist of Peppol BIS Billing rules to be transferred to XRechnung)
+|   |-- tools/
+|       |-- xr-2-peppol-bis-billing-nrs.xsl (transformation file for creation of National Ruleset)
+|       |-- xr-rules-list.xml (Whitelist of XRechnung business rules to be included in National Ruleset)
+|       |-- xr-variables-list.xml (Blacklist of XR Schematron variables not used in target rule set)
 |-- build/ (temporary files downloaded/created during the build process)
 |   |-- bis/ (Peppol BIS Billing rules downloaded here)
 |   |-- schematron/
@@ -22,10 +26,6 @@ The relevant files are located here:
 |       |-- ubl/ (generated UBL rules stored here)
 |   |-- national-rules/
 |       |-- XRechnung-UBL-NRS.sch (National rule set for integration into Peppol BIS Billing)
-|-- tools/
-    |-- xr-2-peppol-bis-billing-nrs.xsl (transformation file for creation of National Ruleset)
-    |-- xr-rules-list.xml (Whitelist of XRechnung business rules to be included in National Ruleset)
-    |-- xr-variables-list.xml (Blacklist of XR Schematron variables not used in target rule set)
 ```
 
 
@@ -74,4 +74,4 @@ Call
 ant transform-xr-rules-to-peppol-nrs
 ```
 
-The corresponding source files are contained within `tools/`. The output file is saved in `build/national-rules/`.
+The corresponding source files are contained within `src/tools/`. The output file is saved in `build/national-rules/`.
