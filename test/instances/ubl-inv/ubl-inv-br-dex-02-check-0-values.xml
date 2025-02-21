@@ -165,6 +165,31 @@
           <cbc:PriceAmount currencyID="EUR">2</cbc:PriceAmount>
           <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
   </cac:Price>
+        <cac:SubInvoiceLine>
+          <cbc:ID>01.01.01.0020</cbc:ID>
+          <cbc:InvoicedQuantity unitCode="C62">0</cbc:InvoicedQuantity>
+          <?xmute mutator="identity" 
+              schematron-valid="xrubl:BR-DEX-02" id="calculate-with-0-values"
+              description="correct calculation with BT-131 = 0" ?>
+          <?xmute mutator="code" values="1,5"
+              schematron-invalid="xrubl:BR-DEX-02" id="calculate-with-incorrect-lower-level-values"
+              description="incorrect calculation with lower-level BT-131" ?>
+          <cbc:LineExtensionAmount currencyID="EUR">0</cbc:LineExtensionAmount>
+          <cac:Item>
+            <cbc:Name>Pos01010020</cbc:Name>
+            <cac:ClassifiedTaxCategory>
+              <cbc:ID>S</cbc:ID>
+              <cbc:Percent>19</cbc:Percent>
+              <cac:TaxScheme>
+                <cbc:ID>VAT</cbc:ID>
+              </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+          </cac:Item>
+          <cac:Price>
+            <cbc:PriceAmount currencyID="EUR">2</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+          </cac:Price>
+        </cac:SubInvoiceLine>
   </cac:SubInvoiceLine>
   </cac:SubInvoiceLine>
   </cac:InvoiceLine>
