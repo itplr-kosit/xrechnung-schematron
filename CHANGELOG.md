@@ -9,10 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Tests for BR-DE-18 with missing linebreaks between Skonto information
+
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.13 codelist updates
+* Regex in BR-DE-28 to accept special characters
+* Transformation files for national rules for Peppol BIS Billing moved to src folder
+
 ### Fixed
 
-* Wrong validation with BR-DEX-02 when LineExtensionAmount of 0 is provided.
-
+* Bug in BR-DE-18 that prevented detection of missing line breaks
+* Bug in BR-DEX-02 with LineExtensionAmount value of 0
 
 ## v2.2.0 on 2024-10-31
 
