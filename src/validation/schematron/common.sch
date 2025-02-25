@@ -10,7 +10,7 @@
     <let name="XR-EMAIL-REGEX"  value="'^[a-zA-Z0-9!#\$%&amp;&quot;*+/=?^_`{|}~-]+(\.[a-zA-Z0-9!#\$%&amp;&quot;*+/=?^_`{|}~-]+)*@([a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9]([a-zA-Z0-9-]*[a-zA-Z0-9])?$'" />
     <let name="XR-TELEPHONE-REGEX"  value="'.*([0-9].*){3,}.*'" />
     <!-- see https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/merge_requests/175#note_233187 for URL Regex requirements -->
-    <let name="XR-URL-REGEX"  value="'([a-zA-Z])([a-zA-Z0-9+.-])+:.*'" />
+    <let name="XR-URL-REGEX"  value="'^([a-zA-Z])([a-zA-Z0-9+.-])+:.*'" />
 
     <let name="DIGA-CODES" value="' XR01 XR02 XR03 '" />
     <!-- ISO 6523 and EAS Codelists including XR01 XR02 XR03 (applicable to extension only) -->
