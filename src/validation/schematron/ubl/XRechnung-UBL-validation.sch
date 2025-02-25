@@ -241,8 +241,8 @@
     <rule context="/ubl:Invoice[$isExtension]">
       <!-- BR-DEX-02
          this rule consists of two parts:
-         part one proofs in every invoiceline whether the lineextensionamount of it is equal to the sum of lineExtensionAmount of the ancillary subinvoicelines
-         part two proofs whether the count of invoice lines with correct lineextensionamounts according to part one is equal to the count of subinvoicelines with including subinvoicelines
+         1) part one checks in every invoice line whether its Invoice line net amount (BT-131) is equal to the sum of Sub invoiec line net amounts (BT-131) of the immediate sub invoice lines;
+         2) part two checks whether sum of subordinate sub invoice lines' Sub invoice line net amounts (BT-131) is correct in each Sub invoice line;
          every amount has to be cast to decimal cause of floating point problems -->
       <assert test="(every $invoiceline 
         in /ubl:Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ] 
