@@ -22,6 +22,7 @@ This release is compatible with XRechnung ?.?.?
 ### Fixed
 
 * Bug in BR-DE-18 that prevented detection of missing line breaks
+* Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
 
 ## v2.2.0 on 2024-10-31
 
