@@ -190,8 +190,8 @@
             <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
           </cac:Price>
         </cac:SubInvoiceLine>
-  </cac:SubInvoiceLine>
-  </cac:SubInvoiceLine>
+      </cac:SubInvoiceLine>
+    </cac:SubInvoiceLine>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
     <cbc:ID>02</cbc:ID>
