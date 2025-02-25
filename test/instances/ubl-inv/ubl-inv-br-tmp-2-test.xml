@@ -64,11 +64,15 @@
       <cac:ExternalReference>
         <?xmute mutator="identity"
                     schematron-valid="xrubl:BR-TMP-2" id="ubl-inv-BT-124-valid-url"
-                    description="mandatory BG-16" ?>
+                    description="valid URL" ?>
         <?xmute mutator="code"
-                    values="External document location,xeinkauf.de/xrechnung/"
-                    schematron-invalid="xrubl:BR-TMP-2" id="ubl-inv-BT-124-invalid-url"
-                    description="mandatory BG-16" ?>
+                    values="http://xeinkauf.de,ftp://name:pw@example.de/folder/,mailto:info@test.de"
+                    schematron-valid="xrubl:BR-TMP-2" id="ubl-inv-BT-124-valid-urls"
+                    description="valid URL" ?>
+        <?xmute mutator="code"
+                    values="External document location,xeinkauf.de/xrechnung/,225.6.90.63,https ://xeinkauf.de"
+                    schematron-invalid="xrubl:BR-TMP-2" id="ubl-inv-BT-124-invalid-urls"
+                    description="invalid URL" ?>
         <cbc:URI>https://xeinkauf.de/xrechnung/</cbc:URI>
       </cac:ExternalReference>
     </cac:Attachment>

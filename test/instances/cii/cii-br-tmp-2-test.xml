@@ -344,11 +344,15 @@
                 <!-- BT-124 -->
                 <?xmute mutator="identity"
                     schematron-valid="xrcii:BR-TMP-2" id="cii-BT-124-valid-url"
-                    description="mandatory BG-16" ?>
+                    description="valid URL" ?>
                 <?xmute mutator="code"
-                    values="External document location,xeinkauf.de/xrechnung/"
-                    schematron-invalid="xrcii:BR-TMP-2" id="cii-BT-124-invalid-url"
-                    description="mandatory BG-16" ?>
+                    values="http://xeinkauf.de,ftp://name:pw@example.de/folder/,mailto:info@test.de"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-BT-124-valid-urls"
+                    description="valid URL" ?>
+                <?xmute mutator="code"
+                    values="External document location,xeinkauf.de/xrechnung/,225.6.90.63,https ://xeinkauf.de"
+                    schematron-invalid="xrcii:BR-TMP-2" id="cii-BT-124-invalid-urls"
+                    description="invalid URL" ?>
                 <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
 				<!-- BT-122 -->
                 <ram:TypeCode>916</ram:TypeCode>
