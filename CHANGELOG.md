@@ -17,11 +17,14 @@ This release is compatible with XRechnung ?.?.?
 
 * Global codelist variables to adapt CEN 1.3.13 codelist updates
 * Regex in BR-DE-28 to accept special characters
+* Transformation files for national rules for Peppol BIS Billing moved to src folder
+* Refactored unresolved variable in build.xml
 
 ### Fixed
 
 * Bug in BR-DE-18 that prevented detection of missing line breaks
 * Datatype of some codelist values
+* Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
 
 ## v2.2.0 on 2024-10-31
 
