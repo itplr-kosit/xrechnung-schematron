@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* Temporary rule BR-TMP-02 for checking multiple BT-149
 * Tests for BR-DE-18 with missing linebreaks between Skonto information
 
 ### Changed
