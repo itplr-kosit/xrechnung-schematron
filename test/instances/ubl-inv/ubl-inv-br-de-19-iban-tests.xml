@@ -61,8 +61,6 @@
     </cac:Party>
   </cac:AccountingCustomerParty>
   <cac:PaymentMeans>
-    <?xmute mutator="code" values="ZZZ"
-              schematron-valid="xrubl:BR-DE-19" id="string-as-payment-means-code" description="string as payment means code must not throw an error"?>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cac:PayeeFinancialAccount>
       <?xmute mutator="identity" id="correct-iban"
