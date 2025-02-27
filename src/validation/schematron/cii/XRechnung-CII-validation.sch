@@ -225,8 +225,8 @@
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement">
         <assert test="not(./ram:NetPriceProductTradePrice/ram:BasisQuantity and ./ram:GrossPriceProductTradePrice/ram:BasisQuantity) or (./ram:NetPriceProductTradePrice/ram:BasisQuantity = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity and ./ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
           flag="fatal"
-          id="BR-TMP-03"
-          >[BR-TMP-03] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
+          id="BR-TMP-3"
+          >[BR-TMP-3] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
     </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
