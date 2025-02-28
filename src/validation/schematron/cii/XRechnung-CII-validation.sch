@@ -91,7 +91,7 @@
       <assert test="matches(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:URIID, $XR-URL-REGEX)"
         flag="fatal"
         id="BR-TMP-2"
-      >[BR-TMP-2] Die "External document location" BT-124 muss eine gültige URL sein.</assert>
+      >[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
