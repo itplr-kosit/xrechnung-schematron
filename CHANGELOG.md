@@ -10,7 +10,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This release is compatible with XRechnung ?.?.?
 
 ### Added
-* BR-TMP-2 to checking valid url in BT-124
+
+* BR-TMP-2: BT-124 "External document location" must contain an absolute URL with valid scheme
+* Tests for BR-DE-18 with missing linebreaks between Skonto information
+
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.13 codelist updates
+* Regex in BR-DE-28 to accept special characters
+* Transformation files for national rules for Peppol BIS Billing moved to src folder
+* Refactored unresolved variable in build.xml
+
+### Fixed
+
+* Bug in BR-DE-18 that prevented detection of missing line breaks
+* Datatype of some codelist values
+* Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
+
+## v2.2.0 on 2024-10-31
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* BR-DEX-01 in Extension CII
+
+### Changed
+
+* Set assertion flag to "fatal" in adapted Peppol BIS Billing rules in CII
+* version of Peppol BIS Billing updated to 3.0.17
+* validity check on created Schematron rules to prevent missing assertion texts
+
+### Fixed
+
+* missing assertion texts in PEPPOL-EN16931-R040, PEPPOL-EN16931-R055, PEPPOL-EN16931-R120
+* Directory generated/, containing test instances generated with XML Mutate, removed from distribution
+
+**The severity levels of the adapted Peppol BIS Billing rules in CII have been raised to "error". Please evaluate impact!**
 
 ## v2.1.0 on 2024-06-20
 

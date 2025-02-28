@@ -54,8 +54,8 @@
         >[BR-DE-16] Wenn in einer Rechnung die Steuercodes S, Z, E, AE, K, G, L oder M verwendet werden, muss mindestens eines der Elemente "Seller VAT identifier" (BT-31), "Seller tax registration identifier" (BT-32)
         oder "SELLER TAX REPRESENTATIVE PARTY" (BG-11) übermittelt werden.</assert>
       <let name="supportedInvAndCNTypeCodes" value="('326', '380', '384', '389', '381', '875', '876', '877')" />
-      <assert test="cbc:InvoiceTypeCode = $supportedInvAndCNTypeCodes
-        or cbc:CreditNoteTypeCode = $supportedInvAndCNTypeCodes"
+      <assert test="normalize-space(cbc:InvoiceTypeCode) = $supportedInvAndCNTypeCodes
+        or normalize-space(cbc:CreditNoteTypeCode) = $supportedInvAndCNTypeCodes"
         flag="warning"
         id="BR-DE-17"
         >[BR-DE-17] Mit dem Element "Invoice type code" (BT-3) sollen ausschließlich folgende Codes aus der Codeliste UNTDID 1001 übermittelt werden: 326 (Partial invoice), 380 (Commercial invoice), 384 (Corrected invoice), 389 (Self-billed invoice) und 381 (Credit note),875 (Partial construction invoice), 876 (Partial final construction invoice), 877 (Final construction invoice).</assert>
@@ -78,7 +78,7 @@
         id="BR-DE-22"
         >[BR-DE-22] Das "filename"-Attribut aller "EmbeddedDocumentBinaryObject"-Elemente muss eindeutig sein</assert>
 
-      <assert test="((not(cbc:InvoiceTypeCode = 384 or cbc:CreditNoteTypeCode = 384) or
+      <assert test="((not(normalize-space(cbc:InvoiceTypeCode) = '384' or normalize-space(cbc:CreditNoteTypeCode) = '384') or
                     (cac:BillingReference/cac:InvoiceDocumentReference)))"
         flag="warning"
         id="BR-DE-26"
@@ -163,9 +163,9 @@
         >[BR-DE-11] Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird.</assert>
     </rule>
     
-    <rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]">
+    <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')]">
       <!-- check for PaymentMeansCode 30 was not added by purpose in 2.1.1. -->
-      <assert test="not(cbc:PaymentMeansCode = '58') or
+      <assert test="not(normalize-space(cbc:PaymentMeansCode) = '58') or
                     matches(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
                     xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
         flag="warning"
@@ -182,7 +182,7 @@
         >[BR-DE-23-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), dürfen BG-18 und BG-19 nicht übermittelt werden.</assert>     
     </rule>
     
-    <rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)] |/cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]">
+    <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('48','54','55')] |/cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('48','54','55')]">
       <assert test="cac:CardAccount"
         flag="fatal"
         id="BR-DE-24-a"
@@ -194,8 +194,8 @@
         >[BR-DE-24-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden.</assert>
     </rule>
     
-    <rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = 59] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = 59]">
-      <assert test="not(cbc:PaymentMeansCode = '59') or
+    <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59'] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59']">
+      <assert test="not(normalize-space(cbc:PaymentMeansCode) = '59') or
                     matches(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
                     xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
         flag="warning"
@@ -245,13 +245,13 @@
     <rule context="/ubl:Invoice[$isExtension]">
       <!-- BR-DEX-02
          this rule consists of two parts:
-         part one proofs in every invoiceline whether the lineextensionamount of it is equal to the sum of lineExtensionAmount of the ancillary subinvoicelines
-         part two proofs whether the count of invoice lines with correct lineextensionamounts according to part one is equal to the count of subinvoicelines with including subinvoicelines
+         1) part one checks in every Invoice line whether its Invoice line net amount (BT-131) is equal to the sum of Sub invoice line net amounts (BT-131) of the subordinate Sub invoice lines;
+         2) part two checks for every Sub invoice line whether the sum of its subordinate Sub invoice line net amounts (BT-131) is correct;
          every amount has to be cast to decimal cause of floating point problems -->
       <assert test="(every $invoiceline 
         in /ubl:Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ] 
         satisfies $invoiceline/xs:decimal(cbc:LineExtensionAmount) = sum($invoiceline/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and
-        (count( //cac:SubInvoiceLine [xs:decimal(cbc:LineExtensionAmount) = sum(child::cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0]))"
+        (count( //cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0 and xs:decimal(cbc:LineExtensionAmount) = sum(cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine [count(cac:SubInvoiceLine) > 0]))"
         flag="warning"
         id="BR-DEX-02"
         >[BR-DEX-02] Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE"
