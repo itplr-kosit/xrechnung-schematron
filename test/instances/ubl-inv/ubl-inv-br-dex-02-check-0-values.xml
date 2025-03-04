@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>1</cbc:ID>
+  <cbc:IssueDate>2024-10-05</cbc:IssueDate>
+  <cbc:DueDate>2024-10-06</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:BuyerReference>12345678-1234-12</cbc:BuyerReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">seller@seller.com</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>[Seller address line 1]</cbc:StreetName>
+        <cbc:CityName>[Seller city]</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>DE123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>123/123/12345</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>somethingElseThanVAT</cbc:ID>
+      </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Registration name]</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Kundencenter</cbc:Name>
+        <cbc:Telephone>0800-12345678</cbc:Telephone>
+        <cbc:ElectronicMail>contact@email.de</cbc:ElectronicMail>
+  </cac:Contact>
+  </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">buyer@buyer.de</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>[Buyer address line 1]</cbc:StreetName>
+        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+      </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Buyer name]</cbc:RegistrationName>
+  </cac:PartyLegalEntity>
+  </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE75512108001245126199</cbc:ID>
+  </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">12.33</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">64.9</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">12.33</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+  </cac:TaxScheme>
+  </cac:TaxCategory>
+  </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">64.9</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">64.9</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="EUR">77.23</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="EUR">77.23</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>01</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">10</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Pos01</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+    </cac:TaxScheme>
+    </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">10</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:SubInvoiceLine>
+      <cbc:ID>01.01</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+      <?xmute mutator="code" values="11,9"
+              schematron-invalid="xrubl:BR-DEX-02" id="calculate-with-incorrect-upper-level-BT-131-values"
+              description="calculation with incorrect upper-level BT-131" ?>
+      <cbc:LineExtensionAmount currencyID="EUR">10</cbc:LineExtensionAmount>
+      <cac:Item>
+        <cbc:Name>Pos0101</cbc:Name>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>19</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">10</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+      </cac:Price>
+      <cac:SubInvoiceLine>
+        <cbc:ID>01.01.0010</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">10</cbc:LineExtensionAmount>
+        <cac:Item>
+          <cbc:Name>Pos01010010</cbc:Name>
+          <cac:ClassifiedTaxCategory>
+            <cbc:ID>S</cbc:ID>
+            <cbc:Percent>19</cbc:Percent>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+          <cbc:PriceAmount currencyID="EUR">1</cbc:PriceAmount>
+          <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+      </cac:Price>
+      </cac:SubInvoiceLine>
+      <cac:SubInvoiceLine>
+        <cbc:ID>01.01.0020</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="C62">0</cbc:InvoicedQuantity>
+        <?xmute mutator="identity" 
+              schematron-valid="xrubl:BR-DEX-02" id="calculate-with-lower-level-0-values"
+              description="correct calculation with lower-level BT-131 = 0" ?>
+        <?xmute mutator="code" values="1,5"
+              schematron-invalid="xrubl:BR-DEX-02" id="calculate-with-incorrect-lower-level-values"
+              description="incorrect calculation with lower-level BT-131" ?>
+        <cbc:LineExtensionAmount currencyID="EUR">0</cbc:LineExtensionAmount>
+        <cac:Item>
+          <cbc:Name>Pos01010020</cbc:Name>
+          <cac:ClassifiedTaxCategory>
+            <cbc:ID>S</cbc:ID>
+            <cbc:Percent>19</cbc:Percent>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+          <cbc:PriceAmount currencyID="EUR">2</cbc:PriceAmount>
+          <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+  </cac:Price>
+        <cac:SubInvoiceLine>
+          <cbc:ID>01.01.01.0020</cbc:ID>
+          <cbc:InvoicedQuantity unitCode="C62">0</cbc:InvoicedQuantity>
+          <?xmute mutator="identity" 
+              schematron-valid="xrubl:BR-DEX-02" id="calculate-with-0-values"
+              description="correct calculation with BT-131 = 0" ?>
+          <?xmute mutator="code" values="1,5"
+              schematron-invalid="xrubl:BR-DEX-02" id="calculate-with-incorrect-lower-level-values"
+              description="incorrect calculation with lower-level BT-131" ?>
+          <cbc:LineExtensionAmount currencyID="EUR">0</cbc:LineExtensionAmount>
+          <cac:Item>
+            <cbc:Name>Pos01010020</cbc:Name>
+            <cac:ClassifiedTaxCategory>
+              <cbc:ID>S</cbc:ID>
+              <cbc:Percent>19</cbc:Percent>
+              <cac:TaxScheme>
+                <cbc:ID>VAT</cbc:ID>
+              </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+          </cac:Item>
+          <cac:Price>
+            <cbc:PriceAmount currencyID="EUR">2</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+          </cac:Price>
+        </cac:SubInvoiceLine>
+      </cac:SubInvoiceLine>
+    </cac:SubInvoiceLine>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>02</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">54.9</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Pos02</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+    </cac:TaxScheme>
+    </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">54.9</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:SubInvoiceLine>
+      <cbc:ID>02.01</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="EUR">54.9</cbc:LineExtensionAmount>
+      <cac:Item>
+        <cbc:Name>Pos0201</cbc:Name>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>19</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">54.9</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+      </cac:Price>
+      <cac:SubInvoiceLine>
+        <cbc:ID>02.01.0010</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="MTK">10</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">30</cbc:LineExtensionAmount>
+        <cac:Item>
+          <cbc:Name>Pos02010010</cbc:Name>
+          <cac:ClassifiedTaxCategory>
+            <cbc:ID>S</cbc:ID>
+            <cbc:Percent>19</cbc:Percent>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+          <cbc:PriceAmount currencyID="EUR">3</cbc:PriceAmount>
+          <cbc:BaseQuantity unitCode="MTK">1</cbc:BaseQuantity>
+      </cac:Price>
+      </cac:SubInvoiceLine>
+      <cac:SubInvoiceLine>
+        <cbc:ID>02.01.0020</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="MTK">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">24.9</cbc:LineExtensionAmount>
+        <cac:Item>
+          <cbc:Name>Pos02010020</cbc:Name>
+          <cac:ClassifiedTaxCategory>
+            <cbc:ID>S</cbc:ID>
+            <cbc:Percent>19</cbc:Percent>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+          <cbc:PriceAmount currencyID="EUR">12.45</cbc:PriceAmount>
+          <cbc:BaseQuantity unitCode="MTK">1</cbc:BaseQuantity>
+        </cac:Price>
+      </cac:SubInvoiceLine>
+    </cac:SubInvoiceLine>
+  </cac:InvoiceLine>
+</Invoice>

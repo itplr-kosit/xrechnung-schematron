@@ -150,8 +150,12 @@
       value="${xr-schematron.version.full}" />
 
     <filter token="xrechnung.version" value="${xrechnung.version}" />
-    <copy todir="${build.dir}/schematron"
-      file="${validation.dir}/schematron/common.sch" />
+
+    <copy todir="${build.dir}/schematron" file="${validation.dir}/schematron/common.sch" />
+
+    <copy todir="${xr-schematron.build.dir}/tmp" file="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch" filtering="true" />
+    <copy todir="${xr-schematron.build.dir}/tmp" file="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch" filtering="true" />
+
     <copy todir="${build.dir}" filtering="true">
       <fileset dir="${basedir}">
         <include name="README.md" />
@@ -211,9 +215,9 @@
 
 
   <target name="merge-peppol-rules-with-xr-rules"
-    depends="retrieve-peppol-bis-billing-rules">
+    depends="retrieve-peppol-bis-billing-rules,prepare-build-dir">
     <!-- merge ubl -->
-    <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
       style="${src.dir}/xsl/peppol-into-xr.xsl">
       <param name="syntax" expression="UBL" />
@@ -223,7 +227,7 @@
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
     <!-- merge cii -->
-    <xslt in="${validation.dir}/schematron/cii/XRechnung-CII-validation.sch"
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
       style="${src.dir}/xsl/peppol-into-xr.xsl">
       <param name="syntax" expression="CII" />
@@ -237,11 +241,10 @@
 
   <target name="check-merge-peppol-rules-with-xr-rules"
     depends="merge-peppol-rules-with-xr-rules">
-    <mkdir dir="${xr-schematron.build.dir}/tmp"/>
 
     <!-- failonerror must be yes -->
     <!-- check ubl -->
-    <xslt in="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/tmp/ubl.out"
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
@@ -251,7 +254,7 @@
     </xslt>
 
     <!-- check cii -->
-    <xslt in="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/tmp/cii.out"
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes">
       <classpath>
