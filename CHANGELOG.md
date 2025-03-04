@@ -19,6 +19,7 @@ This release is compatible with XRechnung ?.?.?
 * Global codelist variables to adapt CEN 1.3.13 codelist updates
 * Regex in BR-DE-28 to accept special characters
 * Transformation files for national rules for Peppol BIS Billing moved to src folder
+* PEPPOL-EN16931-R046 in CII for more robustness
 * Refactored unresolved variable in build.xml
 
 ### Fixed
@@ -26,6 +27,8 @@ This release is compatible with XRechnung ?.?.?
 * Bug in BR-DE-18 that prevented detection of missing line breaks
 * Datatype of some codelist values
 * Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
+
+**Note: BR-TMP-2 is currently implemented with error level "warning" and will be raised to "error" with an upcoming release.**
 
 ## v2.2.0 on 2024-10-31
 
