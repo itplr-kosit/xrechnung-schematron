@@ -96,7 +96,7 @@
     </rule>    
     <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
       <assert test="matches(cbc:URI, $XR-URL-REGEX)"
-        flag="fatal"
+        flag="warning"
         id="BR-TMP-2"
       >[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>
