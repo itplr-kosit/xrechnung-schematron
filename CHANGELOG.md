@@ -18,6 +18,7 @@ This release is compatible with XRechnung ?.?.?
 * Global codelist variables to adapt CEN 1.3.13 codelist updates
 * Regex in BR-DE-28 to accept special characters
 * Transformation files for national rules for Peppol BIS Billing moved to src folder
+* PEPPOL-EN16931-R046 in CII for more robustness
 
 ### Fixed
 
