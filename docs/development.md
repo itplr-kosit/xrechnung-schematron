@@ -35,6 +35,13 @@ ant "-Dxmute.download.url.prefix=file:/c:/dev/git/xml-mutate/target" test
 The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification. 
 There are three directories for the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
 
+### Test requirements
+
+#### Avoid "A sequence is not allowed.." errors
+
+This error occurs if an assertion uses an XPath function which only expects one element per function call, but receives several.
+
+If a rule tests a specific element within a parent element, which can occur multiple times, a test instance has to have multiple occurences of the parent element.
 
 ### Conventions
 
