@@ -361,6 +361,18 @@
 				<!-- BT-125, BT-125-1, BT-125-2 -->
                 <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
             </ram:AdditionalReferencedDocument>
+            <ram:AdditionalReferencedDocument>
+                <!-- BT-122 -->
+                <ram:IssuerAssignedID>01_15_Anhang_02.pdf</ram:IssuerAssignedID>
+                <!-- BT-124 -->
+                <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
+                <!-- BT-122 -->
+                <ram:TypeCode>916</ram:TypeCode>
+                <!-- BT-123 -->
+                <ram:Name>Aufschlüsselung der einzelnen Leistungspositionen</ram:Name>
+                <!-- BT-125, BT-125-1, BT-125-2 -->
+                <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
+            </ram:AdditionalReferencedDocument>
 			<!-- BT-17 -->
             <ram:AdditionalReferencedDocument>
                 <ram:IssuerAssignedID>ANG987654321</ram:IssuerAssignedID>
