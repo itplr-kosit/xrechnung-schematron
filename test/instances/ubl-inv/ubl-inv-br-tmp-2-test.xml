@@ -58,6 +58,10 @@
     <cbc:ID>01_15_Anhang_02.pdf</cbc:ID>
     <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
     <cac:Attachment>
+      <!-- BT-124 cac:ExternalReference/cbc:URI -->
+      <?xmute mutator="remove"
+                    schematron-valid="xrubl:BR-TMP-2" id="ubl-inv-no-BT-124"
+                    description="no URL" ?>
       <cac:ExternalReference>
         <?xmute mutator="identity"
                     schematron-valid="xrubl:BR-TMP-2" id="ubl-inv-BT-124-valid-url"

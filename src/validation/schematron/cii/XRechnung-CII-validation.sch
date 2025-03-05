@@ -150,7 +150,7 @@
           >[BR-DE-9] Das Element "Buyer post code" (BT-53) muss übermittelt werden.</assert>
     </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[ram:TypeCode = '916']">
-        <assert test="matches(ram:URIID, $XR-URL-REGEX)"
+        <assert test="not(exists(ram:URIID)) or (matches(ram:URIID, $XR-URL-REGEX))"
             flag="warning"
               id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>

@@ -353,6 +353,9 @@
                     values="External document location,xeinkauf.de/xrechnung/,225.6.90.63,https ://xeinkauf.de"
                     schematron-invalid="xrcii:BR-TMP-2" id="cii-BT-124-invalid-urls"
                     description="invalid URL" ?>
+                <?xmute mutator="remove"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-no-BT-124"
+                    description="no URL" ?>
                 <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
 				<!-- BT-122 -->
                 <ram:TypeCode>916</ram:TypeCode>
