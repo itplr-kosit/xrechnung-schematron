@@ -39,7 +39,7 @@ There are three directories for the different formats (cii, ubl-cn, ubl-inv). Th
 
 #### Avoid "A sequence is not allowed.." errors
 
-This error occurs if an assertion uses an XPath function which only expects one element per function call, but receives several.
+This error occurs if an assertion uses an XPath function which only expects one element per function call (e.g. matches()), but receives several.
 
 If a rule tests a specific element which can occur multiple times, a test instance has to have multiple occurences of the element.
 
