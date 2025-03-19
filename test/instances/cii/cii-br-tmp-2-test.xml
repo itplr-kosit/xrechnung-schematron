@@ -353,12 +353,27 @@
                     values="External document location,xeinkauf.de/xrechnung/,225.6.90.63,https ://xeinkauf.de"
                     schematron-invalid="xrcii:BR-TMP-2" id="cii-BT-124-invalid-urls"
                     description="invalid URL" ?>
+                <?xmute mutator="remove"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-no-BT-124"
+                    description="no URL" ?>
                 <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
 				<!-- BT-122 -->
                 <ram:TypeCode>916</ram:TypeCode>
 				<!-- BT-123 -->
                 <ram:Name>Aufschlüsselung der einzelnen Leistungspositionen</ram:Name>
 				<!-- BT-125, BT-125-1, BT-125-2 -->
+                <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
+            </ram:AdditionalReferencedDocument>
+            <ram:AdditionalReferencedDocument>
+                <!-- BT-122 -->
+                <ram:IssuerAssignedID>01_15_Anhang_02.pdf</ram:IssuerAssignedID>
+                <!-- BT-124 -->
+                <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
+                <!-- BT-122 -->
+                <ram:TypeCode>916</ram:TypeCode>
+                <!-- BT-123 -->
+                <ram:Name>Aufschlüsselung der einzelnen Leistungspositionen</ram:Name>
+                <!-- BT-125, BT-125-1, BT-125-2 -->
                 <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
             </ram:AdditionalReferencedDocument>
 			<!-- BT-17 -->
