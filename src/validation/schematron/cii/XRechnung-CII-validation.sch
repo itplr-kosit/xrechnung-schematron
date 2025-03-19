@@ -88,11 +88,7 @@
               flag="warning"
               id="BR-DE-26"
           >[BR-DE-26] Wenn im Element Invoice type code (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
-      <assert test="matches(rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument/ram:URIID, $XR-URL-REGEX)"
-        flag="warning"
-        id="BR-TMP-2"
-      >[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
-    </rule>
+      </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
       <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or
@@ -152,6 +148,11 @@
               flag="fatal"
               id="BR-DE-9"
           >[BR-DE-9] Das Element "Buyer post code" (BT-53) muss übermittelt werden.</assert>
+    </rule>
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[ram:TypeCode = '916']">
+        <assert test="not(exists(ram:URIID)) or (matches(ram:URIID, $XR-URL-REGEX))"
+            flag="warning"
+              id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress">
