@@ -97,7 +97,7 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 ```
 
 * Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
-  `git tag release-2.2.0 && git push origin release-2.2.0`
+  `git tag release-2.3.0 && git push origin release-2.3.0`
 
 ### Publish
 
