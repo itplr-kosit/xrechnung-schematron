@@ -21,6 +21,7 @@ This release is compatible with XRechnung ?.?.?
 * Transformation files for national rules for Peppol BIS Billing moved to src folder
 * PEPPOL-EN16931-R046 in CII for more robustness
 * Refactored unresolved variable in build.xml
+* Using Peppol BIS Billing 3.0.18
 
 ### Fixed
 

@@ -24,8 +24,9 @@
   <property name="xmute.version.full" value="0.5" />
   <property name="xmute.jar" value="xml-mutate.jar" />
 
-  <property name="bis.version" value="3.0.17" />
+  <property name="bis.version" value="3.0.18" />
   <property name="bis.zip" value="${bis.version}.zip" />
+  <property name="bis" value="${bis.version}" />
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
@@ -115,6 +116,7 @@
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build.dir}" />
     <mkdir dir="${download.dir}" />
+    <mkdir dir="${download.dir}/${bis}" />
     <mkdir dir="${lib.dir}" />
     <mkdir dir="${dist.dir}" />
     <mkdir dir="${build.dir}/generated" />
@@ -168,6 +170,7 @@
   <target name="retrieve-peppol-bis-billing-rules" depends="init"
     description="Download and prepare Peppol BIS Billing 3.0 rules">
 
+<!--
     <echo
       message="Loading Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
     <get src="${bis.download.url}" dest="${download.dir}" verbose="true"
@@ -191,6 +194,22 @@
       </patternset>
       <flattenmapper />
     </unzip>
+    -->
+
+    <!-- workaround to include Peppol BIS 3.0.18 rules -->
+    <echo
+      message="Loading Peppol BIS Billing ${bis.version} from https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/a29924ed6a4e54363f577c08ab292d0ec8ac29f1/rules/sch" />
+    <get src="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/a29924ed6a4e54363f577c08ab292d0ec8ac29f1/rules/sch/PEPPOL-EN16931-UBL.sch" dest="${download.dir}/${bis}" verbose="true"
+      skipexisting="true" usetimestamp="false" httpusecaches="false" />
+    <get src="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/a29924ed6a4e54363f577c08ab292d0ec8ac29f1/rules/sch/PEPPOL-EN16931-CII.sch" dest="${download.dir}/${bis}" verbose="true"
+      skipexisting="true" usetimestamp="false" httpusecaches="false" />
+
+    <copy todir="${build.dir}/bis">
+      <fileset dir="${download.dir}/${bis}">
+        <include name="**/PEPPOL-EN16931-*.sch" />
+      </fileset>
+      <flattenmapper />
+    </copy>
 
     <path id="schematron-path">
       <fileset dir="${build.dir}/bis" includes="**.sch" />
