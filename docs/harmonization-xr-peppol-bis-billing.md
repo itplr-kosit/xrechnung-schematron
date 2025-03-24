@@ -57,7 +57,7 @@ Additionally, some rules had to be added or customized:
 - `PEPPOL-EN16931-R053` and `PEPPOL-EN16931-R055` were modified for CII due to bugs in source code
 - message texts were replaced in `PEPPOL-EN16931-R053`, `PEPPOL-EN16931-R054`, and `PEPPOL-EN16931-R101` for CII
 - `PEPPOL-EN16931-R120` was excluded for CII due to syntaxbinding inconsistencies
-- the slack function provided in Peppol BIS Billing and rules `PEPPOL-EN16931-R040` and `PEPPOL-EN16931-R120` were modified for UBL and CII to handle rounding without decimals places in currency HUF
+- the slack function provided in Peppol BIS Billing and rules `PEPPOL-EN16931-R040` and `PEPPOL-EN16931-R120` were modified for UBL and CII to handle rounding without decimal places in currency HUF
 
 ## Transformation of XRechnung national business rules to Peppol BIS Billing National Ruleset
 

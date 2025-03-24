@@ -26,7 +26,7 @@ This release is compatible with XRechnung 3.0.x
 ### Fixed
 
 * Bug in BR-DE-18 that prevented detection of missing line breaks
-* Datatype of some codelist values
+* Datatype of some codelist values in Schematron files
 * Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
 
 **Note: BR-TMP-2 is currently implemented with error level "warning" and will be raised to "error" with an upcoming release.**
