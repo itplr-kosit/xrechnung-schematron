@@ -44,4 +44,6 @@
     -->
     <assert key="BR-DE-30" id="DE-R-030">If the group "DIRECT DEBIT" (BG-19) is delivered, the element "Bank assigned creditor identifier" (BT-90) shall be provided.</assert>
     <assert key="BR-DE-31" id="DE-R-031">If the group "DIRECT DEBIT" (BG-19) is delivered, the element "Debited account identifier" (BT-91) shall be provided.</assert>
+    <assert key="BR-DE-CVD-01" id="DE-R-CVD-01" exclude="true">BR-DE-CVD-01: Das Element "Contract reference" (BT-12) muss übermittelt werden.</assert>
+    <assert key="BR-DE-CVD-02" id="DE-R-CVD-02" exclude="true">BR-DE-CVD-02: Das Element "Tender or lot reference" (BT-17) muss übermittelt werden.</assert>
 </asserts>
