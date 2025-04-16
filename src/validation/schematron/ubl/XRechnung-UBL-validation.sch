@@ -218,6 +218,22 @@
         id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+
+<rule context="/ubl:Invoice | /ubl:CreditNote">
+  <let name="isCVD"
+       value="contains(/cbc:CustomizationID, $XR-CVD-ID)"/>
+  <assert test="not($isCVD) or cbc:ContractDocumentReference/cbc:ID[normalize-space(.)]"
+          flag="fatal"
+          id="BR-DE-CVD-01">
+    BR-DE-CVD-01: Das Element "Contract reference" (BT-12) muss übermittelt werden.
+  </assert>
+  <assert test="not($isCVD) or cbc:TenderOrLotReference[normalize-space(.)]"
+          flag="fatal"
+          id="BR-DE-CVD-02">
+    BR-DE-CVD-02: Das Element "Tender or lot reference" (BT-17) muss übermittelt werden.
+  </assert>
+</rule>
+
   </pattern>
   
   <pattern id="ubl-extension-pattern">

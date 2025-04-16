@@ -226,6 +226,20 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+
+    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement">
+      <let name="isCVD" value="contains(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID, $XR-CVD-ID)" />
+      <assert test="not($isCVD) or ram:BuyerReference[normalize-space(.)]"
+              flag="fatal"
+              id="BR-DE-CVD-01">
+        BR-DE-CVD-01: Das Element "Contract reference" (BT-12) muss übermittelt werden.
+      </assert>
+      <assert test="not($isCVD) or ram:ContractReferencedDocument/ram:IssuerAssignedID[normalize-space(.)]"
+              flag="fatal"
+              id="BR-DE-CVD-02">
+        BR-DE-CVD-02: Das Element "Tender or lot reference" (BT-17) muss übermittelt werden.
+      </assert>
+    </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
     <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
