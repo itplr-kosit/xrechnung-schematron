@@ -29,17 +29,6 @@
             description="mandatory BT-17 not provided" ?>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
-  <!--<cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>-->
-  <!--<cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>-->
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -59,13 +48,11 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>DEU123456789</cbc:CompanyID>-->
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
       <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>123/456/789</cbc:CompanyID>-->
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>
@@ -78,13 +65,6 @@
       <cac:Contact>
         <cbc:Name>Tim Tester</cbc:Name>       
         <cbc:Telephone>012 3456789</cbc:Telephone>
-        <!-- Excluded for #81: ,aa@bb,ab.cd@ef -->
-        <?xmute mutator="code" values="тест@пример.bg, δοκιμή@παράδειγμα.gr, maria.müller@test.de, müller@test.de, müller@müller.de, test@müller.de, maria.müller@müller.de, tim.tester@test.com,tim@test.com,a.b@c.d,abc@bcd.def,tim-tom.tester@test-er.org,tim_tom@test.com,tim*tom@test.com,*@test.de,tim#tom@test.de"
-              schematron-valid="xrubl:BR-DE-28" id="ubl-cn-BR-DE-28-valid-test"
-              description="UBL CreditNote BR-DE-28 valid test" ?>
-        <?xmute mutator="code" values="тест@пример, δοκιμή@παράδειγμα, müller@test, @,name,ame@,@name,tim.tester@.com,tim@test.com.,tim@test.,test @test.com,test@ test.com,test @ test.com,test@test@test.com,test@@test.com,a@b,ab@c,a@bd"
-              schematron-invalid="xrubl:BR-DE-28" id="ubl-cn-BR-DE-28-invalid-test"
-              description="UBL CreditNote BR-DE-28 invalid test" ?>
         <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
       </cac:Contact>
     </cac:Party>
@@ -172,12 +152,6 @@
       </cac:PartyName>
     </cac:DeliveryParty>
   </cac:Delivery>
-  <?xmute mutator="identity"
-                    schematron-valid="xrubl:BR-DE-1" id="ubl-cn-mandatory-BG-16"
-                    description="mandatory BG-16" ?>
-  <?xmute mutator="remove"
-                    schematron-invalid="xrubl:BR-DE-1" id="ubl-cn-mandatory-BG-16-2"
-                    description="mandatory BG-16" ?>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
     <cbc:PaymentID>Deb. 12345 / Fact. 9876543</cbc:PaymentID>
