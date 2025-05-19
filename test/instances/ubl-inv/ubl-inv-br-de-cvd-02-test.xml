@@ -20,10 +20,10 @@
   </cac:OrderReference>
   <cac:OriginatorDocumentReference>
     <?xmute mutator="identity"
-            schematron-valid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02"
+            schematron-valid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02-1"
             description="mandatory BT-17" ?>
     <?xmute mutator="remove"
-            schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02"
+            schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02-2"
             description="mandatory BT-17" ?>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>

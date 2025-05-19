@@ -23,10 +23,10 @@
   </cac:OriginatorDocumentReference>
   <cac:ContractDocumentReference>
     <?xmute mutator="identity"
-            schematron-valid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01"
+            schematron-valid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01-1"
             description="mandatory BT-12" ?>
     <?xmute mutator="remove"
-            schematron-invalid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01"
+            schematron-invalid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01-2"
             description="mandatory BT-12" ?>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
