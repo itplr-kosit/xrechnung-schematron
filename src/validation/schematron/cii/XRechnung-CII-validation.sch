@@ -24,6 +24,7 @@
     <active pattern="variable-pattern" />
     <active pattern="cii-pattern" />
     <active pattern="cii-extension-pattern" />
+    <active pattern="cii-cvd-pattern" />
   </phase>
 
   <include href="../common.sch" />
@@ -226,20 +227,6 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
-
-    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement">
-      <let name="isCVD" value="contains(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID, $XR-CVD-ID)" />
-      <assert test="not($isCVD) or ram:BuyerReference[normalize-space(.)]"
-              flag="fatal"
-              id="BR-DE-CVD-01">
-        BR-DE-CVD-01: Das Element "Contract reference" (BT-12) muss übermittelt werden.
-      </assert>
-      <assert test="not($isCVD) or ram:ContractReferencedDocument/ram:IssuerAssignedID[normalize-space(.)]"
-              flag="fatal"
-              id="BR-DE-CVD-02">
-        BR-DE-CVD-02: Das Element "Tender or lot reference" (BT-17) muss übermittelt werden.
-      </assert>
-    </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
     <!-- robust version of testing extension https://stackoverflow.com/questions/3206975/xpath-selecting-elements-that-equal-a-value  -->
@@ -316,4 +303,21 @@
                   select="@mimeCode" />. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
       </rule>
   </pattern>
+    <pattern id="cii-cvd-pattern">
+        <let name="isCVD" value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = $XR-CVD-ID])" />
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument[$isCVD]">
+            <assert test="ram:IssuerAssignedID[boolean(normalize-space(.))]"
+                flag="fatal"
+                id="BR-DE-CVD-01">
+                [BR-DE-CVD-01] Das Element <name /> "Contract reference" (BT-12) muss übermittelt werden.
+            </assert>
+        </rule>
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[normalize-space(ram:TypeCode) = '50' and $isCVD]">
+            <assert test="ram:IssuerAssignedID[boolean(normalize-space(.))]"
+                flag="fatal"
+                id="BR-DE-CVD-02">
+                [BR-DE-CVD-02] Das Element <name /> "Tender or lot reference" (BT-17) muss übermittelt werden.
+            </assert>
+        </rule>
+    </pattern>
 </schema>

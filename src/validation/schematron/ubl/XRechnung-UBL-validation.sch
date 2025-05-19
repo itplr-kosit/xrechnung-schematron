@@ -18,6 +18,7 @@
     <active pattern="variable-pattern" />
     <active pattern="ubl-pattern" />
     <active pattern="ubl-extension-pattern" />
+    <active pattern="ubl-cvd-pattern" />
   </phase>
   
   <include href="../common.sch" />
@@ -219,21 +220,6 @@
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
 
-<rule context="/ubl:Invoice | /ubl:CreditNote">
-  <let name="isCVD"
-       value="contains(/cbc:CustomizationID, $XR-CVD-ID)"/>
-  <assert test="not($isCVD) or cbc:ContractDocumentReference/cbc:ID[normalize-space(.)]"
-          flag="fatal"
-          id="BR-DE-CVD-01">
-    BR-DE-CVD-01: Das Element "Contract reference" (BT-12) muss übermittelt werden.
-  </assert>
-  <assert test="not($isCVD) or cbc:TenderOrLotReference[normalize-space(.)]"
-          flag="fatal"
-          id="BR-DE-CVD-02">
-    BR-DE-CVD-02: Das Element "Tender or lot reference" (BT-17) muss übermittelt werden.
-  </assert>
-</rule>
-
   </pattern>
   
   <pattern id="ubl-extension-pattern">
@@ -361,6 +347,25 @@
         flag="fatal"
         id="BR-DEX-14"
         >[BR-DEX-14] Die Währungsangabe von "Third party payment amount" BT-DEX-002 muss BT-5 ("Invoice currency code") entsprechen.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern id="ubl-cvd-pattern">
+    <let name="isCVD"
+      value="exists(/ubl:Invoice/cbc:CustomizationID[text() = $XR-CVD-ID] | /cn:CreditNote/cbc:CustomizationID[text() = $XR-CVD-ID] )" />
+    <rule context="cac:OriginatorDocumentReference[$isCVD]">
+      <assert test="cbc:ID[boolean(normalize-space(.))]"
+        flag="fatal"
+        id="BR-DE-CVD-02">
+        [BR-DE-CVD-02] Das Element <name /> "Tender or lot reference" (BT-17) muss übermittelt werden.
+      </assert>
+    </rule>
+    <rule context="cac:ContractDocumentReference[$isCVD]">
+      <assert test="cbc:ID[boolean(normalize-space(.))]"
+        flag="fatal"
+        id="BR-DE-CVD-01">
+        [BR-DE-CVD-01] Das Element <name /> "Contract reference" (BT-12) muss übermittelt werden.
+      </assert>
     </rule>
   </pattern>
 </schema>
