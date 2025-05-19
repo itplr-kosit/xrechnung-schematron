@@ -4,7 +4,7 @@
             <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
         </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:cvd</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -139,11 +139,11 @@
             </ram:BuyerTradeParty>
             <ram:ContractReferencedDocument>
                 <?xmute mutator="identity"
-                        schematron-valid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02"
-                        description="mandatory BT-17" ?>
+                        schematron-valid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-1"
+                        description="mandatory BT-12 exists" ?>
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02"
-                        description="mandatory BT-17" ?>
+                        schematron-invalid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-2"
+                        description="mandatory BT-12 not provided" ?>
                 <ram:IssuerAssignedID>0000000752</ram:IssuerAssignedID>
             </ram:ContractReferencedDocument>
             <ram:AdditionalReferencedDocument>

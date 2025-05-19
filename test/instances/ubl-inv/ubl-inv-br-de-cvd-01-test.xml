@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -23,10 +23,10 @@
   </cac:OriginatorDocumentReference>
   <cac:ContractDocumentReference>
     <?xmute mutator="identity"
-            schematron-valid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01"
+            schematron-valid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01"
             description="mandatory BT-12" ?>
     <?xmute mutator="remove"
-            schematron-invalid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01"
+            schematron-invalid="xrubl:BR-DE-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-01"
             description="mandatory BT-12" ?>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
