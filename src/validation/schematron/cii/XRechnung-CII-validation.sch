@@ -93,7 +93,8 @@
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
       <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or
-                    ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID"
+                    ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID or
+                    ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CVD-ID"
               flag="warning"
               id="BR-DE-21"
           >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
