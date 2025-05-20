@@ -306,15 +306,27 @@
   </pattern>
     <pattern id="cii-cvd-pattern">
         <let name="isCVD" value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = $XR-CVD-ID])" />
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:ContractReferencedDocument[$isCVD]">
-            <assert test="ram:IssuerAssignedID[boolean(normalize-space(.))]"
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[$isCVD]">
+            <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'cvd' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
+                flag="fatal"
+                id="BR-DE-CVD-03">
+                [BR-DE-CVD-03] TODO
+            </assert>
+        </rule>
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[$isCVD and ram:Description = 'cva']">
+            <assert test="ram:Name = contains($CVA-CODES, concat(' ', normalize-space(.), ' '))"
+                flag="fatal"
+                id="BR-DE-CVD-04">
+                [BR-DE-CVD-04] TODO
+            </assert>
+        </rule>
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement[$isCVD]">
+            <assert test="ram:ContractReferencedDocument/ram:IssuerAssignedID[boolean(normalize-space(.))]"
                 flag="fatal"
                 id="BR-DE-CVD-01">
                 [BR-DE-CVD-01] Das Element <name /> "Contract reference" (BT-12) muss übermittelt werden.
             </assert>
-        </rule>
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[normalize-space(ram:TypeCode) = '50' and $isCVD]">
-            <assert test="ram:IssuerAssignedID[boolean(normalize-space(.))]"
+           <assert test="ram:AdditionalReferencedDocument[normalize-space(ram:TypeCode) = '50' and normalize-space(ram:IssuerAssignedID)]"
                 flag="fatal"
                 id="BR-DE-CVD-02">
                 [BR-DE-CVD-02] Das Element <name /> "Tender or lot reference" (BT-17) muss übermittelt werden.

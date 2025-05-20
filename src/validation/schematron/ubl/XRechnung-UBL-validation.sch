@@ -354,18 +354,30 @@
   <pattern id="ubl-cvd-pattern">
     <let name="isCVD"
       value="exists(/ubl:Invoice/cbc:CustomizationID[text() = $XR-CVD-ID] | /cn:CreditNote/cbc:CustomizationID[text() = $XR-CVD-ID] )" />
-    <rule context="cac:OriginatorDocumentReference[$isCVD]">
-      <assert test="cbc:ID[boolean(normalize-space(.))]"
+    <rule context="(/ubl:Invoice | /cn:CreditNote)[$isCVD]">
+      <assert test="cac:OriginatorDocumentReference/cbc:ID[boolean(normalize-space(.))]"
         flag="fatal"
         id="BR-DE-CVD-02">
         [BR-DE-CVD-02] Das Element <name /> "Tender or lot reference" (BT-17) muss übermittelt werden.
       </assert>
-    </rule>
-    <rule context="cac:ContractDocumentReference[$isCVD]">
-      <assert test="cbc:ID[boolean(normalize-space(.))]"
+      <assert test="cac:ContractDocumentReference/cbc:ID[boolean(normalize-space(.))]"
         flag="fatal"
         id="BR-DE-CVD-01">
         [BR-DE-CVD-01] Das Element <name /> "Contract reference" (BT-12) muss übermittelt werden.
+      </assert>
+      <assert test="cac:InvoiceLine/cac:Item[cac:CommodityClassification/cbc:ItemClassificationCode/@listID = 'cvd'
+        and
+        cac:AdditionalItemProperty/cbc:Name = 'cva']"
+        flag="fatal"
+        id="BR-DE-CVD-03">
+        [BR-DE-CVD-03] In einer Rechnung muss mindestens eine Rechnungszeile enthalten sein, in der BT-158/@schemeID den Wert 'cvd' und BT 160 den Wert cva enthält.
+      </assert>
+    </rule>
+    <rule context="cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
+      <assert test="contains($CVA-CODES, concat(' ', normalize-space(cbc:Value), ' '))"
+        flag="fatal"
+        id="BR-DE-CVD-04">
+        [BR-DE-CVD-04] Wenn innerhalb von BG-32 BT-160 den Namen cva hat, muss BT-161 einen diesem Namen zugeordneten Wert enthalten.
       </assert>
     </rule>
   </pattern>
