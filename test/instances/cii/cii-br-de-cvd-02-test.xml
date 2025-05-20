@@ -140,6 +140,9 @@
             <ram:ContractReferencedDocument>
                 <ram:IssuerAssignedID>0000000752</ram:IssuerAssignedID>
             </ram:ContractReferencedDocument>
+            <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02-3"
+                        description="mandatory BT-17 not provided" ?>
             <ram:AdditionalReferencedDocument>
                 <?xmute mutator="identity"
                         schematron-valid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02-1"

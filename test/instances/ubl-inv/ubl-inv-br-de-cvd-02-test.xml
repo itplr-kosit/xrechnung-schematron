@@ -18,13 +18,16 @@
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
+  <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02-3"
+            description="mandatory BT-17 missing" ?>
   <cac:OriginatorDocumentReference>
     <?xmute mutator="identity"
             schematron-valid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02-1"
-            description="mandatory BT-17" ?>
+            description="mandatory BT-17 exists" ?>
     <?xmute mutator="remove"
             schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-inv-mandatory-BR-DE-CVD-02-2"
-            description="mandatory BT-17" ?>
+            description="mandatory BT-17 missing" ?>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
   <cac:ContractDocumentReference>

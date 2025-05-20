@@ -3,10 +3,8 @@
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
-  <!--<cbc:DueDate>2018-04-13</cbc:DueDate>-->
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
@@ -20,13 +18,13 @@
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
+  <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-cn-mandatory-BR-DE-CVD-02-3"
+            description="mandatory BT-17 not provided" ?>
   <cac:OriginatorDocumentReference>
     <?xmute mutator="identity"
             schematron-valid="xrubl:BR-DE-CVD-02" id="ubl-cn-mandatory-BR-DE-CVD-02-1"
             description="mandatory BT-17 exists" ?>
-    <?xmute mutator="remove"
-            schematron-invalid="xrubl:BR-DE-CVD-02" id="ubl-cn-mandatory-BR-DE-CVD-02-2"
-            description="mandatory BT-17 not provided" ?>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
   <cac:AccountingSupplierParty>

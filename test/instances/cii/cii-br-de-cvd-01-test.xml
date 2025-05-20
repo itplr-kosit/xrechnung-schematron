@@ -137,6 +137,9 @@
                     <ram:URIID schemeID="EM">buyer@buyer.com</ram:URIID>
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
+            <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-3"
+                        description="mandatory BT-12 not provided" ?>
             <ram:ContractReferencedDocument>
                 <?xmute mutator="identity"
                         schematron-valid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-1"
