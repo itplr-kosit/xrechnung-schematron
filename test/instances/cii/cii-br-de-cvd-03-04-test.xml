@@ -31,9 +31,9 @@
                 <!-- BG-32 -->
                 <ram:ApplicableProductCharacteristic>
                     <!-- BT-160 -->
-                    <ram:Description>[Description]</ram:Description>
+                    <ram:Description>cva</ram:Description>
                     <!-- BT-161 -->
-                    <ram:Value>[Value]</ram:Value>
+                    <ram:Value>clean</ram:Value>
                 </ram:ApplicableProductCharacteristic>
                 <!-- BG-32 -->
                 <ram:ApplicableProductCharacteristic>
@@ -44,7 +44,7 @@
                 </ram:ApplicableProductCharacteristic>
                 <!-- BT-158, BT-158-1, BT-158-2 -->
                 <ram:DesignatedProductClassification>
-                    <ram:ClassCode listID="IB" listVersionID="88">0721-880X</ram:ClassCode>
+                    <ram:ClassCode listID="cvd" listVersionID="88">0721-880X</ram:ClassCode>
                 </ram:DesignatedProductClassification>         
                 <!-- BT-158, BT-158-1, BT-158-2 -->
                 <ram:DesignatedProductClassification>
