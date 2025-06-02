@@ -26,11 +26,23 @@
                 <ram:LineID>1</ram:LineID>				
             </ram:AssociatedDocumentLineDocument>
             <!-- BG-31 -->
-            <ram:SpecifiedTradeProduct>                		
-                <ram:Name>Vehicle</ram:Name>	
+            <ram:SpecifiedTradeProduct>
+                <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-CVD-04" id="cii-mandatory-BR-DE-CVD-04"
+                        description="A Product with cvd as ClassCode listID, must contain at least one of the following codes as part of its name: clean,zero-emission,other"?>
+                <?xmute mutator="code" values="vehicle,clean,zero-emission,other"
+                        schematron-invalid="xrcii:BR-DE-CVD-04" id="cii-mandatory-BR-DE-CVD-04"
+                        description="A Product with cvd as ClassCode listID, must contain at least one of the following codes as part of its name: clean,zero-emission,other"?>
+                <ram:Name>Vehicle</ram:Name>
                 <!-- BG-32 -->
                 <ram:ApplicableProductCharacteristic>
                     <!-- BT-160 -->
+                    <?xmute mutator="remove"
+                            schematron-invalid="xrcii:BR-DE-CVD-03" id="cii-mandatory-BR-DE-CVD-03"
+                            description="A Product with cvd as ClassCode listID, needs at least one ApplicableProductCharacteristic with the Description "cva"." ?>
+                    <?xmute mutator="code" values="[Description 2]"
+                            schematron-invalid="xrcii:BR-DE-CVD-03" id="cii-mandatory-BR-DE-CVD-03"
+                            description="A Product with cvd as ClassCode listID, needs at least one ApplicableProductCharacteristic with the Description "cva"." ?>
                     <ram:Description>cva</ram:Description>
                     <!-- BT-161 -->
                     <ram:Value>clean</ram:Value>
