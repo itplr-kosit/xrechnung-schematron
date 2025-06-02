@@ -218,6 +218,10 @@
         id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+
+     <rule context="cac:PartyTaxScheme">
+        <assert test="exists(cac:TaxScheme/cbc:ID) and exists(cbc:CompanyID)" flag="fatal" id="UBL-SR-53">[UBL-SR-53]- CompanyID (VAT Identifier) muss bei der Angabe der PartyTaxScheme/TaxScheme/ID angegeben werden.</assert>
+      </rule>
   </pattern>
   
   <pattern id="ubl-extension-pattern">
