@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Fixed
+
+* BR-DEX-09 assertion text
+
 ## v2.3.0 on 2025-03-21
 
 This release is compatible with XRechnung 3.0.x
