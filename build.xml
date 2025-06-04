@@ -24,8 +24,8 @@
   <property name="xmute.version.full" value="0.5" />
   <property name="xmute.jar" value="xml-mutate.jar" />
 
-  <property name="bis.version" value="3.0.18" />
-  <property name="bis.zip" value="${bis.version}.zip" />
+  <property name="bis.version" value="3.0.19" />
+  <property name="bis.zip" value="v${bis.version}.zip" />
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
