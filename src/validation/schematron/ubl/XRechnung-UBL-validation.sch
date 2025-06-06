@@ -218,6 +218,21 @@
         id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+    
+    <!--BG-13/BT-72 OR BG-13/BG-14 (/BT-73 & /BT-74) OR BG-25/BG-26 (/BT-134 & /BT135)-->
+    <!--TODO: Should we enforce both BTs inside of BG-14 and BG-26? Or just BG-14 and BG-26 and not their BTs?-->
+    <rule context="/ubl:Invoice/cac:Delivery | /ubl:Invoice/cac:InvoiceLine | /cn:CreditNote | /cn:CreditNote/cac:Delivery | /cn:CreditNote/cac:CreditNoteLine">
+      <!--Check for BT-72 or BG-14 or BG-26-->
+      <assert test="exists(cbc:ActualDeliveryDate) or exists(cac:InvoicePeriod)"
+        flag="information"
+        id="BR-DE-TODOfindNo"
+        >[BR-DE-TODOfindNo] Eine Rechnung sollte entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder BG-26 "Invoice line period" enthalten.</assert>
+    </rule>
+    
+    <!--TODO: Wenn BT-72 und BG-14 nicht angegeben sind, muss BG-26 in jeder Rechnungszeile (BG-25) vorhanden sein. -->
+    
+    <!--TODO: Zur Angabe eines Kalendermonats in BG-14 oder BG-26 ist der jeweils erste und letzte Tag des Monats anzugeben. -->
+    
   </pattern>
   
   <pattern id="ubl-extension-pattern">
