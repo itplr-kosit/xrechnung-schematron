@@ -93,6 +93,16 @@
         flag="fatal"
         id="BR-DE-31"
         >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>      
+    
+      <!--Check for BT-72 or BG-14 or BG-26-->
+      <!--Wenn BT-72 und BG-14 nicht angegeben sind, muss BG-26 in jeder Rechnungszeile (BG-25) vorhanden sein.-->
+      <assert test="cac:Delivery/cbc:ActualDeliveryDate
+                    or ubl:Invoice/cac:InvoicePeriod
+                    or (every $line in (cac:InvoiceLine | cac:CreditNoteLine) satisfies $line/cac:InvoicePeriod)"
+        flag="information"
+        id="BR-DE-TODOfindNo"
+        >[BR-DE-TODOfindNo] Eine Rechnung sollte entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder BG-26 "Invoice line period" enthalten.</assert>
+     
     </rule>    
     <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
       <assert test="matches(cbc:URI, $XR-URL-REGEX)"
@@ -219,19 +229,19 @@
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
     
-    <!--BG-13/BT-72 OR BG-13/BG-14 (/BT-73 & /BT-74) OR BG-25/BG-26 (/BT-134 & /BT135)-->
-    <!--TODO: Should we enforce both BTs inside of BG-14 and BG-26? Or just BG-14 and BG-26 and not their BTs?-->
-    <rule context="/ubl:Invoice/cac:Delivery | /ubl:Invoice/cac:InvoiceLine | /cn:CreditNote | /cn:CreditNote/cac:Delivery | /cn:CreditNote/cac:CreditNoteLine">
-      <!--Check for BT-72 or BG-14 or BG-26-->
-      <assert test="exists(cbc:ActualDeliveryDate) or exists(cac:InvoicePeriod)"
+    <!--Zur Angabe eines Kalendermonats in BG-14 oder BG-26 ist der jeweils erste und letzte Tag des Monats anzugeben.-->
+    <!--1. check if StartDate has DAY 01; 2. check if EndDate = first day of month after EndDate month - 1 day; 3. check if StartDate & EndDate are in the same month and year.-->
+    <!--This solution should now also work with leap years.-->
+    <rule context="/ubl:Invoice/cac:InvoicePeriod | /ubl:Invoice/cac:InvoiceLine/cac:InvoicePeriod | /cn:CreditNote/cac:InvoicePeriod | /cn:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod">
+      <assert test="format-date(xs:date(cbc:StartDate), '[D01]') = '01'
+                    and xs:date(cbc:EndDate) = xs:date(concat(format-date(xs:date(cbc:EndDate), '[Y0001]-[M01]'), '-01')) + xs:yearMonthDuration('P1M') - xs:dayTimeDuration('P1D')
+                    and format-date(xs:date(cbc:StartDate), '[Y0001][M01]') = format-date(xs:date(cbc:EndDate), '[Y0001][M01]')"
         flag="information"
-        id="BR-DE-TODOfindNo"
-        >[BR-DE-TODOfindNo] Eine Rechnung sollte entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder BG-26 "Invoice line period" enthalten.</assert>
+        id="BR-DE-TODOfindNO2"
+        >[BR-DE-TODOfindNO2] Zur Angabe eines Kalendermonats in BG-14 "Invoicing period" oder BG-26 "Invoice line period" 
+        sollte der jeweils erste und letzte Tag des gleichen Monats angegeben werden.
+      </assert>
     </rule>
-    
-    <!--TODO: Wenn BT-72 und BG-14 nicht angegeben sind, muss BG-26 in jeder Rechnungszeile (BG-25) vorhanden sein. -->
-    
-    <!--TODO: Zur Angabe eines Kalendermonats in BG-14 oder BG-26 ist der jeweils erste und letzte Tag des Monats anzugeben. -->
     
   </pattern>
   
