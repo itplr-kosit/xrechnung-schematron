@@ -3,7 +3,7 @@
     <!-- This pattern solely serves for declaring global variables (in XSLT speak) -->
     
     <let name="XR-MAJOR-MINOR-VERSION" value="'3.0'"/>
-    <let name="CVD-MAJOR-MINOR-VERSION" value="'1.0'"/>
+    <let name="CVD-MAJOR-MINOR-VERSION" value="'0.9'"/>
     <let name="XR-CIUS-ID" value="concat('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION )"/>
     <let name="XR-EXTENSION-ID" value="concat($XR-CIUS-ID, '#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_' ,$XR-MAJOR-MINOR-VERSION )"/>
     <let name="XR-CVD-ID" value="concat($XR-CIUS-ID, '#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_' , $CVD-MAJOR-MINOR-VERSION )"/>
@@ -23,6 +23,10 @@
     <let name="CEF-EAS-EXT-CODES" value="concat($DIGA-CODES, $CEF-EAS-CODES)" />
     
     <!-- applicable to XRechnung CVD only -->
+    <let name="CVD-CODE" value="' CVD '" />
+    <let name="UNTDID-7143-CODES" value="' AA AB AC AD AE AF AG AH AI AJ AK AL AM AN AO AP AQ AR AS AT AU AV AW AX AY AZ BA BB BC BD BE BF BG BH BI BJ BK BL BM BN BO BP BQ BR BS BT BU BV BW BX BY BZ CC CG CL CR CV DR DW EC EF EMD EN FS GB GN GMN GS HS IB IN IS IT IZ MA MF MN MP NB ON PD PL PO PPI PV QS RC RN RU RY SA SG SK SN SRS SRT SRU SRV SRW SRX SRY SRZ SS SSA SSB SSC SSD SSE SSF SSG SSH SSI SSJ SSK SSL SSM SSN SSO SSP SSQ SSR SSS SST SSU SSV SSW SSX SSY SSZ ST STA STB STC STD STE STF STG STH STI STJ STK STL STM STN STO STP STQ STR STS STT STU STV STW STX STY STZ SUA SUB SUC SUD SUE SUF SUG SUH SUI SUJ SUK SUL SUM TG TSN TSO TSP TSQ TSR TSS TST TSU UA UP VN VP VS VX ZZZ '" />
+    <let name="UNTDID-7143-CVD-CODES" value="concat($CVD-CODE, $UNTDID-7143-CODES)" />
+    <let name="CVD-VEHICLE-CATEGORY" value="' M1 M2 M3 N1 N2 N3 '" />
     <let name="CVA-CODES" value="' clean zero-emission other '" />
     
 </pattern>
