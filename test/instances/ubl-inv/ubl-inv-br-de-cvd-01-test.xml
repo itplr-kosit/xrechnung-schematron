@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_0.9</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -197,8 +197,6 @@
       </cac:TaxScheme>
     </cac:TaxCategory>
   </cac:AllowanceCharge>
-
-
   <cac:TaxTotal>
     <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
     <cac:TaxSubtotal>
@@ -226,13 +224,9 @@
       </cac:TaxCategory>
     </cac:TaxSubtotal>
   </cac:TaxTotal>
-
-
   <cac:TaxTotal>
     <cbc:TaxAmount currencyID="GBP">2048.44</cbc:TaxAmount>
   </cac:TaxTotal>
-
-
   <cac:LegalMonetaryTotal>
     <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
     <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
@@ -243,8 +237,6 @@
     <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
     <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
-
-
   <cac:InvoiceLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
@@ -258,13 +250,13 @@
       <cbc:LineID>6171175.1</cbc:LineID>
     </cac:OrderLineReference>
     <cac:Item>
-      <cbc:Description>Anforderungmanagament</cbc:Description>
+      <cbc:Description>Anforderungsmanagament</cbc:Description>
       <cbc:Name>Beratung</cbc:Name>
       <cac:SellersItemIdentification>
         <cbc:ID>1034</cbc:ID>
       </cac:SellersItemIdentification>
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
+        <cbc:ItemClassificationCode listID="CVD" listVersionID="88">M1</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
@@ -273,6 +265,12 @@
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
+      <cac:AdditionalItemProperty>
+        <!-- BT-160 -->
+        <cbc:Name>cva</cbc:Name>
+        <!-- BT-161 -->
+        <cbc:Value>clean</cbc:Value>
+      </cac:AdditionalItemProperty>
     </cac:Item>
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>

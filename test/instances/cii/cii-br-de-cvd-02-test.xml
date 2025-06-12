@@ -4,7 +4,7 @@
             <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
         </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_0.9</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -33,8 +33,14 @@
                 <ram:SellerAssignedID>246</ram:SellerAssignedID>
                 <ram:Name>Zeitschrift [...]</ram:Name>
                 <ram:Description>Zeitschrift Inland</ram:Description>
+                <ram:ApplicableProductCharacteristic>
+                    <!-- BT-160 -->
+                    <ram:Description>cva</ram:Description>
+                    <!-- BT-161 -->
+                    <ram:Value>clean</ram:Value>
+                </ram:ApplicableProductCharacteristic>
                 <ram:DesignatedProductClassification>
-                    <ram:ClassCode listID="IB">0721-880X</ram:ClassCode>
+                    <ram:ClassCode listID="CVD">N2</ram:ClassCode>
                 </ram:DesignatedProductClassification>
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>

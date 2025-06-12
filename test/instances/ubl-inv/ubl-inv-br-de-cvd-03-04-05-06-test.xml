@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_0.9</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -87,6 +87,12 @@
     <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
   <!-- BG-25 -->
+  <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-03" id="ubl-inv-BR-DE-CVD-03-3"
+            description="Invoice line with CVD requirements exists" ?>
+  <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-CVD-03" id="ubl-inv-mandatory-BR-DE-CVD-03-4"
+            description="invoice line with CVD information missing" ?>  
   <cac:InvoiceLine>
     <cbc:ID>1</cbc:ID>
     <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
@@ -95,12 +101,37 @@
     <cac:Item>
       <cbc:Name>Beratung</cbc:Name>
       <!-- BT-158 -->
+      <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-06-b" id="ubl-inv-BR-DE-CVD-06-b-1"
+            description="Invoice line with BT-158/schemeID = CVD" ?>
+      <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-CVD-06-b" id="ubl-inv-mandatory-BR-DE-CVD-06-b-2"
+            description="missing BT-158/schemeID = CVD in Invoice line" ?>
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="cvd" listVersionID="88">0721-880X</cbc:ItemClassificationCode>
+        <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-04" id="ubl-inv-BR-DE-CVD-04-1"
+            description="BT-158 has correct CVD value" ?>
+        <?xmute mutator="code" values="M2,M3,N1,N2,N3"
+            schematron-valid="xrubl:BR-DE-CVD-04" id="ubl-inv-mandatory-BR-DE-CVD-04-2"
+            description="correct BT-158 value" ?>
+        <?xmute mutator="code" values="X2,M5,test"
+            schematron-invalid="xrubl:BR-DE-CVD-04" id="ubl-inv-mandatory-BR-DE-CVD-04-3"
+            description="incorrect BT-158 value" ?>
+        <?xmute mutator="code" values="XY, cvd" attribute="listID"
+            schematron-invalid="xrubl:BR-TMP-CVD-01" id="ubl-inv-mandatory-BR-DE-CVD-04-4"
+            description="scheme identifier value not allowed" ?>
+        <cbc:ItemClassificationCode listID="CVD" listVersionID="88">M1</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <!-- BT-158 -->
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="IB" listVersionID="88">0721-880XYZ</cbc:ItemClassificationCode>
+        <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-06-b" id="ubl-inv-BR-DE-CVD-06-b-3"
+            description="only one cvd per invoice line" ?>
+        <?xmute mutator="code" values="CVD"
+            schematron-invalid="xrubl:BR-DE-CVD-06-b" id="ubl-inv-mandatory-BR-DE-CVD-06b-4"
+            description="more than one BT-158/schemeID not allowed per invoice line" 
+            attribute="listID" ?>
+        <cbc:ItemClassificationCode listID="IB" listVersionID="88">4839-2</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
@@ -110,18 +141,36 @@
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
       <!-- BG-32 -->
+      <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-06-a" id="ubl-inv-BR-DE-CVD-06-a-1"
+            description="Invoice line with BT-160 = cva" ?>
+      <?xmute mutator="remove"
+            schematron-invalid="xrubl:BR-DE-CVD-06-a" id="ubl-inv-mandatory-BR-DE-CVD-06-a-2"
+            description="missing BT-160 = cva in Invoice line" ?>
       <cac:AdditionalItemProperty>
         <!-- BT-160 -->
         <cbc:Name>cva</cbc:Name>
         <!-- BT-161 -->
+        <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-05" id="ubl-inv-BR-DE-CVD-05-1"
+            description="BT-161 has correct cva value" ?>
+        <?xmute mutator="code" values="test"
+            schematron-invalid="xrubl:BR-DE-CVD-05" id="ubl-inv-mandatory-BR-DE-CVD-05-2"
+            description="incorrect BT-161 value" ?>
         <cbc:Value>clean</cbc:Value>
       </cac:AdditionalItemProperty>
       <!-- BG-32 -->
       <cac:AdditionalItemProperty>
         <!-- BT-160 -->
-        <cbc:Name>[Description 2]</cbc:Name>
+        <?xmute mutator="identity"
+            schematron-valid="xrubl:BR-DE-CVD-06-a" id="ubl-inv-BR-DE-CVD-06-a-3"
+            description="only one BT-160 = cva per invoice line" ?>
+        <?xmute mutator="code" values="cva"
+            schematron-invalid="xrubl:BR-DE-CVD-06-a" id="ubl-inv-mandatory-BR-DE-CVD-06-a-4"
+            description="more than one BT-160 = cva not allowed per invoice line" ?>
+        <cbc:Name>[Name]</cbc:Name>
         <!-- BT-161 -->
-        <cbc:Value>[Value 2]</cbc:Value>
+        <cbc:Value>[Value]</cbc:Value>
       </cac:AdditionalItemProperty>
     </cac:Item>
     <cac:Price>
@@ -154,16 +203,16 @@
       <!-- BG-32 -->
       <cac:AdditionalItemProperty>
         <!-- BT-160 -->
-        <cbc:Name>[Description]</cbc:Name>
+        <cbc:Name>[Name]</cbc:Name>
         <!-- BT-161 -->
-        <cbc:Value>[Value]</cbc:Value>
+        <cbc:Value>[Description]</cbc:Value>
       </cac:AdditionalItemProperty>
       <!-- BG-32 -->
       <cac:AdditionalItemProperty>
         <!-- BT-160 -->
-        <cbc:Name>[Description 2]</cbc:Name>
+        <cbc:Name>[Name 2]</cbc:Name>
         <!-- BT-161 -->
-        <cbc:Value>[Value 2]</cbc:Value>
+        <cbc:Value>[Description 2</cbc:Value>
       </cac:AdditionalItemProperty>
     </cac:Item>
     <cac:Price>

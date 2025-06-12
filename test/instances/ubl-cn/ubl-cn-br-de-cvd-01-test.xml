@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
-  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_1.0</cbc:CustomizationID>
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:cvd:xrechnung_0.9</cbc:CustomizationID>
   <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
   <cbc:ID>1234567</cbc:ID>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
@@ -11,6 +11,10 @@
     <cbc:StartDate>2016-01-01</cbc:StartDate>
     <cbc:EndDate>2016-12-31</cbc:EndDate>
   </cac:InvoicePeriod>
+  <cac:OrderReference>
+    <cbc:ID>65002278</cbc:ID>
+    <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
+  </cac:OrderReference>
   <?xmute mutator="remove"
             schematron-invalid="xrubl:BR-DE-CVD-01" id="ubl-cn-mandatory-BR-DE-CVD-01-3"
             description="mandatory BT-12 not provided" ?>
@@ -23,10 +27,6 @@
             description="mandatory BT-12 not provided" ?>
     <cbc:ID>0000000752</cbc:ID>
   </cac:ContractDocumentReference>
-  <cac:OrderReference>
-    <cbc:ID>65002278</cbc:ID>
-    <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
-  </cac:OrderReference>
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
@@ -208,9 +208,7 @@
     <cbc:PrepaidAmount currencyID="EUR">0</cbc:PrepaidAmount>
     <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
     <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
-  </cac:LegalMonetaryTotal>
-  
-  
+  </cac:LegalMonetaryTotal>  
   <cac:CreditNoteLine>
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
@@ -230,7 +228,7 @@
         <cbc:ID>1034</cbc:ID>
       </cac:SellersItemIdentification>
       <cac:CommodityClassification>
-        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
+        <cbc:ItemClassificationCode listID="CVD" listVersionID="88">M1</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
@@ -239,6 +237,12 @@
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:ClassifiedTaxCategory>
+      <cac:AdditionalItemProperty>
+        <!-- BT-160 -->
+        <cbc:Name>cva</cbc:Name>
+        <!-- BT-161 -->
+        <cbc:Value>clean</cbc:Value>
+      </cac:AdditionalItemProperty>
     </cac:Item>
     <cac:Price>
       <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
