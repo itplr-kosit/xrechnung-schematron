@@ -307,17 +307,41 @@
     <pattern id="cii-cvd-pattern">
         <let name="isCVD" value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = $XR-CVD-ID])" />
         <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[$isCVD]">
-            <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'cvd' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
+            <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
                 flag="fatal"
                 id="BR-DE-CVD-03">
-                [BR-DE-CVD-03] TODO
+                [BR-DE-CVD-03] In einer Rechnung muss mindestens eine Rechnungszeile enthalten sein, in der BT-158/@schemeID den Wert 'CVD' und BT 160 den Wert 'cva' enthält.
+            </assert>
+        </rule>
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[$isCVD]">
+            <assert test="not(ram:ApplicableProductCharacteristic/ram:Description = 'cva') or count(ram:DesignatedProductClassification/ram:ClassCode[@listID = 'CVD']) = 1"
+                flag="fatal"
+                id="BR-DE-CVD-06-b" >
+                [BR-DE-CVD-06-b] Wenn BT-160 mit dem Wert cva angegeben ist, muss in derselben Rechnungszeile genau ein BT-158 mit dem scheme identifier cvd vorhanden sein.
+            </assert>
+            <assert test="not(ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD') or count(ram:ApplicableProductCharacteristic[ram:Description = 'cva']) = 1"
+                flag="fatal"
+                id="BR-DE-CVD-06-a">
+                [BR-DE-CVD-06-a] Wenn BT-158 mit dem scheme identifier CVD angegeben ist, muss in derselben Rechnungszeile genau ein BT-160 mit dem Wert cva vorhanden sein.
+            </assert>
+        </rule>
+        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode[$isCVD]">
+            <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
+                flag="fatal"
+                id="BR-TMP-CVD-01">
+                [BR-TMP-CVD-01] Das Bildungsschema für BT-158 ist aus der Codeliste UNTDID 7143 zu wählen.
+            </assert>
+            <assert test="not(contains(normalize-space(@listID), 'CVD')) or contains($CVD-VEHICLE-CATEGORY, concat(' ', normalize-space(.), ' '))"
+                flag="fatal"
+                id="BR-DE-CVD-04">
+                [BR-DE-CVD-04] Wenn BT-158/schemeID CVD ist, muss BT-158 einen diesem Identifier zugeordneten Wert enthalten.
             </assert>
         </rule>
         <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[$isCVD and ram:Description = 'cva']">
-            <assert test="ram:Name = contains($CVA-CODES, concat(' ', normalize-space(.), ' '))"
+            <assert test="contains($CVA-CODES, concat(' ', normalize-space(ram:Value), ' '))"
                 flag="fatal"
-                id="BR-DE-CVD-04">
-                [BR-DE-CVD-04] TODO
+                id="BR-DE-CVD-05">
+                [BR-DE-CVD-05] Wenn innerhalb von BG-32 BT-160 den Namen cva hat, muss BT-161 einen diesem Namen zugeordneten Wert enthalten.
             </assert>
         </rule>
         <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement[$isCVD]">

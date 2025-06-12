@@ -365,19 +365,45 @@
         id="BR-DE-CVD-01">
         [BR-DE-CVD-01] Das Element <name /> "Contract reference" (BT-12) muss übermittelt werden.
       </assert>
-      <assert test="cac:InvoiceLine/cac:Item[cac:CommodityClassification/cbc:ItemClassificationCode/@listID = 'cvd'
+      <assert test="(cac:InvoiceLine/cac:Item | cac:CreditNoteLine/cac:Item)[cac:CommodityClassification/cbc:ItemClassificationCode/@listID = 'CVD'
         and
         cac:AdditionalItemProperty/cbc:Name = 'cva']"
         flag="fatal"
         id="BR-DE-CVD-03">
-        [BR-DE-CVD-03] In einer Rechnung muss mindestens eine Rechnungszeile enthalten sein, in der BT-158/@schemeID den Wert 'cvd' und BT 160 den Wert cva enthält.
+        [BR-DE-CVD-03] In einer Rechnung muss mindestens eine Rechnungszeile enthalten sein, in der BT-158/@schemeID den Wert 'CVD' und BT 160 den Wert 'cva' enthält.
       </assert>
     </rule>
-    <rule context="cac:InvoiceLine/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
-      <assert test="contains($CVA-CODES, concat(' ', normalize-space(cbc:Value), ' '))"
+    <rule context="(cac:InvoiceLine/cac:Item | cac:CreditNoteLine/cac:Item)[$isCVD]">
+      <assert test="not(cac:CommodityClassification/cbc:ItemClassificationCode[@listID = 'CVD']) or count(cac:AdditionalItemProperty[cbc:Name = 'cva']) = 1"
+        flag="fatal"
+        id="BR-DE-CVD-06-a"
+        >
+        [BR-DE-CVD-06-a] Wenn BT-158 mit dem scheme identifier 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein BT-160 mit dem Wert cva vorhanden sein.
+      </assert>
+      <assert test="not(cac:AdditionalItemProperty[cbc:Name = 'cva']) or count(cac:CommodityClassification/cbc:ItemClassificationCode[@listID = 'CVD']) = 1"
+        flag="fatal"
+        id="BR-DE-CVD-06-b"
+        >
+        [BR-DE-CVD-06-b] Wenn BT-160 mit dem Wert cva angegeben ist, muss in derselben Rechnungszeile genau ein BT-158 mit dem scheme identifier CVD vorhanden sein.
+      </assert>
+    </rule>
+    <rule context="(cac:InvoiceLine | cac:CreditNoteLine)/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[$isCVD]">
+      <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
+        flag="fatal"
+        id="BR-TMP-CVD-01">
+        [BR-TMP-CVD-01] Das Bildungsschema für BT-158 ist aus der Codeliste UNTDID 7143 zu wählen.
+      </assert>
+      <assert test="not(contains(normalize-space(@listID), 'CVD')) or contains($CVD-VEHICLE-CATEGORY, concat(' ', normalize-space(.), ' '))"
         flag="fatal"
         id="BR-DE-CVD-04">
-        [BR-DE-CVD-04] Wenn innerhalb von BG-32 BT-160 den Namen cva hat, muss BT-161 einen diesem Namen zugeordneten Wert enthalten.
+        [BR-DE-CVD-04] BT-158 mit dem scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
+      </assert>
+    </rule>
+    <rule context="(cac:InvoiceLine | cac:CreditNoteLine)/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva'][$isCVD]">
+      <assert test="contains($CVA-CODES, concat(' ', normalize-space(cbc:Value), ' '))"
+        flag="fatal"
+        id="BR-DE-CVD-05">
+        [BR-DE-CVD-05] Wenn innerhalb von BG-32 BT-160 den Namen cva hat, muss BT-161 einen diesem Namen zugeordneten Wert enthalten.
       </assert>
     </rule>
   </pattern>
