@@ -97,11 +97,11 @@
       <!--Check for BT-72 or BG-14 or BG-26-->
       <!--Wenn BT-72 und BG-14 nicht angegeben sind, muss BG-26 in jeder Rechnungszeile (BG-25) vorhanden sein.-->
       <assert test="cac:Delivery/cbc:ActualDeliveryDate
-                    or ubl:Invoice/cac:InvoicePeriod
+                    or cac:InvoicePeriod
                     or (every $line in (cac:InvoiceLine | cac:CreditNoteLine) satisfies $line/cac:InvoicePeriod)"
         flag="information"
-        id="BR-DE-TODOfindNo"
-        >[BR-DE-TODOfindNo] Eine Rechnung sollte entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder BG-26 "Invoice line period" enthalten.</assert>
+        id="BR-DE-TMP-32"
+        >[BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder BG-26 "Invoice line period" enthalten.</assert>
      
     </rule>    
     <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
