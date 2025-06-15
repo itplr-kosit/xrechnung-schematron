@@ -228,21 +228,7 @@
         id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
-    
-    <!--Zur Angabe eines Kalendermonats in BG-14 oder BG-26 ist der jeweils erste und letzte Tag des Monats anzugeben.-->
-    <!--1. check if StartDate has DAY 01; 2. check if EndDate = first day of month after EndDate month - 1 day; 3. check if StartDate & EndDate are in the same month and year.-->
-    <!--This solution should now also work with leap years.-->
-    <rule context="/ubl:Invoice/cac:InvoicePeriod | /ubl:Invoice/cac:InvoiceLine/cac:InvoicePeriod | /cn:CreditNote/cac:InvoicePeriod | /cn:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod">
-      <assert test="format-date(xs:date(cbc:StartDate), '[D01]') = '01'
-                    and xs:date(cbc:EndDate) = xs:date(concat(format-date(xs:date(cbc:EndDate), '[Y0001]-[M01]'), '-01')) + xs:yearMonthDuration('P1M') - xs:dayTimeDuration('P1D')
-                    and format-date(xs:date(cbc:StartDate), '[Y0001][M01]') = format-date(xs:date(cbc:EndDate), '[Y0001][M01]')"
-        flag="information"
-        id="BR-DE-TODOfindNO2"
-        >[BR-DE-TODOfindNO2] Zur Angabe eines Kalendermonats in BG-14 "Invoicing period" oder BG-26 "Invoice line period" 
-        sollte der jeweils erste und letzte Tag des gleichen Monats angegeben werden.
-      </assert>
-    </rule>
-    
+
   </pattern>
   
   <pattern id="ubl-extension-pattern">
