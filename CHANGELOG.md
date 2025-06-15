@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
+
 ### Fixed
 
 * BR-DEX-09 assertion text
