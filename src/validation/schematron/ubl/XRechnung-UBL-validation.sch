@@ -229,6 +229,16 @@
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
 
+    <rule context="/ubl:Invoice | /cn:CreditNote">
+        <assert test="cac:Delivery/cbc:ActualDeliveryDate
+                      or cac:InvoicePeriod
+                      or (every $line in (cac:InvoiceLine | cac:CreditNoteLine) satisfies $line/cac:InvoicePeriod)"
+                flag="information"
+                id="BR-DE-TMP-32">
+          [BR-DE-TMP-32] Eine Rechnung muss zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+        </assert>
+    </rule>
+
   </pattern>
   
   <pattern id="ubl-extension-pattern">
