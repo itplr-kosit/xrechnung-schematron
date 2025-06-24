@@ -72,7 +72,7 @@
                 </ram:BuyerOrderReferencedDocument>				
                 <ram:GrossPriceProductTradePrice>
                     <!-- BT-148 -->
-                    <ram:ChargeAmount>168.125000000</ram:ChargeAmount>
+                    <ram:ChargeAmount>168.1250000000</ram:ChargeAmount>
                     <!-- BT-149, BT-150 -->
                     <ram:BasisQuantity
                         unitCode="XPP">30</ram:BasisQuantity>
@@ -116,26 +116,11 @@
                     <ram:ChargeIndicator>
                         <udt:Indicator>true</udt:Indicator>
                     </ram:ChargeIndicator>
-                    <!-- BT-143 -->
+                    <!-- BT-143 -->                    
                     <ram:CalculationPercent>100</ram:CalculationPercent>
-                    <!-- BT-142 -->
+                    <!-- BT-142 -->                   
                     <ram:BasisAmount>1</ram:BasisAmount>
-                    <!-- BT-141 -->
-                    <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-charge-amount-must-be-correct"
-                        description="invoice line allowance amount is correct" ?>
-                    <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-no-line-charge-amount"
-                        description="invoice line amount not provided" ?>
-                    <?xmute mutator="code" values="1.02, 0.98"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-charge-amount-slack"
-                        description="invoice line amount correct" ?>
-                    <?xmute mutator="code" values="1.03,1.5,0.5,0.97"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-charge-amount-slack-HUF"
-                        description="invoice line amount correct with HUF slack" ?>
-                    <?xmute mutator="code" values="0.49, 1.51"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-line-charge-amount"
-                        description="invoice line amount must be correct" ?>
+                    <!-- BT-141 -->                    
                     <ram:ActualAmount>1</ram:ActualAmount>
                     <!-- BT-145 -->
                     <ram:ReasonCode>TAC</ram:ReasonCode>
@@ -146,26 +131,11 @@
                     <ram:ChargeIndicator>
                         <udt:Indicator>false</udt:Indicator>
                     </ram:ChargeIndicator>
-                    <!-- BT-138 -->
+                    <!-- BT-138 -->                    
                     <ram:CalculationPercent>100</ram:CalculationPercent>
-                    <!-- BT-137 -->
+                    <!-- BT-137 -->                    
                     <ram:BasisAmount>1</ram:BasisAmount>
-                    <!-- BT-136 -->
-                    <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-allowance-amount-must-be-correct"
-                        description="invoice line allowance amount is correct" ?>
-                    <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-no-line-allowance-amount"
-                        description="invoice line amount not provided" ?>
-                    <?xmute mutator="code" values="1.02,0.98"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-allowance-amount-slack"
-                        description="invoice line amount correct" ?>
-                    <?xmute mutator="code" values="1.03,1.5,0.5,0.97"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-line-allowance-amount-slack-HUF"
-                        description="invoice line amount correct with HUF slack" ?>
-                    <?xmute mutator="code" values="0.49, 1.51"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-line-allowance-amount"
-                        description="invoice line amount must be correct" ?>
+                    <!-- BT-136 -->                    
                     <ram:ActualAmount>1</ram:ActualAmount>
                     <!-- BT-140 -->
                     <ram:ReasonCode>102</ram:ReasonCode>
@@ -372,12 +342,38 @@
 				<!-- BT-122 -->
                 <ram:IssuerAssignedID>01_15_Anhang_01.pdf</ram:IssuerAssignedID>
                 <!-- BT-124 -->
-                <ram:URIID>https://xeinkauf.de/xrechnung/</ram:URIID>
+                <?xmute mutator="identity"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-BT-124-valid-url"
+                    description="valid URL" ?>
+                <?xmute mutator="code"
+                    values="http://xeinkauf.de,ftp://name:pw@example.de/folder/,mailto:info@test.de"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-BT-124-valid-urls"
+                    description="valid URL" ?>
+                <?xmute mutator="code"
+                    values="External document location,xeinkauf.de/xrechnung/,225.6.90.63,https ://xeinkauf.de"
+                    schematron-invalid="xrcii:BR-TMP-2" id="cii-BT-124-invalid-urls"
+                    description="invalid URL" ?>
+                <?xmute mutator="remove"
+                    schematron-valid="xrcii:BR-TMP-2" id="cii-no-BT-124"
+                    description="no URL" ?>
+                <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
 				<!-- BT-122 -->
                 <ram:TypeCode>916</ram:TypeCode>
 				<!-- BT-123 -->
                 <ram:Name>Aufschlüsselung der einzelnen Leistungspositionen</ram:Name>
 				<!-- BT-125, BT-125-1, BT-125-2 -->
+                <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
+            </ram:AdditionalReferencedDocument>
+            <ram:AdditionalReferencedDocument>
+                <!-- BT-122 -->
+                <ram:IssuerAssignedID>01_15_Anhang_02.pdf</ram:IssuerAssignedID>
+                <!-- BT-124 -->
+                <ram:URIID>https://xeinkauf.de/xrechnung</ram:URIID>
+                <!-- BT-122 -->
+                <ram:TypeCode>916</ram:TypeCode>
+                <!-- BT-123 -->
+                <ram:Name>Aufschlüsselung der einzelnen Leistungspositionen</ram:Name>
+                <!-- BT-125, BT-125-1, BT-125-2 -->
                 <!--<ram:AttachmentBinaryObject mimeCode="application/pdf" filename="01_15_Anhang_01.pdf">JVBER</ram:AttachmentBinaryObject>-->                
             </ram:AdditionalReferencedDocument>
 			<!-- BT-17 -->
@@ -438,9 +434,9 @@
 			<!-- BT-83 -->
             <ram:PaymentReference>Deb. 12345 / Fact. 9876543</ram:PaymentReference>            
 			<!-- BT-6 -->
-            <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
+            <ram:TaxCurrencyCode>GBP</ram:TaxCurrencyCode>           
 			<!-- BT-5 -->
-            <ram:InvoiceCurrencyCode>HUF</ram:InvoiceCurrencyCode>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
             <ram:PayeeTradeParty>
 				<!-- BT-60 -->
                 <ram:ID>74</ram:ID>
@@ -517,26 +513,11 @@
                 <ram:ChargeIndicator>
                     <udt:Indicator>true</udt:Indicator>
                 </ram:ChargeIndicator>
-				<!-- BT-101 -->
+				<!-- BT-101 -->                
                 <ram:CalculationPercent>100</ram:CalculationPercent>
-				<!-- BT-100 -->
+				<!-- BT-100 -->            
                 <ram:BasisAmount>1</ram:BasisAmount>
-				<!-- BT-99 -->
-                <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-charge-amount-must-be-correct"
-                        description="invoice line allowance amount is correct" ?>
-                <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-no-charge-amount"
-                        description="invoice line amount not provided" ?>
-                <?xmute mutator="code" values="1.02,0.98"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-charge-amount-slack"
-                        description="invoice line amount correct" ?>
-                <?xmute mutator="code" values="1.03,1.5,0.5,0.97"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-charge-amount-slack-HUF"
-                        description="invoice line amount correct with HUF slack" ?>
-                <?xmute mutator="code" values="0.49, 1.51"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-charge-amount"
-                        description="invoice line amount must be correct" ?>
+				<!-- BT-99 -->                
                 <ram:ActualAmount>1</ram:ActualAmount>
 				<!-- BT-105 -->
                 <ram:ReasonCode>TAC</ram:ReasonCode>
@@ -555,26 +536,11 @@
                 <ram:ChargeIndicator>
                     <udt:Indicator>false</udt:Indicator>
                 </ram:ChargeIndicator>
-				<!-- BT-94 -->
+				<!-- BT-94 -->             
                 <ram:CalculationPercent>100</ram:CalculationPercent>
-				<!-- BT-93 -->
+				<!-- BT-93 -->                
                 <ram:BasisAmount>1</ram:BasisAmount>
 				<!-- BT-92 -->
-                <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-allowance-amount-must-be-correct"
-                        description="invoice allowance amount is correct" ?>
-                <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-no-allowance-amount"
-                        description="invoice line amount not provided" ?>
-                <?xmute mutator="code" values="1.02,0.98"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-allowance-amount-slack"
-                        description="invoice line amount correct" ?>
-                <?xmute mutator="code" values="1.03,1.5,0.5,0.97"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R040" id="cii-allowance-amount-slack-HUF"
-                        description="invoice line amount correct with HUF slack" ?>
-                <?xmute mutator="code" values="0.49, 1.51"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R040" id="cii-allowance-amount"
-                        description="invoice line amount must be correct" ?>
                 <ram:ActualAmount>1</ram:ActualAmount>
 				<!-- BT-98 -->
                 <ram:ReasonCode>102</ram:ReasonCode>
@@ -607,9 +573,9 @@
 				<!-- BT-109 -->
                 <ram:TaxBasisTotalAmount>10781.25</ram:TaxBasisTotalAmount>
 				<!-- BT-110 -->
-                <ram:TaxTotalAmount currencyID="HUF">2048.44</ram:TaxTotalAmount>
-				<!-- BT-111 -->
                 <ram:TaxTotalAmount currencyID="EUR">2048.44</ram:TaxTotalAmount>
+				<!-- BT-111 -->
+                <ram:TaxTotalAmount currencyID="GBP">2048.44</ram:TaxTotalAmount>
 				<!-- BT-114 -->
                 <ram:RoundingAmount>0</ram:RoundingAmount>
 				<!-- BT-112 -->

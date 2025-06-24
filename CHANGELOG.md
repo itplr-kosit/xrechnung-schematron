@@ -11,6 +11,18 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* BR-TMP-2: BT-124 "External document location" must contain an absolute URL with valid scheme
+
+### Fixed
+
+* BR-DEX-09 assertion text
+
+## v2.3.0 on 2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
 * Temporary rule BR-TMP-3 for checking multiple BT-149
 * Tests for BR-DE-18 with missing linebreaks between Skonto information
 
@@ -19,12 +31,17 @@ This release is compatible with XRechnung ?.?.?
 * Global codelist variables to adapt CEN 1.3.13 codelist updates
 * Regex in BR-DE-28 to accept special characters
 * Transformation files for national rules for Peppol BIS Billing moved to src folder
+* PEPPOL-EN16931-R046 in CII for more robustness
 * Refactored unresolved variable in build.xml
+* Using Peppol BIS Billing 3.0.18
 
 ### Fixed
 
 * Bug in BR-DE-18 that prevented detection of missing line breaks
+* Datatype of some codelist values in Schematron files
 * Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
+
+**Note: BR-TMP-2 is currently implemented with error level "warning" and will be raised to "error" with an upcoming release.**
 
 ## v2.2.0 on 2024-10-31
 
