@@ -235,7 +235,7 @@
             satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
               flag="fatal"
               id="BR-DE-TMP-32">
-        [BR-DE-TMP-32] Eine Rechnung muss zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
       </assert>
     </rule>
   </pattern>
