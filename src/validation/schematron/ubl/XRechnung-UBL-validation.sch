@@ -399,7 +399,7 @@
       </assert>
     </rule>
     <rule context="(cac:InvoiceLine[$isCVD] | cac:CreditNoteLine[$isCVD])/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
-      <assert test="not(normalize-space(cbc:Value) = 'cva') or normalize-space(.) = $CVA-CODES"
+      <assert test="normalize-space(cbc:Value) = $CVA-CODES"
         flag="fatal"
         id="BR-DE-CVD-05">
         [BR-DE-CVD-05] Wenn innerhalb von <name /> ITEM ATTRIBUTES (BG-32) der <name /> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name /> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.

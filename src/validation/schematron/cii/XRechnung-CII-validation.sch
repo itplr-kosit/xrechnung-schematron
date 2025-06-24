@@ -338,7 +338,7 @@
             </assert>
         </rule>
         <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[$isCVD and ram:Description = 'cva']">
-            <assert test="not(normalize-space(ram:Value) = 'cva') or normalize-space(.) = $CVA-CODES"
+            <assert test="normalize-space(ram:Value) = $CVA-CODES"
                 flag="fatal"
                 id="BR-DE-CVD-05">
                 [BR-DE-CVD-05] Wenn innerhalb von <name /> ITEM ATTRIBUTES (BG-32) der <name /> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name /> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.
