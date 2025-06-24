@@ -392,14 +392,14 @@
         id="BR-TMP-CVD-01">
         [BR-TMP-CVD-01] Das Bildungsschema für <name /> "Item classification identifier" (BT-158) ist aus der Codeliste UNTDID 7143 zu wählen.
       </assert>
-      <assert test="not(contains(normalize-space(@listID), 'CVD')) or contains($CVD-VEHICLE-CATEGORY, concat(' ', normalize-space(.), ' '))"
+      <assert test="not(normalize-space(@listID) = 'CVD') or normalize-space(.) = $CVD-VEHICLE-CATEGORY"
         flag="fatal"
         id="BR-DE-CVD-04">
         [BR-DE-CVD-04] Ein <name /> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
       </assert>
     </rule>
     <rule context="(cac:InvoiceLine[$isCVD] | cac:CreditNoteLine[$isCVD])/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
-      <assert test="contains($CVA-CODES, concat(' ', normalize-space(cbc:Value), ' '))"
+      <assert test="not(normalize-space(cbc:Value) = 'cva') or normalize-space(.) = $CVA-CODES"
         flag="fatal"
         id="BR-DE-CVD-05">
         [BR-DE-CVD-05] Wenn innerhalb von <name /> ITEM ATTRIBUTES (BG-32) der <name /> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name /> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.
