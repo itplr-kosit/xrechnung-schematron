@@ -11,7 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* BR-TMP-2: BT-124 "External document location" must contain an absolute URL with valid scheme
+* Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
 
 ### Fixed
 
@@ -23,7 +23,7 @@ This release is compatible with XRechnung 3.0.x
 
 ### Added
 
-* Temporary rule BR-TMP-3 for checking multiple BT-149
+* BR-TMP-2: BT-124 "External document location" must contain an absolute URL with valid scheme
 * Tests for BR-DE-18 with missing linebreaks between Skonto information
 
 ### Changed
