@@ -9,14 +9,6 @@
   <!--<cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>-->
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>  
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
-  <?xmute mutator="remove"
-          schematron-invalid="xrubl:BR-DE-TMP-32"
-          id="cii-billingperiod-missing"
-          description="No delivery date, no header period, and missing line period on at least one line"?>
-  <cac:InvoicePeriod>
-    <cbc:StartDate>2016-01-01</cbc:StartDate>
-    <cbc:EndDate>2016-12-31</cbc:EndDate>
-  </cac:InvoicePeriod>
   <cac:OrderReference>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
@@ -144,6 +136,9 @@
     </cac:PartyTaxScheme>
   </cac:TaxRepresentativeParty>
   <cac:Delivery>
+    <!-- BT-72 -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bt-72-1" description="BT-72 exists" ?>
+    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bt-72-2" description="date of delivery or service missing" ?>                
     <cbc:ActualDeliveryDate>2018-04-13</cbc:ActualDeliveryDate>
     <cac:DeliveryLocation>
       <cbc:ID>68</cbc:ID>
@@ -228,10 +223,6 @@
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
     <cbc:CreditedQuantity unitCode="XPP">33</cbc:CreditedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
-    <cac:InvoicePeriod>
-      <cbc:StartDate>2016-01-01</cbc:StartDate>
-      <cbc:EndDate>2016-12-31</cbc:EndDate>
-    </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
     </cac:OrderLineReference>

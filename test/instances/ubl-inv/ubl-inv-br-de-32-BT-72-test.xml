@@ -55,8 +55,8 @@
   <!-- BG-13 -->
   <cac:Delivery>
     <!-- BT-72 -->
-    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-1" description="BG-72 exists" ?>
-    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-2" description="date of delivery or service missing" ?>                
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-72-1" description="BT-72 exists" ?>
+    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-72-2" description="date of delivery or service missing" ?>                
     <cbc:ActualDeliveryDate>2025-06-15</cbc:ActualDeliveryDate>
   </cac:Delivery>
   <cac:PaymentMeans>

@@ -83,8 +83,8 @@
     <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">3986.34</cbc:LineExtensionAmount>
     <!-- BG-26 -->
-    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-1" description="BG-26 exists" ?>
-    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-2" description="date of delivery or service missing" ?>                
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-1" description="BG-26 exists" ?>
+    <?xmute mutator="remove" schematron-invalid="xrubl:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-2" description="date of delivery or service missing" ?>                
     <cac:InvoicePeriod>
       <!-- BT-134 -->
       <cbc:StartDate>2025-05-16</cbc:StartDate>
