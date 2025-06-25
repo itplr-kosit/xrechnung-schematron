@@ -274,6 +274,9 @@
         <?xmute mutator="identity"
             schematron-valid="xrubl:BR-DE-CVD-05" id="ubl-cn-BR-DE-CVD-05-1"
             description="BT-161 has correct cva value" ?>
+        <?xmute mutator="code" values="other, zero-emission"
+            schematron-valid="xrubl:BR-DE-CVD-05" id="ubl-cn-BR-DE-CVD-05-3"
+            description="BT-161 has correct cva value" ?>
         <?xmute mutator="code" values="test"
             schematron-invalid="xrubl:BR-DE-CVD-05" id="ubl-cn-mandatory-BR-DE-CVD-05-2"
             description="incorrect BT-161 value" ?>
