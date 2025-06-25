@@ -9,7 +9,10 @@
   <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
-  
+  <cac:InvoicePeriod>
+    <cbc:StartDate>2018-04-13</cbc:StartDate>
+    <cbc:EndDate>2018-04-13</cbc:EndDate>
+  </cac:InvoicePeriod>
   <cac:OrderReference>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
@@ -134,7 +137,7 @@
     </cac:PartyTaxScheme>
   </cac:TaxRepresentativeParty>
   <cac:Delivery>
-    
+    <cbc:ActualDeliveryDate>2018-04-13</cbc:ActualDeliveryDate>
     <cac:DeliveryLocation>
       <cbc:ID>68</cbc:ID>
       <cac:Address>
@@ -239,8 +242,8 @@
     <cbc:InvoicedQuantity unitCode="XPP">30</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
-      <cbc:StartDate>2018-05-01</cbc:StartDate>
-      <cbc:EndDate>2018-05-31</cbc:EndDate>
+      <cbc:StartDate>2018-04-13</cbc:StartDate>
+      <cbc:EndDate>2018-04-13</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:OrderLineReference>
       <cbc:LineID>6171175.1</cbc:LineID>
@@ -267,10 +270,6 @@
     </cac:Price>
   </cac:InvoiceLine>
   <cac:InvoiceLine>
-    <cac:InvoicePeriod>
-      <cbc:StartDate>2025-02-01</cbc:StartDate>
-      <cbc:EndDate>2025-02-28</cbc:EndDate>
-    </cac:InvoicePeriod>
     <cbc:ID>2</cbc:ID>
     <cbc:InvoicedQuantity unitCode="XPP">42</cbc:InvoicedQuantity>
     <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
