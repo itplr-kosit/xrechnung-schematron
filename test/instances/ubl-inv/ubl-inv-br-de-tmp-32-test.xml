@@ -10,8 +10,8 @@
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <?xmute mutator="remove"
-          schematron-invalid="xrcii:BR-DE-TMP-32"
-          id="cii-billingperiod-missing"
+          schematron-invalid="xrubl:BR-DE-TMP-32"
+          id="ubl-inv-billingperiod-missing"
           description="No delivery date, no header period, and missing line period on at least one line"?>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>

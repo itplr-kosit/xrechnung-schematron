@@ -11,7 +11,7 @@
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <?xmute mutator="remove"
           schematron-invalid="xrubl:BR-DE-TMP-32"
-          id="cii-billingperiod-missing"
+          id="ubl-cn-billingperiod-missing"
           description="No delivery date, no header period, and missing line period on at least one line"?>
   <cac:InvoicePeriod>
     <cbc:StartDate>2016-01-01</cbc:StartDate>
