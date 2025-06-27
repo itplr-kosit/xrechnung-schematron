@@ -157,6 +157,9 @@
                         schematron-invalid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02-2"
                         description="mandatory BT-17 not provided" ?>
                 <ram:IssuerAssignedID>ANG987654321</ram:IssuerAssignedID>
+                <?xmute mutator="remove"
+                  schematron-invalid="xrcii:BR-DE-CVD-02" id="cii-mandatory-BR-DE-CVD-02-4"
+                  description="mandatory BT-17 not provided" ?>
                 <ram:TypeCode>50</ram:TypeCode>
             </ram:AdditionalReferencedDocument>
         </ram:ApplicableHeaderTradeAgreement>

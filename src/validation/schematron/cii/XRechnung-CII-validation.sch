@@ -305,15 +305,16 @@
       </rule>
   </pattern>
     <pattern id="cii-cvd-pattern">
-        <let name="isCVD" value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = $XR-CVD-ID])" />
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[$isCVD]">
+        <let name="isCVD"
+          value="/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = $XR-CVD-ID" />
+        <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction">
             <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
                 flag="fatal"
                 id="BR-DE-CVD-03">
                 [BR-DE-CVD-03] In einer Rechnung muss mindestens eine <name /> INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von <name /> "Item classification identifier" (BT-158) den Wert 'CVD' und der <name /> "Item attribute name" (BT-160) den Wert 'cva' enthält.
             </assert>
         </rule>
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[$isCVD]">
+        <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct">
             <assert test="not(ram:ApplicableProductCharacteristic/ram:Description = 'cva') or count(ram:DesignatedProductClassification/ram:ClassCode[@listID = 'CVD']) = 1"
                 flag="fatal"
                 id="BR-DE-CVD-06-b" >
@@ -325,7 +326,7 @@
                 [BR-DE-CVD-06-a] Wenn der Scheme identifier von <name /> "Item classification identifier" (BT-158) mit dem Wert 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein <name /> "Item attribute name" (BT-160) mit dem Wert 'cva' vorhanden sein.
             </assert>
         </rule>
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode[$isCVD]">
+        <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode">
             <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
                 flag="fatal"
                 id="BR-TMP-CVD-01">
@@ -337,14 +338,14 @@
                 [BR-DE-CVD-04] Ein <name /> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
             </assert>
         </rule>
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[$isCVD and ram:Description = 'cva']">
+        <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[ram:Description = 'cva']">
             <assert test="normalize-space(ram:Value) = $CVA-CODES"
                 flag="fatal"
                 id="BR-DE-CVD-05">
                 [BR-DE-CVD-05] Wenn innerhalb von <name /> ITEM ATTRIBUTES (BG-32) der <name /> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name /> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.
             </assert>
         </rule>
-        <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement[$isCVD]">
+        <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement">
             <assert test="ram:ContractReferencedDocument/ram:IssuerAssignedID[boolean(normalize-space(.))]"
                 flag="fatal"
                 id="BR-DE-CVD-01">

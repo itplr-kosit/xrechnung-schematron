@@ -40,6 +40,9 @@
             description="missing BT-160 = cva in Invoice line" ?>
                 <ram:ApplicableProductCharacteristic>
                     <!-- BT-160 -->
+                    <?xmute mutator="code" values="test,anything"
+                      schematron-invalid="xrcii:BR-DE-CVD-06-a xrcii:BR-DE-CVD-03" id="cii-mandatory-BR-DE-CVD-06-a-3"
+                      description="invoice line with correct CVD information missing" ?>
                     <ram:Description>cva</ram:Description>
                     <!-- BT-161 -->
                     <?xmute mutator="identity"
@@ -84,8 +87,11 @@
             schematron-invalid="xrcii:BR-DE-CVD-04" id="cii-mandatory-BR-DE-CVD-04-2"
             description="incorrect BT-158 value" ?>
                     <?xmute mutator="code" values="12,XY" attribute="listID"
-            schematron-invalid="xrcii:BR-TMP-CVD-01" id="cii-BR-DE-TMP-01"
+            schematron-invalid="xrcii:BR-TMP-CVD-01 xrcii:BR-DE-CVD-03" id="cii-BR-DE-TMP-01"
             description="BT-158 listID must be valid" ?>
+                    <?xmute mutator="code" values="AA,STZ" attribute="listID"
+            schematron-invalid="xrcii:BR-DE-CVD-03 xrcii:BR-DE-CVD-06-b" id="cii-mandatory-BR-DE-CVD-03-5"
+            description="invoice line with correct CVD information missing" ?>
                     <ram:ClassCode listID="CVD" listVersionID="88">M2</ram:ClassCode>
                 </ram:DesignatedProductClassification>
                 <!-- BT-158, BT-158-1, BT-158-2 -->

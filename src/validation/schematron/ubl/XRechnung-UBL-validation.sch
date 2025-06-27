@@ -352,7 +352,7 @@
   </pattern>
   
   <pattern id="ubl-cvd-pattern">
-    <let name="isCVD" value="(/ubl:Invoice | /cn:CreditNote)/cbc:CustomizationID/text() = $XR-CVD-ID" />
+    <let name="isCVD" value="/cbc:CustomizationID/text() = $XR-CVD-ID" />
     <rule context="(/ubl:Invoice | /cn:CreditNote)[$isCVD]">
       <assert test="cac:OriginatorDocumentReference/cbc:ID[boolean(normalize-space(.))]"
         flag="fatal"
@@ -372,7 +372,8 @@
         [BR-DE-CVD-03] In einer Rechnung muss mindestens eine <name /> INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von <name /> "Item classification identifier" (BT-158) den Wert 'CVD' und der <name /> "Item attribute name" (BT-160) den Wert 'cva' enthält.
       </assert>
     </rule>
-    <rule context="(cac:InvoiceLine[$isCVD]/cac:Item | cac:CreditNoteLine[$isCVD]/cac:Item)">
+    <rule
+      context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item">
       <assert test="not(cac:CommodityClassification/cbc:ItemClassificationCode[@listID = 'CVD']) or count(cac:AdditionalItemProperty[cbc:Name = 'cva']) = 1"
         flag="fatal"
         id="BR-DE-CVD-06-a"
@@ -386,7 +387,7 @@
         [BR-DE-CVD-06-b] Wenn <name /> "Item attribute name" (BT-160) mit dem Wert 'cva' angegeben ist, muss in derselben Rechnungszeile genau ein <name /> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' vorhanden sein.
       </assert>
     </rule>
-    <rule context="(cac:InvoiceLine[$isCVD] | cac:CreditNoteLine[$isCVD])/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+    <rule context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
       <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
         flag="fatal"
         id="BR-TMP-CVD-01">
@@ -398,7 +399,7 @@
         [BR-DE-CVD-04] Ein <name /> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
       </assert>
     </rule>
-    <rule context="(cac:InvoiceLine[$isCVD] | cac:CreditNoteLine[$isCVD])/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
+    <rule context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
       <assert test="normalize-space(cbc:Value) = $CVA-CODES"
         flag="fatal"
         id="BR-DE-CVD-05">

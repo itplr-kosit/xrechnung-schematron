@@ -238,8 +238,14 @@
             schematron-valid="xrubl:BR-DE-CVD-04" id="ubl-cn-mandatory-BR-DE-CVD-04-2"
             description="correct BT-158 value" ?>
         <?xmute mutator="code" values="X2,M5,test,cvd"
-            schematron-invalid="xrubl:BR-DE-CVD-04" id="ubl-cn-mandatory-BR-DE-CVD-04-2"
+            schematron-invalid="xrubl:BR-DE-CVD-04" id="ubl-cn-mandatory-BR-DE-CVD-04-3"
             description="incorrect BT-158 value" ?>
+        <?xmute mutator="code" values="XY, cvd" attribute="listID"
+          schematron-invalid="xrubl:BR-TMP-CVD-01 xrubl:BR-DE-CVD-03" id="ubl-cn-mandatory-BR-DE-CVD-04-4"
+          description="scheme identifier value not allowed" ?>
+        <?xmute mutator="code" values="AA,STZ" attribute="listID"
+          schematron-invalid="xrubl:BR-DE-CVD-03 xrubl:BR-DE-CVD-06-b" id="ubl-cn-mandatory-BR-DE-CVD-03-5"
+          description="invoice line with correct CVD information missing" ?>
         <cbc:ItemClassificationCode listID="CVD" listVersionID="88">M1</cbc:ItemClassificationCode>
       </cac:CommodityClassification>
       <!-- BT-158 -->
