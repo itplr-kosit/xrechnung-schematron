@@ -352,7 +352,7 @@
   </pattern>
   
   <pattern id="ubl-cvd-pattern">
-    <let name="isCVD" value="/cbc:CustomizationID/text() = $XR-CVD-ID" />
+    <let name="isCVD" value="(/ubl:Invoice | /cn:CreditNote)/cbc:CustomizationID/text() = $XR-CVD-ID" />
     <rule context="(/ubl:Invoice | /cn:CreditNote)[$isCVD]">
       <assert test="cac:OriginatorDocumentReference/cbc:ID[boolean(normalize-space(.))]"
         flag="fatal"
