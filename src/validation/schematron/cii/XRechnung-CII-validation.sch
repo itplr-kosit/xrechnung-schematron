@@ -237,6 +237,12 @@
               id="BR-DE-TMP-32">
         [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
       </assert>
+      
+    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement">
+        <assert test="not(./ram:NetPriceProductTradePrice/ram:BasisQuantity and ./ram:GrossPriceProductTradePrice/ram:BasisQuantity) or (./ram:NetPriceProductTradePrice/ram:BasisQuantity = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity and ./ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
+          flag="fatal"
+          id="BR-TMP-3"
+          >[BR-TMP-3] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
     </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
