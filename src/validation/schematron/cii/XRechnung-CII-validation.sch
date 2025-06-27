@@ -306,7 +306,7 @@
   </pattern>
     <pattern id="cii-cvd-pattern">
         <let name="isCVD"
-          value="/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = $XR-CVD-ID" />
+            value="rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = $XR-CVD-ID" />
         <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction">
             <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
                 flag="fatal"
