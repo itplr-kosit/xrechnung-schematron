@@ -44,21 +44,6 @@
                 <ram:BilledQuantity unitCode="XPP">30.00000000000</ram:BilledQuantity>
             </ram:SpecifiedLineTradeDelivery>
             <ram:SpecifiedLineTradeSettlement>
-				<!-- BG-26 -->
-				
-				<?xmute mutator="identity" schematron-valid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-1" description="BG-26 exists" ?>
-				<?xmute mutator="remove" schematron-invalid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-2" description="date of delivery or service missing" ?>                
-				
-				<ram:BillingSpecifiedPeriod>
-					<!-- BT-134 -->
-                    <ram:StartDateTime>
-                        <udt:DateTimeString format="102">20180413</udt:DateTimeString>
-                    </ram:StartDateTime>
-					<!-- BT-135 -->
-                    <ram:EndDateTime>
-						<udt:DateTimeString format="102">20180413</udt:DateTimeString>
-                    </ram:EndDateTime>
-				</ram:BillingSpecifiedPeriod>
                 <ram:ApplicableTradeTax>
 					<!-- BT-151 -->
                     <ram:TypeCode>VAT</ram:TypeCode>
@@ -66,7 +51,20 @@
                     <ram:CategoryCode>S</ram:CategoryCode>
                     <!-- BT-152 -->
                     <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
-                </ram:ApplicableTradeTax>                                                             
+                </ram:ApplicableTradeTax>
+                <!-- BG-26 -->
+                <?xmute mutator="identity" schematron-valid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-1" description="BG-26 exists" ?>
+                <?xmute mutator="remove" schematron-invalid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-26-2" description="date of delivery or service missing" ?>                
+                <ram:BillingSpecifiedPeriod>
+                    <!-- BT-134 -->
+                    <ram:StartDateTime>
+                        <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <!-- BT-135 -->
+                    <ram:EndDateTime>
+                        <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
                 <ram:SpecifiedTradeSettlementLineMonetarySummation>
 					<!-- BT-131 -->
                     <ram:LineTotalAmount>3986.34</ram:LineTotalAmount>

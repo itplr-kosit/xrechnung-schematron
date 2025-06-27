@@ -25,20 +25,6 @@
   <cac:OriginatorDocumentReference>
     <cbc:ID>ANG987654321</cbc:ID>
   </cac:OriginatorDocumentReference>
-  <!--<cac:ContractDocumentReference>
-    <cbc:ID>0000000752</cbc:ID>
-  </cac:ContractDocumentReference>-->
-  <!--<cac:AdditionalDocumentReference>
-    <cbc:ID>01_15_Anhang_01.pdf</cbc:ID>
-    <cbc:DocumentDescription>Aufschlüsselung der einzelnen Leistungspositionen</cbc:DocumentDescription>
-    <cac:Attachment>
-      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
-        filename="01_15_Anhang_01.pdf" />
-    </cac:Attachment>
-  </cac:AdditionalDocumentReference>-->
-  <!--<cac:ProjectReference>
-    <cbc:ID>PR12345678</cbc:ID>
-  </cac:ProjectReference>-->
   <cac:AccountingSupplierParty>
     <cac:Party>
       <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
@@ -58,13 +44,11 @@
         </cac:Country>
       </cac:PostalAddress>
       <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>DEU123456789</cbc:CompanyID>-->
         <cac:TaxScheme>
           <cbc:ID>VAT</cbc:ID>
         </cac:TaxScheme>
       </cac:PartyTaxScheme>
       <cac:PartyTaxScheme>
-        <!--<cbc:CompanyID>123/456/789</cbc:CompanyID>-->
         <cac:TaxScheme>
           <cbc:ID>FC</cbc:ID>
         </cac:TaxScheme>

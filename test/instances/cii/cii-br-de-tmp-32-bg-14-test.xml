@@ -113,24 +113,8 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>	
-			<!-- BG-14 -->
-			
-			<?xmute mutator="identity" schematron-valid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-1" description="BG-14 exists" ?>
-			<?xmute mutator="remove" schematron-invalid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-2" description="date of delivery or service missing" ?>                
-			
-			<ram:BillingSpecifiedPeriod>
-				<!-- BT-73 -->
-				<ram:StartDateTime>
-                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
-				</ram:StartDateTime>
-				<!-- BT-74 -->
-				<ram:EndDateTime>
-                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
-                </ram:EndDateTime>
-			</ram:BillingSpecifiedPeriod>
-			<!-- BT-5 -->
-            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>                                 
+        <ram:ApplicableHeaderTradeSettlement>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>                   
             <ram:SpecifiedTradeSettlementPaymentMeans>				
                 <!-- BT-81 -->
                 <ram:TypeCode>58</ram:TypeCode>
@@ -150,7 +134,20 @@
                 <ram:CategoryCode>S</ram:CategoryCode>		   
 				<!-- BT-119 -->
                 <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
-            </ram:ApplicableTradeTax>                
+            </ram:ApplicableTradeTax>
+            <!-- BG-14 -->
+            <?xmute mutator="identity" schematron-valid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-1" description="BG-14 exists" ?>
+            <?xmute mutator="remove" schematron-invalid="xrcii:BR-DE-TMP-32" id="br-de-tmp-32-test-bg-14-2" description="date of delivery or service missing" ?>                
+            <ram:BillingSpecifiedPeriod>
+                <!-- BT-73 -->
+                <ram:StartDateTime>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:StartDateTime>
+                <!-- BT-74 -->
+                <ram:EndDateTime>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:EndDateTime>
+            </ram:BillingSpecifiedPeriod>
             <ram:SpecifiedTradePaymentTerms>                        
                 <!-- BT-9 -->
                 <ram:DueDateDateTime>
