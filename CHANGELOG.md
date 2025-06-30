@@ -11,6 +11,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* Temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
 * Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
 
 ### Fixed
