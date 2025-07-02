@@ -14,6 +14,10 @@ This release is compatible with XRechnung ?.?.?
 * Temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
 * Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
 
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.14 codelist updates
+
 ### Fixed
 
 * BR-DEX-09 assertion text
