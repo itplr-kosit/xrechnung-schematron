@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.14 codelist updates
+
 ## v2.3.0 on 2025-03-21
 
 This release is compatible with XRechnung 3.0.x
