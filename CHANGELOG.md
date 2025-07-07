@@ -17,6 +17,7 @@ This release is compatible with XRechnung ?.?.?
 ### Changed
 
 * Global codelist variables to adapt CEN 1.3.14 codelist updates
+* Using [Peppol BIS Billing 3.0.19](https://github.com/OpenPEPPOL/peppol-bis-invoice-3/releases/tag/v3.0.19)
 
 ### Fixed
 
