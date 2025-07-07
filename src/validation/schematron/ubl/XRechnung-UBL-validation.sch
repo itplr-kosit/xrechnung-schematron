@@ -93,6 +93,15 @@
         flag="fatal"
         id="BR-DE-31"
         >[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>      
+
+      <assert test="cac:Delivery/cbc:ActualDeliveryDate
+        or cac:InvoicePeriod
+        or (every $line in (cac:InvoiceLine | cac:CreditNoteLine) satisfies $line/cac:InvoicePeriod)"
+        flag="information"
+        id="BR-DE-TMP-32">
+        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+      </assert>
+
     </rule>    
     <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
       <assert test="matches(cbc:URI, $XR-URL-REGEX)"
@@ -218,6 +227,7 @@
         id="BR-DE-14"
         >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
+
   </pattern>
   
   <pattern id="ubl-extension-pattern">
@@ -277,7 +287,7 @@
       <assert test="(round((xs:decimal(cbc:PayableAmount) - $payableroundingamount) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaidamount + $thirdpartyprepaidamount) * 10 * 10) div 100)"
         flag="fatal"
         id="BR-DEX-09"
-        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
+        >[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) + Σ Third party payment amount (BT-DEX-002).</assert>
     </rule>
     <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
       <!-- BR-DEX-04
