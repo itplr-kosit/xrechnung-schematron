@@ -13,6 +13,7 @@ This release is compatible with XRechnung ?.?.?
 
 * Temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
 * Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
+* Business rules BR-DE-CVD-01, BR-DE-CVD-02, BR-DE-CVD-03, BR-DE-CVD-04, BR-DE-CVD-05, BR-DE-CVD-06, and BR-TMP-CVD-01 to support CIUS XRechnung CVD
 
 ### Changed
 

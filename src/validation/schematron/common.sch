@@ -3,8 +3,10 @@
     <!-- This pattern solely serves for declaring global variables (in XSLT speak) -->
     
     <let name="XR-MAJOR-MINOR-VERSION" value="'3.0'"/>
+    <let name="CVD-MAJOR-MINOR-VERSION" value="'0.9'"/>
     <let name="XR-CIUS-ID" value="concat('urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION )"/>
     <let name="XR-EXTENSION-ID" value="concat($XR-CIUS-ID, '#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_' ,$XR-MAJOR-MINOR-VERSION )"/>
+    <let name="XR-CVD-ID" value="concat($XR-CIUS-ID, '#compliant#urn:xeinkauf.de:kosit:xrechnung:cvd_' , $CVD-MAJOR-MINOR-VERSION )"/>
 
     <let name="XR-SKONTO-REGEX"  value="'(^|\r?\n)#(SKONTO)#TAGE=([0-9]+#PROZENT=[0-9]+\.[0-9]{2})(#BASISBETRAG=-?[0-9]+\.[0-9]{2})?#$'" />
     <let name="XR-EMAIL-REGEX"  value="'^[^@\s]+@([^@.\s]+\.)+[^@.\s]+$'" />
@@ -19,5 +21,12 @@
 
     <let name="CEF-EAS-CODES" value="' 0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0147 0151 0154 0158 0170 0177 0183 0184 0188 0190 0191 0192 0193 0194 0195 0196 0198 0199 0200 0201 0202 0203 0204 0205 0208 0209 0210 0211 0212 0213 0215 0216 0217 0218 0219 0220 0221 0225 0230 0240 0235 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9957 9959 AN AQ AS AU EM '" />
     <let name="CEF-EAS-EXT-CODES" value="concat($DIGA-CODES, $CEF-EAS-CODES)" />
+    
+    <!-- applicable to XRechnung CVD only -->
+    <let name="CVD-CODE" value="' CVD '" />
+    <let name="UNTDID-7143-CODES" value="' AA AB AC AD AE AF AG AH AI AJ AK AL AM AN AO AP AQ AR AS AT AU AV AW AX AY AZ BA BB BC BD BE BF BG BH BI BJ BK BL BM BN BO BP BQ BR BS BT BU BV BW BX BY BZ CC CG CL CR CV DR DW EC EF EMD EN FS GB GN GMN GS HS IB IN IS IT IZ MA MF MN MP NB ON PD PL PO PPI PV QS RC RN RU RY SA SG SK SN SRS SRT SRU SRV SRW SRX SRY SRZ SS SSA SSB SSC SSD SSE SSF SSG SSH SSI SSJ SSK SSL SSM SSN SSO SSP SSQ SSR SSS SST SSU SSV SSW SSX SSY SSZ ST STA STB STC STD STE STF STG STH STI STJ STK STL STM STN STO STP STQ STR STS STT STU STV STW STX STY STZ SUA SUB SUC SUD SUE SUF SUG SUH SUI SUJ SUK SUL SUM TG TSN TSO TSP TSQ TSR TSS TST TSU UA UP VN VP VS VX ZZZ '" />
+    <let name="UNTDID-7143-CVD-CODES" value="concat($CVD-CODE, $UNTDID-7143-CODES)" />
+    <let name="CVD-VEHICLE-CATEGORY" value="('M1', 'M2', 'M3', 'N1', 'N2', 'N3')" />
+    <let name="CVA-CODES" value="('clean', 'zero-emission', 'other')" />
     
 </pattern>
