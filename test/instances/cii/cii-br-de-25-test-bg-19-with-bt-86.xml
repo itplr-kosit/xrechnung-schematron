@@ -150,6 +150,12 @@
                 <ram:PayerSpecifiedDebtorFinancialInstitution>
                     <ram:BICID>DEUTDEMMXXX</ram:BICID>
                 </ram:PayerSpecifiedDebtorFinancialInstitution>
+                <?xmute mutator="identity"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-1-not-allowed-with-BG-19"
+                        description="CII BT-86 not allowed with BG-19" ?>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID>DEUTDEMMXXX</ram:BICID>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
