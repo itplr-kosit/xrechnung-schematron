@@ -11,11 +11,11 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Tests for BR-DE-25-b in CII with invalid existence of BT-86
+* Test for BR-DE-25-b in CII with invalid existence of BT-86
 
 ### Fixed
 
-* Bug in BR-DE-25-b that prevented detection of BT-86 in CII (thanks to GitHub users @jstaerk and @wurst-hans)
+* Bug in BR-DE-25-b that prevented detection of BT-86 in CII
 
 ## v2.4.0 on 2025-07-10
 
