@@ -315,7 +315,7 @@
                 <ram:ExemptionReason>[VAT exemption reason text]</ram:ExemptionReason>
                 <ram:BasisAmount>0</ram:BasisAmount>
                 <ram:CategoryCode>E</ram:CategoryCode>
-				<ram:ExemptionReasonCode>vatex-eu-132-1a</ram:ExemptionReasonCode>
+                <ram:ExemptionReasonCode>VATEX-EU-132-1A</ram:ExemptionReasonCode>
                 <ram:TaxPointDate>
                     <udt:DateString format="102">20180413</udt:DateString>
                 </ram:TaxPointDate>
