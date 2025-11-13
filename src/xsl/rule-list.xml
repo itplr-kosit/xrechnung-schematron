@@ -39,7 +39,7 @@
     <r:rule>PEPPOL-EN16931-R101</r:rule>
     <r:rule>PEPPOL-EN16931-R110</r:rule>
     <r:rule>PEPPOL-EN16931-R111</r:rule>
-    <r:rule>PEPPOL-EN16931-R120</r:rule> <!-- excluded for CII in XRechnung -->
+    <r:rule>PEPPOL-EN16931-R120</r:rule>
     <r:rule>PEPPOL-EN16931-R121</r:rule>
     <r:rule>PEPPOL-EN16931-R130</r:rule>
     <!--
