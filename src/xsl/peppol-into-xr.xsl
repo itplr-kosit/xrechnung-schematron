@@ -131,6 +131,10 @@
                 <xsl:apply-templates mode="peppol-rules"/>
             </xsl:copy>    
         </xsl:if>        
+    </xsl:template>
+    <xsl:template match="let" mode="peppol-rules" priority="1">
+        <!-- Copy let statements within rules -->
+        <xsl:copy-of select="."/>
     </xsl:template>    
     <xsl:template match="pattern" mode="peppol-rules" priority="1">       
         <xsl:variable name="count-number">
