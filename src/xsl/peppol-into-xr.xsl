@@ -116,30 +116,6 @@
                 </xsl:element>
             </xsl:element>            
         </xsl:element>
-        <!-- add R120-related consistency checks for CII -->
-        <xsl:element name="pattern" namespace="{namespace-uri()}">
-            <xsl:attribute name="id">peppol-cii-pattern-0-c</xsl:attribute>
-            <xsl:element name="rule" namespace="{namespace-uri()}">
-                <xsl:attribute name="context">
-                    rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement
-                </xsl:attribute>
-                <xsl:element name="assert" namespace="{namespace-uri()}">
-                    <xsl:attribute name="id">PEPPOL-EN16931-R120-BT149-UNIQUE</xsl:attribute>
-                    <xsl:attribute name="flag">fatal</xsl:attribute>
-                    <xsl:attribute name="test">$bt149Distinct le 1</xsl:attribute>
-                    <xsl:text>BT-149 (Price base quantity) darf nur einmalig (logisch) vorkommen. Wenn in Gross- und Net-Price vorhanden, müssen die Werte identisch sein.</xsl:text>
-                </xsl:element>
-
-                <xsl:element name="assert" namespace="{namespace-uri()}">
-                    <xsl:attribute name="id">PEPPOL-EN16931-R120-BT150-ALIGN</xsl:attribute>
-                    <xsl:attribute name="flag">fatal</xsl:attribute>
-                    <xsl:attribute name="test">
-                        not($bt150NetUnitCode) or ( $bt150GrossUnitCode = $bt150NetUnitCode )
-                    </xsl:attribute>
-                    <xsl:text>BT-150 (Unit of measure code (price base)) wird aus GrossPrice/BasisQuantity/@unitCode abgeleitet. Ein @unitCode am NetPrice-BasisQuantity ist kein BT-150; falls vorhanden, muss er dem Gross-@unitCode entsprechen.</xsl:text>
-                </xsl:element>
-            </xsl:element>
-        </xsl:element>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -190,19 +166,13 @@
             <xsl:attribute name="value"><xsl:text>if($documentCurrencyCode = 'HUF') then 0.5 else 0.02</xsl:text></xsl:attribute>
         </xsl:element>        
     </xsl:template>
-    <xsl:template match="/*/let[@name='baseQuantity']" mode="peppol-rules" priority="2">
+    <xsl:template match="/*/pattern/rule/let[@name='baseQuantity']" mode="peppol-rules" priority="2">
         <xsl:choose>
             <xsl:when test="$syntax='CII'">
-                <let name="bt149Gross" value="ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity[normalize-space()]"/>
-                <let name="bt149Net"   value="ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity[normalize-space()]"/>
-                <let name="bt149Seq"   value="($bt149Gross,$bt149Net)"/>
-                <let name="baseQuantity" value="
-        if (exists($bt149Seq) and xs:decimal($bt149Seq[1]) != 0)
-        then xs:decimal($bt149Seq[1])
-        else 1"/>
-                <let name="bt149Distinct" value="count(distinct-values(for $q in $bt149Seq return xs:decimal($q)))"/>
-                <let name="bt150GrossUnitCode" value="string(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"/>
-                <let name="bt150NetUnitCode"   value="string(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode)"/>
+                <xsl:element name="let" namespace="{namespace-uri()}">
+                    <xsl:attribute name="name"><xsl:text>baseQuantity</xsl:text></xsl:attribute>
+                    <xsl:attribute name="value"><xsl:text>if (ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) else if (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) else 1</xsl:text></xsl:attribute>
+                </xsl:element>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:copy-of select="."/>
@@ -210,7 +180,6 @@
         </xsl:choose>
     </xsl:template>
     <xsl:template match="assert" mode="peppol-rules" priority="1">
-        <!-- exclude R120 in CII-->
         <xsl:if test="@id=$rules">
             <xsl:copy select=".">
                 <xsl:attribute name="id">
@@ -244,20 +213,11 @@
                         <xsl:attribute name="test">not(cbc:MultiplierFactorNumeric and cbc:BaseAmount) or u:slack(if (cbc:Amount) then cbc:Amount else 0, (xs:decimal(cbc:BaseAmount) * xs:decimal(cbc:MultiplierFactorNumeric)) div 100, $slackValue)</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
-                    <xsl:when test="@id='PEPPOL-EN16931-R120' and $syntax='UBL'">
+                    <xsl:when test="@id='PEPPOL-EN16931-R120'">
                         <xsl:attribute name="test">
-                            u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)
+                            <xsl:text>u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)</xsl:text>
                         </xsl:attribute>
                         <xsl:value-of select="." />
-                    </xsl:when>
-                    <xsl:when test="@id='PEPPOL-EN16931-R120' and $syntax='CII'">
-                        <xsl:attribute name="test">
-                            u:slack($lineExtensionAmount,
-                            ($quantity * ($priceAmount div $baseQuantity))
-                            + $chargesTotal - $allowancesTotal,
-                            $slackValue)
-                        </xsl:attribute>
-                        <xsl:value-of select="."/>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R040' and $syntax='CII'">
                         <xsl:attribute name="test">not(ram:CalculationPercent and ram:BasisAmount) or u:slack(if (ram:ActualAmount) then ram:ActualAmount else 0, (xs:decimal(ram:BasisAmount) * xs:decimal(ram:CalculationPercent)) div 100, $slackValue)</xsl:attribute>
@@ -277,7 +237,7 @@
                 <xsl:apply-templates mode="peppol-rules"/>                
             </xsl:copy>    
         </xsl:if>        
-    </xsl:template>    
+    </xsl:template>
     <xsl:template match="pattern" mode="peppol-rules" priority="1">       
         <xsl:variable name="count-number">
             <xsl:variable name="rule-id" select="@id"/>
