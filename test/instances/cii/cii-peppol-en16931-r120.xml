@@ -50,16 +50,52 @@
             <ram:SpecifiedLineTradeAgreement>
                 <ram:BuyerOrderReferencedDocument>
                     <ram:LineID>6171175.1</ram:LineID>
-                </ram:BuyerOrderReferencedDocument>
-                <!-- BT-146 (item net price / $priceAmount) -->
+                </ram:BuyerOrderReferencedDocument>				
+                <ram:GrossPriceProductTradePrice>
+                    <!-- BT-148 -->
+                    <ram:ChargeAmount>2381.875</ram:ChargeAmount>
+                    <!-- BT-149 (item price base quantity), BT-150 -->
+                    <?xmute mutator="identity"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-base-quantity"
+                        description="Line Extension amount correct" ?>      
+                    <?xmute mutator="code" values="1, 30"
+                        schematron-invalid="xrcii:BR-TMP-3 xrcii:PEPPOL-EN16931-R120" id="cii-invalid-base-quantity"
+                        description="Line Extension not amount correct" ?>
+                    <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
+                    <ram:AppliedTradeAllowanceCharge>
+                        <ram:ChargeIndicator>
+                            <udt:Indicator>false</udt:Indicator>
+                        </ram:ChargeIndicator>
+                        <ram:ActualAmount>10.000000000000000000</ram:ActualAmount>
+                    </ram:AppliedTradeAllowanceCharge>
+                </ram:GrossPriceProductTradePrice>
+                <!-- BT-146 (item net price) -->
                 <ram:NetPriceProductTradePrice>
+                    <?xmute mutator="identity"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-item-net-price"
+                        description="Line Extension amount correct" ?>
+                    <?xmute mutator="code" values="2351.875, 2391.875"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-item-net-price"
+                        description="Line Extension amount correct" ?>
                     <ram:ChargeAmount>2371.875</ram:ChargeAmount>
                     <!-- BT-149 (item price base quantity), BT-150 -->
+                    <?xmute mutator="identity"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-base-quantity-2"
+                        description="Line Extension amount correct" ?>      
+                    <?xmute mutator="code" values="1, 30"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120, xrcii:BR-TMP-3" id="cii-invalid-base-quantity-2"
+                        description="Line Extension not amount correct" ?>
                     <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>                
             </ram:SpecifiedLineTradeAgreement>
             <ram:SpecifiedLineTradeDelivery>
-				<!-- BT-129 (invoiced quantity / $quantity), BT-130 -->
+				<!-- BT-129 (invoiced quantity) -->
+                <?xmute mutator="identity"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-quantity"
+                        description="Line Extension amount correct" ?>      
+                <?xmute mutator="code" values="10, 30"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-quantity"
+                        description="Line Extension not amount correct" ?>
                 <ram:BilledQuantity unitCode="XPP">20</ram:BilledQuantity>
             </ram:SpecifiedLineTradeDelivery>
             <ram:SpecifiedLineTradeSettlement>
@@ -85,47 +121,47 @@
                         <udt:Indicator>true</udt:Indicator>
                     </ram:ChargeIndicator>
                     <!-- BT-141 (invoice line charge amount) -->
-                    <?xmute mutator="code" values="40.02, 39.98"
-                            schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-valid-line-extension-amount-with-slack-3"
-                            description="Line Extension amount correct" ?>
-                    <?xmute mutator="code" values="40.03, 39.97"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-invalid-line-extension-amount-5"
-                            description="Line Extension amount not correct" ?>
-                    <ram:ActualAmount>40.00</ram:ActualAmount>
+                    <?xmute mutator="code" values="10.02, 9.98"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-line-extension-amount-with-slack-2"
+                        description="Line Extension amount correct" ?>
+                    <?xmute mutator="code" values="10.03, 9.97"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-line-extension-amount-3"
+                        description="Line Extension amount not correct" ?>
+                    <ram:ActualAmount>10.00</ram:ActualAmount>
                     <ram:ReasonCode>TAC</ram:ReasonCode>
                     <ram:Reason>Testing</ram:Reason>                    
                 </ram:SpecifiedTradeAllowanceCharge>
                 <!-- BG-27 -->
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-invalid-line-extension-amount-2"
-                        description="Line Extension amount not correct" ?>
+                    schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-line-extension-amount-3"
+                    description="Line Extension amount not correct" ?>
                 <ram:SpecifiedTradeAllowanceCharge>
                     <ram:ChargeIndicator>
                         <udt:Indicator>false</udt:Indicator>
                     </ram:ChargeIndicator>
                     <!-- BT-136 (invoice line allowance amount) -->
-                    <?xmute mutator="code" values="40.02, 39.98"
-                            schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-valid-line-extension-amount-with-slack-2"
-                            description="Line Extension amount correct" ?>
-                    <?xmute mutator="code" values="40.03, 39.97"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-invalid-line-extension-amount-3"
-                            description="Line Extension amount not correct" ?>
-                    <ram:ActualAmount>40</ram:ActualAmount>
+                    <?xmute mutator="code" values="10.02, 9.98"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-line-extension-amount-with-slack-4"
+                        description="Line Extension amount correct" ?>
+                    <?xmute mutator="code" values="10.03, 9.97"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-line-extension-amount-5"
+                        description="Line Extension amount not correct" ?>
+                    <ram:ActualAmount>10.00</ram:ActualAmount>
                     <ram:ReasonCode>102</ram:ReasonCode>
                     <ram:Reason>Fixed long term</ram:Reason>                    
                 </ram:SpecifiedTradeAllowanceCharge>
                 <ram:SpecifiedTradeSettlementLineMonetarySummation>
 					<!-- BT-131 (invoice line net amount / $lineExtensionAmount) -->
                     <?xmute mutator="identity"
-                            schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-valid-line-extension-amount"
-                            description="Line Extension amount correct" ?>
-                    <?xmute mutator="code" values="4703.62, 4703.58"
-                            schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-valid-line-extension-amount-with-slack"
-                            description="Line Extension amount correct" ?>
-                    <?xmute mutator="code" values="4703.63, 4703.57, 4663.60, 4743.60"
-                            schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-inv-invalid-line-extension-amount"
-                            description="Line Extension amount not correct" ?>
-                    <ram:LineTotalAmount>4703.60</ram:LineTotalAmount>
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-line-extension-amount"
+                        description="Line Extension amount correct" ?>      
+                    <?xmute mutator="code" values="4743.77, 4743.73"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-line-extension-amount-with-slack"
+                        description="Line Extension amount correct" ?>
+                    <?xmute mutator="code" values="4743.78, 4743.72, 4733.75, 4753.75"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-line-extension-amount"
+                        description="Line Extension amount not correct" ?>
+                    <ram:LineTotalAmount>4743.75</ram:LineTotalAmount>
                 </ram:SpecifiedTradeSettlementLineMonetarySummation>
                 <ram:AdditionalReferencedDocument>
                     <ram:IssuerAssignedID>ANG987654321</ram:IssuerAssignedID>
@@ -324,6 +360,11 @@
                 <ram:BasisAmount>0</ram:BasisAmount>
                 <ram:CategoryCode>E</ram:CategoryCode>
 				<ram:ExemptionReasonCode>vatex-eu-132-1a</ram:ExemptionReasonCode>
+<!--
+                <ram:TaxPointDate>
+                    <udt:DateString format="102">20180413</udt:DateString>
+                </ram:TaxPointDate>
+-->
                 <ram:RateApplicablePercent>0</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:BillingSpecifiedPeriod>
