@@ -55,13 +55,18 @@
                     <!-- BT-148 -->
                     <ram:ChargeAmount>2381.875</ram:ChargeAmount>
                     <!-- BT-149 (item price base quantity), BT-150 -->
-                    <?xmute mutator="identity"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-base-quantity"
-                        description="Line Extension amount correct" ?>      
-                    <?xmute mutator="code" values="1, 30"
-                        schematron-invalid="xrcii:BR-TMP-3 xrcii:PEPPOL-EN16931-R120" id="cii-invalid-base-quantity"
-                        description="Line Extension not amount correct" ?>
-                    <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
+                    <!-- Test BR-TMP-3: Wenn beide Pfade vorhanden, müssen Werte identisch sein -->
+                    <?xmute mutator="code" values="10"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        id="cii-r120-bt149-both-paths-same"
+                        description="Beide BasisQuantity Pfade mit gleichem Wert - BR-TMP-3 erfüllt" ?>
+                    <?xmute mutator="code" values="15"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-r120-bt149-both-paths-different"
+                        description="Beide BasisQuantity Pfade mit unterschiedlichem Wert - BR-TMP-3 verletzt" ?>
+                    <!--
+                    <ram:BasisQuantity unitCode="XPP">30</ram:BasisQuantity>
+                    -->
                     <ram:AppliedTradeAllowanceCharge>
                         <ram:ChargeIndicator>
                             <udt:Indicator>false</udt:Indicator>
@@ -81,7 +86,7 @@
                     <!-- BT-149 (item price base quantity), BT-150 -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-base-quantity-2"
-                        description="Line Extension amount correct" ?>      
+                        description="Line Extension amount correct" ?>
                     <?xmute mutator="code" values="1, 30"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120, xrcii:BR-TMP-3" id="cii-invalid-base-quantity-2"
                         description="Line Extension not amount correct" ?>
@@ -92,7 +97,7 @@
 				<!-- BT-129 (invoiced quantity) -->
                 <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-quantity"
-                        description="Line Extension amount correct" ?>      
+                        description="Line Extension amount correct" ?>
                 <?xmute mutator="code" values="10, 30"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120" id="cii-invalid-quantity"
                         description="Line Extension not amount correct" ?>
