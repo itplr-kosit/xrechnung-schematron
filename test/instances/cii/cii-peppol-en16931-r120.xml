@@ -55,6 +55,15 @@
                     <!-- BT-148 -->
                     <ram:ChargeAmount>0.0000000000000000</ram:ChargeAmount>
                     <!-- BT-149 (item price base quantity), BT-150 -->
+                    <!-- Test BR-TMP-3: Wenn beide Pfade vorhanden, müssen Werte identisch sein -->
+                    <?xmute mutator="code" values="10"
+                        schematron-valid="xrcii:BR-TMP-3" 
+                        id="cii-r120-bt149-both-paths-same"
+                        description="Beide BasisQuantity Pfade mit gleichem Wert - BR-TMP-3 erfüllt" ?>
+                    <?xmute mutator="code" values="15"
+                        schematron-invalid="xrcii:BR-TMP-3" 
+                        id="cii-r120-bt149-both-paths-different"
+                        description="Beide BasisQuantity Pfade mit unterschiedlichem Wert - BR-TMP-3 verletzt" ?>
                     <!--
                     <ram:BasisQuantity unitCode="XPP">30</ram:BasisQuantity>
                     -->
