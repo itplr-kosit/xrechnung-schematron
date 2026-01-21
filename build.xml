@@ -29,9 +29,9 @@
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
 
-  <property name="schxslt.version" value="1.10" />
+  <property name="schxslt.version" value="1.10.1" />
   <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
-  <property name="schxslt.download.url" value="https://github.com/schxslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />     
+  <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />     
 
   <property name="xmlresolver.version" value="4.2.0" />
   <property name="xmlresolver.zip" value="xmlresolver-${xmlresolver.version}.zip" />
