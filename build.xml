@@ -432,4 +432,10 @@
     <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
     <delete dir="${dist.dir}" verbose="true" includeEmptyDirs="true" />
   </target>
+  
+  <target name="clean-lib">
+    <delete dir="${lib.dir}" />
+  </target>
+  
+  <target name="clean-all" depends="clean,clean-lib" />
 </project>
