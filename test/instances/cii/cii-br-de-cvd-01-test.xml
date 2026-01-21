@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
-    <rsm:ExchangedDocumentContext>
+<rsm:ExchangedDocumentContext>
         <ram:BusinessProcessSpecifiedDocumentContextParameter>
             <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
         </ram:BusinessProcessSpecifiedDocumentContextParameter>
         <ram:GuidelineSpecifiedDocumentContextParameter>
-            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#compliant#urn:xeinkauf.de:kosit:xrechnung:cvd_0.9</ram:ID>
         </ram:GuidelineSpecifiedDocumentContextParameter>
     </rsm:ExchangedDocumentContext>
     <rsm:ExchangedDocument>
@@ -14,7 +14,8 @@
             <udt:DateTimeString format="102">20160404</udt:DateTimeString>
         </ram:IssueDateTime>
         <ram:IncludedNote>
-            <ram:Content>Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […] finden.</ram:Content>
+            <ram:Content>Es gelten unsere Allgem. Geschäftsbedingungen, die Sie unter […]
+                finden.</ram:Content>
             <ram:SubjectCode>ADU</ram:SubjectCode>
         </ram:IncludedNote>
     </rsm:ExchangedDocument>
@@ -23,15 +24,23 @@
             <ram:AssociatedDocumentLineDocument>
                 <ram:LineID>Zeitschrift [...]</ram:LineID>
                 <ram:IncludedNote>
-                    <ram:Content>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom Verlag</ram:Content>
+                    <ram:Content>Die letzte Lieferung im Rahmen des abgerechneten Abonnements
+                        erfolgt in 12/2016 Lieferung erfolgt / erfolgte direkt vom
+                        Verlag</ram:Content>
                 </ram:IncludedNote>
             </ram:AssociatedDocumentLineDocument>
             <ram:SpecifiedTradeProduct>
                 <ram:SellerAssignedID>246</ram:SellerAssignedID>
                 <ram:Name>Zeitschrift [...]</ram:Name>
                 <ram:Description>Zeitschrift Inland</ram:Description>
+                <ram:ApplicableProductCharacteristic>
+                    <!-- BT-160 -->
+                    <ram:Description>cva</ram:Description>
+                    <!-- BT-161 -->
+                    <ram:Value>clean</ram:Value>
+                </ram:ApplicableProductCharacteristic>
                 <ram:DesignatedProductClassification>
-                    <ram:ClassCode listID="IB">0721-880X</ram:ClassCode>
+                    <ram:ClassCode listID="CVD">N2</ram:ClassCode>
                 </ram:DesignatedProductClassification>
             </ram:SpecifiedTradeProduct>
             <ram:SpecifiedLineTradeAgreement>
@@ -100,18 +109,11 @@
                     <ram:TradingBusinessName>[Seller trading name]</ram:TradingBusinessName>
                 </ram:SpecifiedLegalOrganization>
                 <ram:DefinedTradeContact>
-                    <ram:PersonName>nicht vorhanden</ram:PersonName>                    
-                    <ram:TelephoneUniversalCommunication>                        
+                    <ram:PersonName>nicht vorhanden</ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
                         <ram:CompleteNumber>+49 1234-5678</ram:CompleteNumber>
                     </ram:TelephoneUniversalCommunication>
                     <ram:EmailURIUniversalCommunication>
-                        <!-- Excluded for #81: ,aa@bb,ab.cd@ef -->
-                        <?xmute mutator="code" values="тест@пример.bg, δοκιμή@παράδειγμα.gr, maria.müller@test.de, müller@test.de, müller@müller.de, test@müller.de, maria.müller@müller.de, tim.tester@test.com,tim@test.com,a.b@c.d,abc@bcd.def,tim-tom.tester@test-er.org,tim_tom@test.com,tim*tom@test.com,*@test.de,tim#tom@test.de"
-                                schematron-valid="xrcii:BR-DE-28" id="cii-BR-DE-28-valid-test"
-                                description="CII BR-DE-28 valid test" ?>
-                        <?xmute mutator="code" values="тест@пример, δοκιμή@παράδειγμα, müller@test, @,name,ame@,@name,tim.tester@.com,tim@test.com.,tim@test.,test @test.com,test@ test.com,test @ test.com,test@test@test.com,test@@test.com,a@b,ab@c,a@bd"
-                                schematron-invalid="xrcii:BR-DE-28" id="cii-BR-DE-28-invalid-test"
-                                description="CII BR-DE-28 invalid test" ?>
                         <ram:URIID>seller@email.de</ram:URIID>
                     </ram:EmailURIUniversalCommunication>
                 </ram:DefinedTradeContact>
@@ -141,13 +143,29 @@
                     <ram:URIID schemeID="EM">buyer@buyer.com</ram:URIID>
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
+            <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-3"
+                        description="mandatory BT-12 not provided" ?>
+            <ram:ContractReferencedDocument>
+                <?xmute mutator="identity"
+                        schematron-valid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-1"
+                        description="mandatory BT-12 exists" ?>
+                <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-CVD-01" id="cii-mandatory-BR-DE-CVD-01-2"
+                        description="mandatory BT-12 not provided" ?>
+                <ram:IssuerAssignedID>0000000752</ram:IssuerAssignedID>
+            </ram:ContractReferencedDocument>
+            <ram:AdditionalReferencedDocument>
+                <ram:IssuerAssignedID>ANG987654321</ram:IssuerAssignedID>
+                <ram:TypeCode>50</ram:TypeCode>
+            </ram:AdditionalReferencedDocument>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>            
-            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>           
+        <ram:ApplicableHeaderTradeSettlement>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>58</ram:TypeCode>
-                <ram:PayeePartyCreditorFinancialAccount>                    
+                <ram:PayeePartyCreditorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>

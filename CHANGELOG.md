@@ -9,13 +9,94 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+## v2.4.0 on 2025-07-10
+
+This release is compatible with XRechnung 3.0.x
+
 ### Added
 
-* Auxililary function for setting empty elements to zero
+* Temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
+* Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
+* Business rules BR-DE-CVD-01, BR-DE-CVD-02, BR-DE-CVD-03, BR-DE-CVD-04, BR-DE-CVD-05, BR-DE-CVD-06, and BR-TMP-CVD-01 to support CIUS XRechnung CVD
+
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.14 codelist updates
+* Using [Peppol BIS Billing 3.0.19](https://github.com/OpenPEPPOL/peppol-bis-invoice-3/releases/tag/v3.0.19)
+
+### Fixed
+
+* BR-DEX-09 assertion text
+
+## v2.3.0 on 2025-03-21
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* BR-TMP-2: BT-124 "External document location" must contain an absolute URL with valid scheme
+* Tests for BR-DE-18 with missing linebreaks between Skonto information
+
+### Changed
+
+* Global codelist variables to adapt CEN 1.3.13 codelist updates
+* Regex in BR-DE-28 to accept special characters
+* Transformation files for national rules for Peppol BIS Billing moved to src folder
+* PEPPOL-EN16931-R046 in CII for more robustness
+* Refactored unresolved variable in build.xml
+* Using Peppol BIS Billing 3.0.18
+
+### Fixed
+
+* Bug in BR-DE-18 that prevented detection of missing line breaks
+* Datatype of some codelist values in Schematron files
+* Bug in BR-DEX-02 with BT-131 "Invoice line net amount" value of 0
+
+**Note: BR-TMP-2 is currently implemented with error level "warning" and will be raised to "error" with an upcoming release.**
+
+## v2.2.0 on 2024-10-31
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* BR-DEX-01 in Extension CII
+
+### Changed
+
+* Set assertion flag to "fatal" in adapted Peppol BIS Billing rules in CII
+* version of Peppol BIS Billing updated to 3.0.17
+* validity check on created Schematron rules to prevent missing assertion texts
+
+### Fixed
+
+* missing assertion texts in PEPPOL-EN16931-R040, PEPPOL-EN16931-R055, PEPPOL-EN16931-R120
+* Directory generated/, containing test instances generated with XML Mutate, removed from distribution
+
+**The severity levels of the adapted Peppol BIS Billing rules in CII have been raised to "error". Please evaluate impact!**
+
+## v2.1.0 on 2024-06-20
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
+* auxililary function to set non-existent optional elements to zero
+* documentation of harmonization of XRechnung and Peppol BIS Billing
+
+### Changed
+
+* slack function to handle rounding without decimal places in currency HUF
+* refactored ant target `retrieve-peppol-bis-billing-rules`
+* inclusion of utilities namespace in transformation of Peppol BIS Billing to XRechnung rules
 
 ### Fixed
 
 * PEPPOL-EN16931-R046 in CII to handle missing BT-147 "Item price discount"
+
+
+**Advance notification: severity levels of Peppol BIS Billing rules are currently set to "warning" per default in CII. They will be implemented as "error"/"fatal" with an upcoming release.**
+
 
 ## v2.0.2 on 2023-11-15
 

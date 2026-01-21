@@ -5,7 +5,7 @@
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:Note>Invoice Note Description</cbc:Note>
-  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:DocumentCurrencyCode>HUF</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-12</cbc:BuyerReference>
   <cac:InvoicePeriod>
     <cbc:StartDate>2018-04-13</cbc:StartDate>
@@ -160,21 +160,27 @@
     <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
     <cbc:AllowanceChargeReasonCode>102</cbc:AllowanceChargeReasonCode>
     <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
-    <!-- BT-94 (or BT-101 with ChargeIndicator="true") -->
-    <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
-    <!-- BT-92 (or BT-99 with ChargeIndicator="true") -->
+    <!-- BT-94 -->
+    <cbc:MultiplierFactorNumeric>30</cbc:MultiplierFactorNumeric>
+    <!-- BT-92 -->
     <?xmute mutator="identity"
                   schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-allowance-amount-must-be-correct"
                   description="document allowance amount must be correct" ?>
     <?xmute mutator="remove"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-no-document-allowance-amount-provided"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-no-document-allowance-amount"
                   description="document allowance amount not provided" ?>
-    <?xmute mutator="code" values="0.02, -0.02"
+    <?xmute mutator="code" values="1.22,1.2,1.18"
                   schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-allowance-amount-slack"
                   description="document allowance amount correct" ?>
-    <cbc:Amount currencyID="EUR">0</cbc:Amount>
-    <!-- BT-93 (or BT-100 with ChargeIndicator="true") -->
-    <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+    <?xmute mutator="code" values="0.7,1.7"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-allowance-amount-slack-HUF"
+                  description="document allowance amount correct with HUF slack" ?>
+    <?xmute mutator="code" values="0.69,1.71"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-allowance-amount-is-incorrect"
+                  description="document allowance amount must be correct" ?>
+    <cbc:Amount currencyID="HUF">1</cbc:Amount>
+    <!-- BT-93 -->
+    <cbc:BaseAmount currencyID="HUF">4.00</cbc:BaseAmount>
     <cac:TaxCategory>
       <cbc:ID>S</cbc:ID>
       <cbc:Percent>19</cbc:Percent>
@@ -183,13 +189,46 @@
       </cac:TaxScheme>
     </cac:TaxCategory>
   </cac:AllowanceCharge>
-
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReasonCode>ER</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Fixed long term</cbc:AllowanceChargeReason>
+    <!-- BT-101 -->
+    <cbc:MultiplierFactorNumeric>30</cbc:MultiplierFactorNumeric>
+    <!-- BT-99 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-charge-amount-must-be-correct"
+                  description="document charge amount must be correct" ?>
+    <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-no-document-charge-amount"
+                  description="document charge amount not provided" ?>
+    <?xmute mutator="code" values="1.22, 1.2, 1.18, 1.02,0.98"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-charge-amount-slack"
+                  description="document charge amount correct" ?>
+    <?xmute mutator="code" values="0.7,1.7"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-charge-amount-slack-HUF"
+                  description="document charge amount correct with HUF slack" ?>
+    <?xmute mutator="code" values="0.69,1.71"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-document-charge-amount-is-incorrect"
+                  description="document charge amount must be correct" ?>
+    <cbc:Amount currencyID="HUF">1</cbc:Amount>
+    <!-- BT-100 -->
+    <cbc:BaseAmount currencyID="HUF">4.00</cbc:BaseAmount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>19</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  
 
   <cac:TaxTotal>
-    <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
+    <cbc:TaxAmount currencyID="HUF">215</cbc:TaxAmount>
     <cac:TaxSubtotal>
-      <cbc:TaxableAmount currencyID="EUR">10781.25</cbc:TaxableAmount>
-      <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
+      <cbc:TaxableAmount currencyID="HUF">1129</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="HUF">215</cbc:TaxAmount>
       <cac:TaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
@@ -201,14 +240,14 @@
   </cac:TaxTotal>
 
   <cac:LegalMonetaryTotal>
-    <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
-    <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>
-    <cbc:TaxInclusiveAmount currencyID="EUR">12829.69</cbc:TaxInclusiveAmount>
-    <cbc:AllowanceTotalAmount currencyID="EUR">0</cbc:AllowanceTotalAmount>
-    <cbc:ChargeTotalAmount currencyID="EUR">0</cbc:ChargeTotalAmount>
-    <cbc:PrepaidAmount currencyID="EUR">0</cbc:PrepaidAmount>
-    <cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount>
-    <cbc:PayableAmount currencyID="EUR">12829.69</cbc:PayableAmount>
+    <cbc:LineExtensionAmount currencyID="HUF">1129</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="HUF">1129</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="HUF">1344</cbc:TaxInclusiveAmount>
+    <cbc:AllowanceTotalAmount currencyID="HUF">1</cbc:AllowanceTotalAmount>
+    <cbc:ChargeTotalAmount currencyID="HUF">1</cbc:ChargeTotalAmount>
+    <cbc:PrepaidAmount currencyID="HUF">0</cbc:PrepaidAmount>
+    <cbc:PayableRoundingAmount currencyID="HUF">0</cbc:PayableRoundingAmount>
+    <cbc:PayableAmount currencyID="HUF">1344</cbc:PayableAmount>
   </cac:LegalMonetaryTotal>
 
 
@@ -216,8 +255,25 @@
     <cbc:ID>1</cbc:ID>
     <cbc:Note>Die letzte Lieferung im Rahmen des abgerechneten Abonnements erfolgt in 12/2016
       Lieferung erfolgt / erfolgte direkt vom Verlag</cbc:Note>
-    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
-    <cbc:LineExtensionAmount currencyID="EUR">4743.75</cbc:LineExtensionAmount>
+    <!-- BT-129 -->
+    <cbc:CreditedQuantity unitCode="XPP">50</cbc:CreditedQuantity>
+    <!-- BT-131 -->
+    <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-must-be-correct"
+                  description="line net amount must be correct" ?>
+    <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-no-line-net-amount"
+                  description="line net amount not provided" ?>
+    <?xmute mutator="code" values="562.98,563.02,563.2657142857143,563.2857142857143,563.3057142857143"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack"
+                  description="line net amount is correct" ?>
+    <?xmute mutator="code" values="562.7857142857143,563.7857142857142"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-slack-HUF"
+                  description="line net amount is correct" ?>
+    <?xmute mutator="code" values="562.5,562.7857142857142,563.7857142857143,562.78,563.79"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R120" id="ubl-cn-line-net-amount-is-incorrect"
+                  description="line net amount must be correct" ?>
+    <cbc:LineExtensionAmount currencyID="HUF">563</cbc:LineExtensionAmount>
     <cac:InvoicePeriod>
       <cbc:StartDate>2018-04-13</cbc:StartDate>
       <cbc:EndDate>2018-04-13</cbc:EndDate>
@@ -228,21 +284,27 @@
     <cac:AllowanceCharge>
       <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
       <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
-      <!-- BT-138 (or BT-143 with ChargeIndicator="true") -->
-      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
-      <!-- BT-136 (or BT-141 with ChargeIndicator="true") -->
-      <cbc:Amount currencyID="EUR">0</cbc:Amount>
+      <!-- BT-138 -->
+      <cbc:MultiplierFactorNumeric>30</cbc:MultiplierFactorNumeric>
+      <!-- BT-136 -->
       <?xmute mutator="identity"
                   schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-allowance-amount-must-be-correct"
-                  description="invoice line allowance amount is correct" ?>
+                  description="line allowance amount must be correct" ?>
       <?xmute mutator="remove"
-                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-no-line-allowance-amount"
-                  description="invoice line amount not provided" ?>
-      <?xmute mutator="code" values="0.02, -0.02"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-no-line-allowance-amount"
+                  description="line allowance amount not provided" ?>
+      <?xmute mutator="code" values="1.22, 1.2, 1.18, 1.02,0.98"
                   schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-allowance-amount-slack"
-                  description="invoice line amount correct" ?>
-      <!-- BT-137 (or BT-142 with ChargeIndicator="true") -->
-      <cbc:BaseAmount currencyID="EUR">0</cbc:BaseAmount>
+                  description="line allowance amount is correct" ?>
+      <?xmute mutator="code" values="0.7,1.7"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-allowance-amount-slack"
+                  description="line allowance amount is correct" ?>
+      <?xmute mutator="code" values="0.69,1.71"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-allowance-amount-is-incorrect"
+                  description="line allowance amount must be correct" ?>
+      <cbc:Amount currencyID="HUF">1</cbc:Amount>
+      <!-- BT-137 -->
+      <cbc:BaseAmount currencyID="HUF">4.00</cbc:BaseAmount>
     </cac:AllowanceCharge>
     <cac:Item>
       <cbc:Description>Anforderungmanagament</cbc:Description>
@@ -262,15 +324,55 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">158.125</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="HUF">158</cbc:PriceAmount>
+      <cbc:BaseQuantity>14</cbc:BaseQuantity>
     </cac:Price>
   </cac:CreditNoteLine>
   <cac:CreditNoteLine>
     <cbc:ID>2</cbc:ID>
-    <cbc:CreditedQuantity unitCode="XPP">42</cbc:CreditedQuantity>
-    <cbc:LineExtensionAmount currencyID="EUR">6037.5</cbc:LineExtensionAmount>
+    <cbc:CreditedQuantity unitCode="XPP">50</cbc:CreditedQuantity>
+    <cbc:LineExtensionAmount currencyID="HUF">566</cbc:LineExtensionAmount>
+    <cac:InvoicePeriod>
+      <cbc:StartDate>2018-04-13</cbc:StartDate>
+      <cbc:EndDate>2018-04-13</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:OrderLineReference>
+      <cbc:LineID>6171175.1</cbc:LineID>
+    </cac:OrderLineReference>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+      <cbc:AllowanceChargeReason>[Reason]</cbc:AllowanceChargeReason>
+      <!-- BT-143 -->
+      <cbc:MultiplierFactorNumeric>30</cbc:MultiplierFactorNumeric>
+      <!-- BT-141 -->
+      <?xmute mutator="identity"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-charge-amount-must-be-correct"
+                  description="line charge amount is correct" ?>
+      <?xmute mutator="remove"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-charge-amount-is-incorrect"
+                  description="line charge amount not provided" ?>
+      <?xmute mutator="code" values="1.98,2.02,2.38,2.42"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-charge-amount-is-incorrect"
+                  description="line charge amount correct" ?>
+      <?xmute mutator="code" values="1.9,2.4,2.9"
+                  schematron-valid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-charge-amount-is-incorrect"
+                  description="line charge amount correct with HUF slack" ?>
+      <?xmute mutator="code" values="1.89,2.91"
+                  schematron-invalid="xrubl:PEPPOL-EN16931-R040" id="ubl-cn-line-charge-amount-is-incorrect"
+                  description="line charge amount must be correct" ?>
+      <cbc:Amount currencyID="HUF">2</cbc:Amount>
+      <!-- BT-142 -->
+      <cbc:BaseAmount currencyID="HUF">8.00</cbc:BaseAmount>
+    </cac:AllowanceCharge>
     <cac:Item>
+      <cbc:Description>Anforderungsmanagement</cbc:Description>
       <cbc:Name>Beratung</cbc:Name>
+      <cac:SellersItemIdentification>
+        <cbc:ID>1034</cbc:ID>
+      </cac:SellersItemIdentification>
+      <cac:CommodityClassification>
+        <cbc:ItemClassificationCode listID="IB">0721-880X</cbc:ItemClassificationCode>
+      </cac:CommodityClassification>
       <cac:ClassifiedTaxCategory>
         <cbc:ID>S</cbc:ID>
         <cbc:Percent>19</cbc:Percent>
@@ -280,7 +382,8 @@
       </cac:ClassifiedTaxCategory>
     </cac:Item>
     <cac:Price>
-      <cbc:PriceAmount currencyID="EUR">143.75</cbc:PriceAmount>
+      <cbc:PriceAmount currencyID="HUF">158</cbc:PriceAmount>
+      <cbc:BaseQuantity>14</cbc:BaseQuantity>
     </cac:Price>
   </cac:CreditNoteLine>
 </CreditNote>
