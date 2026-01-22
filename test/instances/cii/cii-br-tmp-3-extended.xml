@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    BR-TMP-3 Extended Test Suite
+    
+    This file contains all test cases for BR-TMP-3 validation rule including new cases 4.1, 4.2, and 4.3.
+    
+    BACKGROUND:
+    In CII format, BT-149 (Item price base quantity) and BT-150 (Item price base quantity unit of measure code)
+    can appear on two different paths:
+    
+    Path A (GrossPrice): ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity
+    Path B (NetPrice):   ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity
+    
+    BR-TMP-3 RULE (Updated):
+    If both paths are present, the values (BT-149) MUST be identical.
+    If BT-150 (unitCode) is present on the NetPrice path, it MUST also be present on the GrossPrice path and be identical.
+    
+    TEST CASES:
+    
+    1: Case 1.1 = Only NetPrice path present (BR-TMP-3: VALID, R120: VALID)
+    2: Case 1.2 = Only GrossPrice path present (BR-TMP-3: VALID, R120: VALID)
+    3: Case 2.1 = Both paths identical (10 + XPP), R120 OK (BR-TMP-3: VALID, R120: VALID)
+    4: Case 2.2 = Both paths identical (10 + XPP), R120 violated (BR-TMP-3: VALID, R120: INVALID)
+    5: Case 3.1 = NetPrice=10, GrossPrice=15 (BR-TMP-3: INVALID)
+    6: Case 3.2 = GrossPrice=10, NetPrice=15 (BR-TMP-3: INVALID)
+    7: Case 3.3 = GrossPrice=15, NetPrice=20 (BR-TMP-3: INVALID, R120: INVALID)
+    8: Case 3.4 = Same value (10), different unit codes (BR-TMP-3: INVALID)
+    9: Case 4.1 = BT-149 once, no BT-150 (BR-TMP-3: VALID)
+    10: Case 4.2 = BT-149 twice (same value), no BT-150 on either (BR-TMP-3: VALID)
+    11: Case 4.3 = BT-149 twice (same value), BT-150 only once (BR-TMP-3: INVALID)
+    
+    XMUTE MUTATIONS:
+    This file uses xmute processing instructions to generate multiple test instances.
+-->
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+                          xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+                          xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+                          xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+    <rsm:ExchangedDocumentContext>
+        <ram:BusinessProcessSpecifiedDocumentContextParameter>
+            <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+        </ram:BusinessProcessSpecifiedDocumentContextParameter>
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.3</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:ExchangedDocumentContext>
+    <rsm:ExchangedDocument>
+        <ram:ID>BR-TMP-3-EXTENDED</ram:ID>
+        <ram:TypeCode>380</ram:TypeCode>
+        <ram:IssueDateTime>
+            <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+        </ram:IssueDateTime>
+    </rsm:ExchangedDocument>
+    <rsm:SupplyChainTradeTransaction>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <ram:LineID>1</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedTradeProduct>
+                <ram:Name>BR-TMP-3 Extended Test Product</ram:Name>
+            </ram:SpecifiedTradeProduct>
+            <ram:SpecifiedLineTradeAgreement>
+                <ram:GrossPriceProductTradePrice>
+                    <ram:ChargeAmount>0.0</ram:ChargeAmount>
+                    <!-- BT-149 (item price base quantity), BT-150 (unit code) -->
+                    <!-- Case 1.1: Only NetPrice path = remove GrossPrice BasisQuantity -->
+                    <?xmute mutator="remove"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-1-1-only-netprice"
+                        description="Case 1.1: Only NetPrice BasisQuantity present = BR-TMP-3 VALID" ?>
+                    <!-- Case 2.1: Both paths identical (10 + XPP) = R120 OK -->
+                    <?xmute mutator="identity"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-2-1-both-same-r120-ok"
+                        description="Case 2.1: Both paths identical (10 + XPP), R120 fulfilled = BR-TMP-3 VALID, R120 VALID" ?>
+                    <!-- Case 3.1: GrossPrice=15, NetPrice=10 (different values) -->
+                    <?xmute mutator="code" values="15"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-3-1-gross-15-net-10"
+                        description="Case 3.1: GrossPrice=15, NetPrice=10 = BR-TMP-3 INVALID" ?>
+                    <!-- Case 3.3: GrossPrice=15, NetPrice=20 (both wrong) -->
+                    <?xmute mutator="code" values="15"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-3-3-both-wrong"
+                        description="Case 3.3: GrossPrice=15, NetPrice=20 = BR-TMP-3 INVALID, R120 INVALID" ?>
+                    <!-- Case 3.4: Different unit codes (C62 vs XPP) -->
+                    <?xmute mutator="attribute" attribute="unitCode" values="C62"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-3-4-different-units"
+                        description="Case 3.4: Same value (10), different unit codes = BR-TMP-3 INVALID" ?>
+                    <!-- Case 4.2: Both BT-149 present (10), no BT-150 on either = remove unitCode from GrossPrice -->
+                    <?xmute mutator="attribute-remove" attribute="unitCode"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-4-2-no-unitcode-both"
+                        description="Case 4.2: BT-149 twice (10), no BT-150 on either = BR-TMP-3 VALID" ?>
+                    <!-- Case 4.3: Both BT-149 present (10), BT-150 only on GrossPrice = keep GrossPrice unitCode -->
+                    <?xmute mutator="identity"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-4-3-unitcode-only-gross"
+                        description="Case 4.3: BT-149 twice (10), BT-150 only on GrossPrice = BR-TMP-3 INVALID" ?>
+                    <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
+                </ram:GrossPriceProductTradePrice>
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount>2371.875</ram:ChargeAmount>
+                    <!-- BT-149 (item price base quantity), BT-150 (unit code) -->
+                    <!-- Case 1.2: Only GrossPrice path = remove NetPrice BasisQuantity -->
+                    <?xmute mutator="remove"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-1-2-only-grossprice"
+                        description="Case 1.2: Only GrossPrice BasisQuantity present = BR-TMP-3 VALID" ?>
+                    <!-- Case 3.2: GrossPrice=10, NetPrice=15 (different values) -->
+                    <?xmute mutator="code" values="15"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-3-2-gross-10-net-15"
+                        description="Case 3.2: GrossPrice=10, NetPrice=15 = BR-TMP-3 INVALID" ?>
+                    <!-- Case 3.3: GrossPrice=15, NetPrice=20 (both wrong) = NetPrice part -->
+                    <?xmute mutator="code" values="20"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-3-3-both-wrong"
+                        description="Case 3.3: GrossPrice=15, NetPrice=20 = BR-TMP-3 INVALID, R120 INVALID" ?>
+                    <!-- Case 4.1: BT-149 once, no BT-150 = remove unitCode from NetPrice -->
+                    <?xmute mutator="attribute-remove" attribute="unitCode"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-4-1-no-unitcode-single"
+                        description="Case 4.1: BT-149 once, no BT-150 = BR-TMP-3 VALID" ?>
+                    <!-- Case 4.2: Both BT-149 present (10), no BT-150 on either = remove unitCode from NetPrice -->
+                    <?xmute mutator="attribute-remove" attribute="unitCode"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-4-2-no-unitcode-both"
+                        description="Case 4.2: BT-149 twice (10), no BT-150 on either = BR-TMP-3 VALID" ?>
+                    <!-- Case 4.3: Both BT-149 present (10), BT-150 only on NetPrice = remove unitCode from NetPrice -->
+                    <?xmute mutator="attribute-remove" attribute="unitCode"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        id="cii-br-tmp-3-case-4-3-unitcode-only-net"
+                        description="Case 4.3: BT-149 twice (10), BT-150 only on NetPrice = BR-TMP-3 INVALID (NetPrice has unitCode but GrossPrice doesn't)" ?>
+                    <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedLineTradeAgreement>
+            <ram:SpecifiedLineTradeDelivery>
+                <ram:BilledQuantity unitCode="XPP">20</ram:BilledQuantity>
+            </ram:SpecifiedLineTradeDelivery>
+            <ram:SpecifiedLineTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:SpecifiedTradeAllowanceCharge>
+                    <ram:ChargeIndicator>
+                        <udt:Indicator>true</udt:Indicator>
+                    </ram:ChargeIndicator>
+                    <ram:ActualAmount>10.00</ram:ActualAmount>
+                </ram:SpecifiedTradeAllowanceCharge>
+                <ram:SpecifiedTradeAllowanceCharge>
+                    <ram:ChargeIndicator>
+                        <udt:Indicator>false</udt:Indicator>
+                    </ram:ChargeIndicator>
+                    <ram:ActualAmount>10.00</ram:ActualAmount>
+                </ram:SpecifiedTradeAllowanceCharge>
+                <ram:SpecifiedTradeSettlementLineMonetarySummation>
+                    <!-- Case 2.2: Both paths identical (10 + XPP), but R120 violated -->
+                    <?xmute mutator="code" values="4743.78"
+                        schematron-valid="xrcii:BR-TMP-3"
+                        schematron-invalid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-br-tmp-3-case-2-2-both-same-r120-invalid"
+                        description="Case 2.2: Both paths identical (10 + XPP), LineTotalAmount wrong = BR-TMP-3 VALID, R120 INVALID" ?>
+                    <ram:LineTotalAmount>4743.75</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementLineMonetarySummation>
+            </ram:SpecifiedLineTradeSettlement>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:ApplicableHeaderTradeAgreement>
+            <ram:BuyerReference>BR-TMP-3-REF</ram:BuyerReference>
+            <ram:SellerTradeParty>
+                <ram:Name>Test Seller Inc.</ram:Name>
+                <ram:DefinedTradeContact>
+                    <ram:PersonName>John Doe</ram:PersonName>
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>+49 123 456789</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>seller@test.com</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>12345</ram:PostcodeCode>
+                    <ram:LineOne>Test Street 1</ram:LineOne>
+                    <ram:CityName>Test City</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">seller@test.com</ram:URIID>
+                </ram:URIUniversalCommunication>
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">DE123456789</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <ram:Name>Test Buyer GmbH</ram:Name>
+                <ram:PostalTradeAddress>
+                    <ram:PostcodeCode>98765</ram:PostcodeCode>
+                    <ram:LineOne>Buyer Street 1</ram:LineOne>
+                    <ram:CityName>Buyer City</ram:CityName>
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">buyer@test.com</ram:URIID>
+                </ram:URIUniversalCommunication>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableHeaderTradeAgreement>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <ram:OccurrenceDateTime>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableHeaderTradeDelivery>
+        <ram:ApplicableHeaderTradeSettlement>
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>58</ram:TypeCode>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                </ram:PayeePartyCreditorFinancialAccount>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <ram:CalculatedAmount>901.31</ram:CalculatedAmount>
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <ram:BasisAmount>4743.75</ram:BasisAmount>
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:DueDateDateTime>
+                    <udt:DateTimeString format="102">20180513</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+                <ram:LineTotalAmount>4743.75</ram:LineTotalAmount>
+                <ram:TaxBasisTotalAmount>4743.75</ram:TaxBasisTotalAmount>
+                <ram:TaxTotalAmount currencyID="EUR">901.31</ram:TaxTotalAmount>
+                <ram:GrandTotalAmount>5645.06</ram:GrandTotalAmount>
+                <ram:DuePayableAmount>5645.06</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+        </ram:ApplicableHeaderTradeSettlement>
+    </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>
