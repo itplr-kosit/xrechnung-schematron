@@ -235,11 +235,13 @@
                     (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity =
                      ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity
                      and
-                     ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode =
-                     ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
+                     (not(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode)
+                      or
+                      ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode =
+                      ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode))"
               flag="fatal"
               id="BR-TMP-3"
-          >[BR-TMP-3] Wenn BT-149 (Item price base quantity) sowohl in GrossPriceProductTradePrice als auch in NetPriceProductTradePrice vorhanden ist, müssen Wert und Einheit identisch sein.</assert>
+          >[BR-TMP-3] Wenn BT-149 (Item price base quantity) sowohl in GrossPriceProductTradePrice als auch in NetPriceProductTradePrice vorhanden ist, müssen die Werte identisch sein. Wenn BT-150 (unit of measure code) auf dem NetPrice-Pfad vorhanden ist, muss es auch auf dem GrossPrice-Pfad vorhanden und identisch sein.</assert>
     </rule>
   </pattern>
   <pattern id="cii-extension-pattern">
