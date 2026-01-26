@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Tests for BR-DE-25-b in CII 
+
+### Fixed
+
+* Bug in BR-DE-25-b that prevented detection of forbidden BT-86 "Payment service provider identifier" with BG-19 in CII
+
 ### Changed
 
 * Global codelist variables to adapt CEN 1.3.15 codelist updates
