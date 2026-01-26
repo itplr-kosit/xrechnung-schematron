@@ -216,6 +216,8 @@
               id="BR-DE-25-a"
         >[BR-DE-25-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>        
       <assert test="not(ram:PayeePartyCreditorFinancialAccount) and
+                    not(ram:PayeeSpecifiedCreditorFinancialInstitution) and
+                    not(ram:PayerSpecifiedDebtorFinancialInstitution) and
                     not(ram:ApplicableTradeSettlementFinancialCard)"
               flag="fatal"
               id="BR-DE-25-b"
