@@ -6,6 +6,7 @@
 
   <import file="${xsbi.dir}/abu-common.xml" />
   <include file="${xsbi.dir}/abu-saxon-provider.xml" />
+  <include file="${xsbi.dir}/custom-abu-schxslt.xml" />
 
   <!-- set global default properties for this build -->
   <!-- main build directories -->
@@ -37,11 +38,6 @@
   <property name="schxslt.version" value="1.10.1" />
   <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
   <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />     
-
-  <property name="xmlresolver.version" value="4.2.0" />
-  <property name="xmlresolver.zip" value="xmlresolver-${xmlresolver.version}.zip" />
-  <property name="xmlresolver.jar" value="xmlresolver-${xmlresolver.version}.jar" />
-  <property name="xmlresolver.download.url" value="https://github.com/xmlresolver/xmlresolver/releases/download/${xmlresolver.version}/${xmlresolver.zip}" />
 
   <property name="xr-schematron.zip" value="${dist.name}.zip" />  
 
@@ -134,37 +130,6 @@
     <mkdir dir="${build.dir}/generated" />
     <mkdir dir="${build.dir}/bis" />
   </target>
-
-  <target name="prepare-schxslt" depends="init"
-    description="Download schxslt and extract it to build dir"> 
-    <property name="build.schxslt.dir" location="${build.dir}/schxslt" />
-        
-    <get src="${schxslt.download.url}"
-      dest="${download.dir}" verbose="true" skipexisting="false"
-      usetimestamp="true" />
-      
-    <mkdir dir="${build.schxslt.dir}" />
-    <unzip src="${download.dir}/${schxslt.zip}" dest="${build.schxslt.dir}">      
-      <cutdirsmapper dirs="1" />
-    </unzip>
-      
-  </target>
-
-  <target name="prepare-xmlresolver" depends="init"
-    description="Download xmlresolver and extract the lib it to lib dir">     
-        
-    <get src="${xmlresolver.download.url}"
-      dest="${download.dir}" verbose="true" skipexisting="false"
-      usetimestamp="true" />
-
-    <unzip src="${download.dir}/${xmlresolver.zip}" dest="${lib.dir}">      
-      <patternset>
-        <include name="**/${xmlresolver.jar}" />
-      </patternset>
-      <flattenmapper />
-    </unzip>
-      
-  </target>  
 
   <target name="retrieve-xmute" depends="init">
     <fail unless="xmute.download.url.prefix"
@@ -286,27 +251,15 @@
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
   </target>
 
-  <target name="compile-schematron-rules" depends="abu-saxon-provider.provide-saxon, prepare-schxslt, prepare-xmlresolver, prepare-build-dir, merge-peppol-rules-with-xr-rules">
-    <!--<property name="eforms-de.schematron.validator"
-      location="${build.dir}/schematron/eforms-de-schematron-validator-${eforms-de-schematron.version.full}.xsl" />-->   
-    <xslt in="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
-      style="${build.schxslt.dir}/2.0/pipeline-for-svrl.xsl"
-      out="${build.dir}/schematron/cii/XRechnung-CII-validation.xsl">
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-        <pathelement location="${lib.dir}/${xmlresolver.jar}" />
-      </classpath>
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />
-    </xslt>
-    <xslt in="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      style="${build.schxslt.dir}/2.0/pipeline-for-svrl.xsl"
-      out="${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl">
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-        <pathelement location="${lib.dir}/${xmlresolver.jar}" />
-      </classpath>
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />
-    </xslt>
+  <target name="compile-schematron-rules" depends="abu-saxon-provider.provide-saxon, prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <schematron-compile-schxslt
+      schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      insuffix="sch" workdir="${download.dir}"
+      outdir="${build.dir}/schematron/cii" deleteonexit="false" overwrite="true" />
+    <schematron-compile-schxslt
+      schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      insuffix="sch" workdir="${download.dir}"
+      outdir="${build.dir}/schematron/ubl" deleteonexit="false" overwrite="true" />
   </target>
   
   <target name="transform-xr-rules-to-peppol-nrs"
