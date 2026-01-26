@@ -1,6 +1,12 @@
 <project name="xrechnung-schematron" default="compile-schematron-rules"
   basedir=".">
   <description>Build XRechnung Schematron Rules</description>
+  
+  <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
+
+  <import file="${xsbi.dir}/abu-common.xml" />
+  <include file="${xsbi.dir}/abu-saxon-provider.xml" />
+
   <!-- set global default properties for this build -->
   <!-- main build directories -->
   <property name="src.dir" location="${basedir}/src" />
@@ -19,7 +25,6 @@
   <property name="xrechnung.version" value="3.0.2" />
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
-  <property name="saxon.jar" value="saxon9he.jar" />
 
   <property name="xmute.version.full" value="0.6" />
   <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
@@ -48,8 +53,7 @@
     <attribute name="outdir" />
     <attribute name="overwrite" default="false" />
     <attribute name="insuffix" default="sch" />
-    <attribute name="saxon.jar" default="${lib.dir}/${saxon.jar}"
-      description="Location of Saxon jar." />
+    <attribute name="classpathref" default="${cp.saxon.xslt}" />
     <attribute name="deleteonexit" default="true"
       description="Whether to delete intermediate XSLT files on exit. Note if not deleting, then subsequent runs of macro produce wrong results!" />
     <attribute name="schematronbinding" default="xslt2"
@@ -89,21 +93,21 @@
       <!-- expand inclusions -->
       <xslt style="@{workdir}/iso_dsdl_include.xsl" in="@{schematron}"
         out="@{workdir}/${schematron.basename}-expanded.sch"
-        classpath="@{saxon.jar}" force="@{overwrite}">
+        force="@{overwrite}" classpathref="cp.saxon.xslt">
         <factory name="net.sf.saxon.TransformerFactoryImpl" />
       </xslt>
       <!-- expand abstract patterns -->
       <xslt style="@{workdir}/iso_abstract_expand.xsl"
         in="@{workdir}/${schematron.basename}-expanded.sch"
         out="@{workdir}/${schematron.basename}-unabstract.sch"
-        classpath="@{saxon.jar}" force="@{overwrite}">
+        force="@{overwrite}" classpathref="cp.saxon.xslt">
         <factory name="net.sf.saxon.TransformerFactoryImpl" />
       </xslt>
       <!-- svrl it -->
       <xslt style="@{workdir}/iso_svrl_for_@{schematronbinding}.xsl"
         in="@{workdir}/${schematron.basename}-unabstract.sch"
-        out="@{outdir}/${schematron.basename}.xsl" classpath="@{saxon.jar}"
-        force="@{overwrite}">
+        out="@{outdir}/${schematron.basename}.xsl"
+        force="@{overwrite}" classpathref="cp.saxon.xslt">
         <factory name="net.sf.saxon.TransformerFactoryImpl" />
         <param name="generate-fired-rule" expression="true" />
         <param name="full-path-notation" expression="3" />
@@ -168,20 +172,6 @@
     <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
       dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false"
       usetimestamp="true" />
-  </target>
-
-  <target name="prepare-saxon" depends="init"
-    description="Download Saxon-HE and add jar to library directory">
-    <get
-      src="https://sourceforge.net/projects/saxon/files/Saxon-HE/9.9/SaxonHE9-9-1-8J.zip/download"
-      dest="${download.dir}/SaxonHE9-9-1-8J.zip" verbose="true"
-      skipexisting="true" usetimestamp="true" />
-    <unzip src="${download.dir}/SaxonHE9-9-1-8J.zip" dest="${lib.dir}">
-      <patternset>
-        <include name="**/${saxon.jar}" />
-      </patternset>
-      <flattenmapper />
-    </unzip>
   </target>
 
   <target name="prepare-build-dir" depends="init"
@@ -260,27 +250,44 @@
     <!-- merge ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
-      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="cp.saxon.xslt">
       <param name="syntax" expression="UBL" />
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-      </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
     <!-- merge cii -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
-      style="${src.dir}/xsl/peppol-into-xr.xsl">
+      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="cp.saxon.xslt">
       <param name="syntax" expression="CII" />
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-      </classpath>
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
 
   </target>
 
-  <target name="compile-schematron-rules" depends="prepare-schxslt, prepare-xmlresolver, prepare-build-dir, merge-peppol-rules-with-xr-rules">
+  <target name="check-merge-peppol-rules-with-xr-rules"
+    depends="merge-peppol-rules-with-xr-rules">
+    
+    <!-- failonerror must be yes -->
+    <!-- check ubl -->
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
+      out="${xr-schematron.build.dir}/tmp/ubl.out"
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
+      <factory name="net.sf.saxon.TransformerFactoryImpl" />
+    </xslt>
+    
+    <!-- check cii -->
+    <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
+      out="${xr-schematron.build.dir}/tmp/cii.out"
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
+    </xslt>
+  </target>
+  
+  <target name="merge-peppol-xr-rules"
+    depends="retrieve-peppol-bis-billing-rules, merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
+    <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
+  </target>
+
+  <target name="compile-schematron-rules" depends="abu-saxon-provider.provide-saxon, prepare-schxslt, prepare-xmlresolver, prepare-build-dir, merge-peppol-rules-with-xr-rules">
     <!--<property name="eforms-de.schematron.validator"
       location="${build.dir}/schematron/eforms-de-schematron-validator-${eforms-de-schematron.version.full}.xsl" />-->   
     <xslt in="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
@@ -302,14 +309,12 @@
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
   </target>
-
-  <target name="transform-xr-rules-to-peppol-nrs" depends="prepare-saxon, prepare-build-dir">
+  
+  <target name="transform-xr-rules-to-peppol-nrs"
+    depends="abu-saxon-provider.provide-saxon, prepare-build-dir">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
       out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
-      style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl">
-      <classpath>
-        <pathelement location="${lib.dir}/${saxon.jar}" />
-      </classpath>
+      style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl" classpathref="cp.saxon.xslt">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
   </target>
@@ -383,7 +388,7 @@
 
     <xslt basedir="${test.src.dir}" destdir="${test.build.dir}/tmp"
       style="${src.dir}/xsl/normalization.xsl"
-      classpath="${lib.dir}/${saxon.jar}" extension=".xml">
+      extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
       <param name="xr-version" expression="_3.0" />
     </xslt>
@@ -402,7 +407,7 @@
 
     <xslt basedir="${test.src.dir}" destdir="${build.dir}/tmp"
       style="${src.dir}/xsl/normalization.xsl"
-      classpath="${lib.dir}/${saxon.jar}" extension=".xml">
+      extension=".xml">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
 
