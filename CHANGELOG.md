@@ -11,15 +11,16 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Tests for BR-DE-25-b in CII 
+* Tests for BR-DE-25-b in CII
+
+### Changed
+
+* Using Saxon HE 12.8
+* Global codelist variables to adapt CEN 1.3.15 codelist updates
 
 ### Fixed
 
 * Bug in BR-DE-25-b that prevented detection of forbidden BT-86 "Payment service provider identifier" with BG-19 in CII
-
-### Changed
-
-* Global codelist variables to adapt CEN 1.3.15 codelist updates
 
 ## v2.4.0 on 2025-07-10
 
