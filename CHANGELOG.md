@@ -11,11 +11,11 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
-* Test for BR-DE-25-b in CII with invalid existence of BT-86
+* Tests for BR-DE-25-b in CII 
 
 ### Fixed
 
-* Bug in BR-DE-25-b that prevented detection of BT-86 in CII
+* Bug in BR-DE-25-b that prevented detection of forbidden BT-86 "Payment service provider identifier" with BG-19 in CII
 
 ### Changed
 
