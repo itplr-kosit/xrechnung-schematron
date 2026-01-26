@@ -146,7 +146,7 @@
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
                 <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-2-not-allowed-with-BG-19"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-2-not-allowed-with-BG-19-1"
                         description="CII BT-86 not allowed with BG-19" ?>
                 <?xmute mutator="remove"
                         schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
@@ -155,10 +155,10 @@
                     <ram:BICID>DEUTDEMMXXX</ram:BICID>
                 </ram:PayerSpecifiedDebtorFinancialInstitution>
                 <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-1-not-allowed-with-BG-19"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-1-not-allowed-with-BG-19-3"
                         description="CII BT-86 not allowed with BG-19" ?>
                 <?xmute mutator="remove"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-4"
                         description="CII BG-17 not allowed with BG-19" ?>
                 <ram:PayeeSpecifiedCreditorFinancialInstitution>
                     <ram:BICID>DEUTDEMMXXX</ram:BICID>
