@@ -266,7 +266,6 @@
 
   <target name="check-merge-peppol-rules-with-xr-rules"
     depends="merge-peppol-rules-with-xr-rules">
-    
     <!-- failonerror must be yes -->
     <!-- check ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
@@ -281,7 +280,7 @@
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
     </xslt>
   </target>
-  
+
   <target name="merge-peppol-xr-rules"
     depends="retrieve-peppol-bis-billing-rules, merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
