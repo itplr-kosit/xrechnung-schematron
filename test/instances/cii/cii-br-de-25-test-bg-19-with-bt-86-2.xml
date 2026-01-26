@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
     <rsm:ExchangedDocumentContext>
         <ram:BusinessProcessSpecifiedDocumentContextParameter>
             <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
@@ -136,26 +137,23 @@
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
         <ram:ApplicableHeaderTradeDelivery/>
-        <ram:ApplicableHeaderTradeSettlement>                 
+        <ram:ApplicableHeaderTradeSettlement>
             <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
-            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>            
-            <ram:SpecifiedTradeSettlementPaymentMeans>                
-                <ram:TypeCode>59</ram:TypeCode>       
-                <ram:PayerPartyDebtorFinancialAccount>                                      
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <ram:TypeCode>59</ram:TypeCode>
+                <ram:PayerPartyDebtorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
                 <?xmute mutator="identity"
                         schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-2-not-allowed-with-BG-19"
                         description="CII BT-86 not allowed with BG-19" ?>
+                <?xmute mutator="remove"
+                        schematron-valid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
+                        description="CII BG-17 not allowed with BG-19" ?>
                 <ram:PayerSpecifiedDebtorFinancialInstitution>
                     <ram:BICID>DEUTDEMMXXX</ram:BICID>
                 </ram:PayerSpecifiedDebtorFinancialInstitution>
-                <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-1-not-allowed-with-BG-19"
-                        description="CII BT-86 not allowed with BG-19" ?>
-                <ram:PayeeSpecifiedCreditorFinancialInstitution>
-                    <ram:BICID>DEUTDEMMXXX</ram:BICID>
-                </ram:PayeeSpecifiedCreditorFinancialInstitution>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
@@ -165,7 +163,7 @@
                 <ram:RateApplicablePercent>7</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
             <ram:SpecifiedTradePaymentTerms>
-                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>                
+                <ram:Description>Zahlbar sofort ohne Abzug.</ram:Description>
                 <ram:DirectDebitMandateID>[Mandate reference identifier]</ram:DirectDebitMandateID>
             </ram:SpecifiedTradePaymentTerms>
             <ram:SpecifiedTradeSettlementHeaderMonetarySummation>

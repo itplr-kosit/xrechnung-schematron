@@ -136,36 +136,33 @@
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
         </ram:ApplicableHeaderTradeAgreement>
-        <ram:ApplicableHeaderTradeDelivery>
-            <ram:ActualDeliverySupplyChainEvent>
-                <!-- BT-72 -->
-                <ram:OccurrenceDateTime>
-                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
-                </ram:OccurrenceDateTime>
-            </ram:ActualDeliverySupplyChainEvent>
-        </ram:ApplicableHeaderTradeDelivery>
+        <ram:ApplicableHeaderTradeDelivery/>
         <ram:ApplicableHeaderTradeSettlement>
             <ram:CreditorReferenceID>[Bank assigned creditor identifier]</ram:CreditorReferenceID>
             <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
             <ram:SpecifiedTradeSettlementPaymentMeans>
                 <ram:TypeCode>59</ram:TypeCode>
-                <!-- BT-91 -->
                 <ram:PayerPartyDebtorFinancialAccount>
                     <ram:IBANID>DE75512108001245126199</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
                 <?xmute mutator="identity"
-                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-1"
-                        description="CII BG-17 not allowed with BG-19" ?>
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-2-not-allowed-with-BG-19"
+                        description="CII BT-86 not allowed with BG-19" ?>
                 <?xmute mutator="remove"
-                        schematron-valid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
                         description="CII BG-17 not allowed with BG-19" ?>
-                <!-- BG-17 -->
-                <ram:PayeePartyCreditorFinancialAccount>
-                    <!-- BT-84 -->
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
-                    <!-- BT-85 -->
-                    <ram:AccountName>Account name</ram:AccountName>
-                </ram:PayeePartyCreditorFinancialAccount>
+                <ram:PayerSpecifiedDebtorFinancialInstitution>
+                    <ram:BICID>DEUTDEMMXXX</ram:BICID>
+                </ram:PayerSpecifiedDebtorFinancialInstitution>
+                <?xmute mutator="identity"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BT-86-path-1-not-allowed-with-BG-19"
+                        description="CII BT-86 not allowed with BG-19" ?>
+                <?xmute mutator="remove"
+                        schematron-invalid="xrcii:BR-DE-25-b" id="cii-BG-17-not-allowed-with-BG-19-2"
+                        description="CII BG-17 not allowed with BG-19" ?>
+                <ram:PayeeSpecifiedCreditorFinancialInstitution>
+                    <ram:BICID>DEUTDEMMXXX</ram:BICID>
+                </ram:PayeeSpecifiedCreditorFinancialInstitution>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
                 <ram:CalculatedAmount>22.04</ram:CalculatedAmount>
