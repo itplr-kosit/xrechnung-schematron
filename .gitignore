@@ -2,6 +2,7 @@ dist/
 build/
 lib/
 reports/
+download/
 
 .vscode
 *.xpr
