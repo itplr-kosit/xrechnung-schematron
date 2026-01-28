@@ -28,8 +28,6 @@
 
   <property name="xmute.version.full" value="0.5" />
   <property name="xmute.jar" value="xml-mutate.jar" />
-  <!-- Allow external xmute jar path to be specified via -Dxmute.jar.path=... -->
-  <property name="xmute.jar.path" value="${lib.dir}/${xmute.jar}" />
 
   <property name="bis.version" value="3.0.20" />
   <property name="bis.zip" value="v${bis.version}.zip" />
@@ -298,12 +296,7 @@
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
-  <target name="check-xmute-available">
-    <available file="${xmute.jar.path}" property="xmute.available"/>
-    <fail message="xml-mutate jar not found at ${xmute.jar.path}. Please provide -Dxmute.jar.path=... or run retrieve-xmute target." unless="xmute.available" />
-  </target>
-
-  <target name="test-single-file" depends="compile-schematron-rules,check-xmute-available"
+  <target name="test-single-file" depends="compile-schematron-rules"
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
@@ -325,11 +318,11 @@
   </target>
 
 
-  <target name="test-only" depends="check-xmute-available"
+  <target name="test-only"
     description="Unit testing Schematron Rules wit XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
-    <java jar="${xmute.jar.path}" failonerror="yes" fork="yes"
+    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
       dir="${basedir}">
 
       <arg value="--target" />
@@ -385,7 +378,7 @@
 
 
   <target name="test"
-    depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
+    depends="retrieve-xmute, compile, transform-xr-rules-to-peppol-nrs, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"
