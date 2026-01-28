@@ -27,7 +27,7 @@
     8: Case 3.4 = Same value (10), different unit codes (BR-TMP-3: INVALID)
     9: Case 4.1 = BT-149 once, no BT-150 (BR-TMP-3: VALID)
     10: Case 4.2 = BT-149 twice (same value), no BT-150 on either (BR-TMP-3: VALID)
-    11: Case 4.3 = BT-149 twice (same value), BT-150 only once (BR-TMP-3: INVALID)
+    11: Case 4.3 = BT-149 twice (same value), BT-150 only once: undefined business requirements, thus BR-TMP-3: VALID
     
     XMUTE MUTATIONS:
     This file uses xmute processing instructions to generate multiple test instances.
@@ -67,17 +67,17 @@
                     <?xmute mutator="identity"
                         schematron-invalid="xrcii:BR-TMP-3,xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-case-3-3-both-wrong-1"
-                        description="Case 3.4" ?>
+                        description="Case 3.3" ?>
                     <?xmute mutator="code" values="10"
                         schematron-invalid="xrcii:BR-TMP-3"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-gross-price-correct-net-price-incorrect"
-                        description="Case 3.4 - correct BT-149 GrossPrice value" ?>
+                        description="Case 3.3 - correct BT-149 GrossPrice value" ?>
                     <?xmute mutator="remove"
                         schematron-valid="xrcii:BR-TMP-3"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-incorrect-gross-price"
-                        description="Case 3.4 - BT-149 GrossPrice removed" ?>
+                        description="Case 3.3 - BT-149 GrossPrice removed" ?>
                     <ram:BasisQuantity unitCode="XPP">15</ram:BasisQuantity>
                 </ram:GrossPriceProductTradePrice>
                 <ram:NetPriceProductTradePrice>
@@ -87,17 +87,17 @@
                     <?xmute mutator="identity"
                         schematron-invalid="xrcii:BR-TMP-3,xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-case-3-3-both-wrong-2"
-                        description="Case 3.4" ?>
+                        description="Case 3.3" ?>
                     <?xmute mutator="code" values="10"
                         schematron-invalid="xrcii:BR-TMP-3"
                         schematron-valid="xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-net-price-correct-gross-price-incorrect"
-                        description="Case 3.4 - correct BT-149 NetPrice value" ?>
+                        description="Case 3.3 - correct BT-149 NetPrice value" ?>
                     <?xmute mutator="remove"
                         schematron-valid="xrcii:BR-TMP-3"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-incorrect-net-price"
-                        description="Case 3.4 - BT-149 NetPrice removed" ?>
+                        description="Case 3.3 - BT-149 NetPrice removed" ?>
                     <ram:BasisQuantity unitCode="XPP">20</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>
             </ram:SpecifiedLineTradeAgreement>

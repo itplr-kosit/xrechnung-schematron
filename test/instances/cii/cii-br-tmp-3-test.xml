@@ -122,8 +122,7 @@
                         description="Case 1.1: Only NetPrice BasisQuantity present - BR-TMP-3 VALID" ?>
                     <!-- Case 2.1: Both paths identical (10 + XPP) = R120 OK -->
                     <?xmute mutator="identity"
-                        schematron-valid="xrcii:BR-TMP-3"
-                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
+                        schematron-valid="xrcii:BR-TMP-3,xrcii:PEPPOL-EN16931-R120"
                         id="cii-br-tmp-3-case-2-1-both-same-r120-ok"
                         description="Case 2.1: Both paths identical (10), R120 fulfilled - BR-TMP-3 VALID, R120 VALID" ?>
                     <!-- Case 3.1: GrossPrice=15, NetPrice=10 (different values) -->
@@ -138,14 +137,14 @@
                         description="Case 3.4: Same value (10), different unit codes - BR-TMP-3 INVALID" ?>
                     <!-- Case 4.2: Both BT-149 present (10), no BT-150 on either = remove unitCode from GrossPrice -->
                     <?xmute mutator="remove" attribute="unitCode"
-                        schematron-invalid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:BR-TMP-3"
                         id="cii-br-tmp-3-case-4-2-no-unitcode-both"
                         description="Case 4.2: BT-149 twice (10), no BT-150 on either = BR-TMP-3 VALID" ?>
                     <!-- Case 4.3: Both BT-149 present (10), BT-150 only on GrossPrice = keep GrossPrice unitCode -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:BR-TMP-3"
                         id="cii-br-tmp-3-case-4-3-unitcode-only-gross"
-                        description="Case 4.3: BT-149 twice (10), BT-150 only on GrossPrice = BR-TMP-3 INVALID" ?>
+                        description="Case 4.3: BT-149 twice (10), BT-150 only on GrossPrice = BR-TMP-3 VALID" ?>
                     <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                     <ram:AppliedTradeAllowanceCharge>
                         <ram:ChargeIndicator>
@@ -187,11 +186,11 @@
                     <?xmute mutator="remove" attribute="unitCode"
                         schematron-valid="xrcii:BR-TMP-3"
                         id="cii-br-tmp-3-case-4-3-unitcode-only-net"
-                        description="Case 4.3: BT-149 twice (10), BT-150 only on NetPrice = BR-TMP-3 INVALID (NetPrice has unitCode but GrossPrice doesn't)" ?>
+                        description="Case 4.3: BT-149 twice (10), BT-150 only on NetPrice = BR-TMP-3 VALID" ?>
                     <!-- Case 3.4: Different unit codes (XAE vs XPP) -->
                     <?xmute mutator="code" values="XAE" attribute="unitCode"
                         schematron-invalid="xrcii:BR-TMP-3" id="cii-br-tmp-3-2a"
-                        description="BT-150 must be identical in Gross and Net Price" ?>
+                        description="Case 3.4: BT-150 must be identical in Gross and Net Price" ?>
                     <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>                
             </ram:SpecifiedLineTradeAgreement>
