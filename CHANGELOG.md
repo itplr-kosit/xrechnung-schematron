@@ -12,6 +12,7 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Tests for BR-DE-25-b in CII
+* Validation for PEPPOL-EN16931-R120 in CII
 
 ### Changed
 
