@@ -395,9 +395,7 @@
 
   </target>
 
-  <target name="clean" description="clean up">
-    <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
-    <delete dir="${dist.dir}" verbose="true" includeEmptyDirs="true" />
-  </target>
+  <target name="clean" depends="abu-common.clean"/>
+  <target name="clean-download" depends="abu-common.clean-download"/>
+  <target name="clean-all" depends="abu-common.clean-all" />
 </project>
