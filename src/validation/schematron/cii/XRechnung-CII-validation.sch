@@ -226,7 +226,19 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
-
+      
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction">
+          <assert test="
+              ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime
+              or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod
+              or (every $line in ram:IncludedSupplyChainTradeLineItem
+              satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
+              flag="information"
+              id="BR-DE-TMP-32">
+              [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+          </assert>
+      </rule>
+      
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem">
       <assert test="not(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity
                         and
