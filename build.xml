@@ -312,7 +312,7 @@
     </fail>
   </target>
 
-  <target name="test-single-file" depends="compile-schematron-rules"
+  <target name="test-single-file" depends="compile-schematron-rules,check-xmute-available"
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
