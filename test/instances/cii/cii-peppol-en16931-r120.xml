@@ -50,23 +50,31 @@
             <ram:SpecifiedLineTradeAgreement>
                 <ram:BuyerOrderReferencedDocument>
                     <ram:LineID>6171175.1</ram:LineID>
-                </ram:BuyerOrderReferencedDocument>				
+                </ram:BuyerOrderReferencedDocument>
+                <?xmute mutator="remove"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120,xrcii:BR-TMP-3"
+                        id="cii-r120-bt149-single-path"
+                        description="BT-149 einmal vorhanden" ?>
                 <ram:GrossPriceProductTradePrice>
                     <!-- BT-148 -->
                     <ram:ChargeAmount>2381.875</ram:ChargeAmount>
                     <!-- BT-149 (item price base quantity), BT-150 -->
                     <!-- Test BR-TMP-3: Wenn beide Pfade vorhanden, müssen Werte identisch sein -->
-                    <?xmute mutator="code" values="10"
-                        schematron-valid="xrcii:BR-TMP-3"
+                    <?xmute mutator="identity"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120,xrcii:BR-TMP-3"
                         id="cii-r120-bt149-both-paths-same"
                         description="Beide BasisQuantity Pfade mit gleichem Wert - BR-TMP-3 erfüllt" ?>
                     <?xmute mutator="code" values="15"
                         schematron-invalid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
                         id="cii-r120-bt149-both-paths-different"
                         description="Beide BasisQuantity Pfade mit unterschiedlichem Wert - BR-TMP-3 verletzt" ?>
-                    <!--
-                    <ram:BasisQuantity unitCode="XPP">30</ram:BasisQuantity>
-                    -->
+                    <?xmute mutator="code" attribute="unitCode" values="XPT"
+                        schematron-invalid="xrcii:BR-TMP-3"
+                        schematron-valid="xrcii:PEPPOL-EN16931-R120"
+                        id="cii-r120-bt150-both-paths-different"
+                        description="Beide UnitCode Pfade mit unterschiedlichem Wert - BR-TMP-3 verletzt" ?>
+                    <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                     <ram:AppliedTradeAllowanceCharge>
                         <ram:ChargeIndicator>
                             <udt:Indicator>false</udt:Indicator>
@@ -74,8 +82,8 @@
                         <ram:ActualAmount>10.000000000000000000</ram:ActualAmount>
                     </ram:AppliedTradeAllowanceCharge>
                 </ram:GrossPriceProductTradePrice>
-                <!-- BT-146 (item net price) -->
                 <ram:NetPriceProductTradePrice>
+                    <!-- BT-146 (item net price) -->
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-item-net-price"
                         description="Line Extension amount correct" ?>
@@ -87,9 +95,9 @@
                     <?xmute mutator="identity"
                         schematron-valid="xrcii:PEPPOL-EN16931-R120" id="cii-valid-base-quantity-2"
                         description="Line Extension amount correct" ?>
-                    <?xmute mutator="code" values="1, 30"
+                    <?xmute mutator="code" values="1,30"
                         schematron-invalid="xrcii:PEPPOL-EN16931-R120, xrcii:BR-TMP-3" id="cii-invalid-base-quantity-2"
-                        description="Line Extension not amount correct" ?>
+                        description="Line Extension amount not correct" ?>
                     <ram:BasisQuantity unitCode="XPP">10</ram:BasisQuantity>
                 </ram:NetPriceProductTradePrice>                
             </ram:SpecifiedLineTradeAgreement>
