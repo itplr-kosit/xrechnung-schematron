@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-    whitelist of XRechnung national business rules to be converted to Peppol BIS Billing National Ruleset
+    whitelist of XRechnung CIUS national business rules to be converted to Peppol BIS Billing National Ruleset
     see documentation in docs/harmonization-xr-peppol-bis-billing.md
 -->
 <asserts>

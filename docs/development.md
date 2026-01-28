@@ -4,7 +4,7 @@ Schematron sources are in `validation/schematron/{cii, ubl}` directories.
 
 ## Testing
 
-We are only testing with **Saxon HE 9.9** and later.
+We are only testing with **Saxon HE 12.8** and later.
 Proper execution of the rules with other XSLT environments cannot be guaranteed.
 
 Hint: the CEN rules are also tested with Saxon HE.
@@ -97,7 +97,7 @@ ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' cl
 ```
 
 * Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
-  `git tag release-2.3.0 && git push origin release-2.3.0`
+  `git tag release-2.4.0 && git push origin release-2.4.0`
 
 ### Publish
 

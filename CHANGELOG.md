@@ -11,12 +11,31 @@ This release is compatible with XRechnung ?.?.?
 
 ### Added
 
+* Tests for BR-DE-25-b in CII
+
+### Changed
+
+* Using Saxon HE 12.8
+* Global codelist variables to adapt CEN 1.3.15 codelist updates
+
+### Fixed
+
+* Bug in BR-DE-25-b that prevented detection of forbidden BT-86 "Payment service provider identifier" with BG-19 in CII
+
+## v2.4.0 on 2025-07-10
+
+This release is compatible with XRechnung 3.0.x
+
+### Added
+
 * Temporary rule BR-DE-TMP-32 for information on missing date of delivery or service 
 * Temporary rule BR-TMP-3 to ensure BT-149/BT-150 are identical in Gross and Net Price in CII
+* Business rules BR-DE-CVD-01, BR-DE-CVD-02, BR-DE-CVD-03, BR-DE-CVD-04, BR-DE-CVD-05, BR-DE-CVD-06, and BR-TMP-CVD-01 to support CIUS XRechnung CVD
 
 ### Changed
 
 * Global codelist variables to adapt CEN 1.3.14 codelist updates
+* Using [Peppol BIS Billing 3.0.19](https://github.com/OpenPEPPOL/peppol-bis-invoice-3/releases/tag/v3.0.19)
 
 ### Fixed
 

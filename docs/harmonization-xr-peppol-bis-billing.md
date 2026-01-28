@@ -46,7 +46,7 @@ The corresponding source files are contained within `src/xsl/`. The output files
 
 ### Handling of CII
 
-Notably, as Peppol BIS Billing does not officially support CII, severity levels were set to "warning" per default for all CII rules. **They will be implemented as "error"/"fatal" with an upcoming release.** 
+Notably, as Peppol BIS Billing does not officially support CII, severity levels were initially set to "warning" per default for all CII rules. They were raised to "error"/"fatal" with v2.2.0 of XRechnung Schematron. 
 
 ### Modifications
 
