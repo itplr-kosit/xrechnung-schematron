@@ -122,7 +122,7 @@
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build.dir}" />
     <mkdir dir="${download.dir}" />
-    <mkdir dir="${download.dir}/${bis}" />
+    <mkdir dir="${download.dir}/bis-${bis.version}" />
     <mkdir dir="${lib.dir}" />
     <mkdir dir="${dist.dir}" />
     <mkdir dir="${build.dir}/generated" />
@@ -159,28 +159,31 @@
     </copy>
   </target>
 
-  <target name="check-peppol-files-exist" depends="init">
-    <available file="${build.dir}/bis/PEPPOL-EN16931-UBL.sch" property="peppol.ubl.exists"/>
-    <available file="${build.dir}/bis/PEPPOL-EN16931-CII.sch" property="peppol.cii.exists"/>
-    <condition property="peppol.files.exist">
-      <and>
-        <isset property="peppol.ubl.exists"/>
-        <isset property="peppol.cii.exists"/>
-      </and>
-    </condition>
-  </target>
-
-  <target name="download-peppol-zip" depends="check-peppol-files-exist" unless="peppol.files.exist">
+  <target name="retrieve-peppol-bis-github-release" depends="init">
     <!-- Try to download from GitHub release tag first -->
     <echo message="Attempting to load Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
-    <get src="${bis.download.url}" dest="${download.dir}" verbose="true"
+    <get src="${bis.download.url}" dest="${download.dir}/bis-${bis.version}" verbose="true"
       skipexisting="true" usetimestamp="false" httpusecaches="false" ignoreerrors="true" />
-    <available file="${download.dir}/${bis.zip}" property="bis.zip.available"/>
+    <available file="${download.dir}/bis-${bis.version}/${bis.zip}" property="bis.zip.available"/>
   </target>
 
-  <target name="unpack-peppol-zip" depends="download-peppol-zip" if="bis.zip.available">
+  <target name="retrieve-peppol-bis-other-sources" depends="init,retrieve-peppol-bis-github-release" unless="${bis.zip.available}">
+    <echo message="Release tag not available, downloading Peppol ${bis.version} schematron files directly..." />
+    <echo message="Downloading UBL schematron from ${peppol.ubl.url}" />
+    <get src="${peppol.ubl.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-UBL.sch" 
+      verbose="true" usetimestamp="false" httpusecaches="false" />
+    <echo message="Downloading CII schematron from ${peppol.cii.url}" />
+    <get src="${peppol.cii.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-CII.sch" 
+      verbose="true" usetimestamp="false" httpusecaches="false" />
+  </target>
+
+  <target name="retrieve-peppol-bis-billing-rules" depends="retrieve-peppol-bis-github-release,retrieve-peppol-bis-other-sources" unless="${bis.zip.available}"
+    description="Download and prepare Peppol BIS Billing 3.0 rules">
+  </target>
+  
+  <target name="provide-peppol-bis-github-release" depends="retrieve-peppol-bis-github-release" if="${bis.zip.available}">
     <echo message="Unpacking Peppol BIS Billing ${bis.version} from ${bis.zip}" />
-    <unzip src="${download.dir}/${bis.zip}" dest="${build.dir}/bis"
+    <unzip src="${download.dir}/bis-${bis.version}/${bis.zip}" dest="${build.dir}/bis"
       failonemptyarchive="true">
       <patternset>
         <include name="**/PEPPOL-EN16931-*.sch" />
@@ -189,21 +192,13 @@
     </unzip>
   </target>
 
-  <target name="download-peppol-direct" depends="download-peppol-zip" unless="bis.zip.available">
-    <echo message="Release tag not available, downloading Peppol ${bis.version} schematron files directly..." />
-    <echo message="Downloading UBL schematron from ${peppol.ubl.url}" />
-    <get src="${peppol.ubl.url}" dest="${build.dir}/bis/PEPPOL-EN16931-UBL.sch" 
-      verbose="true" usetimestamp="false" httpusecaches="false" />
-    <echo message="Downloading CII schematron from ${peppol.cii.url}" />
-    <get src="${peppol.cii.url}" dest="${build.dir}/bis/PEPPOL-EN16931-CII.sch" 
-      verbose="true" usetimestamp="false" httpusecaches="false" />
+  <target name="provide-peppol-bis-other-sources" depends="retrieve-peppol-bis-billing-rules" unless="${bis.zip.available}">
+    <copy todir="${build.dir}/bis">
+      <fileset dir="${download.dir}/bis-${bis.version}"/>
+    </copy>
   </target>
 
-  <target name="retrieve-peppol-bis-billing-rules" depends="unpack-peppol-zip,download-peppol-direct"
-    description="Download and prepare Peppol BIS Billing 3.0 rules">
-  </target>
-
-  <target name="verify-peppol-files" depends="retrieve-peppol-bis-billing-rules">
+  <target name="provide-peppol-bis-billing-rules" depends="retrieve-peppol-bis-billing-rules,provide-peppol-bis-github-release,provide-peppol-bis-other-sources">
     <path id="schematron-path">
       <fileset dir="${build.dir}/bis" includes="**.sch" />
     </path>
@@ -225,9 +220,8 @@
     </fail>
   </target>
 
-
   <target name="merge-peppol-rules-with-xr-rules"
-    depends="verify-peppol-files,prepare-build-dir">
+    depends="prepare-build-dir,provide-peppol-bis-billing-rules,abu-saxon-provider.provide-saxon">
     <!-- merge ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
@@ -266,7 +260,7 @@
   </target>
 
   <target name="merge-peppol-xr-rules"
-    depends="retrieve-peppol-bis-billing-rules, merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
+    depends="merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
   </target>
 
