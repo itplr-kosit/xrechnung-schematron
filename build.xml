@@ -182,15 +182,26 @@
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
   </target>
 
-  <target name="compile-schematron-rules" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
-    <schematron-compile-schxslt
-      schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
-      insuffix="sch"
-      outdir="${build.dir}/schematron/cii" />
-    <schematron-compile-schxslt
-      schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      insuffix="sch"
-      outdir="${build.dir}/schematron/ubl" />
+  <target name="compile-schematron-rules" depends="compile-ubl-schematron, compile-cii-schematron"/>
+
+  <target name="compile-ubl-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
+      <param name="schematron" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
+      <param name="insuffix" value="sch"/>
+      <param name="outdir" value="${build.dir}/schematron/ubl"/>
+      <param name="schematron.file" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
+      <param name="xslt.output.dir" value="${build.dir}/schematron/ubl"/>
+    </antcall>
+  </target>
+  
+  <target name="compile-cii-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
+      <param name="schematron" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+      <param name="insuffix" value="sch"/>
+      <param name="outdir" value="${build.dir}/schematron/cii"/>
+      <param name="schematron.file" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+      <param name="xslt.output.dir" value="${build.dir}/schematron/cii"/>
+    </antcall>
   </target>
   
   <target name="transform-xr-rules-to-peppol-nrs"
