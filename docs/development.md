@@ -11,26 +11,7 @@ Hint: the CEN rules are also tested with Saxon HE.
 
 ## Test case development with XML Mutate
 
-We also create test cases using XML Mutate https://projekte.kosit.org/kosit/xml-mutate .
-
-Currently, you need to manually download the newest version from https://projekte.kosit.org/kosit/xml-mutate/-/jobs and put it somewhere local.
-
-Additionally, you must set a custom ant property that points to the URL of the XML Mutate repository (full path),
-
-e.g. `xmute.download.url.prefix=file:/mnt/c/data/git-repos/xml-mutator/target` (Linux).
-
-Example ant call:
-
-```shell
-ant -Dxmute.download.url.prefix=file:/home/renzo/projects/xml-mutate/target test
-```
-
-For Windows users:
-
-```shell
-ant "-Dxmute.download.url.prefix=file:/c:/dev/git/xml-mutate/target" test
-```
-
+We also create test cases using XML Mutate https://projekte.kosit.org/kosit/xml-mutate.
 
 The `test/instances` directories contains instances for the sole purpose to cover detailed technical aspects of XRechnung development such as codelist tests among others. These tests have Unit Test character by focusing on testing single Schematron rules in isolation. Hence, these technical cases might not be valid instances w.r.t. to XRechnung specification. 
 There are three directories for the different formats (cii, ubl-cn, ubl-inv). The naming convention for the tests is *format*-*rule*-*description*.xml (e.g. cii-br-de-24-test-bg-17.xml).
