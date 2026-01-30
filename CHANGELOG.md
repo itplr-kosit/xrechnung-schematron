@@ -15,6 +15,7 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
+* Schematron implementation from ISO Schematron to SchXslt
 * Using Saxon HE 12.8
 * Global codelist variables to adapt CEN 1.3.15 codelist updates
 
