@@ -76,7 +76,7 @@
     </unzip>
     <echo message="classpath for ${lib.dir}/${saxon-he.jar.name}" />
     <!-- this classpath should work after execution of provide-saxon -->
-
+    <property name="abu.available.saxon" value="true" />
 
   </target>
 </project>

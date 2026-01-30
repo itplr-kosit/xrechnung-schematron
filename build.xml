@@ -5,12 +5,10 @@
   <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
 
   <import file="${xsbi.dir}/abu-common.xml" />
-  <!--
   <include file="${xsbi.dir}/abu-saxon-provider.xml" />
-  <include file="${xsbi.dir}/custom-abu-schxslt.xml" />
-  -->
-  <include file="../xs-build-infrastructure/src/main/abu/abu-schematron-schxslt.xml"/>
-  <include file="../xs-build-infrastructure/src/main/abu/abu-saxon-provider.xml"/>
+  <include file="${xsbi.dir}/abu-schematron-schxslt.xml" />
+<!--  <include file="../xs-build-infrastructure/src/main/abu/abu-schematron-schxslt.xml"/>-->
+<!--  <include file="../xs-build-infrastructure/src/main/abu/abu-saxon-provider.xml"/>-->
 
   <!-- set global default properties for this build -->
   <!-- main build directories -->
