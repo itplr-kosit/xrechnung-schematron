@@ -57,8 +57,7 @@
         </xsl:if>
         <xsl:comment>END Parameters from PEPPOL</xsl:comment>          
     </xsl:template>
-    <xsl:template match="/*/include" mode="xrechung-rules" priority="1">
-        <xsl:copy-of select="."/>
+    <xsl:template match="/*/include" mode="xrechung-rules" priority="1">        
         <xsl:comment>BEGIN Functions from PEPPOL</xsl:comment>
         <xsl:if test="$syntax='UBL'">
             <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/xsl:function" mode="peppol-rules"/>
@@ -67,6 +66,7 @@
             <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-CII.sch')/*/xsl:function" mode="peppol-rules"/>
         </xsl:if>
         <xsl:comment>END Functions from PEPPOL</xsl:comment>
+        <xsl:copy-of select="."/>
     </xsl:template>
     <xsl:template match="/*/pattern[@id='ubl-pattern']" mode="xrechung-rules" priority="1">        
         <xsl:comment>BEGIN Pattern from PEPPOL</xsl:comment>
