@@ -333,7 +333,7 @@
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/tmp/**,bis/**,generated/**,national-rules/**"
+      excludes="download/**,schematron/tmp/**,bis/**,generated/**,national-rules/**,build.env"
      />
   </target>
 
