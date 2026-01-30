@@ -6,6 +6,7 @@
 
   <import file="${xsbi.dir}/abu-common.xml" />
   <include file="${xsbi.dir}/abu-saxon-provider.xml" />
+  <include file="${xsbi.dir}/abu-schematron-schxslt.xml" />
 
   <!-- set global default properties for this build -->
   <!-- main build directories -->
@@ -26,8 +27,8 @@
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
 
-  <property name="xmute.version.full" value="0.5" />
-  <property name="xmute.jar" value="xml-mutate.jar" />
+  <property name="xmute.version.full" value="0.6" />
+  <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
 
   <property name="bis.version" value="3.0.20" />
   <property name="bis.zip" value="v${bis.version}.zip" />
@@ -37,80 +38,11 @@
   <property name="peppol.ubl.url" value="https://docs.peppol.eu/poacc/billing/3.0/2025-Q4/files/PEPPOL-EN16931-UBL.sch" />
   <property name="peppol.cii.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/master/rules/sch/PEPPOL-EN16931-CII.sch" />
 
-  <property name="xr-schematron.zip" value="${dist.name}.zip" />
+  <property name="schxslt.version" value="1.10.1" />
+  <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
+  <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />
 
-  <macrodef name="schematron-compile"
-    description="Compiles Schematron to XSLT using Saxon">
-    <attribute name="schematron" description="Schematron file to compile." />
-    <attribute name="workdir"
-      description="Base directory in which to download Schematron Skeleton and keep intermediaries." />
-    <attribute name="outdir" />
-    <attribute name="overwrite" default="false" />
-    <attribute name="insuffix" default="sch" />
-    <attribute name="classpathref" default="${cp.saxon.xslt}" />
-    <attribute name="deleteonexit" default="true"
-      description="Whether to delete intermediate XSLT files on exit. Note if not deleting, then subsequent runs of macro produce wrong results!" />
-    <attribute name="schematronbinding" default="xslt2"
-      description="Which XSLT version to build for." />
-    <sequential>
-      <local name="schematron.basename" />
-      <basename file="@{schematron}" suffix="@{insuffix}"
-        property="schematron.basename" />
-      <echo
-        message="Compiling '@{schematron}' Schematron with basename='${schematron.basename}'" />
-      <mkdir dir="@{workdir}" />
-      <tempfile property="expanded.sch" prefix="expanded" suffix=".sch"
-        destdir="@{workdir}" deleteonexit="@{deleteonexit}" />
-      <tempfile property="unabstract.sch" prefix="unabstract" suffix=".sch"
-        destdir="@{workdir}" deleteonexit="@{deleteonexit}" />
-      <tempfile property="schematron.xsl" prefix="schematron" suffix=".xsl"
-        destdir="@{workdir}" deleteonexit="@{deleteonexit}" />
-      <tempfile property="check-schematron.xsl" prefix="check-schematron"
-        suffix=".xsl" destdir="@{workdir}" deleteonexit="@{deleteonexit}" />
-      <!-- Download schematron skeletons -->
-      <property name="schematron.skeleton.url"
-        value="https://raw.githubusercontent.com/Schematron/schematron/master/trunk/schematron/code" />
-      <get src="${schematron.skeleton.url}/iso_dsdl_include.xsl"
-        dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true"
-        httpusecaches="true" />
-      <get src="${schematron.skeleton.url}/iso_abstract_expand.xsl"
-        dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true"
-        httpusecaches="true" />
-      <get
-        src="${schematron.skeleton.url}/iso_svrl_for_@{schematronbinding}.xsl"
-        dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true"
-        httpusecaches="true" />
-      <get
-        src="${schematron.skeleton.url}/iso_schematron_skeleton_for_saxon.xsl"
-        dest="@{workdir}" verbose="true" skipexisting="true" usetimestamp="true"
-        httpusecaches="true" />
-      <!-- expand inclusions -->
-      <xslt style="@{workdir}/iso_dsdl_include.xsl" in="@{schematron}"
-        out="@{workdir}/${schematron.basename}-expanded.sch"
-        force="@{overwrite}" classpathref="cp.saxon.xslt">
-        <factory name="net.sf.saxon.TransformerFactoryImpl" />
-      </xslt>
-      <!-- expand abstract patterns -->
-      <xslt style="@{workdir}/iso_abstract_expand.xsl"
-        in="@{workdir}/${schematron.basename}-expanded.sch"
-        out="@{workdir}/${schematron.basename}-unabstract.sch"
-        force="@{overwrite}" classpathref="cp.saxon.xslt">
-        <factory name="net.sf.saxon.TransformerFactoryImpl" />
-      </xslt>
-      <!-- svrl it -->
-      <xslt style="@{workdir}/iso_svrl_for_@{schematronbinding}.xsl"
-        in="@{workdir}/${schematron.basename}-unabstract.sch"
-        out="@{outdir}/${schematron.basename}.xsl"
-        force="@{overwrite}" classpathref="cp.saxon.xslt">
-        <factory name="net.sf.saxon.TransformerFactoryImpl" />
-        <param name="generate-fired-rule" expression="true" />
-        <param name="full-path-notation" expression="3" />
-      </xslt>
-      <echo
-        message="finished schematron compile output to @{outdir}/${schematron.basename}.xsl"
-       />
-    </sequential>
-  </macrodef>
+  <property name="xr-schematron.zip" value="${dist.name}.zip" />
 
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
@@ -170,17 +102,17 @@
   <target name="retrieve-peppol-bis-other-sources" depends="init,retrieve-peppol-bis-github-release" unless="${bis.zip.available}">
     <echo message="Release tag not available, downloading Peppol ${bis.version} schematron files directly..." />
     <echo message="Downloading UBL schematron from ${peppol.ubl.url}" />
-    <get src="${peppol.ubl.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-UBL.sch" 
+    <get src="${peppol.ubl.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-UBL.sch"
       verbose="true" usetimestamp="false" httpusecaches="false" />
     <echo message="Downloading CII schematron from ${peppol.cii.url}" />
-    <get src="${peppol.cii.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-CII.sch" 
+    <get src="${peppol.cii.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-CII.sch"
       verbose="true" usetimestamp="false" httpusecaches="false" />
   </target>
 
   <target name="retrieve-peppol-bis-billing-rules" depends="retrieve-peppol-bis-github-release,retrieve-peppol-bis-other-sources" unless="${bis.zip.available}"
     description="Download and prepare Peppol BIS Billing 3.0 rules">
   </target>
-  
+
   <target name="provide-peppol-bis-github-release" depends="retrieve-peppol-bis-github-release" if="${bis.zip.available}">
     <echo message="Unpacking Peppol BIS Billing ${bis.version} from ${bis.zip}" />
     <unzip src="${download.dir}/bis-${bis.version}/${bis.zip}" dest="${build.dir}/bis"
@@ -241,7 +173,6 @@
 
   <target name="check-merge-peppol-rules-with-xr-rules"
     depends="merge-peppol-rules-with-xr-rules">
-
     <!-- failonerror must be yes -->
     <!-- check ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
@@ -254,9 +185,7 @@
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/tmp/cii.out"
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
-      <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
-
   </target>
 
   <target name="merge-peppol-xr-rules"
@@ -264,18 +193,26 @@
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
   </target>
 
+  <target name="compile-schematron-rules" depends="compile-ubl-schematron, compile-cii-schematron"/>
 
-  <target name="compile-schematron-rules"
-    depends="abu-saxon-provider.provide-saxon, prepare-build-dir, merge-peppol-xr-rules"
-    description="Compiling schematron rules">
-    <schematron-compile
-      schematron="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
-      insuffix="sch" workdir="${download.dir}"
-      outdir="${build.dir}/schematron/cii" deleteonexit="false" overwrite="true" />
-    <schematron-compile
-      schematron="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
-      insuffix="sch" workdir="${download.dir}"
-      outdir="${build.dir}/schematron/ubl" deleteonexit="false" overwrite="true" />
+  <target name="compile-ubl-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
+      <param name="schematron" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
+      <param name="insuffix" value="sch"/>
+      <param name="outdir" value="${build.dir}/schematron/ubl"/>
+      <param name="schematron.file" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
+      <param name="xslt.output.dir" value="${build.dir}/schematron/ubl"/>
+    </antcall>
+  </target>
+
+  <target name="compile-cii-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
+      <param name="schematron" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+      <param name="insuffix" value="sch"/>
+      <param name="outdir" value="${build.dir}/schematron/cii"/>
+      <param name="schematron.file" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
+      <param name="xslt.output.dir" value="${build.dir}/schematron/cii"/>
+    </antcall>
   </target>
 
   <target name="transform-xr-rules-to-peppol-nrs"
@@ -324,7 +261,7 @@
 
 
   <target name="test-only"
-    description="Unit testing Schematron Rules wit XML-Mutate">
+    description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
     <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
@@ -400,7 +337,15 @@
 
   </target>
 
-  <target name="clean" depends="abu-common.clean"/>
-  <target name="clean-download" depends="abu-common.clean-download"/>
-  <target name="clean-all" depends="abu-common.clean-all" />
+  <target name="clean" description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
+    <delete dir="${dist.dir}" verbose="true" includeEmptyDirs="true" />
+  </target>
+
+  <target name="clean-lib">
+    <delete dir="${lib.dir}" />
+  </target>
+
+  <target name="clean-all" depends="clean,clean-lib" />
 </project>
