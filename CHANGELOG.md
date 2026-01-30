@@ -12,11 +12,14 @@ This release is compatible with XRechnung ?.?.?
 ### Added
 
 * Tests for BR-DE-25-b in CII
+* Validation for PEPPOL-EN16931-R120 in CII
 
 ### Changed
 
+* Schematron implementation from ISO Schematron to SchXslt
 * Using Saxon HE 12.8
 * Global codelist variables to adapt CEN 1.3.15 codelist updates
+* Bug in BR-TMP-3 that caused an error when BT-149 was provided in both `ram:NetPriceProductTradePrice` and `ram:GrossPriceProductTradePrice` and BT-150 was not provided in either
 
 ### Fixed
 
