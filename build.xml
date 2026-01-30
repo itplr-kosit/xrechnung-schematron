@@ -34,16 +34,19 @@
   <property name="xmute.version.full" value="0.6" />
   <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
 
-  <property name="bis.version" value="3.0.19" />
+  <property name="bis.version" value="3.0.20" />
   <property name="bis.zip" value="v${bis.version}.zip" />
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
+  <!-- Peppol 3.0.20 direct download URLs (since tag not yet released) -->
+  <property name="peppol.ubl.url" value="https://docs.peppol.eu/poacc/billing/3.0/2025-Q4/files/PEPPOL-EN16931-UBL.sch" />
+  <property name="peppol.cii.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/master/rules/sch/PEPPOL-EN16931-CII.sch" />
 
   <property name="schxslt.version" value="1.10.1" />
   <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
-  <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />     
+  <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />
 
-  <property name="xr-schematron.zip" value="${dist.name}.zip" />  
+  <property name="xr-schematron.zip" value="${dist.name}.zip" />
 
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
@@ -55,7 +58,7 @@
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build.dir}" />
     <mkdir dir="${download.dir}" />
-    <mkdir dir="${download.dir}/${bis}" />
+    <mkdir dir="${download.dir}/bis-${bis.version}" />
     <mkdir dir="${lib.dir}" />
     <mkdir dir="${dist.dir}" />
     <mkdir dir="${build.dir}/generated" />
@@ -92,33 +95,46 @@
     </copy>
   </target>
 
-  <target name="retrieve-peppol-bis-billing-rules" depends="init"
+  <target name="retrieve-peppol-bis-github-release" depends="init">
+    <!-- Try to download from GitHub release tag first -->
+    <echo message="Attempting to load Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
+    <get src="${bis.download.url}" dest="${download.dir}/bis-${bis.version}" verbose="true"
+      skipexisting="true" usetimestamp="false" httpusecaches="false" ignoreerrors="true" />
+    <available file="${download.dir}/bis-${bis.version}/${bis.zip}" property="bis.zip.available"/>
+  </target>
+
+  <target name="retrieve-peppol-bis-other-sources" depends="init,retrieve-peppol-bis-github-release" unless="${bis.zip.available}">
+    <echo message="Release tag not available, downloading Peppol ${bis.version} schematron files directly..." />
+    <echo message="Downloading UBL schematron from ${peppol.ubl.url}" />
+    <get src="${peppol.ubl.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-UBL.sch"
+      verbose="true" usetimestamp="false" httpusecaches="false" />
+    <echo message="Downloading CII schematron from ${peppol.cii.url}" />
+    <get src="${peppol.cii.url}" dest="${download.dir}/bis-${bis.version}/PEPPOL-EN16931-CII.sch"
+      verbose="true" usetimestamp="false" httpusecaches="false" />
+  </target>
+
+  <target name="retrieve-peppol-bis-billing-rules" depends="retrieve-peppol-bis-github-release,retrieve-peppol-bis-other-sources" unless="${bis.zip.available}"
     description="Download and prepare Peppol BIS Billing 3.0 rules">
+  </target>
 
-    <echo
-      message="Loading Peppol BIS Billing ${bis.version} from ${bis.download.url}" />
-    <get src="${bis.download.url}" dest="${download.dir}" verbose="true"
-      skipexisting="true" usetimestamp="false" httpusecaches="false" />
-
-    <fail message="No Peppol BIS Billing zip file available">
-      <condition>
-        <not>
-          <resourceexists>
-            <file file="${download.dir}/${bis.zip}" />
-          </resourceexists>
-        </not>
-      </condition>
-    </fail>
-
+  <target name="provide-peppol-bis-github-release" depends="retrieve-peppol-bis-github-release" if="${bis.zip.available}">
     <echo message="Unpacking Peppol BIS Billing ${bis.version} from ${bis.zip}" />
-    <unzip src="${download.dir}/${bis.zip}" dest="${build.dir}/bis"
+    <unzip src="${download.dir}/bis-${bis.version}/${bis.zip}" dest="${build.dir}/bis"
       failonemptyarchive="true">
       <patternset>
         <include name="**/PEPPOL-EN16931-*.sch" />
       </patternset>
       <flattenmapper />
     </unzip>
+  </target>
 
+  <target name="provide-peppol-bis-other-sources" depends="retrieve-peppol-bis-billing-rules" unless="${bis.zip.available}">
+    <copy todir="${build.dir}/bis">
+      <fileset dir="${download.dir}/bis-${bis.version}"/>
+    </copy>
+  </target>
+
+  <target name="provide-peppol-bis-billing-rules" depends="retrieve-peppol-bis-billing-rules,provide-peppol-bis-github-release,provide-peppol-bis-other-sources">
     <path id="schematron-path">
       <fileset dir="${build.dir}/bis" includes="**.sch" />
     </path>
@@ -140,9 +156,8 @@
     </fail>
   </target>
 
-
   <target name="merge-peppol-rules-with-xr-rules"
-    depends="retrieve-peppol-bis-billing-rules,prepare-build-dir">
+    depends="prepare-build-dir,provide-peppol-bis-billing-rules,abu-saxon-provider.provide-saxon">
     <!-- merge ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
@@ -169,7 +184,7 @@
       style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
-    
+
     <!-- check cii -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/tmp/cii.out"
@@ -178,7 +193,7 @@
   </target>
 
   <target name="merge-peppol-xr-rules"
-    depends="retrieve-peppol-bis-billing-rules, merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
+    depends="merge-peppol-rules-with-xr-rules, check-merge-peppol-rules-with-xr-rules">
     <echo>Retrieving, merging and checking Peppol with XR Rules</echo>
   </target>
 
@@ -193,7 +208,7 @@
       <param name="xslt.output.dir" value="${build.dir}/schematron/ubl"/>
     </antcall>
   </target>
-  
+
   <target name="compile-cii-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
     <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
       <param name="schematron" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
@@ -203,7 +218,7 @@
       <param name="xslt.output.dir" value="${build.dir}/schematron/cii"/>
     </antcall>
   </target>
-  
+
   <target name="transform-xr-rules-to-peppol-nrs"
     depends="abu-saxon-provider.provide-saxon, prepare-build-dir">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
@@ -216,22 +231,11 @@
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
-  <target name="check-xmute-available" depends="retrieve-xmute">
-    <fail message="You must have xml-mutate installed in ${lib.dir}">
-      <condition>
-        <not>
-          <available file="${lib.dir}/${xmute.jar}" />
-
-        </not>
-      </condition>
-    </fail>
-  </target>
-
   <target name="test-single-file" depends="compile-schematron-rules"
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
-    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
+    <java jar="${xmute.jar.path}" failonerror="yes" fork="yes"
       dir="${basedir}">
 
       <arg value="--target" />
@@ -309,7 +313,7 @@
 
 
   <target name="test"
-    depends="retrieve-xmute, check-xmute-available, compile, transform-xr-rules-to-peppol-nrs, test-only"
+    depends="retrieve-xmute, compile, transform-xr-rules-to-peppol-nrs, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"
@@ -331,10 +335,10 @@
     <delete dir="${build.dir}" verbose="true" includeEmptyDirs="true" />
     <delete dir="${dist.dir}" verbose="true" includeEmptyDirs="true" />
   </target>
-  
+
   <target name="clean-lib">
     <delete dir="${lib.dir}" />
   </target>
-  
+
   <target name="clean-all" depends="clean,clean-lib" />
 </project>
