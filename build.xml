@@ -33,6 +33,8 @@
 
   <property name="xmute.version.full" value="0.6" />
   <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
+  <property name="xmute.download.url" 
+    value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/kosit/xml-mutate/${xmute.version.full}/${xmute.jar}" />
 
   <property name="bis.version" value="3.0.20" />
   <property name="bis.zip" value="v${bis.version}.zip" />
@@ -50,6 +52,11 @@
 
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
+    <!-- Check if xml-mutate jar is already available -->
+    <condition property="xmute.jar.available">
+      <available file="${lib.dir}/${xmute.jar}"/>
+    </condition>
+    
     <!-- Create timestamps -->
     <tstamp>
       <format property="build.date" pattern="yyyy-MM-dd" />
@@ -65,10 +72,9 @@
     <mkdir dir="${build.dir}/bis" />
   </target>
 
-  <target name="retrieve-xmute" depends="init">
-    <fail unless="xmute.download.url.prefix"
-      message="Property xmute.download.url.prefix must exist for this target to work" />
-    <get src="${xmute.download.url.prefix}/xml-mutate-${xmute.version.full}.jar"
+  <target name="retrieve-xmute" depends="init" unless="xmute.jar.available">
+    <echo message="Downloading xml-mutate ${xmute.version.full} from GitLab xse-component-repository" />
+    <get src="${xmute.download.url}"
       dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false"
       usetimestamp="true" />
   </target>
