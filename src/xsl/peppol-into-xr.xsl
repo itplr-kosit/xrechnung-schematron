@@ -217,6 +217,7 @@
                         <xsl:attribute name="test">
                             <xsl:text>u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)</xsl:text>
                         </xsl:attribute>
+                        <xsl:attribute name="flag">warning</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R040' and $syntax='CII'">
