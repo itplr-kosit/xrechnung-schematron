@@ -115,8 +115,7 @@
                     <xsl:text>Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
                 </xsl:element>
             </xsl:element>            
-        </xsl:element>  
-        
+        </xsl:element>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -167,9 +166,21 @@
             <xsl:attribute name="value"><xsl:text>if($documentCurrencyCode = 'HUF') then 0.5 else 0.02</xsl:text></xsl:attribute>
         </xsl:element>        
     </xsl:template>
+    <xsl:template match="/*/pattern/rule/let[@name='baseQuantity']" mode="peppol-rules" priority="2">
+        <xsl:choose>
+            <xsl:when test="$syntax='CII'">
+                <xsl:element name="let" namespace="{namespace-uri()}">
+                    <xsl:attribute name="name"><xsl:text>baseQuantity</xsl:text></xsl:attribute>
+                    <xsl:attribute name="value"><xsl:text>if (ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) else if (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) else 1</xsl:text></xsl:attribute>
+                </xsl:element>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:copy-of select="."/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     <xsl:template match="assert" mode="peppol-rules" priority="1">
-        <!-- exclude R120 in CII-->
-        <xsl:if test="@id=$rules and ((not(@id='PEPPOL-EN16931-R120') and $syntax='CII') or $syntax='UBL')">           
+        <xsl:if test="@id=$rules">
             <xsl:copy select=".">
                 <xsl:attribute name="id">
                     <xsl:variable name="rule-id" select="@id"/>
@@ -202,8 +213,11 @@
                         <xsl:attribute name="test">not(cbc:MultiplierFactorNumeric and cbc:BaseAmount) or u:slack(if (cbc:Amount) then cbc:Amount else 0, (xs:decimal(cbc:BaseAmount) * xs:decimal(cbc:MultiplierFactorNumeric)) div 100, $slackValue)</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
-                    <xsl:when test="@id='PEPPOL-EN16931-R120' and $syntax='UBL'">
-                        <xsl:attribute name="test">u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)</xsl:attribute>
+                    <xsl:when test="@id='PEPPOL-EN16931-R120'">
+                        <xsl:attribute name="test">
+                            <xsl:text>u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)</xsl:text>
+                        </xsl:attribute>
+                        <xsl:attribute name="flag">warning</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R040' and $syntax='CII'">
@@ -224,7 +238,7 @@
                 <xsl:apply-templates mode="peppol-rules"/>                
             </xsl:copy>    
         </xsl:if>        
-    </xsl:template>    
+    </xsl:template>
     <xsl:template match="pattern" mode="peppol-rules" priority="1">       
         <xsl:variable name="count-number">
             <xsl:variable name="rule-id" select="@id"/>

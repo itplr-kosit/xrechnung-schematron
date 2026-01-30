@@ -156,7 +156,7 @@
             flag="warning"
               id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>
-  
+
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress">
       <assert test="ram:CityName[boolean(normalize-space(.))]"
               flag="fatal"
@@ -230,23 +230,36 @@
               id="BR-DE-14"
           >[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
     </rule>
-
-    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction">
-      <assert test="
-        ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime
-        or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod
-        or (every $line in ram:IncludedSupplyChainTradeLineItem
-            satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
+      
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction">
+          <assert test="
+              ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime
+              or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod
+              or (every $line in ram:IncludedSupplyChainTradeLineItem
+              satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
               flag="information"
               id="BR-DE-TMP-32">
-        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
-      </assert>
-    </rule>
-    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement">
-        <assert test="not(./ram:NetPriceProductTradePrice/ram:BasisQuantity and ./ram:GrossPriceProductTradePrice/ram:BasisQuantity) or (./ram:NetPriceProductTradePrice/ram:BasisQuantity = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity and ./ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
-          flag="fatal"
-          id="BR-TMP-3"
-          >[BR-TMP-3] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
+              [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+          </assert>
+      </rule>
+      
+    <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem">
+      <assert test="not(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity
+                        and
+                        ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity)
+                    or
+                    (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity =
+                     ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity
+                     and
+                     (not(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode
+                     and
+                     ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)
+                      or
+                      ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode =
+                      ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode))"
+              flag="fatal"
+              id="BR-TMP-3"
+          >[BR-TMP-3] Wenn BT-149 (Item price base quantity) sowohl in GrossPriceProductTradePrice als auch in NetPriceProductTradePrice vorhanden ist, müssen die Werte identisch sein. Wenn BT-150 (unit of measure code) auf dem NetPrice-Pfad vorhanden ist, muss es auch auf dem GrossPrice-Pfad vorhanden und identisch sein.</assert>
     </rule>
   </pattern>
   <pattern id="cii-extension-pattern">

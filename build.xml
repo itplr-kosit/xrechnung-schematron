@@ -290,7 +290,18 @@
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
-  <target name="test-single-file" depends="compile-schematron-rules"
+  <target name="check-xmute-available" depends="retrieve-xmute">
+    <fail message="You must have xml-mutate installed in ${lib.dir}">
+      <condition>
+        <not>
+          <available file="${lib.dir}/${xmute.jar}" />
+
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+  <target name="test-single-file" depends="compile-schematron-rules,check-xmute-available"
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
