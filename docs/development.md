@@ -70,26 +70,19 @@ The `ant` target `dist` creates the distribution zip archive.
 ### Prepare
 
 * Make sure you committed and pushed everything 
-* Create the distribution by **not** using your development properties file. 
-This requires to set some at command line:
-
-```
-ant -Dxmute.download.url.prefix='file:/home/renzo/projects/xml-mutate/target' clean dist
-```
-
-* Tag the last commit according to the following naming rule: `release-${xr-schematron.version.full}` e.g.
-  `git tag release-2.4.0 && git push origin release-2.4.0`
+* Create the distribution by **not** using your development properties file.
 
 ### Publish
 
-* Draft a new release at https://github.com/itplr-kosit/xrechnung-schematron/releases/new
-  * Choose the git tag you just created
-* Add release title of the following scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version}`
+* Tag the last commit according to the following naming rule: `v${xr-schematron.version.full}` e.g.
+  `git tag v2.5.0 && git push origin v2.5.0`
+* The tag will trigger a release pipeline and create a GitLab release
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
+* The release title should follow this scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version}`
 * Upload distribution zip and tick mark this release as a `pre-release`.
 * If **all** released components are checked to be okay, then uncheck pre-release.
 
-* Publish the new release in GitLab
+* Publish the new release in GitHub
 
 ### Post-Release
 
