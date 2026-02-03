@@ -73,19 +73,18 @@ release_job:
     - echo "running release_job with schematron version=${PACKAGE_VERSION} and tag=$CI_COMMIT_TAG"
     # Validate that tag matches expected pattern: release-{version}
     - |
-      EXPECTED_TAG="release-${PACKAGE_VERSION}"
+      EXPECTED_TAG="v${PACKAGE_VERSION}"
       if [ "$CI_COMMIT_TAG" = "$EXPECTED_TAG" ] || [[ "$CI_COMMIT_TAG" =~ ^v ]]; then
         echo "Tag validation passed: $CI_COMMIT_TAG"
       else
         echo "WARNING: Tag $CI_COMMIT_TAG does not match expected pattern $EXPECTED_TAG"
       fi
   release:
-    name: 'Release $CI_COMMIT_TAG'
-    description: 'xrechnung-schematron release $CI_COMMIT_TAG for XRechnung ${XRECHNUNG_VERSION}'
+    name: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG-VERSION}'
     tag_name: '$CI_COMMIT_TAG'
     ref: '$CI_COMMIT_TAG'
     assets:
       links:
-        - name: 'Schematron Rules ZIP'
+        - name: '${PACKAGE-BINARY}'
           url: '${XSE_COMPONENT_PACKAGE_REGISTRY_URL_PREFIX}/${MAVEN_PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_BINARY}'
           link_type: 'package'
