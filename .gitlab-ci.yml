@@ -63,9 +63,9 @@ release_job:
   image: registry.gitlab.com/gitlab-org/cli:latest
   rules:
     # Run this job when a tag is created manually and starts with release-
-    - if: $CI_COMMIT_TAG && $CI_COMMIT_TAG =~ /^release-/
+    - if: $CI_COMMIT_TAG && $CI_COMMIT_TAG =~ /^v/
     # run only manually when tag does NOT start with release-
-    - if: $CI_COMMIT_TAG && $CI_COMMIT_TAG !~ /^release-/
+    - if: $CI_COMMIT_TAG && $CI_COMMIT_TAG !~ /^v/
       when: manual
   dependencies:
     - build-job
@@ -74,7 +74,7 @@ release_job:
     # Validate that tag matches expected pattern: release-{version}
     - |
       EXPECTED_TAG="release-${PACKAGE_VERSION}"
-      if [ "$CI_COMMIT_TAG" = "$EXPECTED_TAG" ] || [[ "$CI_COMMIT_TAG" =~ ^release- ]]; then
+      if [ "$CI_COMMIT_TAG" = "$EXPECTED_TAG" ] || [[ "$CI_COMMIT_TAG" =~ ^v ]]; then
         echo "Tag validation passed: $CI_COMMIT_TAG"
       else
         echo "WARNING: Tag $CI_COMMIT_TAG does not match expected pattern $EXPECTED_TAG"
