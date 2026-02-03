@@ -48,9 +48,8 @@
   
   <!-- ci/cd  -->
   <property name="project.group.id" value="de.xeinkauf" />
-  <property name="project.name.short" value="schematron" />
   <property name="project.artifact.id"
-    value="xrechnung-${xrechnung.version}-${project.name.short}" />
+    value="xrechnung-${xrechnung.version}-schematron" />
 
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
