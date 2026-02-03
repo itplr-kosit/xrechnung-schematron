@@ -81,6 +81,7 @@ release_job:
       fi
   release:
     name: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG-VERSION}'
+    description: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG-VERSION}'
     tag_name: '$CI_COMMIT_TAG'
     ref: '$CI_COMMIT_TAG'
     assets:
