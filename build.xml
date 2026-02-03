@@ -253,7 +253,7 @@
     description="Unit testing Schematron Rules with XML-Mutate">
     <echo>Unit testing Schematron rules ...</echo>
 
-    <java jar="${xmute.jar.path}" failonerror="yes" fork="yes"
+    <java jar="${lib.dir}/${xmute.jar}" failonerror="yes" fork="yes"
       dir="${basedir}">
 
       <arg value="--target" />
