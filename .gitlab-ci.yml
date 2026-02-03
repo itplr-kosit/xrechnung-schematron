@@ -80,12 +80,12 @@ release_job:
         echo "WARNING: Tag $CI_COMMIT_TAG does not match expected pattern $EXPECTED_TAG"
       fi
   release:
-    name: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG-VERSION}'
-    description: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG-VERSION}'
+    name: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG_VERSION}'
+    description: 'XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG_VERSION}'
     tag_name: '$CI_COMMIT_TAG'
     ref: '$CI_COMMIT_TAG'
     assets:
       links:
-        - name: '${PACKAGE-BINARY}'
+        - name: '${PACKAGE_BINARY}'
           url: '${XSE_COMPONENT_PACKAGE_REGISTRY_URL_PREFIX}/${MAVEN_PACKAGE_NAME}/${PACKAGE_VERSION}/${PACKAGE_BINARY}'
           link_type: 'package'
