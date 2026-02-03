@@ -72,15 +72,18 @@ The `ant` target `dist` creates the distribution zip archive.
 * Make sure you committed and pushed everything 
 * Create the distribution by **not** using your development properties file.
 
+### Deploy
+
+* Tag the last commit according to the following naming rule: `${xr-schematron.version.full}-{rc}` e.g.
+  `git tag 2.5.0-rc1 && git push origin v2.5.0-rc1`
+
 ### Publish
 
-* Tag the last commit according to the following naming rule: `v${xr-schematron.version.full}` e.g.
+* If **all** released components are checked to be okay, tag the last commit according to the following naming rule: `v${xr-schematron.version.full}` e.g.
   `git tag v2.5.0 && git push origin v2.5.0`
 * The tag will trigger a release pipeline and create a GitLab release
 * Copy & paste the high quality changelog entries for this release from CHANGELOG.md.
 * The release title should follow this scheme: `XRechnung Schematron ${xr-schematron.version.full} compatible with XRechnung ${xrechnung.version}`
-* Upload distribution zip and tick mark this release as a `pre-release`.
-* If **all** released components are checked to be okay, then uncheck pre-release.
 
 * Publish the new release in GitHub
 

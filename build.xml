@@ -45,6 +45,11 @@
   <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />
 
   <property name="xr-schematron.zip" value="${dist.name}.zip" />
+  
+  <!-- ci/cd  -->
+  <property name="project.group.id" value="de.xeinkauf" />
+  <property name="project.artifact.id"
+    value="xrechnung-${xrechnung.version}-schematron" />
 
   <target name="init"
     description="Initializes build directory structure and ISO timestamp">
@@ -349,37 +354,29 @@
     <property name="build.env.file" value="${build.dir}/build.env" />
 
     <loadresource property="project.group.id.path">
-      <concat>de.kosit</concat>
+      <concat>${project.group.id}</concat>
       <filterchain>
         <replaceregex pattern="\." replace="/" />
       </filterchain>
     </loadresource>
 
     <echo file="${build.env.file}" append="false" encoding="UTF-8"
-      message="GROUP_ID=de.kosit${line.separator}" />
+      message="GROUP_ID=${project.group.id}${line.separator}" />
     <echo file="${build.env.file}" append="true" encoding="UTF-8"
-      message="ARTIFACT_ID=xrechnung-schematron${line.separator}" />
+      message="ARTIFACT_ID=${project.artifact.id}${line.separator}" />
     <echo file="${build.env.file}" append="true" encoding="UTF-8"
       message="PACKAGE_VERSION=${xr-schematron.version.full}${line.separator}" />
     <echo file="${build.env.file}" append="true" encoding="UTF-8"
       message="PACKAGE_BINARY=${xr-schematron.zip}${line.separator}" />
     <echo file="${build.env.file}" append="true" encoding="UTF-8"
-      message="MAVEN_PACKAGE_NAME=${project.group.id.path}/xrechnung-schematron${line.separator}" />
+      message="MAVEN_PACKAGE_NAME=${project.group.id.path}/${project.artifact.id}${line.separator}" />
     <echo file="${build.env.file}" append="true" encoding="UTF-8"
       message="XRECHNUNG_VERSION=${xrechnung.version}${line.separator}" />
-
-    <echo message="Created ${build.env.file} with deployment metadata" />
-    <echo message="GROUP_ID=de.kosit" />
-    <echo message="ARTIFACT_ID=xrechnung-schematron" />
-    <echo message="PACKAGE_VERSION=${xr-schematron.version.full}" />
-    <echo message="PACKAGE_BINARY=${xr-schematron.zip}" />
-    <echo message="XRECHNUNG_VERSION=${xrechnung.version}" />
+   
   </target>
+
 
   <target name="release" depends="test, dist-only, release-env-file"
     description="Build distribution and generate CI/CD metadata for release" />
 
-  <target name="clean" depends="abu-common.clean"/>
-  <target name="clean-download" depends="abu-common.clean-download"/>
-  <target name="clean-all" depends="abu-common.clean-all" />
 </project>
