@@ -5,6 +5,11 @@ All notable changes to the Schematron Rules and this project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+This release is compatible with XRechnung ?.?.?
+
+
 ## v2.5.0 on 2026-01-31
 
 This release is compatible with XRechnung 3.0.x
@@ -19,11 +24,11 @@ This release is compatible with XRechnung 3.0.x
 * Schematron implementation from ISO Schematron to SchXslt
 * Using Saxon HE 12.8
 * Global codelist variables to adapt CEN 1.3.15 codelist updates
-* Bug in BR-TMP-3 that caused an error when BT-149 was provided in both `ram:NetPriceProductTradePrice` and `ram:GrossPriceProductTradePrice` and BT-150 was not provided in either
 
 ### Fixed
 
 * Bug in BR-DE-25-b that prevented detection of forbidden BT-86 "Payment service provider identifier" with BG-19 in CII
+* Bug in BR-TMP-3 that caused an error when BT-149 was provided in both `ram:NetPriceProductTradePrice` and `ram:GrossPriceProductTradePrice` and BT-150 was not provided in either
 
 ## v2.4.0 on 2025-07-10
 
