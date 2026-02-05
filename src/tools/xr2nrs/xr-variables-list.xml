@@ -4,12 +4,18 @@
     see documentation in docs/harmonization-xr-peppol-bis-billing.md
 -->
 <variables>
-<variable>XR-MAJOR-MINOR-VERSION</variable>
-<variable>XR-CIUS-ID</variable>
-<variable>XR-EXTENSION-ID</variable>
-<variable>DIGA-CODES</variable>
-<variable>ISO-6523-ICD-CODES</variable>
-<variable>ISO-6523-ICD-EXT-CODES</variable>
-<variable>CEF-EAS-CODES</variable>
-<variable>CEF-EAS-EXT-CODES</variable>
+    <variable>XR-MAJOR-MINOR-VERSION</variable>
+    <variable>XR-CIUS-ID</variable>
+    <variable>XR-CVD-ID</variable>
+    <variable>XR-EXTENSION-ID</variable>
+    <variable>DIGA-CODES</variable>
+    <variable>ISO-6523-ICD-CODES</variable>
+    <variable>ISO-6523-ICD-EXT-CODES</variable>
+    <variable>CEF-EAS-CODES</variable>
+    <variable>CEF-EAS-EXT-CODES</variable>
+    <variable>CVD-CODE</variable>
+    <variable>UNTDID-7143-CODES</variable>
+    <variable>UNTDID-7143-CVD-CODES</variable>
+    <variable>CVD-VEHICLE-CATEGORY</variable>
+    <variable>CVA-CODES</variable>
 </variables>
