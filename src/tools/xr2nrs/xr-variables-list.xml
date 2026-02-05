@@ -8,6 +8,7 @@
     <variable>XR-CIUS-ID</variable>
     <variable>XR-CVD-ID</variable>
     <variable>XR-EXTENSION-ID</variable>
+    <variable>CVD-MAJOR-MINOR-VERSION</variable>
     <variable>DIGA-CODES</variable>
     <variable>ISO-6523-ICD-CODES</variable>
     <variable>ISO-6523-ICD-EXT-CODES</variable>
