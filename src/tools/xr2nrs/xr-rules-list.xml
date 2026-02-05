@@ -44,5 +44,5 @@
     -->
     <assert key="BR-DE-30" id="DE-R-030">In case of both German suppliers and customers, if the group "DIRECT DEBIT" (BG-19) is delivered, the element "Bank assigned creditor identifier" (BT-90) shall be provided.</assert>
     <assert key="BR-DE-31" id="DE-R-031">In case of both German suppliers and customers, if the group "DIRECT DEBIT" (BG-19) is delivered, the element "Debited account identifier" (BT-91) shall be provided.</assert>
-    <assert key="BR-TMP-2" id="DE-R-T02">In case of both German suppliers and customers, BT-124 "External document location" must contain an absolute URL with valid Scheme.</assert>
+    <assert key="BR-TMP-2" id="DE-R-T02">In case of both German suppliers and customers, BT-124 "External document location" must contain an absolute URL with valid scheme.</assert>
 </asserts>
