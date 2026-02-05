@@ -75,7 +75,7 @@ The `ant` target `dist` creates the distribution zip archive.
 ### Deploy
 
 * Tag the last commit according to the following naming rule: `${xr-schematron.version.full}-{rc}` e.g.
-  `git tag 2.5.0-rc1 && git push origin v2.5.0-rc1`
+  `git tag 2.5.0-rc1 && git push origin 2.5.0-rc1`
 
 ### Publish
 
