@@ -65,7 +65,7 @@
                 description="UBL-Inv BG-17 not allowed with BG-18" ?>
         <cac:PayeeFinancialAccount>
             <!-- dies ist eine nicht existerende aber valide IBAN als test dummy -->
-            <cbc:ID>DE75512108001245126199</cbc:ID>
+            <cbc:ID>DE79000000001234567890</cbc:ID>
         </cac:PayeeFinancialAccount>
         <cac:CreditAccount>
             <cbc:AccountID>41234</cbc:AccountID>            

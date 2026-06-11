@@ -148,7 +148,7 @@
                         schematron-invalid="xrcii:BR-DE-24-b" id="cii-BG-17-not-allowed-with-BG-18"
                         description="CII BG-17 not allowed with BG-18" ?>
                 <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>                                
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>

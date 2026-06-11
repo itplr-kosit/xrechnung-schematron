@@ -146,7 +146,7 @@
                     <?xmute mutator="code" id="cii-invalid-iban" values="AS28192373298,DE90200400000625894000,DE12345678912345678912" separator="," schematron-invalid="xrcii:BR-DE-19" description="Expect to fail on wrong IBAN" ?>                    
                     <?xmute mutator="code" id="cii-iban-from-gb" values="GB29NWBK60161331926819" separator="," schematron-valid="xrcii:BR-DE-19" description="british iban, should still be validated"?>
                     <?xmute mutator="empty" id="cii-empty-iban" schematron-invalid="xrcii:BR-DE-19" description="Expect to fail on empty IBAN" ?>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE16000000002345678901</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>

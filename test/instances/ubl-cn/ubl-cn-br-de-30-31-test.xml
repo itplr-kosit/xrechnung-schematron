@@ -164,7 +164,7 @@
         <?xmute mutator="remove"
                     schematron-invalid="xrubl:BR-DE-31" id="ubl-cn-mandatory-BT-91-2"
                     description="mandatory BT-91" ?>
-        <cbc:ID>DE75512108001245126199</cbc:ID>
+        <cbc:ID>DE79000000001234567890</cbc:ID>
       </cac:PayerFinancialAccount>
     </cac:PaymentMandate>
   </cac:PaymentMeans>

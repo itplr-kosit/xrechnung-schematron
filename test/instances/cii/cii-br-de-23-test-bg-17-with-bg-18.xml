@@ -148,7 +148,7 @@
                     <ram:CardholderName>[Payment card holder name]</ram:CardholderName>
                 </ram:ApplicableTradeSettlementFinancialCard>      
                 <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE16000000002345678901</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>                
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>
