@@ -2,6 +2,7 @@
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   queryBinding="xslt2"
   xmlns:u="utils">
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - UBL - Invoice / Creditnote</title>
@@ -13,6 +14,13 @@
   <ns prefix="ubl-invoice" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="ubl-creditnote" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />
+
+  <xsl:function name="u:checkIBAN" as="xs:boolean">
+    <xsl:param name="iban" as="xs:string"/>
+    <xsl:variable name="normalizedIban" select="normalize-space(replace($iban, '([\s])', ''))"/>
+    <xsl:sequence select="matches($normalizedIban, '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
+                          xs:integer(string-join(for $cp in string-to-codepoints(concat(substring($normalizedIban,5),upper-case(substring($normalizedIban,1,2)),substring($normalizedIban,3,2))) return (if($cp > 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"/>
+  </xsl:function>
 
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
@@ -177,8 +185,7 @@
     <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')]">
       <!-- check for PaymentMeansCode 30 was not added by purpose in 2.1.1. -->
       <assert test="not(normalize-space(cbc:PaymentMeansCode) = '58') or
-                    matches(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
-                    xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+                    u:checkIBAN(string(cac:PayeeFinancialAccount/cbc:ID))"
         flag="warning"
         id="BR-DE-19"
         >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
@@ -207,8 +214,7 @@
     
     <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59'] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59']">
       <assert test="not(normalize-space(cbc:PaymentMeansCode) = '59') or
-                    matches(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
-                    xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+                    u:checkIBAN(string(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID))"
         flag="warning"
         id="BR-DE-20"
         >[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
