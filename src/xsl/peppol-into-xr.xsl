@@ -209,6 +209,10 @@
                         <xsl:attribute name="test">not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
+                    <xsl:when test="@id='PEPPOL-EN16931-R008' and $syntax='UBL'">
+                        <xsl:attribute name="test">name() = 'cbc:ID' and parent::cac:OrderReference</xsl:attribute>
+                        <xsl:value-of select="." />
+                    </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R040' and $syntax='UBL'">
                         <xsl:attribute name="test">not(cbc:MultiplierFactorNumeric and cbc:BaseAmount) or u:slack(if (cbc:Amount) then cbc:Amount else 0, (xs:decimal(cbc:BaseAmount) * xs:decimal(cbc:MultiplierFactorNumeric)) div 100, $slackValue)</xsl:attribute>
                         <xsl:value-of select="." />

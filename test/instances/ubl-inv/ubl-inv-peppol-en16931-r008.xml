@@ -22,6 +22,12 @@
     <cbc:EndDate>2018-04-13</cbc:EndDate>
   </cac:InvoicePeriod>
   <cac:OrderReference>
+    <?xmute mutator="identity"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="empty-order-ref-id-is-valid"
+                    description="Empty cac:OrderReference/cbc:ID must not trigger R008 (UBL schema forces cbc:ID when OrderReference is present, cardinality mismatch with BT-13 being optional)" ?>
+    <?xmute mutator="empty"
+                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="empty-order-ref-id-no-r008"
+                    description="An empty cbc:ID inside OrderReference is allowed by R008 due to the UBL schema cardinality mismatch" ?>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
