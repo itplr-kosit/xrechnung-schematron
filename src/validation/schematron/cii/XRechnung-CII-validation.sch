@@ -23,7 +23,7 @@
   <xsl:function name="u:checkIBAN" as="xs:boolean">
     <xsl:param name="iban" as="xs:string"/>
     <xsl:variable name="normalizedIban" select="normalize-space(replace($iban, '([\s])', ''))"/>
-    <xsl:sequence select="matches($normalizedIban, '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and
+    <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and
                           xs:integer(string-join(for $cp in string-to-codepoints(concat(substring($normalizedIban,5),upper-case(substring($normalizedIban,1,2)),substring($normalizedIban,3,2))) return (if($cp > 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"/>
   </xsl:function>
 

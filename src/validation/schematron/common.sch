@@ -13,6 +13,8 @@
     <let name="XR-TELEPHONE-REGEX"  value="'.*([0-9].*){3,}.*'" />
     <!-- see https://projekte.kosit.org/xrechnung/xrechnung-schematron/-/merge_requests/175#note_233187 for URL Regex requirements -->
     <let name="XR-URL-REGEX"  value="'^([a-zA-Z])([a-zA-Z0-9+.-])+:.*'" />
+    <!-- structural IBAN regex; full checksum validation remains in the duplicated u:checkIBAN function (extraction postponed to XR 4.0) -->
+    <let name="XR-IBAN-REGEX"  value="'^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$'" />
 
     <let name="DIGA-CODES" value="' XR01 XR02 XR03 '" />
     <!-- ISO 6523 and EAS Codelists including XR01 XR02 XR03 (applicable to extension only) -->
