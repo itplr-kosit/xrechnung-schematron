@@ -11,8 +11,8 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
+* Global codelist variables to adapt CEN 1.3.16 codelist updates
 * IBAN dummy values in test files
-
 
 ## v2.5.0 on 2026-01-31
 
