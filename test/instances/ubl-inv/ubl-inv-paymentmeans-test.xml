@@ -81,7 +81,7 @@
       <?xmute mutator="code" values="sdsfsadgfa"
               schematron-valid="xrubl:BR-DE-19" id="wrong-iban"
               description="Wrong iban should not get evaluated  at all cause code 30" ?>
-      <cbc:ID>DE75512108001245126199</cbc:ID>
+      <cbc:ID>DE79000000001234567890</cbc:ID>
     </cac:PayeeFinancialAccount>
   </cac:PaymentMeans>
   <cac:PaymentTerms>
