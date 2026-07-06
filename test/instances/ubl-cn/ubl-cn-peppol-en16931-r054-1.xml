@@ -62,7 +62,7 @@
         <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
         <cbc:PaymentID>1000000001</cbc:PaymentID>
         <cac:PayeeFinancialAccount>
-            <cbc:ID>DE94820800000815609800</cbc:ID>
+            <cbc:ID>DE79000000001234567890</cbc:ID>
             <cbc:Name>Testbank</cbc:Name>
             <cac:FinancialInstitutionBranch>
                 <cbc:ID>TESTTESTTT</cbc:ID>
