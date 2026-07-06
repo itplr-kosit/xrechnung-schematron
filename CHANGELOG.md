@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Changed
+
+* IBAN dummy values in test files
+
 
 ## v2.5.0 on 2026-01-31
 
