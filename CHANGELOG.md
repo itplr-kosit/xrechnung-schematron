@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Temporary rules BR-TMP-4 and BR-TMP-5 to replace CII-SR-475 and CII-SR-476 with corrected rule context until the bug is fixed upstream in CEN Schematron (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508)
+
 ### Changed
 
 * Global codelist variables to adapt CEN 1.3.16 codelist updates

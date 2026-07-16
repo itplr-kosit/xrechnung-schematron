@@ -155,6 +155,12 @@
         <assert test="not(exists(ram:URIID)) or (matches(ram:URIID, $XR-URL-REGEX))"
             flag="warning"
               id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
+        <assert test="count(ram:Name) &lt;= 1"
+            flag="warning"
+              id="BR-TMP-4">[BR-TMP-4] BT-123 "Attached document description" (ram:Name) darf innerhalb eines "Supporting document" (BG-24) höchstens einmal vorkommen. (Temporäre Regel als Ersatz für CII-SR-475 bis zur Korrektur im CEN Schematron, siehe https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508)</assert>
+        <assert test="count(ram:AttachmentBinaryObject) &lt;= 1"
+            flag="warning"
+              id="BR-TMP-5">[BR-TMP-5] BT-125 "Attached document" (ram:AttachmentBinaryObject) darf innerhalb eines "Supporting document" (BG-24) höchstens einmal vorkommen. (Temporäre Regel als Ersatz für CII-SR-476 bis zur Korrektur im CEN Schematron, siehe https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508)</assert>
     </rule>
 
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress">
