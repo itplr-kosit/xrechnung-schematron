@@ -22,6 +22,12 @@
             <xsl:apply-templates select="@*" mode="xrechung-rules"/>
             <xsl:apply-templates mode="xrechung-rules"/>
             <xsl:if test="$syntax='UBL'">
+                <!-- Add phase for R008 in UBL -->                 
+                <xsl:element name="active" namespace="{namespace-uri()}">
+                    <xsl:attribute name="pattern">
+                        <xsl:text>peppol-ubl-pattern-0-a</xsl:text>
+                    </xsl:attribute>
+                </xsl:element>
                 <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="xrechnung-rules"/>
             </xsl:if>
             <xsl:if test="$syntax='CII'">
@@ -73,6 +79,19 @@
         <xsl:apply-templates select="document('../../build/bis/PEPPOL-EN16931-UBL.sch')/*/pattern" mode="peppol-rules">
             <xsl:with-param name="syntax" select="'ubl'"/>
         </xsl:apply-templates>
+        <!-- add R008 to UBL -->        
+        <xsl:element name="pattern" namespace="{namespace-uri()}">
+            <xsl:attribute name="id">peppol-ubl-pattern-0-a</xsl:attribute>
+            <xsl:element name="rule" namespace="{namespace-uri()}">
+                <xsl:attribute name="context">//*[not(name() = 'cac:OrderReference') and not(*) and not(normalize-space())]</xsl:attribute>
+                <xsl:element name="assert" namespace="{namespace-uri()}">
+                    <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
+                    <xsl:attribute name="test">false()</xsl:attribute>
+                    <xsl:attribute name="flag">fatal</xsl:attribute>
+                    <xsl:text>Document MUST not contain empty elements.</xsl:text>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
         <xsl:comment>END Pattern from PEPPOL</xsl:comment>
         <xsl:copy-of select="."/>
     </xsl:template>
@@ -207,10 +226,6 @@
                     <!-- modify R055 in CII to allow for optional BT-110 -->
                     <xsl:when test="@id='PEPPOL-EN16931-R055' and $syntax='CII'">
                         <xsl:attribute name="test">not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)</xsl:attribute>
-                        <xsl:value-of select="." />
-                    </xsl:when>
-                    <xsl:when test="@id='PEPPOL-EN16931-R008' and $syntax='UBL'">
-                        <xsl:attribute name="test">name() = 'cbc:ID' and parent::cac:OrderReference</xsl:attribute>
                         <xsl:value-of select="." />
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R040' and $syntax='UBL'">
