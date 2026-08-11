@@ -113,7 +113,7 @@
                     <ram:URIID schemeID="EM">rechnungseingang@test.de</ram:URIID>
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
-            <!-- BG-24: single AdditionalReferencedDocument with two ram:AttachmentBinaryObject — triggers BR-TMP-5 -->
+            <!-- BG-24: AdditionalReferencedDocument with two ram:AttachmentBinaryObject - triggers BR-TMP-5 -->
             <ram:AdditionalReferencedDocument>
 				<!-- BT-122 -->
                 <ram:IssuerAssignedID>DOC-001</ram:IssuerAssignedID>
@@ -122,11 +122,8 @@
 				<!-- BT-123 -->
                 <ram:Name>Aufschlüsselung der Leistungspositionen</ram:Name>
                 <!-- BT-125, BT-125-1, BT-125-2: first attachment -->
-                <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-TMP-5" id="cii-br-tmp-5-two-attachments-invalid-1"
-                    description="two BT-125 within same BG-24 violates BR-TMP-5" ?>
                 <ram:AttachmentBinaryObject mimeCode="application/pdf" filename="anhang01.pdf">JVBERi0xLjA=</ram:AttachmentBinaryObject>
-                <!-- BT-125: second attachment — triggers BR-TMP-5 warning -->
+                <!-- BT-125: second attachment -->
                 <?xmute mutator="identity"
                     schematron-invalid="xrcii:BR-TMP-5" id="cii-br-tmp-5-two-attachments-invalid"
                     description="two BT-125 within same BG-24 violates BR-TMP-5" ?>

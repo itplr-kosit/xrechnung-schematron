@@ -113,18 +113,15 @@
                     <ram:URIID schemeID="EM">rechnungseingang@test.de</ram:URIID>
                 </ram:URIUniversalCommunication>
             </ram:BuyerTradeParty>
-            <!-- BG-24: single AdditionalReferencedDocument with two ram:Name — triggers BR-TMP-4 -->
+            <!-- BG-24: AdditionalReferencedDocument with two ram:Name (BT-123) - triggers BR-TMP-4 -->
             <ram:AdditionalReferencedDocument>
 				<!-- BT-122 -->
                 <ram:IssuerAssignedID>DOC-001</ram:IssuerAssignedID>
 				<!-- BT-122 -->
                 <ram:TypeCode>916</ram:TypeCode>
                 <!-- BT-123: first name -->
-                <?xmute mutator="identity"
-                    schematron-invalid="xrcii:BR-TMP-4" id="cii-br-tmp-4-two-names-invalid-1"
-                    description="two BT-123 within same BG-24 violates BR-TMP-4" ?>
                 <ram:Name>Aufschlüsselung der Leistungspositionen</ram:Name>
-                <!-- BT-123: second name — triggers BR-TMP-4 warning -->
+                <!-- BT-123: second name -->
                 <?xmute mutator="identity"
                     schematron-invalid="xrcii:BR-TMP-4" id="cii-br-tmp-4-two-names-invalid"
                     description="two BT-123 within same BG-24 violates BR-TMP-4" ?>
