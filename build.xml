@@ -32,13 +32,13 @@
   <property name="xmute.download.url" 
     value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/kosit/xml-mutate/${xmute.version.full}/${xmute.jar}" />
 
-  <property name="bis.version" value="3.0.20" />
+  <property name="bis.version" value="3.0.21" />
   <property name="bis.zip" value="v${bis.version}.zip" />
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
-  <!-- Peppol 3.0.20 direct download URLs (since tag not yet released) -->
-  <property name="peppol.ubl.url" value="https://docs.peppol.eu/poacc/billing/3.0/2025-Q4/files/PEPPOL-EN16931-UBL.sch" />
-  <property name="peppol.cii.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/master/rules/sch/PEPPOL-EN16931-CII.sch" />
+  <!-- Peppol 3.0.21 direct download URLs (since tag not yet released) -->
+  <property name="peppol.ubl.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/refs/heads/2026-Q2-QA2/rules/sch/PEPPOL-EN16931-UBL.sch" />
+  <property name="peppol.cii.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/refs/heads/2026-Q2-QA2/rules/sch/PEPPOL-EN16931-CII.sch" />
 
   <property name="schxslt.version" value="1.10.1" />
   <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
