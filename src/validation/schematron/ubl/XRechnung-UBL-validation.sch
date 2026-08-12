@@ -111,6 +111,20 @@
         id="BR-TMP-2"
       >[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
     </rule>
+    <!-- temporary rule to enforce YYYY-MM-DD date format for all date BTs in UBL until PEPPOL-EN16931-F001 is fixed upstream in CEN/Peppol schematron, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/451 -->
+    <rule context="/ubl:Invoice/cbc:IssueDate | /cn:CreditNote/cbc:IssueDate
+                 | /ubl:Invoice/cbc:DueDate | /cn:CreditNote/cbc:DueDate
+                 | /ubl:Invoice/cac:InvoicePeriod/cbc:StartDate | /cn:CreditNote/cac:InvoicePeriod/cbc:StartDate
+                 | /ubl:Invoice/cac:InvoicePeriod/cbc:EndDate | /cn:CreditNote/cac:InvoicePeriod/cbc:EndDate
+                 | /ubl:Invoice/cac:Delivery/cbc:ActualDeliveryDate | /cn:CreditNote/cac:Delivery/cbc:ActualDeliveryDate
+                 | /ubl:Invoice/cac:BillingReference/cac:InvoiceDocumentReference/cbc:IssueDate | /cn:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference/cbc:IssueDate
+                 | /ubl:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | /cn:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate
+                 | /ubl:Invoice/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | /cn:CreditNote/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate">
+      <assert test="matches(normalize-space(text()), '^\d{4}-\d{2}-\d{2}$')"
+        flag="fatal"
+        id="BR-TMP-6"
+      >[BR-TMP-6] Datumsangaben müssen im Format JJJJ-MM-TT (YYYY-MM-DD) übermittelt werden.</assert>
+    </rule>
     <rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty">
       <assert test="cac:Party/cac:Contact"
         flag="fatal"

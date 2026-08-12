@@ -165,6 +165,14 @@
               id="BR-TMP-5">[BR-TMP-5] BT-125 "Attached document" (ram:AttachmentBinaryObject) darf innerhalb eines "Supporting document" (BG-24) höchstens einmal vorkommen.</assert>
     </rule>
 
+    <!-- temporary rule to enforce format="102" and YYYYMMDD for all DateTimeString elements in CII until PEPPOL-EN16931-F001 is fixed upstream in CEN/Peppol schematron, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/451 -->
+    <rule context="udt:DateTimeString | qdt:DateTimeString">
+      <assert test="normalize-space(@format) = '102' and matches(normalize-space(text()), '^\d{8}$')"
+              flag="fatal"
+              id="BR-TMP-7"
+          >[BR-TMP-7] Datumsangaben müssen das Attribut format="102" tragen und im Format JJJJMMTT (YYYYMMDD) übermittelt werden.</assert>
+    </rule>
+
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress">
       <assert test="ram:CityName[boolean(normalize-space(.))]"
               flag="fatal"
