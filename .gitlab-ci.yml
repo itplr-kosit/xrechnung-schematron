@@ -40,4 +40,6 @@ include:
       package_version: ${PACKAGE_VERSION}
       package_binary: ${PACKAGE_BINARY}
       package_name: ${MAVEN_PACKAGE_NAME}
-      release_name: "XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG_VERSION}"
+      # trim xrechnung version using bash shell parameter expansion
+      release_name: "XRechnung Schematron ${PACKAGE_VERSION} compatible with XRechnung ${XRECHNUNG_VERSION%.*}"
+      asset_link_name: ${PACKAGE_BINARY}
