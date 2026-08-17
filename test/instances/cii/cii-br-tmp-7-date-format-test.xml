@@ -172,6 +172,18 @@
                 <!-- BT-115 -->
                 <ram:DuePayableAmount>4743.75</ram:DuePayableAmount>
             </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+            <ram:InvoiceReferencedDocument>
+                <!-- BT-25 -->
+                <ram:IssuerAssignedID>PIR1234567890</ram:IssuerAssignedID>
+                <!-- BT-26 -->
+                <ram:FormattedIssueDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-1" description="BT-2 IssueDateTime with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-2" description="BT-2 IssueDateTime with invalid content: YYYYMM and 9-digit value" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-3" description="BT-2 IssueDateTime with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-4" description="BT-2 IssueDateTime with extension format attribute" ?>
+                    <qdt:DateTimeString format="102">20180204</qdt:DateTimeString>
+                </ram:FormattedIssueDateTime>
+            </ram:InvoiceReferencedDocument>
         </ram:ApplicableHeaderTradeSettlement>
     </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>
