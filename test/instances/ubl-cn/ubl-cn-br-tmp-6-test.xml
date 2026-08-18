@@ -7,6 +7,9 @@
   <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-2-1" description="BT-2 IssueDate in correct format YYYY-MM-DD" ?>
   <?xmute mutator="code" values="201804,20180413,2018-4-13" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-2-2" description="BT-2 IssueDate with invalid formats: YYYYMM, YYYYMMDD, YYYY-M-DD" ?>
   <cbc:IssueDate>2018-04-13</cbc:IssueDate>
+  <!-- BT-7: Value added tax point date -->
+  <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-7-1" description="BT-7 in correct format YYYY-MM-DD" ?>
+  <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
   <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>90000000-03083-72</cbc:BuyerReference>
@@ -81,6 +84,9 @@
   </cac:Delivery>
   <cac:PaymentMeans>
     <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <!-- BT-9: Payment due date -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-9-1" description="BT-9 in correct format YYYY-MM-DD" ?>
+    <cbc:PaymentDueDate>2018-04-15</cbc:PaymentDueDate>
     <cac:PayeeFinancialAccount>
       <cbc:ID>DE79000000001234567890</cbc:ID>
     </cac:PayeeFinancialAccount>
