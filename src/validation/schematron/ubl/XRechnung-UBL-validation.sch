@@ -14,8 +14,9 @@
   <ns prefix="ubl-invoice" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="ubl-creditnote" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />
+  <ns prefix="xr" uri="xrechnung" />
 
-  <xsl:function name="u:checkIBAN" as="xs:boolean">
+  <xsl:function name="xr:checkIBAN" as="xs:boolean">
     <xsl:param name="iban" as="xs:string"/>
     <xsl:variable name="normalizedIban" select="normalize-space(replace($iban, '([\s])', ''))"/>
     <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and
@@ -185,7 +186,7 @@
     <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')]">
       <!-- check for PaymentMeansCode 30 was not added by purpose in 2.1.1. -->
       <assert test="not(normalize-space(cbc:PaymentMeansCode) = '58') or
-                    u:checkIBAN(string(cac:PayeeFinancialAccount/cbc:ID))"
+                    xr:checkIBAN(string(cac:PayeeFinancialAccount/cbc:ID))"
         flag="warning"
         id="BR-DE-19"
         >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
@@ -214,7 +215,7 @@
     
     <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59'] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59']">
       <assert test="not(normalize-space(cbc:PaymentMeansCode) = '59') or
-                    u:checkIBAN(string(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID))"
+                    xr:checkIBAN(string(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID))"
         flag="warning"
         id="BR-DE-20"
         >[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>

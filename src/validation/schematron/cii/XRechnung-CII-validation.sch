@@ -7,6 +7,7 @@
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2"
+        xmlns:xr="xrechnung"
         xmlns:u="utils">
   <title>Schematron Version @xr-schematron.version.full@ - XRechnung @xrechnung.version@ compatible - CII</title>
   <ns prefix="rsm"  uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" />
@@ -14,13 +15,14 @@
   <ns prefix="udt"  uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
   <ns prefix="qdt"  uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
   <ns prefix="ram"  uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" />
+  <ns prefix="xr" uri="xrechnung" />
 
   <xsl:function as="xs:decimal" name="u:decimalOrZero">
     <xsl:param name="element" />
     <xsl:sequence select="if (boolean($element)) then xs:decimal($element) else 0" />
   </xsl:function>
 
-  <xsl:function name="u:checkIBAN" as="xs:boolean">
+  <xsl:function name="xr:checkIBAN" as="xs:boolean">
     <xsl:param name="iban" as="xs:string"/>
     <xsl:variable name="normalizedIban" select="normalize-space(replace($iban, '([\s])', ''))"/>
     <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and
@@ -177,7 +179,7 @@
     
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[normalize-space(ram:TypeCode) = ('30','58')]">
       <assert test="not(normalize-space(ram:TypeCode) = '58') or
-                    u:checkIBAN(string(ram:PayeePartyCreditorFinancialAccount/ram:IBANID))"
+                    xr:checkIBAN(string(ram:PayeePartyCreditorFinancialAccount/ram:IBANID))"
               flag="warning"
               id="BR-DE-19"
         >[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
@@ -210,7 +212,7 @@
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[normalize-space(ram:TypeCode) = '59']">
       <assert test="not(normalize-space(ram:TypeCode) = '59') or
-                    u:checkIBAN(string(ram:PayerPartyDebtorFinancialAccount/ram:IBANID))"
+                    xr:checkIBAN(string(ram:PayerPartyDebtorFinancialAccount/ram:IBANID))"
               flag="warning"
               id="BR-DE-20"
         >[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
