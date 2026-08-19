@@ -23,11 +23,11 @@
   </cac:InvoicePeriod>
   <cac:OrderReference>
     <?xmute mutator="identity"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="empty-order-ref-id-is-valid"
-                    description="empty cac:OrderReference/cbc:ID allowed" ?>
+                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="order-ref-id-present-valid"
+                    description="BT-13 present" ?>
     <?xmute mutator="empty"
-                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="empty-order-ref-id-no-r008-valid"
-                    description="empty cac:OrderReference/cbc:ID allowed" ?>
+                    schematron-valid="xrubl:PEPPOL-EN16931-R008" id="order-ref-id-empty-valid"
+                    description="empty BT-13 allowed alongside BT-14" ?>
     <cbc:ID>65002278</cbc:ID>
     <cbc:SalesOrderID>ABC123456789</cbc:SalesOrderID>
   </cac:OrderReference>
