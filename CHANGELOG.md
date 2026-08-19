@@ -15,8 +15,11 @@ This release is compatible with XRechnung ?.?.?
 
 ### Changed
 
+* BR-TMP-2 assertion flag raised to "fatal"
 * Global codelist variables to adapt CEN 1.3.16 codelist updates
 * IBAN dummy values in test files
+
+**Note: due to new temporary rules BR-TMP-4 and BR-TMP-5 and raise of BR-TMP-2 error level, this version might break your validation and business workflow. Please evaluate impact.**
 
 ## v2.5.0 on 2026-01-31
 
