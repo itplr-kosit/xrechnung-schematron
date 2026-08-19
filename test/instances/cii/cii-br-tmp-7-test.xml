@@ -20,10 +20,10 @@
         <ram:TypeCode>380</ram:TypeCode>
         <!-- BT-2: IssueDateTime -->
         <ram:IssueDateTime>
-            <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-1" description="BT-2 IssueDateTime with correct format=102 and YYYYMMDD" ?>
-            <?xmute mutator="code" values="201804,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-2" description="BT-2 IssueDateTime with invalid content: YYYYMM and 9-digit value" ?>
-            <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-3" description="BT-2 IssueDateTime with missing format attribute" ?>
-            <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-4" description="BT-2 IssueDateTime with extension format attribute" ?>
+            <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-1" description="BT-2 with correct format=102 and YYYYMMDD" ?>
+            <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-2" description="BT-2 with invalid content" ?>
+            <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-3" description="BT-2 with missing format attribute" ?>
+            <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-4" description="BT-2 with extension format attribute" ?>
             <udt:DateTimeString format="102">20180413</udt:DateTimeString>
         </ram:IssueDateTime>
     </rsm:ExchangedDocument>
@@ -56,6 +56,24 @@
                     <!-- BT-152 -->
                     <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
                 </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <!-- BT-134 -->
+                    <ram:StartDateTime>
+                        <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-1" description="BT-134 with correct format=102 and YYYYMMDD" ?>
+                        <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-2" description="BT-134 with invalid content" ?>
+                        <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-3" description="BT-134 with missing format attribute" ?>
+                        <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-4" description="BT-134 with extension format attribute" ?>
+                        <udt:DateTimeString format="102">20180401</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <!-- BT-135 -->
+                    <ram:EndDateTime>
+                        <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-1" description="BT-135 with correct format=102 and YYYYMMDD" ?>
+                        <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-2" description="BT-135 with invalid content" ?>
+                        <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-3" description="BT-135 with missing format attribute" ?>
+                        <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-4" description="BT-135 with extension format attribute" ?>
+                        <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
                 <ram:SpecifiedTradeSettlementLineMonetarySummation>
                     <!-- BT-131 -->
                     <ram:LineTotalAmount>3986.34</ram:LineTotalAmount>
@@ -120,10 +138,10 @@
             <ram:ActualDeliverySupplyChainEvent>
                 <!-- BT-72: ActualDeliveryDate -->
                 <ram:OccurrenceDateTime>
-                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-1" description="BT-72 OccurrenceDateTime with correct format=102 and YYYYMMDD" ?>
-                    <?xmute mutator="code" values="202503,20250315extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-2" description="BT-72 OccurrenceDateTime with invalid content: YYYYMM and 9-digit value" ?>
-                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-3" description="BT-72 OccurrenceDateTime with missing format attribute" ?>
-                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-4" description="BT-72 OccurrenceDateTime with extension format attribute" ?>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-1" description="BT-72 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-2" description="BT-72 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-3" description="BT-72 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-4" description="BT-72 with extension format attribute" ?>
                     <udt:DateTimeString format="102">20250315</udt:DateTimeString>
                 </ram:OccurrenceDateTime>
             </ram:ActualDeliverySupplyChainEvent>
@@ -148,15 +166,42 @@
                 <ram:BasisAmount>3986.34</ram:BasisAmount>
                 <!-- BT-118 -->
                 <ram:CategoryCode>S</ram:CategoryCode>
+                <!-- BT-7 -->
+                <ram:TaxPointDate>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-1" description="BT-7 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-2" description="BT-7 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-3" description="BT-7 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-4" description="BT-7 with extension format attribute" ?>
+                    <udt:DateString format="102">20180415</udt:DateString>
+                </ram:TaxPointDate>
                 <!-- BT-119 -->
                 <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
             </ram:ApplicableTradeTax>
+            <ram:BillingSpecifiedPeriod>
+                <!-- BT-73 -->
+                <ram:StartDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-1" description="BT-73 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-2" description="BT-73 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-3" description="BT-73 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-4" description="BT-73 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20180401</udt:DateTimeString>
+                </ram:StartDateTime>
+                <!-- BT-74 -->
+                <ram:EndDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-1" description="BT-74 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-2" description="BT-74 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-3" description="BT-74 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-4" description="BT-74 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:EndDateTime>
+            </ram:BillingSpecifiedPeriod>
             <!-- BT-9: DueDateDateTime -->
             <ram:SpecifiedTradePaymentTerms>
                 <ram:DueDateDateTime>
-                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-1" description="BT-9 DueDateDateTime with correct format=102 and YYYYMMDD" ?>
-                    <?xmute mutator="code" values="201804,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-2" description="BT-9 DueDateDateTime with invalid content: YYYYMM and 9-digit value" ?>
-                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-3" description="BT-9 DueDateDateTime with missing format attribute" ?>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-1" description="BT-9 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-2" description="BT-9 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-3" description="BT-9 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-4" description="BT-9 with extension format attribute" ?>
                     <udt:DateTimeString format="102">20180413</udt:DateTimeString>
                 </ram:DueDateDateTime>
             </ram:SpecifiedTradePaymentTerms>
@@ -177,10 +222,10 @@
                 <ram:IssuerAssignedID>PIR1234567890</ram:IssuerAssignedID>
                 <!-- BT-26 -->
                 <ram:FormattedIssueDateTime>
-                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-1" description="BT-2 IssueDateTime with correct format=102 and YYYYMMDD" ?>
-                    <?xmute mutator="code" values="201804,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-2" description="BT-2 IssueDateTime with invalid content: YYYYMM and 9-digit value" ?>
-                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-3" description="BT-2 IssueDateTime with missing format attribute" ?>
-                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-4" description="BT-2 IssueDateTime with extension format attribute" ?>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-1" description="BT-26 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-2" description="BT-26 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-3" description="BT-26 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-4" description="BT-26 with extension format attribute" ?>
                     <qdt:DateTimeString format="102">20180204</qdt:DateTimeString>
                 </ram:FormattedIssueDateTime>
             </ram:InvoiceReferencedDocument>
