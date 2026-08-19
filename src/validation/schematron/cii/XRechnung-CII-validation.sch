@@ -166,7 +166,7 @@
     </rule>
 
     <!-- temporary rule to enforce format="102" and YYYYMMDD for all DateTimeString elements in CII until fixed upstream, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/429 -->
-    <rule context="udt:DateTimeString | qdt:DateTimeString">
+    <rule context="udt:DateTimeString | qdt:DateTimeString | udt:DateString">
       <assert test="normalize-space(@format) = '102' and matches(normalize-space(text()), '^\d{8}$')"
               flag="fatal"
               id="BR-TMP-7"
