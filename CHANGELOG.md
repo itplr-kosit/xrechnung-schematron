@@ -17,6 +17,7 @@ This release is compatible with XRechnung ?.?.?
 
 * Global codelist variables to adapt CEN 1.3.16 codelist updates
 * IBAN dummy values in test files
+* Using Peppol BIS Billing 3.0.21
 
 ## v2.5.0 on 2026-01-31
 
