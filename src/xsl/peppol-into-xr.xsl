@@ -192,6 +192,11 @@
                 </xsl:attribute>                  
                 <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>                
                 <xsl:choose>
+                    <!-- modify R008 in UBL to allow an empty BT-13, which the UBL schema requires to be present whenever BT-14 is used -->
+                    <xsl:when test="@id='PEPPOL-EN16931-R008' and $syntax='UBL'">
+                        <xsl:attribute name="test">self::cbc:ID[parent::cac:OrderReference]</xsl:attribute>
+                        <xsl:value-of select="." />
+                    </xsl:when>
                     <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
                         <!-- modify test -->
