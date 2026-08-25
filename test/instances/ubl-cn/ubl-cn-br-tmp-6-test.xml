@@ -17,11 +17,11 @@
   <cac:InvoicePeriod>
     <!-- BT-73: StartDate -->
     <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-73-1" description="BT-73 in correct format YYYY-MM-DD" ?>
-    <?xmute mutator="code" values="201601,20160101,2016-1-1,22016-01-11" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-73-2" description="BT-73 with invalid format" ?>
+    <?xmute mutator="code" values="22016-01-11" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-73-2" description="BT-73 with invalid format" ?>
     <cbc:StartDate>2016-01-01</cbc:StartDate>
     <!-- BT-74: EndDate -->
     <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-74-1" description="BT-74 InvoicePeriod EndDate in correct format YYYY-MM-DD" ?>
-    <?xmute mutator="code" values="201612,20161231,2016-1-1,22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-74-2" description="BT-74 with invalid format" ?>
+    <?xmute mutator="code" values="22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-74-2" description="BT-74 with invalid format" ?>
     <cbc:EndDate>2016-12-31</cbc:EndDate>
   </cac:InvoicePeriod>
   <!-- BG-3: BillingReference with BT-26 -->
@@ -124,11 +124,11 @@
     <cac:InvoicePeriod>
       <!-- BT-134: StartDate -->
       <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-134-1" description="BT-134 in correct format YYYY-MM-DD" ?>
-      <?xmute mutator="code" values="201601,20160101,2016-1-1,22016-01-01" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-134-2" description="BT-134 with invalid format" ?>
+      <?xmute mutator="code" values="22016-01-01" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-134-2" description="BT-134 with invalid format" ?>
       <cbc:StartDate>2016-01-01</cbc:StartDate>
       <!-- BT-135: EndDate -->
       <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-135-1" description="BT-135 in correct format YYYY-MM-DD" ?>
-      <?xmute mutator="code" values="201612,20161212,2016-1-1,22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-135-2" description="BT-135 with invalid format" ?>
+      <?xmute mutator="code" values="22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-135-2" description="BT-135 with invalid format" ?>
       <cbc:EndDate>2016-12-31</cbc:EndDate>
     </cac:InvoicePeriod>
     <cac:Item>
