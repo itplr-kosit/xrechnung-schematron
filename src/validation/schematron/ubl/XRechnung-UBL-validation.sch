@@ -12,7 +12,7 @@
   <ns prefix="cn" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
   <ns prefix="ubl-invoice" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
   <ns prefix="ubl-creditnote" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
-  <ns prefix="xs"  uri="http://www.w3.org/2001/XMLSchema" />
+  <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
 
   <phase id="xrechnung-model">
     <active pattern="variable-pattern" />
@@ -110,6 +110,14 @@
         flag="warning"
         id="BR-TMP-2"
       >[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
+    </rule>
+    <!-- temporary rule to enforce YYYY-MM-DD date format for all date BTs in UBL until PEPPOL-EN16931-F001 is fixed upstream in CEN/Peppol schematron, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/451 -->
+    <rule context="cbc:IssueDate | cbc:DueDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate | 
+      cbc:IssueDate | cbc:TaxPointDate | cbc:PaymentDueDate">
+      <assert test="matches(normalize-space(text()), '^\d{4}-\d{2}-\d{2}$')"
+        flag="fatal"
+        id="BR-TMP-6"
+      >[BR-TMP-6] Datumsangaben müssen im Format JJJJ-MM-TT (YYYY-MM-DD) übermittelt werden.</assert>
     </rule>
     <rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty">
       <assert test="cac:Party/cac:Contact"

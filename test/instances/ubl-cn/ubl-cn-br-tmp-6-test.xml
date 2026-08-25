@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+  <cbc:ID>1234567</cbc:ID>
+  <!-- BT-2: IssueDate -->
+  <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-2-1" description="BT-2 in correct format YYYY-MM-DD" ?>
+  <?xmute mutator="code" values="201804,20180413,2018-4-13,22018-04-13" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-2-2" description="BT-2 with invalid format" ?>
+  <cbc:IssueDate>2018-04-13</cbc:IssueDate>
+  <!-- BT-7: Value added tax point date -->
+  <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-7-1" description="BT-7 in correct format YYYY-MM-DD" ?>
+  <?xmute mutator="code" values="201804,20180413,2018-4-13,22018-04-13" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-7-2" description="BT-7 with invalid format" ?>
+  <cbc:TaxPointDate>2018-04-13</cbc:TaxPointDate>
+  <cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:BuyerReference>90000000-03083-72</cbc:BuyerReference>
+  <cac:InvoicePeriod>
+    <!-- BT-73: StartDate -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-73-1" description="BT-73 in correct format YYYY-MM-DD" ?>
+    <?xmute mutator="code" values="22016-01-11" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-73-2" description="BT-73 with invalid format" ?>
+    <cbc:StartDate>2016-01-01</cbc:StartDate>
+    <!-- BT-74: EndDate -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-74-1" description="BT-74 InvoicePeriod EndDate in correct format YYYY-MM-DD" ?>
+    <?xmute mutator="code" values="22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-74-2" description="BT-74 with invalid format" ?>
+    <cbc:EndDate>2016-12-31</cbc:EndDate>
+  </cac:InvoicePeriod>
+  <!-- BG-3: BillingReference with BT-26 -->
+  <cac:BillingReference>
+    <cac:InvoiceDocumentReference>
+      <cbc:ID>PRG1502168</cbc:ID>
+      <!-- BT-26: IssueDate of the preceding invoice -->
+      <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-26-1" description="BT-26 in correct format YYYY-MM-DD" ?>
+      <?xmute mutator="code" values="201803,20180313,2018-3-13,22018-03-13" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-26-2" description="BT-26 with invalid format" ?>
+      <cbc:IssueDate>2018-03-13</cbc:IssueDate>
+    </cac:InvoiceDocumentReference>
+  </cac:BillingReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungsausgang@test.com</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID>9876543217894897438</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:CityName>[Seller city]</cbc:CityName>
+        <cbc:PostalZone>12345</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>ATU123456789</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Seller name]</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Tim Tester</cbc:Name>
+        <cbc:Telephone>012 3456789</cbc:Telephone>
+        <cbc:ElectronicMail>tim.tester@test.com</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="EM">rechnungseingang@test.de</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:CityName>[Buyer city]</cbc:CityName>
+        <cbc:PostalZone>98765</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>DE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>[Buyer name]</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <!-- BG-13: Delivery with BT-72 -->
+  <cac:Delivery>
+    <!-- BT-72: ActualDeliveryDate -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-72-1" description="BT-72 in correct format YYYY-MM-DD" ?>
+    <?xmute mutator="code" values="202503,20250315,2025-3-15,22025-03-15" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-72-2" description="BT-72 with invalid format" ?>
+    <cbc:ActualDeliveryDate>2025-03-15</cbc:ActualDeliveryDate>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+    <!-- BT-9: Payment due date -->
+    <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-9-1" description="BT-9 in correct format YYYY-MM-DD" ?>
+    <?xmute mutator="code" values="201804,20180415,2018-4-15,22018-04-15" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-9-2" description="BT-9 with invalid format" ?>
+    <cbc:PaymentDueDate>2018-04-15</cbc:PaymentDueDate>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>DE79000000001234567890</cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="EUR">757.41</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="EUR">3986.34</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="EUR">757.41</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">3986.34</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="EUR">3986.34</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="EUR">4743.75</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="EUR">4743.75</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:CreditNoteLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:CreditedQuantity unitCode="XPP">30</cbc:CreditedQuantity>
+    <cbc:LineExtensionAmount currencyID="EUR">3986.34</cbc:LineExtensionAmount>
+    <!-- BG-26: line level InvoicePeriod with BT-134 and BT-135.
+         Positive case only, same reason as BG-14 above (PEPPOL-EN16931-R110/R111). -->
+    <cac:InvoicePeriod>
+      <!-- BT-134: StartDate -->
+      <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-134-1" description="BT-134 in correct format YYYY-MM-DD" ?>
+      <?xmute mutator="code" values="22016-01-01" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-134-2" description="BT-134 with invalid format" ?>
+      <cbc:StartDate>2016-01-01</cbc:StartDate>
+      <!-- BT-135: EndDate -->
+      <?xmute mutator="identity" schematron-valid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-135-1" description="BT-135 in correct format YYYY-MM-DD" ?>
+      <?xmute mutator="code" values="22016-12-31" schematron-invalid="xrubl:BR-TMP-6" id="br-tmp-6-test-bt-135-2" description="BT-135 with invalid format" ?>
+      <cbc:EndDate>2016-12-31</cbc:EndDate>
+    </cac:InvoicePeriod>
+    <cac:Item>
+      <cbc:Name>Beratung</cbc:Name>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>19</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="EUR">132.878</cbc:PriceAmount>
+    </cac:Price>
+  </cac:CreditNoteLine>
+</CreditNote>
