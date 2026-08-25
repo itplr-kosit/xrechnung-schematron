@@ -153,7 +153,7 @@
     </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[ram:TypeCode = '916']">
         <assert test="not(exists(ram:URIID)) or (matches(ram:URIID, $XR-URL-REGEX))"
-            flag="warning"
+            flag="fatal"
               id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
           <!-- temporary rule to replace CEN Schematron rule CII-SR-475 until fixed, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508 -->
           <assert test="count(ram:Name) &lt;= 1"
