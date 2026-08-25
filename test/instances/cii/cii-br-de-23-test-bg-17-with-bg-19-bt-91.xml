@@ -144,10 +144,10 @@
                     <?xmute mutator="identity"
                             schematron-invalid="xrcii:BR-DE-23-b" id="cii-BG-19-BT-91-not-allowed-with-BG-17"
                             description="CII BG-19 BT-91 not allowed with BG-17" ?>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
                 <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>    
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>

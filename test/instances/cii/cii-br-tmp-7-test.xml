@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+                          xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+                          xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+                          xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+    <rsm:ExchangedDocumentContext>
+        <!-- BT-23 -->
+        <ram:BusinessProcessSpecifiedDocumentContextParameter>
+            <ram:ID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</ram:ID>
+        </ram:BusinessProcessSpecifiedDocumentContextParameter>
+        <!-- BT-24 -->
+        <ram:GuidelineSpecifiedDocumentContextParameter>
+            <ram:ID>urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0</ram:ID>
+        </ram:GuidelineSpecifiedDocumentContextParameter>
+    </rsm:ExchangedDocumentContext>
+    <rsm:ExchangedDocument>
+        <!-- BT-1 -->
+        <ram:ID>1234567</ram:ID>
+        <!-- BT-3 -->
+        <ram:TypeCode>380</ram:TypeCode>
+        <!-- BT-2: IssueDateTime -->
+        <ram:IssueDateTime>
+            <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-1" description="BT-2 with correct format=102 and YYYYMMDD" ?>
+            <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-2" description="BT-2 with invalid content" ?>
+            <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-3" description="BT-2 with missing format attribute" ?>
+            <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-2-4" description="BT-2 with extension format attribute" ?>
+            <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+        </ram:IssueDateTime>
+    </rsm:ExchangedDocument>
+    <rsm:SupplyChainTradeTransaction>
+        <ram:IncludedSupplyChainTradeLineItem>
+            <ram:AssociatedDocumentLineDocument>
+                <!-- BT-126 -->
+                <ram:LineID>1</ram:LineID>
+            </ram:AssociatedDocumentLineDocument>
+            <ram:SpecifiedTradeProduct>
+                <!-- BT-153 -->
+                <ram:Name>Beratung</ram:Name>
+            </ram:SpecifiedTradeProduct>
+            <ram:SpecifiedLineTradeAgreement>
+                <!-- BT-146 -->
+                <ram:NetPriceProductTradePrice>
+                    <ram:ChargeAmount>132.8780000000</ram:ChargeAmount>
+                </ram:NetPriceProductTradePrice>
+            </ram:SpecifiedLineTradeAgreement>
+            <ram:SpecifiedLineTradeDelivery>
+                <!-- BT-129, BT-130 -->
+                <ram:BilledQuantity unitCode="XPP">30.00000000000</ram:BilledQuantity>
+            </ram:SpecifiedLineTradeDelivery>
+            <ram:SpecifiedLineTradeSettlement>
+                <ram:ApplicableTradeTax>
+                    <!-- BT-151 -->
+                    <ram:TypeCode>VAT</ram:TypeCode>
+                    <!-- BT-151 -->
+                    <ram:CategoryCode>S</ram:CategoryCode>
+                    <!-- BT-152 -->
+                    <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+                </ram:ApplicableTradeTax>
+                <ram:BillingSpecifiedPeriod>
+                    <!-- BT-134 -->
+                    <ram:StartDateTime>
+                        <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-1" description="BT-134 with correct format=102 and YYYYMMDD" ?>
+                        <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-2" description="BT-134 with invalid content" ?>
+                        <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-3" description="BT-134 with missing format attribute" ?>
+                        <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-134-4" description="BT-134 with extension format attribute" ?>
+                        <udt:DateTimeString format="102">20180401</udt:DateTimeString>
+                    </ram:StartDateTime>
+                    <!-- BT-135 -->
+                    <ram:EndDateTime>
+                        <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-1" description="BT-135 with correct format=102 and YYYYMMDD" ?>
+                        <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-2" description="BT-135 with invalid content" ?>
+                        <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-3" description="BT-135 with missing format attribute" ?>
+                        <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-135-4" description="BT-135 with extension format attribute" ?>
+                        <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                    </ram:EndDateTime>
+                </ram:BillingSpecifiedPeriod>
+                <ram:SpecifiedTradeSettlementLineMonetarySummation>
+                    <!-- BT-131 -->
+                    <ram:LineTotalAmount>3986.34</ram:LineTotalAmount>
+                </ram:SpecifiedTradeSettlementLineMonetarySummation>
+            </ram:SpecifiedLineTradeSettlement>
+        </ram:IncludedSupplyChainTradeLineItem>
+        <ram:ApplicableHeaderTradeAgreement>
+            <!-- BT-10 -->
+            <ram:BuyerReference>90000000-03083-72</ram:BuyerReference>
+            <ram:SellerTradeParty>
+                <!-- BT-29 -->
+                <ram:ID>9876543217894897438</ram:ID>
+                <!-- BT-27 -->
+                <ram:Name>[Seller name]</ram:Name>
+                <ram:DefinedTradeContact>
+                    <!-- BT-41 -->
+                    <ram:PersonName>Tim Tester</ram:PersonName>
+                    <!-- BT-42 -->
+                    <ram:TelephoneUniversalCommunication>
+                        <ram:CompleteNumber>012 3456789</ram:CompleteNumber>
+                    </ram:TelephoneUniversalCommunication>
+                    <!-- BT-43 -->
+                    <ram:EmailURIUniversalCommunication>
+                        <ram:URIID>tim.tester@test.com</ram:URIID>
+                    </ram:EmailURIUniversalCommunication>
+                </ram:DefinedTradeContact>
+                <ram:PostalTradeAddress>
+                    <!-- BT-38 -->
+                    <ram:PostcodeCode>12345</ram:PostcodeCode>
+                    <!-- BT-37 -->
+                    <ram:CityName>[Seller city]</ram:CityName>
+                    <!-- BT-40 -->
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <!-- BT-34 -->
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">rechnungsausgang@test.com</ram:URIID>
+                </ram:URIUniversalCommunication>
+                <!-- BT-31 -->
+                <ram:SpecifiedTaxRegistration>
+                    <ram:ID schemeID="VA">ATU123456789</ram:ID>
+                </ram:SpecifiedTaxRegistration>
+            </ram:SellerTradeParty>
+            <ram:BuyerTradeParty>
+                <!-- BT-44 -->
+                <ram:Name>[Buyer name]</ram:Name>
+                <ram:PostalTradeAddress>
+                    <!-- BT-53 -->
+                    <ram:PostcodeCode>98765</ram:PostcodeCode>
+                    <!-- BT-52 -->
+                    <ram:CityName>[Buyer city]</ram:CityName>
+                    <!-- BT-55 -->
+                    <ram:CountryID>DE</ram:CountryID>
+                </ram:PostalTradeAddress>
+                <!-- BT-49 -->
+                <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="EM">rechnungseingang@test.de</ram:URIID>
+                </ram:URIUniversalCommunication>
+            </ram:BuyerTradeParty>
+        </ram:ApplicableHeaderTradeAgreement>
+        <ram:ApplicableHeaderTradeDelivery>
+            <ram:ActualDeliverySupplyChainEvent>
+                <!-- BT-72: ActualDeliveryDate -->
+                <ram:OccurrenceDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-1" description="BT-72 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-2" description="BT-72 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-3" description="BT-72 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-72-4" description="BT-72 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20250315</udt:DateTimeString>
+                </ram:OccurrenceDateTime>
+            </ram:ActualDeliverySupplyChainEvent>
+        </ram:ApplicableHeaderTradeDelivery>
+        <ram:ApplicableHeaderTradeSettlement>
+            <!-- BT-5 -->
+            <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+            <ram:SpecifiedTradeSettlementPaymentMeans>
+                <!-- BT-81 -->
+                <ram:TypeCode>58</ram:TypeCode>
+                <ram:PayeePartyCreditorFinancialAccount>
+                    <!-- BT-84 -->
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
+                </ram:PayeePartyCreditorFinancialAccount>
+            </ram:SpecifiedTradeSettlementPaymentMeans>
+            <ram:ApplicableTradeTax>
+                <!-- BT-117 -->
+                <ram:CalculatedAmount>757.41</ram:CalculatedAmount>
+                <!-- BT-118 -->
+                <ram:TypeCode>VAT</ram:TypeCode>
+                <!-- BT-116 -->
+                <ram:BasisAmount>3986.34</ram:BasisAmount>
+                <!-- BT-118 -->
+                <ram:CategoryCode>S</ram:CategoryCode>
+                <!-- BT-7 -->
+                <ram:TaxPointDate>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-1" description="BT-7 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-2" description="BT-7 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-3" description="BT-7 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-7-4" description="BT-7 with extension format attribute" ?>
+                    <udt:DateString format="102">20180415</udt:DateString>
+                </ram:TaxPointDate>
+                <!-- BT-119 -->
+                <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+            </ram:ApplicableTradeTax>
+            <ram:BillingSpecifiedPeriod>
+                <!-- BT-73 -->
+                <ram:StartDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-1" description="BT-73 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-2" description="BT-73 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-3" description="BT-73 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-73-4" description="BT-73 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20180401</udt:DateTimeString>
+                </ram:StartDateTime>
+                <!-- BT-74 -->
+                <ram:EndDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-1" description="BT-74 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-2" description="BT-74 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-3" description="BT-74 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-74-4" description="BT-74 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:EndDateTime>
+            </ram:BillingSpecifiedPeriod>
+            <!-- BT-9: DueDateDateTime -->
+            <ram:SpecifiedTradePaymentTerms>
+                <ram:DueDateDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-1" description="BT-9 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-2" description="BT-9 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-3" description="BT-9 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-9-4" description="BT-9 with extension format attribute" ?>
+                    <udt:DateTimeString format="102">20180413</udt:DateTimeString>
+                </ram:DueDateDateTime>
+            </ram:SpecifiedTradePaymentTerms>
+            <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+                <!-- BT-106 -->
+                <ram:LineTotalAmount>3986.34</ram:LineTotalAmount>
+                <!-- BT-109 -->
+                <ram:TaxBasisTotalAmount>3986.34</ram:TaxBasisTotalAmount>
+                <!-- BT-110 -->
+                <ram:TaxTotalAmount currencyID="EUR">757.41</ram:TaxTotalAmount>
+                <!-- BT-112 -->
+                <ram:GrandTotalAmount>4743.75</ram:GrandTotalAmount>
+                <!-- BT-115 -->
+                <ram:DuePayableAmount>4743.75</ram:DuePayableAmount>
+            </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+            <ram:InvoiceReferencedDocument>
+                <!-- BT-25 -->
+                <ram:IssuerAssignedID>PIR1234567890</ram:IssuerAssignedID>
+                <!-- BT-26 -->
+                <ram:FormattedIssueDateTime>
+                    <?xmute mutator="identity" schematron-valid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-1" description="BT-26 with correct format=102 and YYYYMMDD" ?>
+                    <?xmute mutator="code" values="201804,1803,20180413extra" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-2" description="BT-26 with invalid content" ?>
+                    <?xmute mutator="remove" attribute="format" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-3" description="BT-26 with missing format attribute" ?>
+                    <?xmute mutator="code" attribute="format" values="610,616" schematron-invalid="xrcii:BR-TMP-7" id="br-tmp-7-test-bt-26-4" description="BT-26 with extension format attribute" ?>
+                    <qdt:DateTimeString format="102">20180204</qdt:DateTimeString>
+                </ram:FormattedIssueDateTime>
+            </ram:InvoiceReferencedDocument>
+        </ram:ApplicableHeaderTradeSettlement>
+    </rsm:SupplyChainTradeTransaction>
+</rsm:CrossIndustryInvoice>

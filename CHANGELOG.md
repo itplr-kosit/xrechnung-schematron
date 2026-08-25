@@ -9,10 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?.?
 
+### Added
+
+* Temporary rules BR-TMP-4 and BR-TMP-5 to replace CII-SR-475 and CII-SR-476 with corrected rule context until the bug is fixed upstream in CEN Schematron (see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508)
+* Temporary rule BR-TMP-6 (UBL) to enforce YYYY-MM-DD date format on all date business terms (BT-2, BT-7, BT-9, BT-26, BT-72, BT-73, BT-74, BT-134, BT-135)
+* Temporary rule BR-TMP-7 (CII) to enforce format="102" attribute and YYYYMMDD format on all DateTimeString date elements (BT-2, BT-7, BT-9, BT-26, BT-72, BT-73, BT-74, BT-134, BT-135)
+
 ### Changed
 
+* BR-TMP-2 assertion flag raised to "fatal"
+* Global codelist variables to adapt CEN 1.3.16 codelist updates
+* IBAN dummy values in test files
+* Using Peppol BIS Billing 3.0.21
 * IBAN Regex extracted to common.sch
 
+### Fixed
+
+* PEPPOL-EN16931-R008 in UBL no longer rejects an empty BT-13 "Purchase order reference" (`cac:OrderReference/cbc:ID`), which the UBL schema requires to be present whenever BT-14 "Sales order reference" is provided
+
+**Note: due to new temporary rules and raise of BR-TMP-2 error level, this version might break your validation and business workflow. Please evaluate impact.**
 
 ## v2.5.0 on 2026-01-31
 

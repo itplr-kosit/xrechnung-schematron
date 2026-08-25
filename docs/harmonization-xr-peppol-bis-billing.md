@@ -53,6 +53,7 @@ Notably, as Peppol BIS Billing does not officially support CII, severity levels 
 Additionally, some rules had to be added or customized:
 
 - `PEPPOL-EN16931-R008` was added for CII
+- `PEPPOL-EN16931-R008` was modified for UBL to accept an empty BT-13 (`cac:OrderReference/cbc:ID`): the UBL schema makes that element mandatory as soon as BT-14 (`cac:OrderReference/cbc:SalesOrderID`) is present, although BT-13 is optional in EN 16931
 - `PEPPOL-EN16931-R042` and `PEPPOL-EN16931-R046` were added for CII
 - `PEPPOL-EN16931-R053` and `PEPPOL-EN16931-R055` were modified for CII due to bugs in source code
 - message texts were replaced in `PEPPOL-EN16931-R053`, `PEPPOL-EN16931-R054`, and `PEPPOL-EN16931-R101` for CII

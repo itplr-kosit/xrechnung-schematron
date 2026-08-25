@@ -150,7 +150,7 @@
                         schematron-invalid="xrcii:BR-DE-23-a" id="cii-mandatory-BG-17-removed"
                         description="mandatory BG-17" ?>
                 <ram:PayeePartyCreditorFinancialAccount>                    
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE16000000002345678901</ram:IBANID>
                 </ram:PayeePartyCreditorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>

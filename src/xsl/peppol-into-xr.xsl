@@ -90,7 +90,7 @@
                     <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
                     <xsl:attribute name="test">false()</xsl:attribute>
                     <xsl:attribute name="flag">fatal</xsl:attribute>
-                    <xsl:text>Document MUST not contain empty elements.</xsl:text>
+                    <xsl:text>[PEPPOL-EN16931-R008]-Document MUST not contain empty elements.</xsl:text>
                 </xsl:element>
             </xsl:element>
         </xsl:element>  
@@ -104,7 +104,7 @@
                     <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
                     <xsl:attribute name="test">not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'</xsl:attribute>
                     <xsl:attribute name="flag">fatal</xsl:attribute>
-                    <xsl:text>Charge on price level is NOT allowed. Only value 'false' allowed.</xsl:text>
+                    <xsl:text>[PEPPOL-EN16931-R044]-Charge on price level is NOT allowed. Only value 'false' allowed.</xsl:text>
                 </xsl:element>
                 <!-- R046 -->
                 <xsl:comment>select only first occurrence of BT-147 for more robustness in case of violation of [CII-SR-440] - ActualAmount should exist maximum once</xsl:comment>
@@ -112,7 +112,7 @@
                     <xsl:attribute name="id">PEPPOL-EN16931-R046</xsl:attribute>
                     <xsl:attribute name="test">not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - u:decimalOrZero(ram:AppliedTradeAllowanceCharge/ram:ActualAmount[1])</xsl:attribute>
                     <xsl:attribute name="flag">fatal</xsl:attribute>
-                    <xsl:text>Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
+                    <xsl:text>[PEPPOL-EN16931-R046]-Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</xsl:text>
                 </xsl:element>
             </xsl:element>            
         </xsl:element>
@@ -192,17 +192,22 @@
                 </xsl:attribute>                  
                 <xsl:apply-templates select="@*[not(name()='id')]" mode="peppol-rules"/>                
                 <xsl:choose>
+                    <!-- modify R008 in UBL to allow an empty BT-13, which the UBL schema requires to be present whenever BT-14 is used -->
+                    <xsl:when test="@id='PEPPOL-EN16931-R008' and $syntax='UBL'">
+                        <xsl:attribute name="test">self::cbc:ID[parent::cac:OrderReference]</xsl:attribute>
+                        <xsl:value-of select="." />
+                    </xsl:when>
                     <!-- Replace some texts in CII -->
                     <xsl:when test="@id='PEPPOL-EN16931-R053' and $syntax='CII'">
                         <!-- modify test -->
                         <xsl:attribute name="test">count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1</xsl:attribute>
-                        <xsl:text>No more than one tax total amount must be provided where currency id equals document currency code.</xsl:text>
+                        <xsl:text>[PEPPOL-EN16931-R053]-No more than one tax total amount must be provided where currency id equals document currency code.</xsl:text>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R054' and $syntax='CII'">
-                        <xsl:text>Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</xsl:text>
+                        <xsl:text>[PEPPOL-EN16931-R054]-Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</xsl:text>
                     </xsl:when>
                     <xsl:when test="@id='PEPPOL-EN16931-R101' and $syntax='CII'">
-                        <xsl:text>Element Additional referenced document can only be used for Invoice line object.</xsl:text>
+                        <xsl:text>[PEPPOL-EN16931-R101]-Element Additional referenced document can only be used for Invoice line object.</xsl:text>
                     </xsl:when>
                     <!-- modify R055 in CII to allow for optional BT-110 -->
                     <xsl:when test="@id='PEPPOL-EN16931-R055' and $syntax='CII'">
