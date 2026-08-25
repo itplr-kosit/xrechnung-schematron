@@ -21,6 +21,10 @@ This release is compatible with XRechnung ?.?.?
 * IBAN dummy values in test files
 * Using Peppol BIS Billing 3.0.21
 
+### Fixed
+
+* PEPPOL-EN16931-R008 in UBL no longer rejects an empty BT-13 "Purchase order reference" (`cac:OrderReference/cbc:ID`), which the UBL schema requires to be present whenever BT-14 "Sales order reference" is provided
+
 ## v2.5.0 on 2026-01-31
 
 This release is compatible with XRechnung 3.0.x
