@@ -144,7 +144,7 @@
                     <?xmute mutator="remove"
                             schematron-invalid="xrcii:BR-DE-25-a" id="cii-mandatory-BG-19-remove-BT-91"
                             description="mandatory for BG-19 is (1 of 3) BT-91" ?>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                 </ram:PayerPartyDebtorFinancialAccount>
             </ram:SpecifiedTradeSettlementPaymentMeans>
             <ram:ApplicableTradeTax>

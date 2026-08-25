@@ -90,7 +90,7 @@ Musterstr. 36
     <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
     <cbc:PaymentID>Entwurf</cbc:PaymentID>
     <cac:PayeeFinancialAccount>
-      <cbc:ID>DE12345678912345678900</cbc:ID>
+      <cbc:ID>DE79000000001234567890</cbc:ID>
       <cbc:Name>Mustermann Contractor GmbH</cbc:Name>
       <cac:FinancialInstitutionBranch>
         <cbc:ID>DEUXXXXXXXX</cbc:ID>

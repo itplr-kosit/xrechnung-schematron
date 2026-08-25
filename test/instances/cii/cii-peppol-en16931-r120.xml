@@ -349,7 +349,7 @@
                 <ram:TypeCode>58</ram:TypeCode>
                 <ram:Information>[Payment means text]</ram:Information>
                 <ram:PayeePartyCreditorFinancialAccount>
-                    <ram:IBANID>DE75512108001245126199</ram:IBANID>
+                    <ram:IBANID>DE79000000001234567890</ram:IBANID>
                     <ram:AccountName>[Payment account name]</ram:AccountName>
                 </ram:PayeePartyCreditorFinancialAccount>
                 <ram:PayeeSpecifiedCreditorFinancialInstitution>
