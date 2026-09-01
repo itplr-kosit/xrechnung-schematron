@@ -27,7 +27,7 @@ This release is compatible with XRechnung 3.0
 
 * PEPPOL-EN16931-R008 in UBL no longer rejects an empty BT-13 "Purchase order reference" (`cac:OrderReference/cbc:ID`), which the UBL schema requires to be present whenever BT-14 "Sales order reference" is provided
 
-**Note: due to new temporary rules and raise of BR-TMP-2 error level, this version might break your validation and business workflow. Please evaluate impact.**
+**Note: BR-TMP-2 error level is raised to "fatal", this version might break your validation and business workflow. Please evaluate impact. BR-TMP-4, BR-TMP-5, BR-TMP-6, and BR-TMP-7 are currently implemented with error level "warning" and will be raised to "fatal" with an upcoming release.**
 
 ## v2.5.0 on 2026-01-31
 
