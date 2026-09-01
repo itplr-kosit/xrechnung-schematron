@@ -124,9 +124,9 @@
     <rule context="cbc:IssueDate | cbc:DueDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate | 
       cbc:IssueDate | cbc:TaxPointDate | cbc:PaymentDueDate">
       <assert test="matches(normalize-space(text()), '^\d{4}-\d{2}-\d{2}$')"
-        flag="fatal"
+        flag="warning"
         id="BR-TMP-6"
-      >[BR-TMP-6] Datumsangaben müssen im Format JJJJ-MM-TT (YYYY-MM-DD) übermittelt werden.</assert>
+      >[BR-TMP-6] Datumsangaben in UBL müssen im Format JJJJ-MM-TT (YYYY-MM-DD) übermittelt werden.</assert>
     </rule>
     <rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty">
       <assert test="cac:Party/cac:Contact"
