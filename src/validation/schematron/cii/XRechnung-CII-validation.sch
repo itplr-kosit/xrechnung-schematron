@@ -177,7 +177,7 @@
     <!-- temporary rule to enforce format="102" and YYYYMMDD for all DateTimeString elements in CII until fixed upstream, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/429 -->
     <rule context="udt:DateTimeString | qdt:DateTimeString | udt:DateString">
       <assert test="normalize-space(@format) = '102' and matches(normalize-space(text()), '^\d{8}$')"
-              flag="fatal"
+              flag="warning"
               id="BR-TMP-7"
           >[BR-TMP-7] Datumsangaben in UNCEFACT/CII müssen das Attribut format="102" tragen und im Format JJJJMMTT (YYYYMMDD) übermittelt werden.</assert>
     </rule>
