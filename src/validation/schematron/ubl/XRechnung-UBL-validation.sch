@@ -18,9 +18,12 @@
 
   <xsl:function name="xr:checkIBAN" as="xs:boolean">
     <xsl:param name="iban" as="xs:string"/>
-    <xsl:variable name="normalizedIban" select="normalize-space(replace($iban, '([\s])', ''))"/>
-    <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and
-                          xs:integer(string-join(for $cp in string-to-codepoints(concat(substring($normalizedIban,5),upper-case(substring($normalizedIban,1,2)),substring($normalizedIban,3,2))) return (if($cp > 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"/>
+    <!-- removes XML whitespace and all Unicode separators (e.g. no-break space U+00A0, narrow no-break space U+202F) -->
+    <xsl:variable name="normalizedIban" select="replace($iban, '[\s\p{Z}]', '')"/>
+    <!-- checksum is computed on the upper-cased IBAN, as the regex allows lower-case letters in the BBAN -->
+    <xsl:sequence select="if (matches($normalizedIban, $XR-IBAN-REGEX))
+                          then xs:integer(string-join(for $cp in string-to-codepoints(upper-case(concat(substring($normalizedIban,5),substring($normalizedIban,1,4)))) return (if($cp > 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1
+                          else false()"/>
   </xsl:function>
 
   <phase id="xrechnung-model">

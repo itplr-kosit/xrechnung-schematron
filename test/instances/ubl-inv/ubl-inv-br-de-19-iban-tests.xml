@@ -73,6 +73,16 @@
               schematron-valid="xrubl:BR-DE-19" id="iban-with-whitespace-inside" description="IBAN whitespace inside, should still be validated"?>
       <?xmute mutator="code" values="GB29NWBK60161331926819" separator="," 
               schematron-valid="xrubl:BR-DE-19" id="iban-from-gb" description="British IBAN, should still be validated"?>      
+      <?xmute mutator="code" values="DE79 0000 0000 1234 5678 90,DE79 0000 0000 1234 5678 90,DE79 0000 0000 1234 5678 90,DE79　0000　0000　1234　5678　90" separator=","
+              schematron-valid="xrubl:BR-DE-19" id="iban-with-unicode-space-inside" description="IBAN with Unicode space separators inside (U+00A0, U+202F, U+2007, U+3000), should still be validated"?>
+      <?xmute mutator="code" values="GB29nwbk60161331926819" separator=","
+              schematron-valid="xrubl:BR-DE-19" id="iban-with-lower-case-bban" description="Correct IBAN with lower-case letters in BBAN, should still be validated"?>
+      <?xmute mutator="code" values="DE79​000000001234567890,gb29NWBK60161331926819" separator=","
+              schematron-invalid="xrubl:BR-DE-19" id="iban-with-zero-width-space-or-lower-case-country" description="Expect to fail on zero width space U+200B (not a separator) and on lower-case country code"?>
+      <?xmute mutator="code" values="GB00nwbk60161331926819" separator=","
+              schematron-invalid="xrubl:BR-DE-19" id="iban-with-lower-case-bban-wrong-checksum" description="Expect to fail on incorrect IBAN with lower-case letters in BBAN, which was accepted before the checksum was computed on the upper-cased IBAN"?>
+      <?xmute mutator="code" values="DE79­000000001234567890,﻿DE79000000001234567890,DE79３00000001234567890,DE٨٩000000001234567890,GB29NWBK60161331926819" separator=","
+              schematron-invalid="xrubl:BR-DE-19" id="iban-with-unicode-non-separator" description="Expect to fail on Unicode characters that are not separators: soft hyphen U+00AD, BOM U+FEFF, fullwidth digit U+FF13, Arabic-Indic digits U+0668/U+0669, Kelvin sign U+212A"?>
       <!--
       <?xmute mutator="whitespace" 
               schematron-valid="xrubl:BR-DE-19" id="iban-with-whitespace" description="Iban with whitespace, should still be validated"?>

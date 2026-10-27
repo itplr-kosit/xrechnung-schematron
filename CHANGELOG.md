@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?
 
+### Changed
+
+* BR-DE-19 and BR-DE-20 IBAN check removes all Unicode space separators (e.g. no-break space U+00A0) in addition to XML whitespace
+
+### Fixed
+
+* BR-DE-19 and BR-DE-20 compute the IBAN checksum on the upper-cased IBAN, so an IBAN with lower-case letters in the BBAN is no longer reported as incorrect if valid, nor accepted if its checksum is wrong
+
 ## v2.6.0 on 2026-08-31
 
 This release is compatible with XRechnung 3.0
