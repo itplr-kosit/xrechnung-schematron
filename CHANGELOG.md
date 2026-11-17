@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release is compatible with XRechnung ?.?
 
+### Changed
+
+* Build: bumped XSBI to 0.5.0-SNAPSHOT
+* Build: dependency management with the xsbi build unit `abu-marant` as in xbestellung-codelist. Saxon-HE, XML Resolver, SchXslt and XML Mutate are declared in `pom.xml` and resolved from Maven Central and the XSE component repository instead of hand-written downloads; the xsbi units `abu-saxon-provider` and `abu-schematron-schxslt` are no longer used.
+
 ## v2.6.0 on 2026-08-31
 
 This release is compatible with XRechnung 3.0

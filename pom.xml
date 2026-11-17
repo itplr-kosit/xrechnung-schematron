@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+
+  <groupId>org.kosit.xse</groupId>
+  <artifactId>xrechnung-schematron</artifactId>
+  <version>2.7.0-SNAPSHOT</version>
+  <inceptionYear>2017</inceptionYear>
+  <url>https://projekte.kosit.org/xrechnung/xrechnung-schematron</url>
+
+  <repositories>
+    <repository>
+      <id>gitlab-maven</id>
+      <url>https://projekte.kosit.org/api/v4/projects/356/packages/maven</url>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>gitlab-maven</id>
+      <url>https://projekte.kosit.org/api/v4/projects/356/packages/maven</url>
+    </repository>
+
+    <snapshotRepository>
+      <id>gitlab-maven</id>
+      <url>https://projekte.kosit.org/api/v4/projects/356/packages/maven</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <id>renzo</id>
+      <name>Renzo Kottmann</name>
+    </developer>
+  </developers>
+
+  <properties>
+    <saxon-he.version>12.8</saxon-he.version>
+    <saxon-he.artifact.name>Saxon-HE-${saxon-he.version}.jar</saxon-he.artifact.name>
+
+    <schxslt.version>1.10.1</schxslt.version>
+    <schxslt.artifact.name>schxslt-${schxslt.version}.jar</schxslt.artifact.name>
+    <schxslt.ant.task.artifact.name>ant-${schxslt.version}.jar</schxslt.ant.task.artifact.name>
+
+    <xml-mutate.version>0.6</xml-mutate.version>
+    <xml-mutate.artifact.name>xml-mutate-${xml-mutate.version}.jar</xml-mutate.artifact.name>
+
+    <!-- read all from project.properties see build section below -->
+  </properties>
+
+
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.xmlresolver</groupId>
+      <artifactId>xmlresolver</artifactId>
+      <version>6.0.19</version>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>Saxon-HE</artifactId>
+      <version>${saxon-he.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>name.dmaus.schxslt</groupId>
+      <artifactId>schxslt</artifactId>
+      <version>${schxslt.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>name.dmaus.schxslt</groupId>
+      <artifactId>ant</artifactId>
+      <version>${schxslt.version}</version>
+    </dependency>
+
+    <!-- test scope: the xml-mutate jar bundles its own Saxon-HE 9.9 classes and must not be on
+         classpath.compile, which is the XSLT classpath of this build -->
+    <dependency>
+      <groupId>de.kosit</groupId>
+      <artifactId>xml-mutate</artifactId>
+      <version>${xml-mutate.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+
+  </dependencies>
+
+
+</project>

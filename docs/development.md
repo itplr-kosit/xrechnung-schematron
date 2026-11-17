@@ -41,6 +41,16 @@ xrubl:   for XRechnung UBL Invoice (and Credit Note)
 xrcii:   for XRechnung UN/CEFACT CII
 ```
 
+## Dependencies
+
+Dependency management follows the abu-marant reference implementation of [xbestellung-codelist](https://projekte.kosit.org/xbestellung/xbestellung-codelist): dependencies with a Maven artifact are declared in `pom.xml` and resolved by the Maven Artifact Resolver Ant Tasks (xsbi build unit `abu-marant`). The build itself stays in Ant.
+
+| Dependency | Declared in | Source |
+|---|---|---|
+| Saxon-HE, XML Resolver, SchXslt | `pom.xml` | Maven Central |
+| XML Mutate (`de.kosit:xml-mutate`, scope `test`) | `pom.xml` | XSE component repository |
+| Peppol BIS Billing Schematron | `build.xml`, target `provide-peppol-bis-billing-rules` | GitHub (no Maven artifact) |
+
 ## The build environment
 
 We recommend `Apache Ant` version 1.10.x or newer (but should work with > 1.8.x).
@@ -89,6 +99,6 @@ The `ant` target `dist` creates the distribution zip archive.
 
 ### Post-Release
 
-* Change the version of XRechnung Schematron in `build.xml` to the next release and commit
+* Change the version of XRechnung Schematron in `build.xml` and `pom.xml` to the next release and commit
 
 You are done :smile:

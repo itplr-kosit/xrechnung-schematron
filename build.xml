@@ -1,12 +1,12 @@
 <project name="xrechnung-schematron" default="compile-schematron-rules"
-  basedir=".">
+  basedir="." xmlns:resolver="antlib:org.apache.maven.resolver.ant">
   <description>Build XRechnung Schematron Rules</description>
   
-  <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.3.0-SNAPSHOT/abu" />
+  <property name="xsbi.dir" location="${basedir}/_vendor/xsbi-0.5.0-SNAPSHOT/abu" />
 
   <import file="${xsbi.dir}/abu-common.xml" />
-  <include file="${xsbi.dir}/abu-saxon-provider.xml" />
-  <include file="${xsbi.dir}/abu-schematron-schxslt.xml" />
+  <include file="${xsbi.dir}/abu-common-tasks.xml" />
+  <include file="${xsbi.dir}/abu-marant.xml" />
 
   <!-- set global default properties for this build -->
   <!-- main build directories -->
@@ -27,12 +27,7 @@
   <property name="dist.name"
     value="xrechnung-${xrechnung.version}-schematron-${xr-schematron.version.full}" />
 
-  <property name="xmute.version.full" value="0.6" />
-  <property name="xmute.jar" value="xml-mutate-${xmute.version.full}.jar" />
-  <property name="xmute.download.url" 
-    value="https://projekte.kosit.org/api/v4/projects/356/packages/maven/de/kosit/xml-mutate/${xmute.version.full}/${xmute.jar}" />
-
-  <property name="bis.version" value="3.0.21" />
+<property name="bis.version" value="3.0.21" />
   <property name="bis.zip" value="v${bis.version}.zip" />
   <property name="bis.download.url"
     value="https://github.com/OpenPEPPOL/peppol-bis-invoice-3/archive/refs/tags/${bis.zip}" />
@@ -40,25 +35,41 @@
   <property name="peppol.ubl.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/refs/heads/2026-Q2-QA2/rules/sch/PEPPOL-EN16931-UBL.sch" />
   <property name="peppol.cii.url" value="https://raw.githubusercontent.com/OpenPEPPOL/peppol-bis-invoice-3/refs/heads/2026-Q2-QA2/rules/sch/PEPPOL-EN16931-CII.sch" />
 
-  <property name="schxslt.version" value="1.10.1" />
-  <property name="schxslt.zip" value="schxslt-${schxslt.version}-xslt-only.zip" />
-  <property name="schxslt.download.url" value="https://codeberg.org/SchXslt/schxslt/releases/download/v${schxslt.version}/${schxslt.zip}" />
-
-  <property name="xr-schematron.zip" value="${dist.name}.zip" />
+<property name="xr-schematron.zip" value="${dist.name}.zip" />
   
   <!-- ci/cd  -->
   <property name="project.group.id" value="de.xeinkauf" />
   <property name="project.artifact.id"
     value="xrechnung-${xrechnung.version}-schematron" />
 
-  <target name="init"
+  <target name="init-maven-setting" depends="abu-marant.load"
+    if="ci.job.token">
+    <copy file="${src.main.dir}/resources/maven-settings.xml"
+      todir="${build.dir}">
+      <filterset>
+        <filter token="TOKEN" value="${ci.job.token}" />
+      </filterset>
+    </copy>
+    <resolver:settings file="${build.dir}/maven-settings.xml" />
+  </target>
+
+  <target name="maven-to-ant-properties" depends="init-maven-setting">
+    <property name="project.version.full" value="${pom.version}" />
+    <property name="saxon-he.version" value="${pom.properties.saxon-he.version}" />
+    <property name="saxon-he.artifact.name" value="${pom.properties.saxon-he.artifact.name}" />
+
+    <property name="schxslt.version" value="${pom.properties.schxslt.version}" />
+    <property name="schxslt.artifact.name" value="${pom.properties.schxslt.artifact.name}" />
+    <property name="schxslt.ant.task.artifact.name"
+      value="${pom.properties.schxslt.ant.task.artifact.name}" />
+
+    <property name="xmute.version.full" value="${pom.properties.xml-mutate.version}" />
+    <property name="xmute.jar" value="${pom.properties.xml-mutate.artifact.name}" />
+  </target>
+
+  <target name="init" depends="maven-to-ant-properties"
     description="Initializes build directory structure and ISO timestamp">
-    <!-- Check if xml-mutate jar is already available -->
-    <condition property="xmute.jar.available">
-      <available file="${lib.dir}/${xmute.jar}"/>
-    </condition>
-    
-    <!-- Create timestamps -->
+<!-- Create timestamps -->
     <tstamp>
       <format property="build.date" pattern="yyyy-MM-dd" />
     </tstamp>
@@ -73,11 +84,87 @@
     <mkdir dir="${build.dir}/bis" />
   </target>
 
-  <target name="retrieve-xmute" depends="init" unless="xmute.jar.available">
-    <echo message="Downloading xml-mutate ${xmute.version.full} from GitLab xse-component-repository" />
-    <get src="${xmute.download.url}"
-      dest="${lib.dir}/${xmute.jar}" verbose="true" skipexisting="false"
-      usetimestamp="true" />
+  <target name="dependency-resolve-system"
+    depends="provide-peppol-bis-billing-rules" />
+
+  <target name="dependency-resolve-pom" depends="init">
+
+    <resolver:resolve>
+
+      <remoterepo id="gitlab-maven"
+        url="https://projekte.kosit.org/api/v4/projects/356/packages/maven">
+        <releases enabled="true" updates="daily" checksums="warn" />
+        <snapshots enabled="true" />
+
+      </remoterepo>
+
+      <remoterepos id="all">
+        <remoterepo refid="central" />
+        <remoterepo refid="gitlab-maven" />
+
+      </remoterepos>
+
+
+      <dependencies>
+        <pom refid="pom" />
+      </dependencies>
+      <!-- refid in path element is the id which can be referenced later -->
+      <path refid="classpath.compile" classpath="compile" />
+      <path refid="classpath.test" classpath="test" />
+      <properties prefix="dep." scopes="provided,system,compile,runtime" />
+    </resolver:resolve>
+
+    <pathconvert property="classpathProp" refid="classpath.compile" />
+
+    <echo message="${classpathProp}" />
+
+  </target>
+
+  <target name="dependency-resolve"
+    depends="init, dependency-resolve-system, dependency-resolve-pom"
+    description="Resolves all dependencies and copies them to ${lib.dir}">
+    <echo message="Resolving all dependencies" />
+
+    <!-- For local development -->
+    <copy todir="${lib.dir}">
+      <path refid="classpath.compile" />
+    </copy>
+    <!-- xml-mutate has scope test to keep it off classpath.compile (see pom.xml) -->
+    <copy todir="${lib.dir}">
+      <path refid="classpath.test" />
+    </copy>
+
+  </target>
+
+  <target name="provide-schxslt-ant-task" depends="dependency-resolve">
+    <!-- schxslt ANT task -->
+    <property name="schxslt.ant.task.jar.file"
+      value="${lib.dir}/${schxslt.ant.task.artifact.name}" />
+    <echo message="Provide and Initialize Ant-Schxslt Task" />
+    <fail message="Schxslt ant task in ${schxslt.ant.task.jar.file} is missing.">
+      <condition>
+        <not>
+          <available file="${schxslt.ant.task.jar.file}" />
+        </not>
+      </condition>
+    </fail>
+
+    <taskdef name="schematron" classname="name.dmaus.schxslt.ant.Task"
+      classpath="${schxslt.ant.task.jar.file}" />
+
+  </target>
+
+  <target name="provide-schxslt" depends="dependency-resolve">
+    <property name="build.schxslt.dir" location="${build.dir}/schxslt" />
+    <mkdir dir="${build.schxslt.dir}" />
+
+    <unzip src="${lib.dir}/${schxslt.artifact.name}" dest="${build.schxslt.dir}">
+      <patternset>
+        <include name="xslt/2.0/**/*.xsl" />
+      </patternset>
+      <cutdirsmapper dirs="2" />
+    </unzip>
+
   </target>
 
   <target name="prepare-build-dir" depends="init"
@@ -164,18 +251,18 @@
   </target>
 
   <target name="merge-peppol-rules-with-xr-rules"
-    depends="prepare-build-dir,provide-peppol-bis-billing-rules,abu-saxon-provider.provide-saxon">
+    depends="prepare-build-dir,provide-peppol-bis-billing-rules,dependency-resolve">
     <!-- merge ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/ubl/XRechnung-UBL-validation.sch"
-      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="cp.saxon.xslt">
+      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="classpath.compile">
       <param name="syntax" expression="UBL" />
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
     <!-- merge cii -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/cii/XRechnung-CII-validation.sch"
-      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="cp.saxon.xslt">
+      style="${src.dir}/xsl/peppol-into-xr.xsl" classpathref="classpath.compile">
       <param name="syntax" expression="CII" />
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
@@ -188,14 +275,14 @@
     <!-- check ubl -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-UBL-validation.sch"
       out="${xr-schematron.build.dir}/tmp/ubl.out"
-      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="classpath.compile">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
 
     <!-- check cii -->
     <xslt in="${xr-schematron.build.dir}/tmp/XRechnung-CII-validation.sch"
       out="${xr-schematron.build.dir}/tmp/cii.out"
-      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="cp.saxon.xslt">
+      style="${src.dir}/xsl/check-schematron-asserts.xsl" failonerror="yes" classpathref="classpath.compile">
     </xslt>
   </target>
 
@@ -206,31 +293,35 @@
 
   <target name="compile-schematron-rules" depends="compile-ubl-schematron, compile-cii-schematron"/>
 
-  <target name="compile-ubl-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
-    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
-      <param name="schematron" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
-      <param name="insuffix" value="sch"/>
-      <param name="outdir" value="${build.dir}/schematron/ubl"/>
-      <param name="schematron.file" value="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"/>
-      <param name="xslt.output.dir" value="${build.dir}/schematron/ubl"/>
-    </antcall>
+  <target name="compile-ubl-schematron" depends="dependency-resolve, provide-schxslt, prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <xslt in="${build.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
+      style="${build.schxslt.dir}/pipeline-for-svrl.xsl"
+      out="${build.dir}/schematron/ubl/XRechnung-UBL-validation.xsl">
+      <classpath refid="classpath.compile" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl">
+        <attribute name="http://saxon.sf.net/feature/xinclude-aware"
+          value="true" />
+      </factory>
+    </xslt>
   </target>
 
-  <target name="compile-cii-schematron" depends="abu-saxon-provider.provide-saxon,abu-schematron-schxslt.provide-schxslt,prepare-build-dir, merge-peppol-rules-with-xr-rules">
-    <antcall target="abu-schematron-schxslt.schematron-compile-schxslt">
-      <param name="schematron" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
-      <param name="insuffix" value="sch"/>
-      <param name="outdir" value="${build.dir}/schematron/cii"/>
-      <param name="schematron.file" value="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"/>
-      <param name="xslt.output.dir" value="${build.dir}/schematron/cii"/>
-    </antcall>
+  <target name="compile-cii-schematron" depends="dependency-resolve, provide-schxslt, prepare-build-dir, merge-peppol-rules-with-xr-rules">
+    <xslt in="${build.dir}/schematron/cii/XRechnung-CII-validation.sch"
+      style="${build.schxslt.dir}/pipeline-for-svrl.xsl"
+      out="${build.dir}/schematron/cii/XRechnung-CII-validation.xsl">
+      <classpath refid="classpath.compile" />
+      <factory name="net.sf.saxon.TransformerFactoryImpl">
+        <attribute name="http://saxon.sf.net/feature/xinclude-aware"
+          value="true" />
+      </factory>
+    </xslt>
   </target>
 
   <target name="transform-xr-rules-to-peppol-nrs"
-    depends="abu-saxon-provider.provide-saxon, prepare-build-dir">
+    depends="dependency-resolve, prepare-build-dir">
     <xslt in="${validation.dir}/schematron/ubl/XRechnung-UBL-validation.sch"
       out="${build.dir}/national-rules/XRechnung-UBL-NRS.sch"
-      style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl" classpathref="cp.saxon.xslt">
+      style="${tools.dir}/xr-2-peppol-bis-billing-nrs.xsl" classpathref="classpath.compile">
       <factory name="net.sf.saxon.TransformerFactoryImpl" />
     </xslt>
   </target>
@@ -238,7 +329,7 @@
   <target name="compile" depends="compile-schematron-rules"
     description="Compiling Schematron rules from sources"> </target>
 
-  <target name="check-xmute-available" depends="retrieve-xmute">
+  <target name="check-xmute-available" depends="dependency-resolve">
     <fail message="You must have xml-mutate installed in ${lib.dir}">
       <condition>
         <not>
@@ -331,14 +422,14 @@
 
 
   <target name="test"
-    depends="retrieve-xmute, compile, transform-xr-rules-to-peppol-nrs, test-only"
+    depends="dependency-resolve, compile, transform-xr-rules-to-peppol-nrs, test-only"
     description="Unit testing Schematron Rules wit XML-Mutate" />
 
   <target name="dist-only" depends="compile"
     description="Generate the distribution">
 
     <zip destfile="${dist.dir}/${xr-schematron.zip}" basedir="${build.dir}"
-      excludes="download/**,schematron/tmp/**,bis/**,generated/**,national-rules/**,build.env"
+      excludes="download/**,schematron/tmp/**,bis/**,generated/**,national-rules/**,schxslt/**,build.env"
      />
   </target>
 
